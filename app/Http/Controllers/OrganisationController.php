@@ -59,8 +59,8 @@ class OrganisationController extends Controller
      */
     public function edit($id)
     {
-        $organisation = Organisation::findOrFail($id);
-        return view('organisation.edit',compact('organisation'));
+        $organisation = Organisations::findOrFail($id);
+        return view('organisations.edit',compact('organisation'));
     }
 
     /**
