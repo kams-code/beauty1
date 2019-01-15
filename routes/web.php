@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/main', 'MainController@index')->name('main');
+Route::get('/produits', 'ProduitController@index')->name('produits');
+Route::get('/stocks', 'StockController@index')->name('stocks');
 
 
 
@@ -58,3 +60,5 @@ Route::resource('roles','RoleController');
 
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
+
+Route::resource('stocks','StockController');

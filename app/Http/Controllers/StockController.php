@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Produits;
-use Illuminate\Http\Request;
 
-class ProduitController extends Controller
+use Illuminate\Http\Request;
+use App\Stocks;
+
+class StockController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $produits=Produits::get();
-        return view('produits.index',compact('produits'));
+        $Stocks=Stocks::get();
+        return view('Stocks.index',compact('Stocks'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        return view('produits.create');
+        return view('Stocks.create');
     }
 
     /**
@@ -35,8 +36,8 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        $produit = Produits::create($request->all());
-        return redirect(route('produits.index'));
+        $stock = Stocks::create($request->all());
+        return redirect(route('Stocks.index'));
    
     }
 
@@ -59,8 +60,8 @@ class ProduitController extends Controller
      */
     public function edit($id)
     {
-        $produit=Produits::findOrFail($id);
-        return view ('produits.edit',compact('produit'));
+        $stock=Stocks::findOrFail($id);
+        return view ('Stocks.edit',compact('stock'));
     }
 
     /**
@@ -72,9 +73,9 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produit = Produits::findOrFail($id);
-        $produit->update($request->all());
-        return redirect(route('produits.edit',$id));
+        $stock = Stocks::findOrFail($id);
+        $stock->update($request->all());
+        return redirect(route('Stocks.edit',$id));
     } 
 
     /**
