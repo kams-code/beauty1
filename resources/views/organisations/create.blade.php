@@ -5,33 +5,33 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">editer un client</div>
+                <div class="panel-heading">ajouter une organisation</div>
 
                 <div class="panel-body">
-                    {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation )]) !!}
+                    {!! Form::open(['url' => route('organisations.store')]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$organisation->nom, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('pays','pays') !!}
-                             {!! Form::text('pays',$organisation->pays, ['class' => 'form-control']) !!}
+                             {!! Form::text('pays',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('ville','ville') !!}
-                             {!! Form::text('ville',$organisation->ville, ['class' => 'form-control']) !!}
+                             {!! Form::text('ville',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('adresse','adresse') !!}
-                             {!! Form::text('adresse',$organisation->adresse, ['class' => 'form-control']) !!}
+                             {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','telephone') !!}
-                             {!! Form::text('telephone',$organisation->tel, ['class' => 'form-control']) !!}
+                             {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('description','description') !!}
-                             {!! Form::textarea('description',$organisation->description, ['class' => 'form-control']) !!}
+                             {!! Form::textarea('description',null, ['class' => 'form-control']) !!}
                           </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
