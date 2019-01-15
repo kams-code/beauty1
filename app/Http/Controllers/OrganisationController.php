@@ -37,7 +37,8 @@ class OrganisationController extends Controller
     public function store(Request $request)
     {
         $organisation = Organisations::create($request->all());
-        return redirect(route('Organisations.index'));
+        //return redirect(route('organisations.edit',$organisation));
+        return redirect(route('organisations.index'));
     }
 
     /**
@@ -59,8 +60,8 @@ class OrganisationController extends Controller
      */
     public function edit($id)
     {
-        $organisation = Organisation::findOrFail($id);
-        return view('organisation.edit',compact('organisation'));
+        $organisation = Organisations::findOrFail($id);
+        return view('organisations.edit',compact('organisation'));
     }
 
     /**
@@ -72,9 +73,10 @@ class OrganisationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $organisation = Organisation::findOrFail($id);
+        $organisation = Organisations::findOrFail($id);
         $organisation->update($request->all());
-        return redirect(route('organisations.edit',$id));
+       // return redirect(route('organisations.edit',$id));
+       return redirect(route('organisations.index'));
     }
 
     /**

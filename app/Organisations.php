@@ -13,7 +13,7 @@ class Organisations extends Model
         'ville',
         'description',
         'adresse',
-        'tel'
+        'telephone'
        
     ];
 }
