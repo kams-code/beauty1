@@ -15,12 +15,12 @@ class CreateFacturesTable extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('code');
+            $table->string('nom');
+            $table->string('montant');
             $table->timestamps();
         });
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->integer('facture_id')->unsigned()->index();
-          
-        });
+       
     }
 
     /**

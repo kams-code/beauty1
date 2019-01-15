@@ -15,15 +15,21 @@ class CreateFournisseursTable extends Migration
     {
         Schema::create('fournisseurs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('code');
+            $table->string('adresse');
+            $table->string('email');
+            $table->integer('telephone');
             $table->timestamps();
         });
         Schema::table('commandes', function (Blueprint $table) {
-            $table->integer('fournisseur_id')->unsigned()->index();
+            $table->integer('fournisseur_id')->unsigned()->index()->nullable();
           
         });
        
         Schema::table('equipements', function (Blueprint $table) {
-            $table->integer('fournisseur_id')->unsigned()->index();
+            $table->integer('fournisseur_id')->unsigned()->index()->nullable();
           
         });
     }

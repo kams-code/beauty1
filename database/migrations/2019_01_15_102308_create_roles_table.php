@@ -21,7 +21,7 @@ class CreateRolesTable extends Migration
         });
 
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role_id')->unsigned()->index();
+            $table->integer('role_id')->unsigned()->index()->nullable();
           
         });
     }

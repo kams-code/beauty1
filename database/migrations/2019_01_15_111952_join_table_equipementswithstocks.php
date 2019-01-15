@@ -14,7 +14,7 @@ class JoinTableEquipementswithstocks extends Migration
     public function up()
     {
         Schema::table('stocks', function (Blueprint $table) {
-            $table->integer('equipement_id')->unsigned()->index();
+            $table->integer('equipement_id')->unsigned()->index()->nullable();
           
         });
     }

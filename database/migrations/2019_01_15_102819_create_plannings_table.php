@@ -15,6 +15,7 @@ class CreatePlanningsTable extends Migration
     {
         Schema::create('plannings', function (Blueprint $table) {
             $table->increments('id');
+            $table->timestamp('date_fin');
             $table->timestamps();
         });
     }

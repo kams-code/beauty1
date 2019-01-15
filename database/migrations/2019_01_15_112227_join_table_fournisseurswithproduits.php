@@ -14,13 +14,23 @@ class JoinTableFournisseurswithproduits extends Migration
     public function up()
     {
         Schema::table('produits', function (Blueprint $table) {
-            $table->integer('fournisseur_id')->unsigned()->index();
+            $table->integer('fournisseur_id')->unsigned()->index()->nullable();
           
         });
         Schema::table('stocks', function (Blueprint $table) {
-            $table->integer('produit_id')->unsigned()->index();
+            $table->integer('produit_id')->unsigned()->index()->nullable();
           
         });
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->integer('service_id')->unsigned()->index()->nullable();
+          
+        });
+        Schema::table('tickets', function (Blueprint $table) {
+            $table->integer('service_id')->unsigned()->index()->nullable();
+          
+        });
+       
+
     }
 
     /**

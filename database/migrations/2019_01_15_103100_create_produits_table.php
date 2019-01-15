@@ -15,16 +15,15 @@ class CreateProduitsTable extends Migration
     {
         Schema::create('produits', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nom');
+            $table->string('description');
             $table->timestamps();
         });
         Schema::table('commandes', function (Blueprint $table) {
-            $table->integer('produit_id')->unsigned()->index();
+            $table->integer('produit_id')->unsigned()->index()->nullable();
           
         });
-        Schema::table('stocks', function (Blueprint $table) {
-            $table->integer('produit_id')->unsigned()->index();
-          
-        });
+      
     }
 
     /**

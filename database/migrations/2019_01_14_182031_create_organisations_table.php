@@ -20,11 +20,11 @@ class CreateOrganisationsTable extends Migration
             $table->string('ville');
             $table->string('description');
             $table->string('adresse');
-            $table->string('telephone');
+            $table->integer('telephone');
             $table->timestamps();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('organisation_id')->unsigned()->index();
+            $table->integer('organisation_id')->unsigned()->index()->nullable();
           
         });
     }

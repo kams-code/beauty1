@@ -15,11 +15,11 @@ class JoinTableCommandeswithuser extends Migration
     {
         
         Schema::table('commandes', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->index();
+            $table->integer('user_id')->unsigned()->index()->nullable();
           
         });
-        Schema::table('planning', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->index();
+        Schema::table('plannings', function (Blueprint $table) {
+            $table->integer('user_id')->unsigned()->index()->nullable();
           
         });
     }
