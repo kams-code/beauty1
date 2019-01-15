@@ -15,10 +15,16 @@ class CreateClientsTable extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nom');
+            $table->string('prenom');
+            $table->string('adresse');
+            $table->string('email');
+            $table->integer('telephone');
             $table->timestamps();
+            
         });
         Schema::table('reservations', function (Blueprint $table) {
-            $table->integer('client_id')->unsigned()->index();
+            $table->integer('client_id')->unsigned()->index()->nullable();
           
         });
     }

@@ -15,10 +15,12 @@ class CreateEquipementsTable extends Migration
     {
         Schema::create('equipements', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nom');
+            $table->string('description');
             $table->timestamps();
         });
         Schema::table('commandes', function (Blueprint $table) {
-            $table->integer('equipement_id')->unsigned()->index();
+            $table->integer('equipement_id')->unsigned()->index()->nullable();
           
         });
       

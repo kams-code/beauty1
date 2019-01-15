@@ -15,20 +15,19 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('code');
+            $table->string('nom');
+            $table->string('description');
+            $table->string('image');
+            $table->integer('montant');
+            $table->boolean('is_promote');
             $table->timestamps();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('service_id')->unsigned()->index();
+            $table->integer('service_id')->unsigned()->index()->nullable();
           
         });
-        Schema::table('reservations', function (Blueprint $table) {
-            $table->integer('service_id')->unsigned()->index();
-          
-        });
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->integer('service_id')->unsigned()->index();
-          
-        });
+      
     }
 
     /**
