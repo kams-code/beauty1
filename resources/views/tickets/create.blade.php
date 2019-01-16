@@ -81,7 +81,7 @@
                           </div>
                           <div class="form-group">
                              {!! Form::label('etat','Etat') !!}
-                             {!! Form::text('etat',null, ['class' => 'form-control']) !!}
+                             {!! Form::checkbox('etat',null, ['class' => 'form-control']) !!}
                           </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

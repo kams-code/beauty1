@@ -86,9 +86,17 @@
                                 <li class="hidden-xs">
                                     <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
                                 </li>
+                                
                                 <li class="hidden-xs">
                                     <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
                                 </li>
+                                 <li class="hidden-xs">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ auth()->user()->name }}
+                                    <span class="badge badge-warning">{{ auth()->user()->roles->first()->name }}</span>
+                                    <span class="caret"></span>
+                                </a>
+                                    </li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">

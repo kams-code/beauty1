@@ -61,10 +61,20 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            #particles-js {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+    <div id="particles-js"></div>
+
+    <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -80,8 +90,24 @@
             @endif
 
             <div class="content">
-                
+                <div class="content">
+                    <div class="title m-b-md">
+                        Laravel <br> <small>Role Permissions</small>
+                    </div>
+
+                    <div class="links">
+                        <a href="http://qcode.in">visit QCode.in for tutorial</a>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script>
+            /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+            particlesJS.load('particles-js', 'js/particlesjs-config.json', function() {
+                console.log('callback - particles.js config loaded');
+            });
+        </script>
     </body>
 </html>

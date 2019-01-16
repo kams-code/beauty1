@@ -17,10 +17,10 @@ class CreateTicketsTable extends Migration
             $table->increments('id');
             $table->string('titre');
             $table->string('type');
-            $table->boolean('etat');
-
+            $table->boolean('etat')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

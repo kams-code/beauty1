@@ -16,7 +16,7 @@ class TicketController extends Controller
     public function index()
     {
         $Tickets=Tickets::get();
-        return view('Tickets.index',compact('Tickets'));
+        return view('tickets.index',compact('Tickets'));
     }
 
     /**
@@ -37,7 +37,18 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $ticket = Tickets::create($request->all());
+        $tick= new Tickets([
+            'titre' => $request->get('titre'),
+            'type'=> $request->get('type'),
+            'etat'=> $request->get('etat'),
+            'service_id'=> $request->get('user_id')
+          ]);
+          if ($tick['etat'] =="on"){
+            $tick['etat']=1;
+          }if ($tick['etat'] !="on"){
+            $tick['etat']=0; 
+          }
+  $tick->save();
         return redirect(route('tickets.index'));
    
     }
@@ -77,6 +88,9 @@ class TicketController extends Controller
     public function update(Request $request, $id)
     {
         $ticket = Tickets::findOrFail($id);
+
+
+        
         $ticket->update($request->all());
         return redirect(route('tickets.edit',$id));
     } 

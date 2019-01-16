@@ -94,10 +94,12 @@
                     </div> <!-- container -->
                                
                 </div> <!-- content -->
-
-                <footer class="footer text-right">
+ @can('edit_produits', 'delete_produits')
+                    <footer class="footer text-right">
                     2016 © Moltran.
                 </footer>
+                @endcan
+                
 
             </div>
 
