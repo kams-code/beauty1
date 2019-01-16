@@ -68,29 +68,29 @@
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    
+                                   
                 <div class="panel-body">
-                    {!! Form::open(['method' => 'PUT', 'url' => route('stocks.update', $stock )]) !!}
+                    {!! Form::open(['method' => 'PUT', 'url' => route('tickets.update', $ticket )]) !!}
                     <div class="form-group">
-                             {!! Form::label('quantite_initial','quantite_initial') !!}
-                             {!! Form::text('quantite_initial',null, ['class' => 'form-control']) !!}
+                             {!! Form::label('titre','titre') !!}
+                             {!! Form::text('titre',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
-                             {!! Form::label('quantite_final','quantite_final') !!}
-                             {!! Form::text('quantite_final',null, ['class' => 'form-control']) !!}
+                             {!! Form::label('type','type') !!}
+                             {!! Form::text('type',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
-                             {!! Form::label('quantite_limite','quantite_limite') !!}
-                             {!! Form::text('quantite_limite',null, ['class' => 'form-control']) !!}
+                             {!! Form::label('etat','etat') !!}
+                             {!! Form::checkbox('etat',null, ['class' => 'form-control']) !!}
                           </div>
-                           <div class="form-group">
-                             {!! Form::label('produit_id','Produit') !!}
-                             {!! Form::select('produit_id',$produits,$stock->produit_id, ['class' => 'form-control']) !!}
+                          <div class="form-group">
+                             {!! Form::label('service_id','Service') !!}
+                             {!! Form::select('service_id',$services,$ticket->service_id, ['class' => 'form-control']) !!}
                           </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
-                </div>
-            </div> <!-- panel -->
+               </div> <!-- panel-body -->
+                                </div> <!-- panel -->
                             </div> <!-- col -->
 
                         </div> <!-- End row -->
@@ -108,5 +108,3 @@
 
 @endsection
 @include('partials.sidebarright')
-
-

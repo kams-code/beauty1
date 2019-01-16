@@ -10,6 +10,11 @@ class Produits extends Model
 
         'nom',
         'description',
+        'fournisseur_id',
                
     ];
+
+    public function fournisseur(){
+        return $this->belongsTo(Fournisseurs::class);
+    }
 }

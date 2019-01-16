@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Stocks;
+use App\Produits;
+
 
 class StockController extends Controller
 {
@@ -15,7 +17,7 @@ class StockController extends Controller
     public function index()
     {
         $Stocks=Stocks::get();
-        return view('Stocks.index',compact('Stocks'));
+        return view('stocks.index',compact('Stocks'));
     }
 
     /**
@@ -37,7 +39,7 @@ class StockController extends Controller
     public function store(Request $request)
     {
         $stock = Stocks::create($request->all());
-        return redirect(route('Stocks.index'));
+        return redirect(route('stocks.index'));
    
     }
 
@@ -60,8 +62,10 @@ class StockController extends Controller
      */
     public function edit($id)
     {
+        $produits=Produits::pluck('nom', 'id');
+      
         $stock=Stocks::findOrFail($id);
-        return view ('Stocks.edit',compact('stock'));
+        return view ('Stocks.edit',compact('stock','produits'));
     }
 
     /**
@@ -75,7 +79,7 @@ class StockController extends Controller
     {
         $stock = Stocks::findOrFail($id);
         $stock->update($request->all());
-        return redirect(route('Stocks.edit',$id));
+        return redirect(route('stocks.edit',$id));
     } 
 
     /**

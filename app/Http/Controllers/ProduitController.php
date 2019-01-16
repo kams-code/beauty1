@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Produits;
+use App\Fournisseurs;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -13,6 +14,7 @@ class ProduitController extends Controller
      */
     public function index()
     {
+        //$produits=Produits::with('fournisseurs')->get();
         $produits=Produits::get();
         return view('produits.index',compact('produits'));
     }
@@ -24,7 +26,11 @@ class ProduitController extends Controller
      */
     public function create()
     {
-        return view('produits.create');
+        $fournisseurs=Fournisseurs::pluck('nom', 'id');
+      
+        return view ('produits.create',compact('fournisseurs'));
+
+        
     }
 
     /**
@@ -60,7 +66,9 @@ class ProduitController extends Controller
     public function edit($id)
     {
         $produit=Produits::findOrFail($id);
-        return view ('produits.edit',compact('produit'));
+        $fournisseurs=Fournisseurs::pluck('nom', 'id');
+      
+        return view ('produits.edit',compact('produit','fournisseurs'));
     }
 
     /**
