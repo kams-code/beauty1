@@ -6,7 +6,7 @@
         {{ $stock->quantite_initial }}
         {{ $stock->quantite_final }}
         
-        <p><a class="btn btn-primary" href="{{ route('Stocks.edit',$stock) }}">editer</a></p>
+        <p><a class="btn btn-primary" href="{{ route('stocks.edit',$stock) }}">editer</a></p>
                    
     @endforeach
 

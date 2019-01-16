@@ -70,27 +70,23 @@
                                     <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
                                     
                 <div class="panel-body">
-                    {!! Form::open(['method' => 'PUT', 'url' => route('stocks.update', $stock )]) !!}
-                    <div class="form-group">
-                             {!! Form::label('quantite_initial','quantite_initial') !!}
-                             {!! Form::text('quantite_initial',null, ['class' => 'form-control']) !!}
+                    {!! Form::open(['url' => route('tickets.store')]) !!}
+                          <div class="form-group">
+                             {!! Form::label('titre','Titre') !!}
+                             {!! Form::text('titre',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
-                             {!! Form::label('quantite_final','quantite_final') !!}
-                             {!! Form::text('quantite_final',null, ['class' => 'form-control']) !!}
+                             {!! Form::label('type','Type') !!}
+                             {!! Form::text('type',null, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
-                             {!! Form::label('quantite_limite','quantite_limite') !!}
-                             {!! Form::text('quantite_limite',null, ['class' => 'form-control']) !!}
+                             {!! Form::label('etat','Etat') !!}
+                             {!! Form::text('etat',null, ['class' => 'form-control']) !!}
                           </div>
-                           <div class="form-group">
-                             {!! Form::label('produit_id','Produit') !!}
-                             {!! Form::select('produit_id',$produits,$stock->produit_id, ['class' => 'form-control']) !!}
-                          </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
-                </div>
-            </div> <!-- panel -->
+                </div> <!-- panel-body -->
+                                </div> <!-- panel -->
                             </div> <!-- col -->
 
                         </div> <!-- End row -->
@@ -108,5 +104,3 @@
 
 @endsection
 @include('partials.sidebarright')
-
-

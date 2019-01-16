@@ -2,21 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Permission;
 use Illuminate\Http\Request;
-use App\Tickets;
-use App\Services;
 
-class TicketController extends Controller
+class PermissionController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $Tickets=Tickets::get();
-        return view('Tickets.index',compact('Tickets'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('tickets.create');
+        //
     }
 
     /**
@@ -37,18 +35,16 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        $ticket = Tickets::create($request->all());
-        return redirect(route('tickets.index'));
-   
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Permission $permission)
     {
         //
     }
@@ -56,38 +52,33 @@ class TicketController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Permission $permission)
     {
-        $services=Services::pluck('nom', 'id');
-      
-        $ticket=Tickets::findOrFail($id);
-        return view ('tickets.edit',compact('ticket','services'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Permission $permission)
     {
-        $ticket = Tickets::findOrFail($id);
-        $ticket->update($request->all());
-        return redirect(route('tickets.edit',$id));
-    } 
+        //
+    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Permission  $permission
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
         //
     }
