@@ -49,7 +49,8 @@ class OrganisationController extends Controller
      */
     public function show($id)
     {
-        //
+        $organisation = Organisations::get()->where('id',$id);
+        return $organisation;
     }
 
     /**

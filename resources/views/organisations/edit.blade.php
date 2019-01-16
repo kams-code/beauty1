@@ -27,11 +27,17 @@
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','telephone') !!}
-                             {!! Form::text('telephone',$organisation->tel, ['class' => 'form-control']) !!}
+                             {!! Form::text('telephone',$organisation->telephone    , ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('description','description') !!}
                              {!! Form::textarea('description',$organisation->description, ['class' => 'form-control']) !!}
+                          </div>
+                          <div class="form-group">
+                            <label for="online">
+                             {!! Form::checkbox('online',1,$organisation->online) !!}
+                             en ligne?
+                             </label> 
                           </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

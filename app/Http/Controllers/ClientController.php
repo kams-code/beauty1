@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Clients;
 
 class ClientController extends Controller
 {
@@ -13,7 +14,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Clients::get();
+        return view('clients.index',compact('clients'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -34,7 +36,8 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = Clients::create($request->all());
+        return redirect(route('clients.index'));
     }
 
     /**
@@ -45,7 +48,8 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        //
+        $client = Clients::get()->where('id',$id);
+        return $client;
     }
 
     /**
@@ -56,7 +60,8 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Clients::findOrFail($id);
+        return view('clients.edit',compact('client'));
     }
 
     /**
@@ -68,7 +73,9 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Clients::findOrFail($id);
+        $client->update($request->all());
+        return redirect(route('clients.index'));
     }
 
     /**

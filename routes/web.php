@@ -61,4 +61,5 @@ Route::resource('roles','RoleController');
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
 
+//---les routes de stocks----
 Route::resource('stocks','StockController');

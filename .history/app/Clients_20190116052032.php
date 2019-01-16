@@ -12,7 +12,8 @@ class Clients extends Model
         'prenom',
         'adresse',
         'email',
-        'telephone' 
+        'telephone',
+        
        
     ];
 }
