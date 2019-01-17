@@ -14,9 +14,10 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        //$produits=Produits::with('fournisseurs')->get();
+        $fournisseurs=Fournisseurs::pluck('nom', 'id');
         $produits=Produits::get();
-        return view('produits.index',compact('produits'));
+        return view ('produits.index',compact('produits','fournisseurs'));
+        
     }
 
     /**

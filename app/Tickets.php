@@ -13,4 +13,5 @@ class Tickets extends Model
     'service_id',
            
 ];
+protected $casts = [ 'etat' => 'boolean' ];
 }

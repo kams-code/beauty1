@@ -12,6 +12,33 @@
 */
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group( ['middleware' => ['auth']], function() {
+    Route::resource('users', 'UserController');
+    Route::resource('roles', 'RoleController');
+    Route::resource('posts', 'PostController');
+    Route::resource('produits', 'ProduitsController');
+    Route::resource('clients', 'ClientController');
+    Route::resource('factures', 'FactureController');
+    Route::resource('tickets', 'TicketController');
+    Route::resource('reservations', 'ReservationController');
+    Route::resource('equipements', 'EquipementController');
+    Route::resource('services', 'ServiceController');
+    Route::resource('personnels', 'PersonnelController');
+    Route::resource('plannings','PlanningController');
+    Route::resource('fournisseurs','FournisseurController');
+    Route::resource('organisations','OrganisationController');
+    Route::resource('stocks','StockController');
+
+});
+
+Route::get('/', function () {
     return view('/auth/login');
 });
 
@@ -20,9 +47,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/main', 'MainController@index')->name('main');
 Route::get('/produits', 'ProduitController@index')->name('produits');
 Route::get('/stocks', 'StockController@index')->name('stocks');
-
-
-
 
 
 

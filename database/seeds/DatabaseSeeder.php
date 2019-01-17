@@ -1,11 +1,14 @@
 <?php
 
+use App\User;
+use App\Role;
+use App\Permission;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
@@ -13,16 +16,23 @@ class DatabaseSeeder extends Seeder
     {
         // Ask for db migration refresh, default is no
         if ($this->command->confirm('Do you wish to refresh migration before seeding, it will clear all old data ?')) {
+            // disable fk constrain check
+            // \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
             // Call the php artisan migrate:refresh
             $this->command->call('migrate:refresh');
             $this->command->warn("Data cleared, starting from blank database.");
+
+            // enable back fk constrain check
+            // \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
+
 
         // Seed the default permissions
         $permissions = Permission::defaultPermissions();
 
         foreach ($permissions as $perms) {
-            Permission::firstOrCreate(['name' => $perms]);
+            Permission::firstOrCreate(['name' => $perms, 'guard_name' => 'web']);
         }
 
         $this->command->info('Default Permissions added.');
@@ -38,7 +48,7 @@ class DatabaseSeeder extends Seeder
 
             // add roles
             foreach($roles_array as $role) {
-                $role = Role::firstOrCreate(['name' => trim($role)]);
+                $role = Role::firstOrCreate(['name' => trim($role), 'guard_name' => 'web']);
 
                 if( $role->name == 'Admin' ) {
                     // assign all permissions
@@ -59,6 +69,7 @@ class DatabaseSeeder extends Seeder
             Role::firstOrCreate(['name' => 'User']);
             $this->command->info('Added only default user role.');
         }
+
 
         // now lets seed some posts for demo
         factory(\App\Post::class, 30)->create();
