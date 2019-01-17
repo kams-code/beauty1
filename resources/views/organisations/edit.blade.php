@@ -1,14 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.mainlayout')
+@include('partials.topbar')
+@include('partials.sidebar')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">editer un client</div>
+                                 @section('content')
+<div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
 
-                <div class="panel-body">
-                    {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation )]) !!}
+                        <!-- Page-Title -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="pull-left page-title">General elements</h4>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">Forms</a></li>
+                                    <li class="active">General elements</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                      <div class="row">
+                            <div class="col-md-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
+                                   <div class="panel-body">
+                    
+                                   {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation )]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','nom') !!}
                              {!! Form::text('nom',$organisation->nom, ['class' => 'form-control']) !!}
@@ -41,9 +59,37 @@
                           </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
-                </div>
+
+                                   </div> <!-- panel-body -->
+                                </div> <!-- panel -->
+                            </div> <!-- col -->
+
+                        </div> <!-- End row -->
+
+
+                    </div> <!-- container -->
+                               
+                </div> <!-- content -->
+ @can('edit_produits', 'delete_produits')
+                    <footer class="footer text-right">
+                    2016 © Moltran.
+                </footer>
+                @endcan
+                
+
             </div>
-        </div>
-    </div>
-</div>
+
 @endsection
+@include('partials.sidebarright')
+
+
+
+
+
+
+
+
+
+
+
+

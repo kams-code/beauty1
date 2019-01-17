@@ -6,7 +6,7 @@ use App\Authorizable;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class RoleController extends Controller
 {
     use Authorizable;
@@ -18,7 +18,12 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $user_role=Auth::user()->roles->first()->name;
+if( $user_role=="Admin"){
         $roles = Role::all();
+    }else{
+        $roles = Role::all()->except(1);
+    }
         $permissions = Permission::all();
 
         return view('role.index', compact('roles', 'permissions'));
