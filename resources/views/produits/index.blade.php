@@ -18,11 +18,11 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Editable Table</h4>
+                                <h4 class="pull-left page-title">Produits</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="#">Moltran</a></li>
                                     <li><a href="#">Tables</a></li>
-                                    <li class="active">Editable Table</li>
+                                    <li class="active">Editer produits</li>
                                 </ol>
                             </div>
                         </div>
@@ -85,6 +85,8 @@
                                         </div><!-- /.modal -->
 
                                                                               <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
+                                       
+                                                                             
                                         </div>
                                     </div>
                                 </div>

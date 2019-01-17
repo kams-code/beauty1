@@ -15,9 +15,12 @@ class StockController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { $produits=Produits::pluck('nom', 'id');
+      
         $Stocks=Stocks::get();
-        return view('stocks.index',compact('Stocks'));
+        return view('stocks.index',compact('Stocks','produits'));
+
+        
     }
 
     /**
@@ -38,7 +41,55 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        $stock = Stocks::create($request->all());
+       if($request->get('sorti_produit_id')!=null) 
+       {
+$produit_sortie=$request->get('sorti_produit_id');
+$quantite_sortie=$request->get('sorti_quantite');
+$stocksortie=Stocks::where('produit_id', $produit_sortie)->first();
+$qteinit=$stocksortie->quantite_final;
+$stocksortie->quantite_final=$qteinit-$quantite_sortie;
+$stocksortie->update(@json_decode(json_encode($stocksortie), true));
+
+
+       }else{
+        $stock= new Stocks([
+            'quantite_initial' => $request->get('quantite_initial'),
+            'quantite_limite'=> $request->get('quantite_limite'),
+            'produit_id'=> $request->get('produit_id')
+          ]);
+          $stockfind=Stocks::where('produit_id', $stock->produit_id)->first();
+       
+          if (Stocks::where('produit_id', $stock->produit_id)->exists()) {
+            $stockfind=Stocks::where('produit_id', $stock->produit_id)->first();
+       
+            $stock= new Stocks([
+                'quantite_initial' => $request->get('quantite_initial')+$stockfind->quantite_initial,
+                'quantite_limite'=> $request->get('quantite_limite'),
+                'produit_id'=> $request->get('produit_id')
+              ]);
+              $stock['quantite_final'] =$stock->quantite_final+$stockfind->quantite_final;
+
+
+
+          $stocks = Stocks::findOrFail($stock->produit_id);
+   
+          $stocks->update(@json_decode(json_encode($stock), true));
+          
+
+        }else
+        {
+            $stock['quantite_final'] =$stock->quantite_initial;
+          $stock->save();
+        }
+    }
+        return redirect(route('stocks.index'));
+   
+    }
+    public function sortir(Request $request)
+    {
+        $produit_id = $request->get('produit_id');
+       $quantite= $request->get('quantite');
+       dd($produit_id);
         return redirect(route('stocks.index'));
    
     }
@@ -80,6 +131,12 @@ class StockController extends Controller
         $stock = Stocks::findOrFail($id);
         $stock->update($request->all());
         return redirect(route('stocks.edit',$id));
+    } 
+    public function update1(Request $request, $id)
+    {
+        $stock = Stocks::findOrFail($id);
+        $stock->update($request->all());
+        return $stock;
     } 
 
     /**
