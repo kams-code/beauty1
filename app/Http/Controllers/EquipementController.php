@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+//use App\Http\Requests\ImageRequest;
 use App\Fournisseurs;
 use App\Equipements;
 
@@ -39,6 +41,7 @@ class EquipementController extends Controller
      */
     public function store(Request $request)
     {
+			
         $equipements = Equipements::create($request->all());
         return redirect(route('equipements.index'));
     }

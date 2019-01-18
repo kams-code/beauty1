@@ -92,6 +92,7 @@
             </div> 
             <div class="modal-body"> 
                 <div class="row"> 
+<<<<<<< HEAD
                     {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('sortie')]) !!}
                     
                     
@@ -99,13 +100,26 @@
                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('produit_id','Produit') !!}</label>
                         <div class="col-sm-9">
                            {!! Form::select('produit_id',$produits,null, ['class' => 'form-control']) !!}
+=======
+                    {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('stocks.store')]) !!}
+                    
+                    
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('sorti_produit_id','Produit') !!}</label>
+                        <div class="col-sm-9">
+                           {!! Form::select('sorti_produit_id',$produits,null, ['class' => 'form-control']) !!}
+>>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('quantite','Quantite') !!}</label>
                         <div class="col-sm-9">
+<<<<<<< HEAD
                             {!! Form::text('quantite',null, ['class' => 'form-control']) !!}
+=======
+                            {!! Form::text('sorti_quantite',null, ['class' => 'form-control']) !!}
+>>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
                         </div>
                     </div>
 
@@ -135,6 +149,7 @@
 
                                     @foreach($Stocks as $stock)
       
+<<<<<<< HEAD
        
         
                                        {{ $stock->quantite_final }}==={{ $stock->quantite_limite }}   
@@ -143,6 +158,18 @@
                                     <span class="badge badge-warning">Nom PRODUIT     {{ $stock->produit_id }}</span>
                                     <span class="caret"></span>
                                 </a>
+=======
+       @if($stock->quantite_final<= $stock->quantite_limite)
+            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                           
+                                    <span class="badge badge-xs badge-danger">Nom PRODUIT     {{ $stock->produit_id }}</span>
+                                    
+                                </a>
+       @endif
+        
+                                     
+                                   
+>>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
                                         
                                              
     @endforeach

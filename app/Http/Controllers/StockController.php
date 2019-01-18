@@ -41,7 +41,21 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
        
+=======
+       if($request->get('sorti_produit_id')!=null) 
+       {
+$produit_sortie=$request->get('sorti_produit_id');
+$quantite_sortie=$request->get('sorti_quantite');
+$stocksortie=Stocks::where('produit_id', $produit_sortie)->first();
+$qteinit=$stocksortie->quantite_final;
+$stocksortie->quantite_final=$qteinit-$quantite_sortie;
+$stocksortie->update(@json_decode(json_encode($stocksortie), true));
+
+
+       }else{
+>>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
         $stock= new Stocks([
             'quantite_initial' => $request->get('quantite_initial'),
             'quantite_limite'=> $request->get('quantite_limite'),
@@ -71,6 +85,10 @@ class StockController extends Controller
             $stock['quantite_final'] =$stock->quantite_initial;
           $stock->save();
         }
+<<<<<<< HEAD
+=======
+    }
+>>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
         return redirect(route('stocks.index'));
    
     }
