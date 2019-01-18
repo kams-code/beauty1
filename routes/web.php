@@ -23,7 +23,6 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('posts', 'PostController');
-    Route::resource('produits', 'ProduitsController');
     Route::resource('clients', 'ClientController');
     Route::resource('factures', 'FactureController');
     Route::resource('tickets', 'TicketController');
@@ -45,14 +44,24 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/main', 'MainController@index')->name('main');
-Route::get('/produits', 'ProduitController@index')->name('produits');
 Route::get('/sortie', 'StockController@sortir')->name('sortie');
 
+Route::get('/taglists/create', 'TagListController@create')->name('taglists.create');
+Route::post('/taglists/store', 'TagListController@store')->name('taglists.store');
+Route::get('/taglists/create1', 'TagListController@create1')->name('taglists.create1');
+Route::post('ajax', function() {
+    // grab the id
+    $id = \Input::get('id');
 
+    // return it back to the user in json response
+    return response()->json([
+        'id' => 'The id is: ' . $id
+    ]);
+});
 
 // ------ les routes de clients ---------
 Route::resource('clients','ClientController');
-
+Route::resource('commandes','CommandeController');
 // ------- les routes de factures --------
 Route::resource('factures','FactureController');
 

@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Fournisseurs;
 
 class FournisseurController extends Controller
-{
-    /**
+{/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $fournisseurs = Fournisseurs::get();
+        return view('Fournisseurs.index',compact('fournisseurs'));
     }
 
     /**
@@ -23,7 +24,7 @@ class FournisseurController extends Controller
      */
     public function create()
     {
-        //
+        return view('Fournisseurs.create');
     }
 
     /**
@@ -34,7 +35,23 @@ class FournisseurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $string = bin2hex(openssl_random_pseudo_bytes(10));
+        $fournisseur= new Fournisseurs([
+            'nom'=> $request->get('nom'),
+        'prenom'=> $request->get('prenom'),
+        'code'=> $request->get,
+        'adresse'=> $request->get('adresse'),
+        'email'=> $request->get('email'),
+        'telephone'=> $request->get('telephone')
+           
+          ]);
+          
+          $fournisseur['code'] =$string;
+          $fournisseur->save();
+
+
+        //return redirect(route('Fournisseurs.edit',$fournisseur));
+        return redirect(route('fournisseurs.index'));
     }
 
     /**
@@ -45,7 +62,8 @@ class FournisseurController extends Controller
      */
     public function show($id)
     {
-        //
+        $fournisseur = Fournisseurs::get()->where('id',$id);
+        return $fournisseur;
     }
 
     /**
@@ -56,7 +74,8 @@ class FournisseurController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fournisseur = Fournisseurs::findOrFail($id);
+        return view('fournisseurs.edit',compact('fournisseur'));
     }
 
     /**
@@ -68,7 +87,10 @@ class FournisseurController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $fournisseur = Fournisseurs::findOrFail($id);
+        $fournisseur->update($request->all());
+       // return redirect(route('Fournisseurs.edit',$id));
+       return redirect(route('fournisseurs.index'));
     }
 
     /**

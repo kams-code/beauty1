@@ -162,9 +162,20 @@
        @if($stock->quantite_final<= $stock->quantite_limite)
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                            
-                                    <span class="badge badge-xs badge-danger">Nom PRODUIT     {{ $stock->produit_id }}</span>
+                                    <span class="badge badge-danger">Nom PRODUIT :
+                                                    @foreach($Produits as $produit)
+      
+       @if($produit->id===$stock->produit_id)
+                                        {{ $produit->nom }}</span>
                                     
                                 </a>
+                                   @endif
+        
+                                     
+                                   
+                                        
+                                             
+    @endforeach
        @endif
         
                                      
@@ -200,9 +211,14 @@
                                             <td>  {{ $stock->quantite_limite }}</td>
                                              <td> {{ $stock->updated_at }}</td>
                                             <td class="actions">
-                                                <a href="{{ route('stocks.edit',$stock) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                                <a href="{{ route('stocks.edit',$stock) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('stocks.edit',$stock) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                            {!! Form::open( ['method' => 'delete', 'url' => route('stocks.destroy', $stock->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
+        <button type="submit" class="btn-delete btn btn-sm btn-light">
+            ❌
+        </button>
+    {!! Form::close() !!}
+                                                <a href="{{ route('stocks.destroy',$stock) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                <a href="{{ route('stocks.destroy',$stock) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                <a href="{{ route('stocks.destroy',$stock) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr> 

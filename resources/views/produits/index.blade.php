@@ -3,12 +3,7 @@
 @include('partials.sidebar')
 
                                  @section('content')
-                                  @can('edit_produits', 'delete_produits')
-                    <footer class="footer text-right">
-                    2016 © Moltran.
-                </footer>
-                @endcan
-                 @can('edit_produits', 'delete_produits')
+                    
                   
   <div class="content-page">
                 <!-- Start content -->
@@ -116,7 +111,7 @@
                                                 <a href="{{ route('produits.edit',$produit) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('produits.edit',$produit) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
                                                 <a href="{{ route('produits.edit',$produit) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                                <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                <a href="{{ route('produits.destroy',$produit) }}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr> 
     @endforeach
@@ -146,6 +141,6 @@
 	    <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
 	    <script src="{{asset('pages/datatables.editable.init.js')}}"></script>
 
-                @endcan
+            
                 @endsection
 @include('partials.sidebarright')

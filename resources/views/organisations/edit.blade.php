@@ -53,7 +53,7 @@
                           </div>
                           <div class="form-group">
                             <label>
-                             {!! Form::checkbox('online',1,$organisation->online) !!}
+                             {!! Form::checkbox('online',$value=default,$organisation->online) !!}
                              en ligne?
                              </label> 
                           </div>

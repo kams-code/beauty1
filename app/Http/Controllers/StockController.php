@@ -16,9 +16,9 @@ class StockController extends Controller
      */
     public function index()
     { $produits=Produits::pluck('nom', 'id');
-      
+        $Produits=Produits::get();
         $Stocks=Stocks::get();
-        return view('stocks.index',compact('Stocks','produits'));
+        return view('stocks.index',compact('Stocks','produits','Produits'));
 
         
     }
@@ -154,6 +154,12 @@ $stocksortie->update(@json_decode(json_encode($stocksortie), true));
      */
     public function destroy($id)
     {
-        //
+        if( Stocks::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();
     }
 }

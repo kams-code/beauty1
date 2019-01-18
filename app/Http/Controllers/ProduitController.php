@@ -94,6 +94,17 @@ class ProduitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if( Produits::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } 
+        
+
+
+        $nerd =  Produits::find($id);
+        $nerd->delete();
+
+        // redirect
+        Session::flash('message', 'Successfully deleted the nerd!');
+        return Redirect::to('produits');
     }
 }

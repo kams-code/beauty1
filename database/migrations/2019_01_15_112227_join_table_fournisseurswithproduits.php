@@ -13,6 +13,10 @@ class JoinTableFournisseurswithproduits extends Migration
      */
     public function up()
     {
+        Schema::table('factures', function (Blueprint $table) {
+            $table->integer('client_id')->unsigned()->index()->nullable();
+          
+        });
         Schema::table('produits', function (Blueprint $table) {
             $table->integer('fournisseur_id')->unsigned()->index()->nullable();
           
