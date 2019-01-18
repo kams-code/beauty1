@@ -88,7 +88,7 @@
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Service') !!}</label>
                                                 <div class="col-sm-9">
-                                                {!! Form::select('service_id[]', $services, null, ['id' => 'nom', 'multiple' => 'multiple'], ['class' => 'form-control']) !!}
+                                                {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
           </div>
                                             </div>
                                             

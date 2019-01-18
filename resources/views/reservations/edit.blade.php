@@ -79,6 +79,11 @@
                              {!! Form::label('client_id','Client') !!}
                              {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control']) !!}
                           </div> 
+
+                          <div class="form-group">
+                             {!! Form::label('service_id','Service') !!}
+                             {!! Form::select('service_id',$services,$reservation->service_id, ['class' => 'form-control']) !!}
+                          </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
                 </div> <!-- panel-body -->
