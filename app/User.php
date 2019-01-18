@@ -29,7 +29,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-<<<<<<< HEAD
     public function services()
     {
         return $this->belongsToMany('App\Services');
@@ -39,14 +38,4 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\ServiceUser');
     }*/
-=======
-    public function services(){
-        return $this->belongsToMany('App\Services');
-    }
-
-    public function serviceusers()
-    {
-        return $this->hasMany('App\ServiceUser');
-    }
->>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
 }
