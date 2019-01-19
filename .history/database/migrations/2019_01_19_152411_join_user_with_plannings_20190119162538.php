@@ -13,8 +13,8 @@ class JoinUserWithPlannings extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->integer('planning_id')->unsigned()->index();
+        Schema::table('produits', function (Blueprint $table) {
+            $table->integer('fournisseur_id')->unsigned()->index()->nullable();
           
         });
     }
