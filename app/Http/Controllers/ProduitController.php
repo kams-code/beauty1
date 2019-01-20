@@ -42,6 +42,7 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
+        
         $produit = Produits::create($request->all());
         return redirect(route('produits.index'));
    

@@ -20,6 +20,18 @@ class Services extends Model
         return $this->hasMany('App\Reservations');
     }
     
+<<<<<<< HEAD
     
+=======
+    public function user()
+    {
+        return $this->belongsToMany('App\User');
+    }
+
+   /* public function service_users()
+    {
+        return $this->hasMany('App\ServiceUser');
+    }*/
+>>>>>>> 853a1d843004e15a44a4e90995a74116547d3d2f
 
 }

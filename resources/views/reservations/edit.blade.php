@@ -74,7 +74,18 @@
                              {!! Form::label('code','Code') !!}
                              {!! Form::text('code',$reservation->code, ['class' => 'form-control']) !!}
                           </div>
-                
+                          <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('date','Date') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::text('date',$reservation->date, ['class' => 'form-control']) !!}
+          </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('heure','Heure de la reservation') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::text('heure',$reservation->heure, ['class' => 'form-control']) !!}
+          </div>
+                                            </div>     
                           <div class="form-group">
                              {!! Form::label('client_id','Client') !!}
                              {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control']) !!}

@@ -1,6 +1,3 @@
-
-
-
 @extends('layouts.mainlayout')
 @include('partials.topbar')
 @include('partials.sidebar')
@@ -99,10 +96,12 @@
     
                                    <thead>
                                        <tr>
-                                           <th>code</th>
+                                           <th>Code</th>
+                                           <th>Date de la reservation</th>
+                                           <th>Heure de la reservation</th>
+                                           <th>Client</th>
+                                           <th>Service</th>
                                            <th>Date de création</th>
-                                           <th>client</th>
-                                           <th>service</th>
                                            <th>Actions</th>
                                        </tr>
                                    </thead>
@@ -112,12 +111,20 @@
       
                   <tr class="gradeC">
                   
+<<<<<<< HEAD
                                            <td> {{ $code->code}}</td>
                                            
                                            <td> @foreach($reservations as $reservation)
                                             @if($reservation->code===$code->code)
                                               {{  $yourVar = $reservation->created_at }}
                                                @break
+=======
+                                           <td> {{ $reservation->code }}</td>
+                                           <td> {{ $reservation->date }}</td>
+                                           <td> {{ $reservation->heure }}</td>
+                                           @if($reservation->client)
+                                            <td> {{ $reservation->client->nom }}</td>
+>>>>>>> 853a1d843004e15a44a4e90995a74116547d3d2f
                                            @endif
                                         
                                            @endforeach</td>
@@ -131,6 +138,7 @@
                                                 
                                                @break
                                            @endif
+<<<<<<< HEAD
                                         
                                            @endforeach</td>
 
@@ -158,6 +166,9 @@
 
 
                                            
+=======
+                                           <td> {{ $reservation->created_at }}</td>
+>>>>>>> 853a1d843004e15a44a4e90995a74116547d3d2f
                                            <td class="actions">
                                          
                                              <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>

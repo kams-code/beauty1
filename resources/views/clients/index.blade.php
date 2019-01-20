@@ -3,12 +3,12 @@
 @include('partials.sidebar')
 
                                  @section('content')
-                                  @can('edit_produits', 'delete_produits')
+                                  @can('edit_clients', 'delete_clients')
                     <footer class="footer text-right">
                     2016 © Moltran.
                 </footer>
                 @endcan
-                 @can('edit_produits', 'delete_produits')
+                 @can('edit_clients', 'delete_clients')
                   
   <div class="content-page">
                 <!-- Start content -->
@@ -22,7 +22,7 @@
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="#">Moltran</a></li>
                                     <li><a href="#">Tables</a></li>
-                                    <li class="active">Editer produits</li>
+                                    <li class="active">Editer clients</li>
                                 </ol>
                             </div>
                         </div>
@@ -52,22 +52,20 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('prenom','Prenom') !!}</label>
+<<<<<<< HEAD
                                                 <div class="col-sm-9">
                                                   {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('pays','Pays') !!}</label>
+=======
+>>>>>>> 853a1d843004e15a44a4e90995a74116547d3d2f
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('pays',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
           </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('ville','Ville') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('ville',null, ['class' => 'form-control']) !!}
-          </div>
-                                            </div>
+                            
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('adresse','Adresse') !!}</label>
                                                 <div class="col-sm-9">
@@ -81,11 +79,10 @@
                                                   {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
           </div>
                                             </div>
-                                            
                                             <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','Description') !!}</label>
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('email','Email') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('description',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('email',null, ['class' => 'form-control']) !!}
           </div>
                                             </div>
                                             
