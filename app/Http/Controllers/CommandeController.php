@@ -47,7 +47,7 @@ class CommandeController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        
         $tick= new Commandes([
             'nom'=> $request->get('nom'),
             'quantite'=> $request->get('quantite'),

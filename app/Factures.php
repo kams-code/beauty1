@@ -11,7 +11,9 @@ class Factures extends Model
 
         'nom',
         'code',
-        'montant'
+        'montant',
+        'is_paid'
+
         
                
     ]; 

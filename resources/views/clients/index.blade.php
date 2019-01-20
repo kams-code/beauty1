@@ -43,12 +43,18 @@
                                                     </div> 
                                                     <div class="modal-body"> 
                                                         <div class="row"> 
-                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('organisations.store')]) !!}
+                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('clients.store')]) !!}
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
                                                 <div class="col-sm-9">
                                                   {!! Form::text('nom',null, ['class' => 'form-control']) !!}
                                                  </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('prenom','Prenom') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
+          </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('pays','Pays') !!}</label>

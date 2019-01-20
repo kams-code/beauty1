@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Services;
+use App\Services_Users;
 use App\User;
 use App\ServiceUser;
 use Illuminate\Http\Request;
+use App\Categories;
 
 class ServiceController extends Controller
 {
@@ -15,8 +17,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Services::with('user')->get();
-        return view('services.index',compact('services'));
+        $users=User::pluck('name', 'id');
+        $services=Services::get();
+        $categories=Categories::pluck('nom', 'id');
+        return view('services.index',compact('services','users','categories'));
     }
 
     /**
@@ -26,21 +30,11 @@ class ServiceController extends Controller
      */
     public function create(Request $request)
     {
-        $service = new Services;
-        $service->nom = 'God of peace';
-        $service->montant = 1000;
-        $service->description ='sdfghj';
-        $service->code='vbnm,';
-        $service->image='asdfgh';
-        $service->is_promote = 1;
-
-        $service->save();
-
-        $user = User::find([1, 2]);
-        $service->users()->attach($user);
-        //dd($service->users());
-
-        return 'Success';
+       
+        $users=User::pluck('nom', 'id');
+        $categories=Categories::pluck('nom', 'id');
+        $services=Stocks::get();
+        return view('services.index',compact('services','users','categories'));
     }
 
     /**
@@ -51,7 +45,39 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $service= new Services([
+            'code' => $request->get('code'),
+            'nom'=> $request->get('nom'),
+            'description'=> $request->get('description'),
+            'image'=> $request->get('image'),
+            'montant' => $request->get('montant'),
+            'is_promote'=> $request->get('is_promote'),
+            'categorie_id'=> $request->get('categorie_id')
+          ]);
+          if ($service['is_promote'] =="on"){
+            $service['is_promote']=1;
+          }if ($service['is_promote'] !="on"){
+            $service['is_promote']=0; 
+          }
+  $service->save();
+
+
+        $users_ids=$request->get('users');
+        
+        foreach($users_ids as $key=>$value)
+        {
+
+            $service_user =new Services_Users([ 
+             'user_id'=>$value,
+            'services_id'=> $service->id
+        ]);
+        
+        $service_user ->save();
+        }
+       
+      
+        return redirect(route('reservations.index'));
     }
 
     /**

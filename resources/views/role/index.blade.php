@@ -1,11 +1,9 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+@extends('layouts.app')
+
+@section('title', 'Roles & Permissions')
+
 @section('content')
 
- 
-   
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Modal -->
     <div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
         <div class="modal-dialog" role="document">
@@ -71,4 +69,3 @@
         <p>No Roles defined, please run <code>php artisan db:seed</code> to seed some dummy data.</p>
     @endforelse
 @endsection
-@include('partials.sidebarright')

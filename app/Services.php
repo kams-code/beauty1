@@ -12,21 +12,14 @@ class Services extends Model
         'description',
         'image',
         'montant',
-        'is_promote'
+        'is_promote',
+        'categorie_id'
     ];
      
     public function reservations(){
         return $this->hasMany('App\Reservations');
     }
     
-    public function users()
-    {
-        return $this->belongsToMany('App\User');
-    }
-
-   /* public function service_users()
-    {
-        return $this->hasMany('App\ServiceUser');
-    }*/
+    
 
 }

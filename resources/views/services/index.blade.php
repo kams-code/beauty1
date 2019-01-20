@@ -27,7 +27,92 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="m-b-30">
-                                            <button type="button" id="addToTable" class="btn btn-primary waves-effect waves-light">Add <i class="fa fa-plus"></i></button>
+                                          <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+                                            <div class="modal-dialog"> 
+                                                <div class="modal-content"> 
+                                                    <div class="modal-header"> 
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                                        <h4 class="modal-title">Modal Content is Responsive</h4> 
+                                                    </div> 
+                                                    <div class="modal-body"> 
+                                                        <div class="row"> 
+                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('services.store')]) !!}
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                 </div>
+                                            </div>
+                                             <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('code','code') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::text('code',null, ['class' => 'form-control']) !!}
+                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('image','image') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::text('image',null, ['class' => 'form-control']) !!}
+          </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('montant','montant') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::text('montant',null, ['class' => 'form-control']) !!}
+          </div>
+                                            </div>
+                                            
+                                       <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','Description') !!}</label>
+                                                <div class="col-sm-9">
+                                          {!! Form::text('description',null, ['class' => 'form-control']) !!}
+                         
+     
+          </div>
+                                            </div>  
+
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('is_promote','En promotion') !!}</label>
+                                                <div class="col-sm-9">
+                                          {!! Form::checkbox('is_promote',null, ['class' => 'form-control']) !!}
+                         
+     
+          </div>
+                                            </div>     
+                                            
+           
+                                            
+                                     
+
+                                            <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('categorie_id','Categorie') !!}</label>
+                                                <div class="col-sm-9">
+                                                    {!! Form::select('categorie_id',$categories,null, ['class' => 'form-control']) !!}
+                         
+          </div>
+                                            </div>
+                                            <div class="form-group m-b-0">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                
+     </div>
+                                            </div>
+                                            <div class="modal-footer"> 
+                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
+                                                       <button class="btn btn-primary">Envoyer</button>
+                                                    </div> 
+                                       {!! Form::close() !!}
+                                                        </div> 
+
+                                                        
+                                                    </div> 
+                                                    
+                                                </div> 
+                                            </div>
+                                        </div><!-- /.modal -->
+
+                                                                              <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
+                                       
+                                                                             
                                         </div>
                                     </div>
                                 </div>
@@ -42,7 +127,7 @@
                                             <th>Desccription</th>
                                             <th>Date de création</th>
                                             <th>Employes</th>
-                                            <th>Validite</th>
+                                            <th>En promotion</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -57,6 +142,7 @@
                                             <td> {{ $service->nom }}</td>
                                             <td> {{ $service->description }}</td>
                                             <td> {{ $service->created_at }}</td>
+                                            <td> {{ $service->is_promote }}</td>
                                             @if($service->user)
                                               @foreach ($service->user as $tag)
                                                 <td> {{ $service->user->name }}</td>

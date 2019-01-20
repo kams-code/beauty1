@@ -45,7 +45,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/main', 'MainController@index')->name('main');
 Route::get('/sortie', 'StockController@sortir')->name('sortie');
-
+Route::get('/facture/{}', 'FactureController@sotre1')->name('factures.validate');
 Route::get('/taglists/create', 'TagListController@create')->name('taglists.create');
 Route::post('/taglists/store', 'TagListController@store')->name('taglists.store');
 Route::get('/taglists/create1', 'TagListController@create1')->name('taglists.create1');
@@ -58,7 +58,7 @@ Route::post('ajax', function() {
         'id' => 'The id is: ' . $id
     ]);
 });
-
+Route::resource('categories','CategorieController');
 // ------ les routes de clients ---------
 Route::resource('clients','ClientController');
 Route::resource('commandes','CommandeController');

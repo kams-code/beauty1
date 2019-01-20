@@ -82,8 +82,8 @@
 
                           <div class="form-group">
                              {!! Form::label('service_id','Service') !!}
-                             {!! Form::select('service_id',$services,$reservation->service_id, ['class' => 'form-control']) !!}
-                          </div> 
+                            {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+     </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
                 </div> <!-- panel-body -->

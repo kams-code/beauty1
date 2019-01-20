@@ -9,6 +9,7 @@ class Tickets extends Model
 
     'titre',
     'type',
+    'valeur',
     'etat',
     'service_id',
            

@@ -18,6 +18,7 @@ class CreateFacturesTable extends Migration
             $table->string('code');
             $table->string('nom');
             $table->string('montant');
+            $table->integer('is_paid');
             $table->timestamps();
         });
        

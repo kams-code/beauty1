@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Reservations;
 use App\Clients;
 use App\Services;
-
+use App\Factures;
+use DB;
 class ReservationController extends Controller
 {
     /**
@@ -23,8 +24,14 @@ class ReservationController extends Controller
        // $reservations = Reservations::with('service','client')->get();
        $services=Services::pluck('nom','id');
        $clients=Clients::pluck('nom','id');
+       $Services=Services::get();
+       $Clients=Clients::get();
        $reservations = Reservations::get();
-       return view('reservations.index',compact('reservations','clients','services'));
+
+       $codedistinct=DB::table('reservations')
+       ->distinct()->select('code')->get();
+     
+       return view('reservations.index',compact('reservations','Services','Clients','clients','services','codedistinct'));
     }
 
     /**
@@ -36,6 +43,8 @@ class ReservationController extends Controller
     {
         $clients=Clients::pluck('nom','id');
         $services = Services::pluck('nom','id');
+
+      
         
         return view('reservations.create',compact('clients','services'));
     }
@@ -49,18 +58,31 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         $services_ids=$request->get('services');
-        
+        $montant=0;
         foreach($services_ids as $key=>$value)
         {
-
+            $service = Services::get()->where('id',$value)->first();
+   
             $reservation =new Reservations([ 
              'code'=>$request->get('code'),
             'client_id'=>$request->get('client_id'),
             'service_id'=>$value
-        ]);
+        ]);  
+        $a=
+        $montant=$montant+$service->montant;
+       
         
         $reservation ->save();
         }
+        $client = Clients::get()->where('id',$request->get('client_id'))->first();
+        $facturetion =new Factures([ 
+            'code'=> $request->get('code'),
+           'nom'=> $client->nom,
+           'montant'=> $montant,
+           'is_paid'=>'0'
+       ]);
+
+       $facturetion ->save();
        
       
         return redirect(route('reservations.index'));
@@ -101,8 +123,85 @@ class ReservationController extends Controller
      */
     public function update(Request $request, $id)
     {
+      
+        
         $reservation = Reservations::findOrFail($id);
-        $reservation->update($request->all());
+        $values = Reservations::get()->where('code',$reservation->code );
+        $services_ids=$request->get('services');
+        $reservationin = $values->values();
+      
+         $numberofserviceselected=count($services_ids);
+       
+            $numbresin=count($reservationin);
+      
+        if($numberofserviceselected===$numbresin)
+        {
+            foreach($services_ids as $key=>$value)
+        {
+
+            $reservation =new Reservations([ 
+             'code'=>$request->get('code'),
+            'client_id'=>$request->get('client_id'),
+            'service_id'=>$value
+        ]);
+        
+        $reservationin[ $key]->code=$request->get('code');            $reservationin[ $key]->client_id=$request->get('client_id');            $reservationin[ $key]->client_id=$request->get('client_id');            
+             
+    
+        $reservationin[ $key]->save();
+        }
+        }elseif($numberofserviceselected>$numbresin)
+        {
+            for ($i=0; $i<$numbresin; $i++) {
+               
+            $reservation =new Reservations([ 
+                'code'=>$request->get('code'),
+               'client_id'=>$request->get('client_id'),
+               'service_id'=>$services_ids[$i]
+           ]);
+        
+          $reservationin[$i]->code=$request->get('code');            $reservationin[$i]->client_id=$request->get('client_id');            $reservationin[$i]->client_id=$request->get('client_id');            
+           $reservationin[$i]->save();
+          
+         }
+
+         for ($i=$numbresin; $i<$numberofserviceselected; $i++) {
+               
+            $reservation =new Reservations([ 
+                'code'=>$request->get('code'),
+               'client_id'=>$request->get('client_id'),
+               'service_id'=>$services_ids[$i]
+           ]);
+           
+           $reservation->save();
+         }
+
+
+        }elseif($numberofserviceselected<$numbresin)
+        {
+            for ($i=0; $i<$numberofserviceselected; $i++) {
+              
+                $reservation =new Reservations([ 
+                    'code'=>$request->get('code'),
+                   'client_id'=>$request->get('client_id'),
+                   'service_id'=>$services_ids[$i]
+
+               ]);
+               
+              $reservationin[$i]->code=$request->get('code');            $reservationin[$i]->client_id=$request->get('client_id');            $reservationin[$i]->client_id=$request->get('client_id');            
+               $reservationin[$i]->save();
+             }
+
+             for ($i=$numberofserviceselected; $i<=$numbresin; $i++) {
+            
+               
+               $reservationin[$i]->delete();
+             }
+
+        }
+        
+
+
         return redirect(route('reservations.index'));
     }
 

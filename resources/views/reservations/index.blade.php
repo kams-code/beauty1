@@ -15,7 +15,7 @@
                   
   <div class="content-page">
                 <!-- Start content -->
-                <div class="content">
+                <div  class="content">
                     <div class="container">
 
                         <!-- Page-Title -->
@@ -108,27 +108,98 @@
                                    </thead>
                                    <tbody>
                                     
-                                       @foreach($reservations as $reservation)
+                                       @foreach($codedistinct as $code)
       
                   <tr class="gradeC">
                   
-                                           <td> {{ $reservation->code }}</td>
+                                           <td> {{ $code->code}}</td>
                                            
-                                           <td> {{ $reservation->created_at }}</td>
-                                           @if($reservation->client)
-                                            <td> {{ $reservation->client->nom }}</td>
+                                           <td> @foreach($reservations as $reservation)
+                                            @if($reservation->code===$code->code)
+                                              {{  $yourVar = $reservation->created_at }}
+                                               @break
                                            @endif
-                                           @if($reservation->service)
-                                             
-                                                  <li> <td> {{ $reservation->service->nom }}</td></li>
-                                              
+                                        
+                                           @endforeach</td>
+                                            <td> @foreach($reservations as $reservation)
+                                            @if($reservation->code===$code->code)
+                                             @foreach($Clients as $client)
+                                           @if($client->id===$reservation->client_id)
+                                              {{  $yourclient =$client->nom }}
+                                                @endif
+                                                @endforeach
+                                                
+                                               @break
                                            @endif
+                                        
+                                           @endforeach</td>
+
+ 
+
+
+                                           <td> 
+                                            @foreach($reservations as $reservation)
+                                         
+                                           @if($reservation->code===$code->code)
+                                           @foreach($Services as $client)
+                                           @if($client->id===$reservation->service_id)
+                                               <li>  {{ $client->nom }}
+                                               
+                                               </li>
+                                           @endif
+                                           @endforeach
+                                           @endif
+                                           @endforeach
+                                           </td>
+
+
+
+
+
+
+                                           
                                            <td class="actions">
-                                               <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                         
+                                             <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
                                                <a href="{{ route('reservations.edit',$reservation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                           </td>
+                                               <div class="m-b-30">
+                                                    <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+                                                        <div class="modal-dialog"> 
+                                                            <div class="modal-content"> 
+                                                                <div class="modal-header"> 
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                                                    <h4 class="modal-title">Modal Content is Responsive</h4> 
+                                                                </div> 
+                                                                <div class="modal-body"> 
+                                                                    <div class="row"> 
+                                                                         {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('reservations.store')]) !!}
+                                                     
+                                                        <div class="form-group m-b-0">
+                                                            <div class="col-sm-offset-3 col-sm-9">
+                                                            
+                 </div>
+                                                        </div>
+                                                        <div class="modal-footer"> 
+                                                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
+                                                                   <button class="btn btn-primary">Envoyer</button>
+                                                                </div> 
+                                                   {!! Form::close() !!}
+                                                                    </div> 
+            
+                                                                    
+                                                                </div> 
+                                                                
+                                                            </div> 
+                                                        </div>
+                                                    </div><!-- /.modal -->
+            
+                                                                                          <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
+                                                   
+                                                                                         
+                                                    </div>
+                                                 </td>
                                        </tr> 
    @endforeach
                                       

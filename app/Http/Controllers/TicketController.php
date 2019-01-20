@@ -15,8 +15,9 @@ class TicketController extends Controller
      */
     public function index()
     {
+        $services=Services::pluck('nom','id');
         $Tickets=Tickets::get();
-        return view('tickets.index',compact('Tickets'));
+        return view('tickets.index',compact('Tickets','services'));
     }
 
     /**
@@ -41,6 +42,7 @@ class TicketController extends Controller
             'titre' => $request->get('titre'),
             'type'=> $request->get('type'),
             'etat'=> $request->get('etat'),
+            'valeur'=> $request->get('valeur'),
             'service_id'=> $request->get('user_id')
           ]);
           if ($tick['etat'] =="on"){
