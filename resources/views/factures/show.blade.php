@@ -117,29 +117,26 @@
                                                                       <table class="table m-t-30">
                                                                           <thead>
                                                                               <tr><th>#</th>
-                                                                              <th>Services</th>
-                                                                              <th>Description</th>
-                                                                              <th>Prix</th>
-                                                                              <th>Total</th>
+                                                                              <th>Titre</th>
+                                                                              <th>Valeur</th>
+                                                                              <th>Service</th>
+                                                                             
                                                                           </tr></thead>
                                                                           <tbody>
 
-                                                                              @foreach ($categories as $categorie )
+                                                                              @foreach ($services as $service )
                                                                              
                                                                            
-                                                                                  <tr><th>#</th>
-                                                                                  <th>Categorie:</th>
-                                                                                  <th>{{$categorie->nom}}</th>
-                                                                              </tr>
-                                                                              @foreach ($services as $service )
+                                                                                
+                                                                              @foreach ($tickets as $ticket )
                                                                           
-                                                                              @if ($service->categorie_id=== $categorie->id )
+                                                                              @if ($service->id=== $ticket->service_id )
                                                                               <tr>
                                                                                   <th>#</th>
+                                                                                  <td>{{$ticket->titre}}</td>
+                                                                                  <td>{{$ticket->valeur}}</td>
+                                                                                  
                                                                                   <td>{{$service->nom}}</td>
-                                                                                  <td>jkdsjdbksbdbkbd</td>
-                                                                                  <td>{{$service->montant}}</td>
-                                                                                  <td>{{$service->montant}}</td>
                                                                               </tr>       
                                                                               @endif
                                                                              

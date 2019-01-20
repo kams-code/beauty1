@@ -8,6 +8,7 @@ use App\Clients;
 use App\Services;
 use App\Factures;
 use App\Categories;
+use App\Tickets;
 use File;
 use DB;
 
@@ -102,7 +103,7 @@ class FactureController extends Controller
         $services = Services::all();
         $categories = Categories::all();
         $tickets = Tickets::all();
-        return view('factures.show',compact('categories','facture','services','services'));
+        return view('factures.show',compact('categories','facture','services','services','tickets'));
     }
 
     /**
