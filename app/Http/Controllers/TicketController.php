@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tickets;
 use App\Services;
-
+use App\Clients;
 class TicketController extends Controller
 {
      /**
@@ -14,10 +14,12 @@ class TicketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        $tickets=Tickets::pluck('titre','id');
+
         $services=Services::pluck('nom','id');
+        $clients=Clients::pluck('nom','id');
         $Tickets=Tickets::get();
-        return view('tickets.index',compact('Tickets','services'));
+        return view('tickets.index',compact('Tickets','services','clients','tickets'));
     }
 
     /**

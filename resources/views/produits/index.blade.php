@@ -53,6 +53,15 @@
           </div>
                                             </div>
                                             <div class="form-group">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','description') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::file('filename[]',null, ['class' => 'form-control']) !!}
+          </div>
+                                            </div>
+                                            
+     
+
+                                            <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('fournisseur_id','Fournisseur') !!}</label>
                                                 <div class="col-sm-9">
                                                     {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control']) !!}

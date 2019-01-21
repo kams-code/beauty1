@@ -87,13 +87,20 @@
                                                                               @foreach ($services as $service )
                                                                           
                                                                               @if ($service->categorie_id=== $categorie->id )
+                                                                              @foreach ($reservations as $reservation )
+                                                                          
+                                                                              @if ($service->id=== $reservations->service_id )
+                                                                              
                                                                               <tr>
                                                                                   <th>#</th>
                                                                                   <td>{{$service->nom}}</td>
                                                                                   <td>jkdsjdbksbdbkbd</td>
                                                                                   <td>{{$service->montant}}</td>
                                                                                   <td>{{$service->montant}}</td>
-                                                                              </tr>       
+                                                                              </tr>  
+                                                                              @endif
+                                                                             
+                                                                              @endforeach     
                                                                               @endif
                                                                              
                                                                               @endforeach
@@ -123,12 +130,43 @@
                                                                              
                                                                           </tr></thead>
                                                                           <tbody>
+                                                                              
+
+                                                                           
+                                                                                @foreach ($reservations as $reservation )
+                                                                          
+                                                                               
+
 
                                                                               @foreach ($services as $service )
                                                                              
+                                                                              @if ($service->id=== $reservations->service_id )
                                                                            
                                                                                 
                                                                               @foreach ($tickets as $ticket )
+                                                                          
+                                                                              @if ($service->id=== $ticket->service_id )
+                                                                              <tr>
+                                                                                  <th>#</th>
+                                                                                  <td>{{$ticket->titre}}</td>
+                                                                                  <td>{{$ticket->valeur}}</td>
+                                                                                  
+                                                                                  <td>{{$service->nom}}</td>
+                                                                              </tr>       
+                                                                              @endif
+                                                                             
+                                                                              @endforeach
+                                                                              @endif
+                                                                              @endforeach
+                                                                              @endforeach
+
+
+
+
+
+
+
+                                                                              @foreach ($usertickets as $ticket )
                                                                           
                                                                               @if ($service->id=== $ticket->service_id )
                                                                               <tr>

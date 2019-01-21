@@ -103,7 +103,9 @@ class FactureController extends Controller
         $services = Services::all();
         $categories = Categories::all();
         $tickets = Tickets::all();
-        return view('factures.show',compact('categories','facture','services','services','tickets'));
+        
+        $usertickets = Usertickets::all();
+        return view('factures.show',compact('categories','facture','services','services','tickets','usertickets'));
     }
 
     /**

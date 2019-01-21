@@ -11,6 +11,7 @@ class Produits extends Model
         'nom',
         'description',
         'fournisseur_id',
+        'image',
                
     ];
 

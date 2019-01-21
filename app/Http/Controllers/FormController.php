@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Form;
 
-use App\Plannings;
-use App\User;
-use App\Jours;
-
-class PlanningController extends Controller
+class FormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +14,7 @@ class PlanningController extends Controller
      */
     public function index()
     {
-        $users = User::pluck('name','id');
-        $Users = User::get()->all();
-        $jours = Jours::pluck('nom','id');
-        $plannings = Plannings::with('user','jour')->get();
-        return view('plannings.index',compact('users','plannings','jours','Users'));
+        //
     }
 
     /**
@@ -31,9 +24,8 @@ class PlanningController extends Controller
      */
     public function create()
     {
-        $jours = Jours::pluck('nom','id');
-        $users = User::pluck('name','id');
-        return view('planning.create',compact('users','jours'));
+        //
+        return view('create');
     }
 
     /**
@@ -43,9 +35,34 @@ class PlanningController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {dd($request);
-        $plannings = Plannings::create($request->all());
-        return redirect(route('plannings.index'));
+
+    {
+
+        $this->validate($request, [
+
+                'filename' => 'required',
+                'filename.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+
+        ]);
+        
+        if($request->hasfile('filename'))
+         {
+
+            foreach($request->file('filename') as $image)
+            {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/images/', $name);  
+                $data[] = $name;  
+            }
+         }
+
+         $form= new Form();
+         $form->filename=json_encode($data);
+         
+        
+        $form->save();
+
+        return back()->with('success', 'Your images has been successfully');
     }
 
     /**
@@ -56,8 +73,7 @@ class PlanningController extends Controller
      */
     public function show($id)
     {
-        $planning = Plannings::get()->where('id',$id);
-        return $planning;
+        //
     }
 
     /**
@@ -68,10 +84,7 @@ class PlanningController extends Controller
      */
     public function edit($id)
     {
-       $planning = Plannings::findOrFail($id);
-       $users = User::pluck('name','id')->all();
-       $jours = Jours::pluck('nom','id')->all();
-       return view('plannings.edit',compact('planning','jours','users'));
+        //
     }
 
     /**
@@ -83,9 +96,7 @@ class PlanningController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $planning = Planning::findOrFail($id);
-        $planning->update($request->all());
-        return redirect(route('plannings.index'));
+        //
     }
 
     /**
@@ -96,8 +107,6 @@ class PlanningController extends Controller
      */
     public function destroy($id)
     {
-        $planning = Planning::findOrFail($id);
-        $planning->delete();
-        return redirect(route-('plannings.index'));
+        //
     }
 }

@@ -1,25 +1,372 @@
-@extends('layouts.app')
+@extends('layouts.mainlayout')
+@include('partials.topbar')
+@include('partials.sidebar')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="panel-body text-center" style="margin-top: 4em">
-
-            <h1>
-                <svg xmlns="http://www.w3.org/2000/svg" width="84.1" height="57.6" viewBox="0 0 84.1 57.6"><path fill="#FB503B" d="M83.8 26.9c-.6-.6-8.3-10.3-9.6-11.9-1.4-1.6-2-1.3-2.9-1.2s-10.6 1.8-11.7 1.9c-1.1.2-1.8.6-1.1 1.6.6.9 7 9.9 8.4 12l-25.5 6.1L21.2 1.5c-.8-1.2-1-1.6-2.8-1.5C16.6.1 2.5 1.3 1.5 1.3c-1 .1-2.1.5-1.1 2.9S17.4 41 17.8 42c.4 1 1.6 2.6 4.3 2 2.8-.7 12.4-3.2 17.7-4.6 2.8 5 8.4 15.2 9.5 16.7 1.4 2 2.4 1.6 4.5 1 1.7-.5 26.2-9.3 27.3-9.8 1.1-.5 1.8-.8 1-1.9-.6-.8-7-9.5-10.4-14 2.3-.6 10.6-2.8 11.5-3.1 1-.3 1.2-.8.6-1.4zm-46.3 9.5c-.3.1-14.6 3.5-15.3 3.7-.8.2-.8.1-.8-.2-.2-.3-17-35.1-17.3-35.5-.2-.4-.2-.8 0-.8S17.6 2.4 18 2.4c.5 0 .4.1.6.4 0 0 18.7 32.3 19 32.8.4.5.2.7-.1.8zm40.2 7.5c.2.4.5.6-.3.8-.7.3-24.1 8.2-24.6 8.4-.5.2-.8.3-1.4-.6s-8.2-14-8.2-14L68.1 32c.6-.2.8-.3 1.2.3.4.7 8.2 11.3 8.4 11.6zm1.6-17.6c-.6.1-9.7 2.4-9.7 2.4l-7.5-10.2c-.2-.3-.4-.6.1-.7.5-.1 9-1.6 9.4-1.7.4-.1.7-.2 1.2.5.5.6 6.9 8.8 7.2 9.1.3.3-.1.5-.7.6z"></path></svg>
-            </h1>
-
-            <h3 class="modal-title">Complete Roles &amp; Permissions for Laravel 5.7</h3>
-
-            @role('Admin')
-            <h4>Visit <a href="{{ route('roles.index') }}">roles</a> and give permissions for each roles.</h4>
-            @endrole
-
-            <p>&nbsp;<br>
-            <p>Assign different <code>roles</code> to users and login from different browsers <br>
-                to see <code>access control</code> and <code>authorization</code> at work.</p>
-        </div>
-    </div>
-    </div>
-</div>
+                                 @section('content')
+                                 <div class="content-page">
+                                        <!-- Start content -->
+                                        <div class="content">
+                                            <div class="container">
+                        
+                                                <!-- Page-Title -->
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <h4 class="pull-left page-title">Welcome !</h4>
+                                                        <ol class="breadcrumb pull-right">
+                                                            <li><a href="#">Moltran</a></li>
+                                                            <li class="active">Dashboard</li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                        
+                                                <!-- Start Widget -->
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-lg-3">
+                                                        <div class="mini-stat clearfix bx-shadow bg-info">
+                                                            <span class="mini-stat-icon"><i class="ion-social-usd"></i></span>
+                                                            <div class="mini-stat-info text-right">
+                                                                <span class="counter">15852</span>
+                                                                Total Sales
+                                                            </div>
+                                                            <div class="tiles-progress">
+                                                                <div class="m-t-20">
+                                                                    <h5 class="text-uppercase text-white m-0">Last week's Sales <span class="pull-right">235</span></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6 col-lg-3">
+                                                        <div class="mini-stat clearfix bg-purple bx-shadow">
+                                                            <span class="mini-stat-icon"><i class="ion-ios7-cart"></i></span>
+                                                            <div class="mini-stat-info text-right">
+                                                                <span class="counter">956</span>
+                                                                New Orders
+                                                            </div>
+                                                            <div class="tiles-progress">
+                                                                <div class="m-t-20">
+                                                                    <h5 class="text-uppercase text-white m-0">Last week's Orders <span class="pull-right">59</span></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-sm-6 col-lg-3">
+                                                        <div class="mini-stat clearfix bg-success bx-shadow">
+                                                            <span class="mini-stat-icon"><i class="ion-eye"></i></span>
+                                                            <div class="mini-stat-info text-right">
+                                                                <span class="counter">20544</span>
+                                                                Unique Visitors
+                                                            </div>
+                                                            <div class="tiles-progress">
+                                                                <div class="m-t-20">
+                                                                    <h5 class="text-uppercase text-white m-0">Last month's Visitors <span class="pull-right">1026</span></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                        
+                                                    <div class="col-sm-6 col-lg-3">
+                                                        <div class="mini-stat clearfix bg-primary bx-shadow">
+                                                            <span class="mini-stat-icon"><i class="ion-android-contacts"></i></span>
+                                                            <div class="mini-stat-info text-right">
+                                                                <span class="counter">5210</span>
+                                                                New Users
+                                                            </div>
+                                                            <div class="tiles-progress">
+                                                                <div class="m-t-20">
+                                                                    <h5 class="text-uppercase text-white m-0">Last month's Users <span class="pull-right">136</span></h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div> <!-- end row -->
+                        
+                        
+                                                <div class="row">
+                                                    <div class="col-lg-8">
+                                                        <div class="portlet"><!-- /portlet heading -->
+                                                            <div class="portlet-heading">
+                                                                <h3 class="portlet-title text-dark text-uppercase">
+                                                                    Website Stats
+                                                                </h3>
+                                                                <div class="portlet-widgets">
+                                                                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                                                                    <span class="divider"></span>
+                                                                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet1"><i class="ion-minus-round"></i></a>
+                                                                    <span class="divider"></span>
+                                                                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <div id="portlet1" class="panel-collapse collapse in">
+                                                                <div class="portlet-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div id="website-stats" style="position: relative;height: 320px"></div>
+                                                                            <div class="row text-center m-t-30">
+                                                                                <div class="col-sm-4">
+                                                                                    <h4 class="counter">86,956</h4>
+                                                                                    <small class="text-muted"> Weekly Report</small>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <h4 class="counter">86,69</h4>
+                                                                                    <small class="text-muted">Monthly Report</small>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <h4 class="counter">948,16</h4>
+                                                                                    <small class="text-muted">Yearly Report</small>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> <!-- /Portlet -->
+                                                    </div> <!-- end col -->
+                        
+                                                    <div class="col-lg-4">
+                                                        <div class="portlet"><!-- /portlet heading -->
+                                                            <div class="portlet-heading">
+                                                                <h3 class="portlet-title text-dark text-uppercase">
+                                                                    Website Stats
+                                                                </h3>
+                                                                <div class="portlet-widgets">
+                                                                    <a href="javascript:;" data-toggle="reload"><i class="ion-refresh"></i></a>
+                                                                    <span class="divider"></span>
+                                                                    <a data-toggle="collapse" data-parent="#accordion1" href="#portlet2"><i class="ion-minus-round"></i></a>
+                                                                    <span class="divider"></span>
+                                                                    <a href="#" data-toggle="remove"><i class="ion-close-round"></i></a>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                            <div id="portlet2" class="panel-collapse collapse in">
+                                                                <div class="portlet-body">
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div id="pie-chart">
+                                                                                <div id="pie-chart-container" class="flot-chart" style="height: 320px">
+                                                                                </div>
+                                                                            </div>
+                        
+                                                                            <div class="row text-center m-t-30">
+                                                                                <div class="col-sm-6">
+                                                                                    <h4 class="counter">86,956</h4>
+                                                                                    <small class="text-muted"> Weekly Report</small>
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <h4 class="counter">86,69</h4>
+                                                                                    <small class="text-muted">Monthly Report</small>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div> <!-- /Portlet -->
+                                                    </div> <!-- end col -->
+                                                </div> <!-- End row -->
+                        
+                        
+                                                <div class="row">
+                                                    <!-- INBOX -->
+                                                    <div class="col-lg-4">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">
+                                                                <h4 class="panel-title">Inbox</h4>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="inbox-widget nicescroll mx-box">
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-1.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Chadengle</p>
+                                                                            <p class="inbox-item-text">Hey! there I'm available...</p>
+                                                                            <p class="inbox-item-date">13:40 PM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-2.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Tomaslau</p>
+                                                                            <p class="inbox-item-text">I've finished it! See you so...</p>
+                                                                            <p class="inbox-item-date">13:34 PM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-3.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Stillnotdavid</p>
+                                                                            <p class="inbox-item-text">This theme is awesome!</p>
+                                                                            <p class="inbox-item-date">13:17 PM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-4.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Kurafire</p>
+                                                                            <p class="inbox-item-text">Nice to meet you</p>
+                                                                            <p class="inbox-item-date">12:20 PM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-5.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Shahedk</p>
+                                                                            <p class="inbox-item-text">Hey! there I'm available...</p>
+                                                                            <p class="inbox-item-date">10:15 AM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-6.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Adhamdannaway</p>
+                                                                            <p class="inbox-item-text">This theme is awesome!</p>
+                                                                            <p class="inbox-item-date">9:56 AM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-8.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Arashasghari</p>
+                                                                            <p class="inbox-item-text">Hey! there I'm available...</p>
+                                                                            <p class="inbox-item-date">10:15 AM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                    <a href="#">
+                                                                        <div class="inbox-item">
+                                                                            <div class="inbox-item-img"><img src="assets/images/users/avatar-9.jpg" class="img-circle" alt=""></div>
+                                                                            <p class="inbox-item-author">Joshaustin</p>
+                                                                            <p class="inbox-item-text">I've finished it! See you so...</p>
+                                                                            <p class="inbox-item-date">9:56 AM</p>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> <!-- end col -->
+                        
+                                                    <!-- CHAT -->
+                                                    <div class="col-lg-4">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading"> 
+                                                                <h3 class="panel-title">Chat</h3> 
+                                                            </div> 
+                                                            <div class="panel-body"> 
+                                                                <div class="chat-conversation">
+                                                                    <ul class="conversation-list nicescroll">
+                                                                        <li class="clearfix">
+                                                                            <div class="chat-avatar">
+                                                                                <img src="assets/images/avatar-1.jpg" alt="male">
+                                                                                <i>10:00</i>
+                                                                            </div>
+                                                                            <div class="conversation-text">
+                                                                                <div class="ctext-wrap">
+                                                                                    <i>John Deo</i>
+                                                                                    <p>
+                                                                                        Hello!
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="clearfix odd">
+                                                                            <div class="chat-avatar">
+                                                                                <img src="assets/images/users/avatar-5.jpg" alt="Female">
+                                                                                <i>10:01</i>
+                                                                            </div>
+                                                                            <div class="conversation-text">
+                                                                                <div class="ctext-wrap">
+                                                                                    <i>Smith</i>
+                                                                                    <p>
+                                                                                        Hi, How are you? What about our next meeting?
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="clearfix">
+                                                                            <div class="chat-avatar">
+                                                                                <img src="assets/images/avatar-1.jpg" alt="male">
+                                                                                <i>10:01</i>
+                                                                            </div>
+                                                                            <div class="conversation-text">
+                                                                                <div class="ctext-wrap">
+                                                                                    <i>John Deo</i>
+                                                                                    <p>
+                                                                                        Yeah everything is fine
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                        <li class="clearfix odd">
+                                                                            <div class="chat-avatar">
+                                                                                <img src="assets/images/users/avatar-5.jpg" alt="male">
+                                                                                <i>10:02</i>
+                                                                            </div>
+                                                                            <div class="conversation-text">
+                                                                                <div class="ctext-wrap">
+                                                                                    <i>Smith</i>
+                                                                                    <p>
+                                                                                        Wow that's great
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-9 chat-inputbar">
+                                                                            <input type="text" class="form-control chat-input" placeholder="Enter your text">
+                                                                        </div>
+                                                                        <div class="col-sm-3 chat-send">
+                                                                            <button type="submit" class="btn btn-info btn-block waves-effect waves-light">Send</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    </div> <!-- end col-->
+                        
+                        
+                                                    <!-- TODOs -->
+                                                    <div class="col-lg-4">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading"> 
+                                                                <h3 class="panel-title">Todo</h3> 
+                                                            </div> 
+                                                            <div class="panel-body todoapp"> 
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <h4 id="todo-message"><span id="todo-remaining"></span> of <span id="todo-total"></span> remaining</h4> 
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <a href="#" class="pull-right btn btn-primary btn-sm waves-effect waves-light" id="btn-archive">Archive</a>
+                                                                    </div>
+                                                                </div>
+                        
+                                                                <ul class="list-group no-margn nicescroll todo-list" style="max-height: 288px" id="todo-list"></ul>
+                        
+                                                                 <form name="todo-form" id="todo-form" role="form" class="m-t-20">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-9 todo-inputbar">
+                                                                            <input type="text" id="todo-input-text" name="todo-input-text" class="form-control" placeholder="Add new todo">
+                                                                        </div>
+                                                                        <div class="col-sm-3 todo-send">
+                                                                            <button class="btn-primary btn-block btn waves-effect waves-light" type="button" id="todo-btn-submit">Add</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form> 
+                                                            </div> 
+                                                        </div>
+                                                    </div> <!-- end col -->
+                                                </div> <!-- end row -->
+                        
+                                            </div> <!-- container -->
+                                                       
+                                        </div> <!-- content -->
+                        
+                                        <footer class="footer text-right">
+                                            2016 © Moltran.
+                                        </footer>
+                        
+                                    </div>
+                           
 @endsection
+@include('partials.sidebarright')

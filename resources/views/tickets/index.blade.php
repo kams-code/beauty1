@@ -97,9 +97,55 @@
                                             </div><!-- /.modal -->
     
                                                                                   <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
+                                                                                  <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal1">Attribuer <i class="fa fa-plus"></i></button>
                                            
                                                                                  
+                                                                                 
                                             
+                                                                                  <div id="con-close-modal1" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+                                                                                    <div class="modal-dialog"> 
+                                                                                        <div class="modal-content"> 
+                                                                                            <div class="modal-header"> 
+                                                                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                                                                                <h4 class="modal-title">Modal Content is Responsive</h4> 
+                                                                                            </div> 
+                                                                                            <div class="modal-body"> 
+                                                                                                <div class="row"> 
+                                                                                                     {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('usertickets.store')]) !!}
+                                                                                  
+                                                                                    <div class="form-group">
+                                                                                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('client_id','Clients') !!}</label>
+                                                                                        <div class="col-sm-9">
+                                                                                            {!! Form::select('clients[]',$clients, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                                                                 
+                                                  </div>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('tickets','Tickets') !!}</label>
+                                                                                        <div class="col-sm-9">
+                                                                                           
+                                                                                            {!! Form::select('tickets[]', $tickets, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                                                  </div>
+                                                                                    </div>
+                                                                                   
+                                                                                    <div class="form-group m-b-0">
+                                                                                        <div class="col-sm-offset-3 col-sm-9">
+                                                                                        
+                                             </div>
+                                                                                    </div>
+                                                                                    <div class="modal-footer"> 
+                                                                                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
+                                                                                               <button class="btn btn-primary">Envoyer</button>
+                                                                                            </div> 
+                                                                               {!! Form::close() !!}
+                                                                                                </div> 
+                                        
+                                                                                                
+                                                                                            </div> 
+                                                                                            
+                                                                                        </div> 
+                                                                                    </div>
+                                                                                </div>
 
 
 

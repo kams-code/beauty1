@@ -1,3 +1,6 @@
+
+
+
 @extends('layouts.mainlayout')
 @include('partials.topbar')
 @include('partials.sidebar')
@@ -12,7 +15,7 @@
                   
   <div class="content-page">
                 <!-- Start content -->
-                <div  class="content">
+                <div class="content">
                     <div class="container">
 
                         <!-- Page-Title -->
@@ -96,12 +99,10 @@
     
                                    <thead>
                                        <tr>
-                                           <th>Code</th>
-                                           <th>Date de la reservation</th>
-                                           <th>Heure de la reservation</th>
-                                           <th>Client</th>
-                                           <th>Service</th>
+                                           <th>code</th>
                                            <th>Date de création</th>
+                                           <th>client</th>
+                                           <th>service</th>
                                            <th>Actions</th>
                                        </tr>
                                    </thead>
@@ -111,20 +112,12 @@
       
                   <tr class="gradeC">
                   
-<<<<<<< HEAD
                                            <td> {{ $code->code}}</td>
                                            
                                            <td> @foreach($reservations as $reservation)
                                             @if($reservation->code===$code->code)
                                               {{  $yourVar = $reservation->created_at }}
                                                @break
-=======
-                                           <td> {{ $reservation->code }}</td>
-                                           <td> {{ $reservation->date }}</td>
-                                           <td> {{ $reservation->heure }}</td>
-                                           @if($reservation->client)
-                                            <td> {{ $reservation->client->nom }}</td>
->>>>>>> 853a1d843004e15a44a4e90995a74116547d3d2f
                                            @endif
                                         
                                            @endforeach</td>
@@ -138,7 +131,6 @@
                                                 
                                                @break
                                            @endif
-<<<<<<< HEAD
                                         
                                            @endforeach</td>
 
@@ -166,50 +158,18 @@
 
 
                                            
-=======
-                                           <td> {{ $reservation->created_at }}</td>
->>>>>>> 853a1d843004e15a44a4e90995a74116547d3d2f
                                            <td class="actions">
-                                         
+                                           @foreach($reservations as $reservation)
+                                            @if($reservation->code===$code->code)
                                              <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
                                                <a href="{{ route('reservations.edit',$reservation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                               <div class="m-b-30">
-                                                    <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
-                                                        <div class="modal-dialog"> 
-                                                            <div class="modal-content"> 
-                                                                <div class="modal-header"> 
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-                                                                    <h4 class="modal-title">Modal Content is Responsive</h4> 
-                                                                </div> 
-                                                                <div class="modal-body"> 
-                                                                    <div class="row"> 
-                                                                         {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('reservations.store')]) !!}
-                                                     
-                                                        <div class="form-group m-b-0">
-                                                            <div class="col-sm-offset-3 col-sm-9">
-                                                            
-                 </div>
-                                                        </div>
-                                                        <div class="modal-footer"> 
-                                                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
-                                                                   <button class="btn btn-primary">Envoyer</button>
-                                                                </div> 
-                                                   {!! Form::close() !!}
-                                                                    </div> 
-            
-                                                                    
-                                                                </div> 
-                                                                
-                                                            </div> 
-                                                        </div>
-                                                    </div><!-- /.modal -->
-            
-                                                                                          <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
-                                                   
-                                                                                         
-                                                    </div>
+                                         
+                                               @break
+                                           @endif
+                                        
+                                           @endforeach
                                                  </td>
                                        </tr> 
    @endforeach

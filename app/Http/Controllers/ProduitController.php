@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Produits;
 use App\Fournisseurs;
+use App\Form;
 use Illuminate\Http\Request;
 
 class ProduitController extends Controller
@@ -42,8 +43,32 @@ class ProduitController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $produit = Produits::create($request->all());
+       
+     
+    
+    if($request->hasfile('filename'))
+     {
+
+        foreach($request->file('filename') as $image)
+        {
+            $name=$image->getClientOriginalName();
+            $image->move(public_path().'/images/', $name);  
+            $data[] = $name;  
+        }
+     }
+
+     $form= new Form();
+     dd($form);
+  
+     $form->filename=json_encode($data);
+     $form->save();
+     $produits =new Produits([ 
+        'nom'=> $request->get('nom'),
+       'image'=> $form->filename,
+       'description'=> $request->get('description'),
+   ]);
+  
+        $produit->save();
         return redirect(route('produits.index'));
    
     }

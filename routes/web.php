@@ -37,9 +37,7 @@ Route::group( ['middleware' => ['auth']], function() {
 
 });
 
-Route::get('/', function () {
-    return view('/auth/login');
-});
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -58,13 +56,15 @@ Route::post('ajax', function() {
         'id' => 'The id is: ' . $id
     ]);
 });
+Route::get('form','FormController@create');
+Route::post('form','FormController@store');
 Route::resource('categories','CategorieController');
 // ------ les routes de clients ---------
 Route::resource('clients','ClientController');
 Route::resource('commandes','CommandeController');
 // ------- les routes de factures --------
 Route::resource('factures','FactureController');
-
+Route::resource('usertickets','UserticketController');
 // ------ les routes de tickets ------
 Route::resource('tickets','TicketController');
 
