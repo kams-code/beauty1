@@ -19,7 +19,7 @@ class CreatePlanningsTable extends Migration
             $table->time('heureFin');
             $table->date('dateDeb');
             $table->date('dateFin');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
 
         

@@ -13,7 +13,7 @@
                                               <div class="col-sm-12">
                                                   <h4 class="pull-left page-title">Invoice</h4>
                                                   <ol class="breadcrumb pull-right">
-                                                      <li><a href="#">Moltran</a></li>
+                                                      <li><a href="#">QuickBeauty</a></li>
                                                       <li><a href="#">Pages</a></li>
                                                       <li class="active">Invoice</li>
                                                   </ol>
@@ -34,8 +34,8 @@
                                                               </div>
                                                               
                                                               <div class="pull-right">
-                                                                  <h4>Invoice # <br>
-                                                                      <strong>2015-04-23654789</strong>
+                                                                  <h4>Facture # <br>
+                                                                      <strong>{{ $facture->created_at }}-{{$facture->code}}</strong>
                                                                   </h4>
                                                               </div>
                                                           </div>
@@ -45,16 +45,22 @@
                                                                   
                                                                   <div class="pull-left m-t-30">
                                                                       <address>
-                                                                        <strong>Twitter, Inc.</strong><br>
-                                                                        795 Folsom Ave, Suite 600<br>
-                                                                        San Francisco, CA 94107<br>
-                                                                        <abbr title="Phone">P:</abbr> (123) 456-7890
+                                                                        <strong>{{$organisation->nom}}, Inc.</strong><br>
+                                                                        {{$organisation->pays}},  <br>
+                                                                        {{$organisation->ville}}, {{$organisation->adresse}}94107<br>
+                                                                        <abbr title="Phone">P:</abbr> {{$organisation->telephone}}
                                                                         </address>
                                                                   </div>
                                                                   <div class="pull-right m-t-30">
-                                                                      <p><strong>Order Date: </strong> Jun 15, 2015</p>
-                                                                      <p class="m-t-10"><strong>Order Status: </strong> <span class="label label-pink">Pending</span></p>
-                                                                      <p class="m-t-10"><strong>Order ID: </strong> #123456</p>
+                                                                      <p><strong>Order Date: </strong> {{$facture->created_at}}</p>
+                                                                      <p class="m-t-10"><strong>Order Status: </strong> <span class="label label-pink">
+                                                                          @if (0===$facture->created_at)
+                                                                              Non payé
+                                                                              @else
+                                                                              Payé
+                                                                          @endif
+                                                                          </span></p>
+                                                                      <p class="m-t-10"><strong>Order ID: </strong> #{{$facture->code}}</p>
                                                                   </div>
                                                               </div>
                                                           </div>
@@ -89,7 +95,7 @@
                                                                               @if ($service->categorie_id=== $categorie->id )
                                                                               @foreach ($reservations as $reservation )
                                                                           
-                                                                              @if ($service->id=== $reservations->service_id )
+                                                                              @if ($service->id=== $reservation->service_id )
                                                                               
                                                                               <tr>
                                                                                   <th>#</th>
@@ -109,7 +115,7 @@
 
                                                                            
                                                                           </tbody>
-                                                                      </table>
+                                                                     </table>
                                                                   </div>
                                                               </div>
                                                           </div>
@@ -130,8 +136,26 @@
                                                                              
                                                                           </tr></thead>
                                                                           <tbody>
-                                                                              
-
+                                                                                <?php $rabet=0; ?>
+                                                                             
+                                                                            @foreach ($tickets as $ticket )
+                                                                            @foreach ($usertickets as $usertick )
+                                                                                
+                                                                            
+                                                                                @if ($usertick->ticket_id=== $ticket->id )
+                                                                                <tr>
+                                                                                    <th>#</th>
+                                                                                    <td>{{$ticket->titre}}</td>
+                                                                                    <td>{{$ticket->valeur}}
+                                                                                            <?php $rabet=$rabet+$ticket->valeur; ?>
+                                                                                    </td>
+                                                                                    
+                                                                                    <td>null</td>
+                                                                                </tr>       
+                                                                                @endif
+                                                                                @endforeach
+                                                                               
+                                                                                @endforeach
                                                                            
                                                                                 @foreach ($reservations as $reservation )
                                                                           
@@ -140,7 +164,7 @@
 
                                                                               @foreach ($services as $service )
                                                                              
-                                                                              @if ($service->id=== $reservations->service_id )
+                                                                              @if ($service->id=== $reservation->service_id )
                                                                            
                                                                                 
                                                                               @foreach ($tickets as $ticket )
@@ -150,7 +174,7 @@
                                                                                   <th>#</th>
                                                                                   <td>{{$ticket->titre}}</td>
                                                                                   <td>{{$ticket->valeur}}</td>
-                                                                                  
+                                                                                  <?php $rabet=$rabet+$ticket->valeur; ?>
                                                                                   <td>{{$service->nom}}</td>
                                                                               </tr>       
                                                                               @endif
@@ -166,35 +190,25 @@
 
 
 
-                                                                              @foreach ($usertickets as $ticket )
-                                                                          
-                                                                              @if ($service->id=== $ticket->service_id )
-                                                                              <tr>
-                                                                                  <th>#</th>
-                                                                                  <td>{{$ticket->titre}}</td>
-                                                                                  <td>{{$ticket->valeur}}</td>
-                                                                                  
-                                                                                  <td>{{$service->nom}}</td>
-                                                                              </tr>       
-                                                                              @endif
-                                                                             
-                                                                              @endforeach
-                                                                              @endforeach
+                                                                           
+                                                                           
 
 
                                                                            
                                                                           </tbody>
-                                                                      </table>
+                                                                     </table>
                                                                   </div>
                                                               </div>
                                                           </div>
                                                           <div class="row" style="border-radius: 0px">
                                                               <div class="col-md-3 col-md-offset-9">
                                                                   <p class="text-right"><b>Sub-total:</b> {{$facture->montant}}</p>
-                                                                  <p class="text-right">Discout: 12.9%</p>
-                                                                  <p class="text-right">VAT: 12.9%</p>
-                                                                  <hr>
-                                                                  <h3 class="text-right">USD 2930.00</h3>
+                                                                  <p class="text-right">Discout:{{ $rabet}} %</p>
+                                                                  <p class="text-right">VAT: {{ $rabet}}%</p>
+                                                                  <hr><?php $foo = $facture->montant;
+                                                                  $total=$foo-$foo*$rabet
+                                                                  ?>
+                                                                  <h3 class="text-right">USD {{ $total}}</h3>
                                                               </div>
                                                           </div>
                                                           <hr>
@@ -216,7 +230,7 @@
                                   </div> <!-- content -->
                   
                                   <footer class="footer text-right">
-                                      2015 © Moltran.
+                                      2015 © QuickBeauty.
                                   </footer>
                   
                               </div>

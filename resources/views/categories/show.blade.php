@@ -13,7 +13,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Editable Table</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">QuickBeauty</a></li>
                                     <li><a href="#">Tables</a></li>
                                     <li class="active">Editable Table</li>
                                 </ol>
@@ -53,7 +53,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
 
             </div>

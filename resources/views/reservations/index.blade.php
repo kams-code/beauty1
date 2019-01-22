@@ -8,7 +8,7 @@
                                  @section('content')
                                   @can('edit_produits', 'delete_produits')
                     <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
                 @endcan
                  @can('edit_produits', 'delete_produits')
@@ -23,9 +23,9 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Reservations</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">QuickBeauty</a></li>
                                     <li><a href="#">Tables</a></li>
-                                    <li class="active">Editer produits</li>
+                                    <li class="active">Editer les reservations</li>
                                 </ol>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                                 <div class="modal-content"> 
                                                     <div class="modal-header"> 
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-                                                        <h4 class="modal-title">Modal Content is Responsive</h4> 
+                                                        <h4 class="modal-title">Réservation</h4> 
                                                     </div> 
                                                     <div class="modal-body"> 
                                                         <div class="row"> 
@@ -68,6 +68,18 @@
                                                     {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
           </div>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('date','Date :') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::date('date',null, ['class' => 'form-control']) !!}
+                                                 </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heure','Heure :') !!}</label>
+                                                <div class="col-sm-9">
+                                                  {!! Form::time('heure',null, ['class' => 'form-control']) !!}
+                                                 </div>
+                                            </div>
                                            
                                             <div class="form-group m-b-0">
                                                 <div class="col-sm-offset-3 col-sm-9">
@@ -88,13 +100,18 @@
                                             </div>
                                         </div><!-- /.modal -->
 
-                                                                              <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
+                                                                              
+                                        @can('add_reservations')
+                                           @can('add_reservations')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
+                                    @endcan
+                                       
                                        
                                                                              
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-bordered table-striped" id="datatable-editable">
+                                                           
+                                @can('view_reservations')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                    <thead>
@@ -159,12 +176,20 @@
 
                                            
                                            <td class="actions">
+                                                @can('edit_reservations','delete_reservations')
+                                                {!! Form::open( ['method' => 'delete', 'url' => route('reservations.destroy', $reservation->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
+                                                <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+                                            {!! Form::close() !!}
+                                                <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                <a href="{{ route('reservations.edit',$reservation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                    @endcan
                                            @foreach($reservations as $reservation)
                                             @if($reservation->code===$code->code)
-                                             <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                               <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                               <a href="{{ route('reservations.edit',$reservation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                               <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                         
                                          
                                                @break
                                            @endif
@@ -175,9 +200,11 @@
    @endforeach
                                       
                                    </tbody>
-                               </table>
+                              </table>
+                               @endcan
+
                             </div>
-                            <!-- end: page -->
+                    
 
                         </div> <!-- end Panel -->
 
@@ -186,7 +213,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
 
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Form;
@@ -37,7 +37,7 @@ class FormController extends Controller
     public function store(Request $request)
 
     {
-
+dd($request);
         $this->validate($request, [
 
                 'filename' => 'required',
@@ -106,7 +106,13 @@ class FormController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {//
+        if( Form::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();
     }
 }

@@ -11,7 +11,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Welcome !</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">QuickBeauty</a></li>
                                     <li class="active">Dashboard</li>
                                 </ol>
                             </div>
@@ -361,7 +361,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
 
             </div>

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 use App\Produits;
 use App\Fournisseurs;
 use App\Form;
 use Illuminate\Http\Request;
+use Image;
 
 class ProduitController extends Controller
 {
@@ -46,29 +47,28 @@ class ProduitController extends Controller
        
      
     
-    if($request->hasfile('filename'))
-     {
-
-        foreach($request->file('filename') as $image)
-        {
-            $name=$image->getClientOriginalName();
-            $image->move(public_path().'/images/', $name);  
-            $data[] = $name;  
-        }
-     }
-
-     $form= new Form();
-     dd($form);
   
-     $form->filename=json_encode($data);
-     $form->save();
+
+  
      $produits =new Produits([ 
         'nom'=> $request->get('nom'),
-       'image'=> $form->filename,
        'description'=> $request->get('description'),
    ]);
-  
-        $produit->save();
+
+   if($request->hasfile('image'))
+   {
+
+          $image=$request->file('image');
+          $filename=time().'.'.$image->getClientOriginalExtension();
+          $location=public_path('images/'.$filename);
+          Image::make($image)->resize(800,400)->save($location); 
+         
+          $produits->image=$filename;
+   }
+   $user=Auth::user();
+       
+       $produits['organisation_id']=$user->organisation_id;
+        $produits->save();
         return redirect(route('produits.index'));
    
     }

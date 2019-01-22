@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -43,7 +43,7 @@ class PlanningController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {dd($request);
+    {
         $plannings = Plannings::create($request->all());
         return redirect(route('plannings.index'));
     }
@@ -96,8 +96,12 @@ class PlanningController extends Controller
      */
     public function destroy($id)
     {
-        $planning = Planning::findOrFail($id);
-        $planning->delete();
-        return redirect(route-('plannings.index'));
+        if( Plannings::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();
     }
 }

@@ -16,9 +16,9 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('create-chart/{type}','ChartController@makeChart');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('bar-chart', 'ChartController@index');
 Route::group( ['middleware' => ['auth']], function() {
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
@@ -41,6 +41,7 @@ Route::group( ['middleware' => ['auth']], function() {
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/main', 'MainController@index')->name('main');
 Route::get('/sortie', 'StockController@sortir')->name('sortie');
 Route::get('/facture/{}', 'FactureController@sotre1')->name('factures.validate');
@@ -56,8 +57,8 @@ Route::post('ajax', function() {
         'id' => 'The id is: ' . $id
     ]);
 });
-Route::get('form','FormController@create');
-Route::post('form','FormController@store');
+Route::get('form','FormController@create')->name('form');
+Route::post('form','FormController@store')->name('form');
 Route::resource('categories','CategorieController');
 // ------ les routes de clients ---------
 Route::resource('clients','ClientController');

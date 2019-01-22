@@ -16,7 +16,7 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('code');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
 
         

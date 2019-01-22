@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Usertickets extends Model
 {
-    protected $fillable = [
+    protected $fillable = [  'organisation_id',
         'user_id', 'tiket_id',
     ];
 }

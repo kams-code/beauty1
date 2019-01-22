@@ -4,7 +4,7 @@
 
                                  @section('content')
                     <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
              
                   
@@ -18,7 +18,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">commandes</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">QuickBeauty</a></li>
                                     <li><a href="#">Tables</a></li>
                                     <li class="active">Editer commandes</li>
                                 </ol>
@@ -96,13 +96,13 @@
                                             </div>
                                         </div><!-- /.modal -->
 
-                                                                              <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
+                                                                                 @can('add_commandes')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
                                        
                                                                              
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-bordered table-striped" id="datatable-editable">
+                                @can('view_commandes')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                     <thead>
@@ -125,16 +125,23 @@
                                             <td> {{ $commande->created_at }}</td>
                                              <td> {{ $commande->fournisseur_id }}</td>
                                             <td class="actions">
+                                                @can('edit_commandes','delete_commandes')
+                                                {!! Form::open( ['method' => 'delete', 'url' => route('commandes.destroy', $commande->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
+                                                <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+                                            {!! Form::close() !!}
                                                 <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
                                                 <a href="{{ route('commandes.destroy',$commande) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                 <a href="{{ route('commandes.destroy',$commande) }}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                            @endcan
                                             </td>
                                         </tr> 
     @endforeach
                                        
                                     </tbody>
-                                </table>
+                               </table>@endcan
                             </div>
                             <!-- end: page -->
 
@@ -145,7 +152,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
 
             </div>

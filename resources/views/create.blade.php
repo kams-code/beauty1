@@ -24,6 +24,30 @@
         @endif
 
     <h3 class="jumbotron">Laravel Multiple File Upload</h3>
+    {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('form')]) !!}
+   
+    
+
+
+    <div class="form-group">
+        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('filename[]','Fournisseur') !!}</label>
+        <div class="col-sm-9">
+            {!! Form::file('filename[]',null, ['class' => 'form-control','enctype'=>"multipart/form-data"]) !!}
+
+</div>
+    </div>
+   
+    <div class="form-group m-b-0">
+        <div class="col-sm-offset-3 col-sm-9">
+        
+</div>
+    </div>
+    <div class="modal-footer"> 
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
+               <button class="btn btn-primary">Envoyer</button>
+            </div> 
+{!! Form::close() !!}
+
 <form method="post" action="{{url('form')}}" enctype="multipart/form-data">
   {{csrf_field()}}
 

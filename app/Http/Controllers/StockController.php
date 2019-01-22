@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Stocks;
@@ -41,9 +41,6 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-       
-=======
        if($request->get('sorti_produit_id')!=null) 
        {
 $produit_sortie=$request->get('sorti_produit_id');
@@ -55,7 +52,6 @@ $stocksortie->update(@json_decode(json_encode($stocksortie), true));
 
 
        }else{
->>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
         $stock= new Stocks([
             'quantite_initial' => $request->get('quantite_initial'),
             'quantite_limite'=> $request->get('quantite_limite'),
@@ -83,12 +79,12 @@ $stocksortie->update(@json_decode(json_encode($stocksortie), true));
         }else
         {
             $stock['quantite_final'] =$stock->quantite_initial;
+            $user=Auth::user();
+       
+            $stock['organisation_id']=$user->organisation_id;
           $stock->save();
         }
-<<<<<<< HEAD
-=======
     }
->>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
         return redirect(route('stocks.index'));
    
     }

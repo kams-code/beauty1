@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use App\User;
 use App\Role;
 use App\Permission;
 use App\Authorizable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use DB;
+use Image;
 class UserController extends Controller
 {
     use Authorizable;
@@ -51,10 +51,22 @@ class UserController extends Controller
             'password' => 'required|min:6',
             'roles' => 'required|min:1'
         ]);
-
+        if($request->hasfile('image'))
+        {
+     
+               $image=$request->file('image');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+              
+               $request->merge(['image' => $filename]);
+        }
+       
+         
+        $stock['organisation_id']=$user->organisation_id;
         // hash password
         $request->merge(['password' => bcrypt($request->get('password'))]);
-
+        $request->merge(['organisation_id' =>$user->organisation_id ]);
         // Create the user
         if ( $user = User::create($request->except('roles', 'permissions')) ) {
 

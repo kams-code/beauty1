@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Organisations;
-
+use Image;
 class OrganisationController extends Controller
 {
     /**
@@ -36,8 +36,34 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
-        $organisation = Organisations::create($request->all());
-        //return redirect(route('organisations.edit',$organisation));
+        $produits =new Organisations([ 
+            'nom'=> $request->get('nom'),
+        'pays'=> $request->get('nom'),
+        'ville'=> $request->get('nom'),
+        'description'=> $request->get('nom'),
+        'adresse'=> $request->get('nom'),
+        'telephone'=> $request->get('nom')
+
+        
+       ]);
+    
+       if($request->hasfile('image'))
+       {
+    
+              $image=$request->file('image');
+              $filename=time().'.'.$image->getClientOriginalExtension();
+              $location=public_path('images/'.$filename);
+              Image::make($image)->resize(800,400)->save($location); 
+             
+              $produits->image=$filename;
+       }
+       
+            $produits->save();
+
+
+
+
+  
         return redirect(route('organisations.index'));
     }
 

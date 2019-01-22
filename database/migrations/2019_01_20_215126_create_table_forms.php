@@ -17,7 +17,7 @@ class CreateTableForms extends Migration
         Schema::create('forms', function (Blueprint $table) {
             $table->increments('id');
             $table->string('filename');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Tickets;
@@ -45,13 +45,14 @@ class TicketController extends Controller
             'type'=> $request->get('type'),
             'etat'=> $request->get('etat'),
             'valeur'=> $request->get('valeur'),
-            'service_id'=> $request->get('user_id')
+            'service_id'=> $request->get('service_id')
           ]);
           if ($tick['etat'] =="on"){
             $tick['etat']=1;
           }if ($tick['etat'] !="on"){
             $tick['etat']=0; 
           }
+      
   $tick->save();
         return redirect(route('tickets.index'));
    
@@ -107,6 +108,12 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if( Tickets::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();  //
     }
 }

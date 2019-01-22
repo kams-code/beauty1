@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Commandes;
@@ -62,7 +62,9 @@ class CommandeController extends Controller
           }if ($tick['etat'] !="on"){
             $tick['etat']=0; 
           }
-          
+          $user=Auth::user();
+       
+          $tick['organisation_id']=$user->organisation_id;
   $tick->save();
   if($tick->etat===1){
     $myRequest = new \Illuminate\Http\Request();
@@ -138,6 +140,12 @@ class CommandeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if( Commandes::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();
     }
 }

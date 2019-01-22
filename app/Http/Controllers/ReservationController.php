@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Reservations;
@@ -65,12 +65,16 @@ class ReservationController extends Controller
    
             $reservation =new Reservations([ 
              'code'=>$request->get('code'),
+             'date'=>$request->get('date'),
+             'heure'=>$request->get('heure'),
             'client_id'=>$request->get('client_id'),
             'service_id'=>$value
         ]);  
         $a=
         $montant=$montant+$service->montant;
+        $user=Auth::user();
        
+       $reservation['organisation_id']=$user->organisation_id;
         
         $reservation ->save();
         }
@@ -81,7 +85,10 @@ class ReservationController extends Controller
            'montant'=> $montant,
            'is_paid'=>'0'
        ]);
-
+       $user=Auth::user();
+       
+       $facturetion['organisation_id']=$user->organisation_id;
+        
        $facturetion ->save();
        
       
@@ -147,7 +154,9 @@ class ReservationController extends Controller
         
         $reservationin[ $key]->code=$request->get('code');            $reservationin[ $key]->client_id=$request->get('client_id');            $reservationin[ $key]->client_id=$request->get('client_id');            
              
-    
+        $user=Auth::user();
+       
+        $reservationin[ $key]['organisation_id']=$user->organisation_id;
         $reservationin[ $key]->save();
         }
         }elseif($numberofserviceselected>$numbresin)
@@ -161,7 +170,10 @@ class ReservationController extends Controller
            ]);
         
           $reservationin[$i]->code=$request->get('code');            $reservationin[$i]->client_id=$request->get('client_id');            $reservationin[$i]->client_id=$request->get('client_id');            
-           $reservationin[$i]->save();
+          $user=Auth::user();
+       
+          $reservationin[ $key]['organisation_id']=$user->organisation_id;
+          $reservationin[$i]->save();
           
          }
 
@@ -172,7 +184,9 @@ class ReservationController extends Controller
                'client_id'=>$request->get('client_id'),
                'service_id'=>$services_ids[$i]
            ]);
-           
+           $user=Auth::user();
+       
+           $reservation['organisation_id']=$user->organisation_id;
            $reservation->save();
          }
 
@@ -189,7 +203,10 @@ class ReservationController extends Controller
                ]);
                
               $reservationin[$i]->code=$request->get('code');            $reservationin[$i]->client_id=$request->get('client_id');            $reservationin[$i]->client_id=$request->get('client_id');            
-               $reservationin[$i]->save();
+              $user=Auth::user();
+       
+              $reservationin[$i]['organisation_id']=$user->organisation_id;
+              $reservationin[$i]->save();
              }
 
              for ($i=$numberofserviceselected; $i<=$numbresin; $i++) {
@@ -213,6 +230,12 @@ class ReservationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if( Reservations::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Fournisseurs;
@@ -47,6 +47,9 @@ class FournisseurController extends Controller
           ]);
           
           $fournisseur['code'] =$string;
+          $user=Auth::user();
+       
+          $fournisseur['organisation_id']=$user->organisation_id;
           $fournisseur->save();
 
 
@@ -100,7 +103,14 @@ class FournisseurController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {  
+   
+        if( Fournisseurs::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();
     }
 }

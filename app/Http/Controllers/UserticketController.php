@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Usertickets;
@@ -56,26 +56,27 @@ class UserticketController extends Controller
     {
         $clients=$request->get('clients');
         $tickets=$request->get('tickets');
-        foreach($clients as $key=>$value)
+        for($i=0; $i<count($clients); $i++)
         {
-        foreach($tickets as $key1=>$value1)
-            {
-                if($value1!=null){
+        for($j=0; $j<count($tickets); $j++)
+            {$b=$clients[$i];
+               $a=$tickets[$j];
                     $userticket =new Usertickets([ 
-                        'user_id'=>$value,
-                       'tiket_id'=>$value1
+                        'user_id'=>$b,
+                       'ticket_id'=>$a
                    ]); 
                    
                 
                 $userticket ->save();
 
-                }
+             
            
         }
 
        
      
     }
+    
         
     }
 

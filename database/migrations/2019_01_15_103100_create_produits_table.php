@@ -18,7 +18,7 @@ class CreateProduitsTable extends Migration
             $table->string('nom');
             $table->string('description');
             $table->string('image');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
         Schema::table('commandes', function (Blueprint $table) {
             $table->integer('produit_id')->unsigned()->index()->nullable();

@@ -17,7 +17,7 @@ class CreateEquipementsTable extends Migration
             $table->increments('id');
             $table->string('nom');
             $table->string('description');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
         Schema::table('commandes', function (Blueprint $table) {
             $table->integer('equipement_id')->unsigned()->index()->nullable();

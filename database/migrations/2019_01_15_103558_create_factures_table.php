@@ -19,7 +19,7 @@ class CreateFacturesTable extends Migration
             $table->string('nom');
             $table->string('montant');
             $table->integer('is_paid');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
        
     }

@@ -15,7 +15,7 @@
     </div>
 
     <div class="result-set">
-        <table class="table table-bordered table-striped table-hover" id="data-table">
+        @can('view_reservations')                                                                  <table class="table table-bordered  table-striped table-hover" id="data-table">
             <thead>
             <tr>
                 <th>Id</th>
@@ -45,7 +45,7 @@
                 </tr>
             @endforeach
             </tbody>
-        </table>
+       </table>@endcan
 
         <div class="text-center">
             {{ $result->links() }}

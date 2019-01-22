@@ -20,7 +20,7 @@ class CreateClientsTable extends Migration
             $table->string('adresse');
             $table->string('email');
             $table->integer('telephone');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
             
         });
         Schema::table('reservations', function (Blueprint $table) {

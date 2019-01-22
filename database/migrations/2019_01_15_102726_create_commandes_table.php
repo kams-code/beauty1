@@ -18,7 +18,7 @@ class CreateCommandesTable extends Migration
             $table->string('nom');
             $table->integer('quantite');
             $table->boolean('etat');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
     }
 

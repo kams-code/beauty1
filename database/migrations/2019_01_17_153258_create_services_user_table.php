@@ -18,7 +18,7 @@ class CreateServicesUserTable extends Migration
            
             $table->integer('user_id')->unsigned()->nullable()->index();
             $table->integer('services_id')->unsigned()->nullable()->index();
-            $table->timestamps(); 
+            $table->string('organisation_id')->nullable();;             $table->timestamps(); 
         });
     }
 

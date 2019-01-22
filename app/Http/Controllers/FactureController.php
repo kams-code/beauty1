@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Reservations;
@@ -9,6 +9,8 @@ use App\Services;
 use App\Factures;
 use App\Categories;
 use App\Tickets;
+use App\Usertickets; 
+use App\Organisations; 
 use File;
 use DB;
 
@@ -70,10 +72,15 @@ class FactureController extends Controller
            'is_paid'=>0
 
        ]);
-        
+       $user=Auth::user();
+       
+       $facture['organisation_id']=$user->organisation_id;
         $facture ->save();
     }else{
         $facture = Factures::get()->where('id',$id);
+        $user=Auth::user();
+       
+       $facture['organisation_id']=$user->organisation_id;
         $facture->is_paid=1;
         $facture->save();
     }
@@ -89,6 +96,7 @@ class FactureController extends Controller
     }
 
 
+   
 
 
     /**
@@ -100,12 +108,17 @@ class FactureController extends Controller
     public function show($id)
     {
         $facture = Factures::get()->where('id',$id)->first();
+        $reservations = Reservations::get()->where('code',$facture->code);
+        $reser = Reservations::get()->where('code',$facture->code)->first();
+        $factures = Factures::all();
         $services = Services::all();
+        $idorg=$facture->organisation_id;
+         $organisation=Organisations::get()->where('id',1)->first();
         $categories = Categories::all();
-        $tickets = Tickets::all();
+       $tickets = Tickets::all();
         
-        $usertickets = Usertickets::all();
-        return view('factures.show',compact('categories','facture','services','services','tickets','usertickets'));
+        $usertickets = Usertickets::get()->where('user_id',$reser->client_id);
+        return view('factures.show',compact('organisation','categories','reservations','facture','services','services','tickets','usertickets'));
     }
 
     /**
@@ -154,7 +167,9 @@ class FactureController extends Controller
         ]);
         
         $reservationin[ $key]->code=$request->get('code');            $reservationin[ $key]->client_id=$request->get('client_id');            $reservationin[ $key]->client_id=$request->get('client_id');            
-             
+        $user=Auth::user();
+       
+        $reservationin[ $key]['organisation_id']=$user->organisation_id; 
     
         $reservationin[ $key]->save();
         }
@@ -169,7 +184,10 @@ class FactureController extends Controller
            ]);
         
           $reservationin[$i]->code=$request->get('code');            $reservationin[$i]->client_id=$request->get('client_id');            $reservationin[$i]->client_id=$request->get('client_id');            
-           $reservationin[$i]->save();
+          $user=Auth::user();
+       
+          $reservationin[ $key]['organisation_id']=$user->organisation_id;  
+          $reservationin[$i]->save();
           
          }
 
@@ -180,7 +198,9 @@ class FactureController extends Controller
                'client_id'=>$request->get('client_id'),
                'service_id'=>$services_ids[$i]
            ]);
-           
+           $user=Auth::user();
+       
+           $reservation['organisation_id']=$user->organisation_id; 
            $reservation->save();
          }
 
@@ -197,7 +217,11 @@ class FactureController extends Controller
                ]);
                
               $reservationin[$i]->code=$request->get('code');            $reservationin[$i]->client_id=$request->get('client_id');            $reservationin[$i]->client_id=$request->get('client_id');            
-               $reservationin[$i]->save();
+              
+              $user=Auth::user();
+       
+           $reservationin[$i]['organisation_id']=$user->organisation_id;
+              $reservationin[$i]->save();
              }
 
              for ($i=$numberofserviceselected; $i<=$numbresin; $i++) {

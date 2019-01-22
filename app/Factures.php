@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Factures extends Model
 {
    
-    protected $fillable = [
+    protected $fillable = [  'organisation_id',
 
         'nom',
         'code',

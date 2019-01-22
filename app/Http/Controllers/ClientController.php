@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Clients;
@@ -94,8 +94,7 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-       
-        if( Equipements::findOrFail($id)->delete() ) {
+        if( Clients::findOrFail($id)->delete() ) {
             flash()->success('equipement supprime');
         } else {
             flash()->success('equipement en vu');

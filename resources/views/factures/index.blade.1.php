@@ -5,7 +5,7 @@
                                  @section('content')
                                   @can('edit_produits', 'delete_produits')
                     <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
                 @endcan
                  @can('edit_produits', 'delete_produits')
@@ -20,7 +20,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Produits</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">QuickBeauty</a></li>
                                     <li><a href="#">Tables</a></li>
                                     <li class="active">Editer produits</li>
                                 </ol>
@@ -103,13 +103,13 @@
                                             </div>
                                         </div><!-- /.modal -->
 
-                                                                              <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>
+                                                                                 @can('add_factures')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
                                        
                                                                              
                                         </div>
                                     </div>
                                 </div>
-                                <table class="table table-bordered table-striped" id="datatable-editable">
+                                @can('view_factures')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                     <thead>
@@ -147,7 +147,7 @@
     @endforeach
                                        
                                     </tbody>
-                                </table>
+                               </table>@endcan
                             </div>
                             <!-- end: page -->
 
@@ -158,7 +158,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
 
             </div>

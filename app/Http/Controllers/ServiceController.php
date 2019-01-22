@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 use App\Services;
 use App\Services_Users;
 use App\User;
 use App\ServiceUser;
 use Illuminate\Http\Request;
 use App\Categories;
+use Image;
 
 class ServiceController extends Controller
 {
@@ -50,16 +51,32 @@ class ServiceController extends Controller
             'code' => $request->get('code'),
             'nom'=> $request->get('nom'),
             'description'=> $request->get('description'),
-            'image'=> $request->get('image'),
+            
             'montant' => $request->get('montant'),
             'is_promote'=> $request->get('is_promote'),
             'categorie_id'=> $request->get('categorie_id')
           ]);
+          if($request->hasfile('image'))
+          {
+       
+                 $image=$request->file('image');
+                 $filename=time().'.'.$image->getClientOriginalExtension();
+                 $location=public_path('images/'.$filename);
+                 Image::make($image)->resize(800,400)->save($location); 
+                
+                 $service->image=$filename;
+          }
+         
+            
+
           if ($service['is_promote'] =="on"){
             $service['is_promote']=1;
           }if ($service['is_promote'] !="on"){
             $service['is_promote']=0; 
           }
+          $user=Auth::user();
+       
+              $service['organisation_id']=$user->organisation_id;
   $service->save();
 
 
@@ -72,7 +89,9 @@ class ServiceController extends Controller
              'user_id'=>$value,
             'services_id'=> $service->id
         ]);
-        
+        $user=Auth::user();
+       
+              $service_user['organisation_id']=$user->organisation_id;
         $service_user ->save();
         }
        
@@ -124,6 +143,12 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if( Services::findOrFail($id)->delete() ) {
+            flash()->success('User has been deleted');
+        } else {
+            flash()->success('User not deleted');
+        }
+
+        return redirect()->back();
     }
 }

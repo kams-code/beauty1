@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Categories;
+use Image;
+
 
 class CategorieController extends Controller
 {
@@ -36,7 +38,26 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        $categorie = Categories::create($request->all());
+       
+
+        $categorie =new Categories([ 
+            'nom'=> $request->get('nom'),
+           'description'=> $request->get('description'),
+       ]);
+        if($request->hasfile('image'))
+        {
+     
+               $image=$request->file('image');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+              
+               $categorie->image=$filename;
+        }
+        $user=Auth::user();
+       
+        $categorie['organisation_id']=$user->organisation_id;
+        $categorie->save();
         //return redirect(route('Categories.edit',$categorie));
         return redirect(route('categories.index'));
     }

@@ -17,7 +17,7 @@ class CreateTableUsertickets extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('ticket_id');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
     }
 

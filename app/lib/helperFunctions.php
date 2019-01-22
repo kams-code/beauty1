@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use App\User;
 use App\Role;
 use App\Permission;
 use App\Authorizable;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use DB;
 class UserController extends Controller
 {

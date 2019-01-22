@@ -1,7 +1,6 @@
-@extends('layouts.app')
-
-@section('title', 'Edit User ' . $user->first_name)
-
+@extends('layouts.mainlayout')
+@include('partials.topbar')
+@include('partials.sidebar')
 @section('content')
 
     <div class="row">

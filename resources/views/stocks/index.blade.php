@@ -13,7 +13,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Editable Table</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">QuickBeauty</a></li>
                                     <li><a href="#">Tables</a></li>
                                     <li class="active">Editable Table</li>
                                 </ol>
@@ -76,9 +76,11 @@
         </div> 
     </div>
 </div><!-- /.modal -->
+@can('add_stocks','edit_stocks')
+    
 
 <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>
-
+@endcan
 
 
 
@@ -92,15 +94,6 @@
             </div> 
             <div class="modal-body"> 
                 <div class="row"> 
-<<<<<<< HEAD
-                    {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('sortie')]) !!}
-                    
-                    
-                    <div class="form-group">
-                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('produit_id','Produit') !!}</label>
-                        <div class="col-sm-9">
-                           {!! Form::select('produit_id',$produits,null, ['class' => 'form-control']) !!}
-=======
                     {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('stocks.store')]) !!}
                     
                     
@@ -108,18 +101,14 @@
                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('sorti_produit_id','Produit') !!}</label>
                         <div class="col-sm-9">
                            {!! Form::select('sorti_produit_id',$produits,null, ['class' => 'form-control']) !!}
->>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
+
 
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('quantite','Quantite') !!}</label>
                         <div class="col-sm-9">
-<<<<<<< HEAD
                             {!! Form::text('quantite',null, ['class' => 'form-control']) !!}
-=======
-                            {!! Form::text('sorti_quantite',null, ['class' => 'form-control']) !!}
->>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
                         </div>
                     </div>
 
@@ -141,24 +130,18 @@
         </div> 
     </div>
 </div><!-- /.modal -->
+@can('add_stocks','edit_stocks')
+    
 
 <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal-minus">Sortir <i class="fa fa-minus"></i></button>
+@endcan
 
                                           </div>
                                     </div>
 
                                     @foreach($Stocks as $stock)
       
-<<<<<<< HEAD
-       
-        
-                                       {{ $stock->quantite_final }}==={{ $stock->quantite_limite }}   
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                           
-                                    <span class="badge badge-warning">Nom PRODUIT     {{ $stock->produit_id }}</span>
-                                    <span class="caret"></span>
-                                </a>
-=======
+
        @if($stock->quantite_final<= $stock->quantite_limite)
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                            
@@ -180,11 +163,14 @@
         
                                      
                                    
->>>>>>> 2d112d9d8c6625e971a44c3348ee4596b389d4c0
                                         
                                              
     @endforeach
                                 </div>
+                                @can('view_stocks')
+    
+
+                               
                                 <table class="table table-bordered table-striped" id="datatable-editable">
                                    
     
@@ -211,21 +197,26 @@
                                             <td>  {{ $stock->quantite_limite }}</td>
                                              <td> {{ $stock->updated_at }}</td>
                                             <td class="actions">
+                                                @can('delete_stocks','edit_stocks')
                                             {!! Form::open( ['method' => 'delete', 'url' => route('stocks.destroy', $stock->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
         <button type="submit" class="btn-delete btn btn-sm btn-light">
-            ❌
+            <i class="fa fa-trash-o"></i>
         </button>
     {!! Form::close() !!}
-                                                <a href="{{ route('stocks.destroy',$stock) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                <a href="{{ route('stocks.edit',$stock) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('stocks.destroy',$stock) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
                                                 <a href="{{ route('stocks.destroy',$stock) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                @endcan
                                             </td>
                                         </tr> 
     @endforeach
                                        
                                     </tbody>
                                 </table>
+
+                                @endcan
+                              
                             </div>
                             <!-- end: page -->
 
@@ -236,7 +227,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
 
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -39,6 +39,18 @@ class HomeController extends Controller
         }
         $clients=Clients::all();
         $services=Services::all();  
-        return view('home','count','clients');
+        $serv=Services::pluck('nom');
+      $servdate=Services::pluck('created_at');
+      $chart=
+      Charts::new('line','higcharts')->setTitle(Reservations)->     
+      setLablels(array_merge($serv->toArray()))->setElementvalue(array_merge($servdate->toArray()))
+      ->setElementLabel("Services creer")->setResponsive(false) ;  
+           return view('home','count','clients','charts');
     }
+
+
+   
+
+
+
 }

@@ -4,7 +4,7 @@
 
                                  @section('content')
                     <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
              
                   
@@ -18,7 +18,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">commandes</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">Moltran</a></li>
+                                    <li><a href="#">QuickBeauty</a></li>
                                     <li><a href="#">Tables</a></li>
                                     <li class="active">Editer commandes</li>
                                 </ol>
@@ -69,7 +69,7 @@ if (document.getElementById('mySelect')){
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    2016 © Moltran.
+                    2019 © QuickBeauty.
                 </footer>
 
             </div>

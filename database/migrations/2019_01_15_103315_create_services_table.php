@@ -21,7 +21,7 @@ class CreateServicesTable extends Migration
             $table->string('image');
             $table->integer('montant');
             $table->boolean('is_promote');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
         
       

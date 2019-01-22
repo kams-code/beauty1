@@ -19,7 +19,7 @@ class CreateTicketsTable extends Migration
             $table->string('valeur');
             $table->string('type');
             $table->boolean('etat')->nullable();
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
         
     }

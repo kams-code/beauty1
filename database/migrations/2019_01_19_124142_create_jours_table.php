@@ -16,7 +16,7 @@ class CreateJoursTable extends Migration
         Schema::create('jours', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
-            $table->timestamps();
+            $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
 
         Schema::table('plannings', function (Blueprint $table) {

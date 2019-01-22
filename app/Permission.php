@@ -22,6 +22,12 @@ class Permission extends \Spatie\Permission\Models\Permission
             'edit_posts',
             'delete_posts',
 
+            'view_categories',
+            'add_categories',
+            'edit_categories',
+            'delete_categories',
+            
+
             'view_produits',
             'add_produits',
             'edit_produits',
@@ -57,10 +63,6 @@ class Permission extends \Spatie\Permission\Models\Permission
             'edit_services',
             'delete_services',
 
-            'view_personnels',
-            'add_personnels',
-            'edit_personnels',
-            'delete_personnels',
 
             'view_plannings',
             'add_plannings',
@@ -77,6 +79,22 @@ class Permission extends \Spatie\Permission\Models\Permission
             'add_stocks',
             'edit_stocks',
             'delete_stocks',
+
+            'view_organisations',
+            'add_organisations',
+            'edit_organisations',
+            'delete_organisations',
+
+            'view_commandes',
+            'add_commandes',
+            'edit_commandes',
+            'delete_commandes',
+
+
+            'view_services',
+            'add_services',
+            'edit_services',
+            'delete_services',
             
 
         ];

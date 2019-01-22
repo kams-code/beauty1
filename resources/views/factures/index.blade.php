@@ -13,7 +13,7 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-    <table class="table table-bordered">
+    @can('view_factures')                                                                  <table class="table table-bordered ">
         <tr>
             <th>No</th>
             <th>Name</th>
@@ -33,7 +33,7 @@
         </td>
     </tr>
     @endforeach
-    </table>
+   </table>@endcan
     {!! $factures->render() !!}
 <script type="text/javascript">
     $(document).ready(function () {        

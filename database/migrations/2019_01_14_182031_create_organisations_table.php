@@ -18,13 +18,14 @@ class CreateOrganisationsTable extends Migration
             $table->string('nom');
             $table->string('pays');
             $table->string('ville');
+            $table->string('image');
             $table->string('description');
             $table->string('adresse');
             $table->integer('telephone');
-            $table->timestamps();
+             $table->timestamps();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('organisation_id')->unsigned()->index()->nullable();
+            $table->integer('organisation_id')->nullable();
           
         });
     }

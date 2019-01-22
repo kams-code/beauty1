@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
     
-<!-- Mirrored from moltran.coderthemes.com/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2016 13:26:04 GMT -->
+<!-- Mirrored from QuickBeauty.coderthemes.com/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2019 13:26:04 GMT -->
 <head>
         <meta charset="utf-8" />
-        <title>Moltran - Responsive Admin Dashboard Template</title>
+        <title>QuickBeauty - Responsive Admin Dashboard Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -12,8 +12,8 @@
 
         <link rel="shortcut icon" href="{{asset('images/favicon_1.ico')}}">
 
-
-        <!--calendar css-->
+        <!--
+      calendar css-->
         <link href="{{asset('plugins/fullcalendar/dist/fullcalendar.css')}}" rel="stylesheet">
         <link href="{{asset('plugins/select2/dist/css/select2.css')}}" rel="stylesheet" type="text/css">
 
@@ -31,9 +31,9 @@
         <link href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('css/menu.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css">
-
+        <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{asset('js/modernizr.min.js')}}"></script>
-
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -160,5 +160,5 @@
     
     </body>
 
-<!-- Mirrored from moltran.coderthemes.com/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2016 13:26:43 GMT -->
+<!-- Mirrored from QuickBeauty.coderthemes.com/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2019 13:26:43 GMT -->
 </html>
