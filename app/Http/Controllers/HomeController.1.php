@@ -9,9 +9,14 @@ use App\Reservations;
 use App\Produits;
 use App\Services;
 use App\User;
+use App\Roles;use App\Permission;
 use App\Http\Requests;
 use Charts;
 use  App\Factures;
+use  App\Jours;
+use  App\Plannings;
+use  App\Organisations;
+
 
 use DB;
 class HomeController extends Controller
@@ -118,6 +123,7 @@ $chart = Charts::database($users, 'line', 'highcharts')
       ->groupByMonth(date('Y'), true);
 
 return view('home',compact('chart','value','chart1','commandes','services','nombreclient','nbrefactures'));
+
     }
 
 
@@ -132,7 +138,15 @@ return view('home',compact('chart','value','chart1','commandes','services','nomb
 
 
     public function profile()
-    { 
-           return view('profile');
+    { $users = User::pluck('name','id');
+        $Users = User::get()->all();
+        $jours = Jours::pluck('nom','id'); $user=Auth::user();
+        $plannings = Plannings::where('user_id','=',$user->id)->get();
+        $organisations=Organisations::where('id','=',$user->organisation_id)->get()->first();
+
+        $roles =        DB::table('roles')->where('id','!=', 1)->pluck('name', 'id');
+        $permissions = Permission::all('name', 'id');
+        return view('profile',compact('users','plannings','jours','Users','organisations','roles','permissions'));
+          
     }
 }

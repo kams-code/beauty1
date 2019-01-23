@@ -44,7 +44,29 @@ class PlanningController extends Controller
      */
     public function store(Request $request)
     {
-        $plannings = Plannings::create($request->all());
+        $jours=$request->get('jours');
+        $montant=0;
+        foreach($jours as $key=>$value)
+        {
+            $plannings = Plannings::get()->where('id',$value)->first();
+   
+            $plannings =new Plannings([ 
+             'heureDeb'=>$request->get('heureDeb'),
+             'heureFin'=>$request->get('heureFin'),
+             'dateDeb'=>$request->get('dateDeb'),
+            'dateFin'=>$request->get('dateFin'),
+            'jour_id'=>$value,
+            'user_id'=>$request->get('user_id'),
+        ]);  
+       
+        $user=Auth::user();
+       
+       $plannings['organisation_id']=$user->organisation_id;
+        
+        $plannings ->save();
+        }
+
+
         return redirect(route('plannings.index'));
     }
 

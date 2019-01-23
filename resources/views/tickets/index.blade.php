@@ -54,10 +54,15 @@
               </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label for="inputPassword3" class="col-sm-3 control-label">
-                                                            {!! Form::label('etat','Etat') !!}</label>
+                                                  
                                                     <div class="col-sm-9">
-                                                            {!! Form::checkbox('etat',null, ['class' => 'form-control']) !!}
+                                                          
+                                                            <div class="checkbox">
+                                                                    <input   id="checkbox" type="checkbox" name="etat" > 
+                                                                    <label for="checkbox"   >
+                                                                            Etat
+                                                                    </label>
+                                                                </div>
                              
               </div>
                                                 </div>

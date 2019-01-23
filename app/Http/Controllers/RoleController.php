@@ -54,6 +54,7 @@ if( $user_role=="Admin"){
      */
     public function update(Request $request, $id)
     {
+        dd($request);
         if($role = Role::findOrFail($id)) {
             // admin role has everything
             if($role->name === 'Admin') {

@@ -36,7 +36,7 @@
                                                     </div> 
                                                     <div class="modal-body"> 
                                                         <div class="row"> 
-                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('services.store')]) !!}
+                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('services.store'),'files'=>true]) !!}
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
                                                 <div class="col-sm-9">
@@ -50,11 +50,11 @@
                                                  </div>
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('image','image') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('image',null, ['class' => 'form-control']) !!}
-          </div>
-                                            </div>
+                                                    <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('image','Logo') !!}</label>
+                                                    <div class="col-sm-9">
+                                                      {!! Form::file('image') !!}
+              </div>
+                                                </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('montant','montant') !!}</label>
                                                 <div class="col-sm-9">
@@ -70,12 +70,18 @@
      
           </div>
                                             </div>  
+                                            
 
                                             <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('is_promote','En promotion') !!}</label>
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('is_promote','') !!}</label>
                                                 <div class="col-sm-9">
-                                          {!! Form::checkbox('is_promote',null, ['class' => 'form-control']) !!}
-                         
+                            
+                                          <div class="checkbox">
+                                                <input   id="checkbox" type="checkbox" name="is_promote" > 
+                                                <label for="checkbox"   >
+                                                        En promotion?
+                                                </label>
+                                            </div>
      
           </div>
                                             </div>     

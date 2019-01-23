@@ -78,8 +78,7 @@ class ServiceController extends Controller
        
               $service['organisation_id']=$user->organisation_id;
   $service->save();
-
-
+ /**
         $users_ids=$request->get('users');
         
         foreach($users_ids as $key=>$value)
@@ -93,7 +92,7 @@ class ServiceController extends Controller
        
               $service_user['organisation_id']=$user->organisation_id;
         $service_user ->save();
-        }
+        }*/
        
       
         return redirect(route('reservations.index'));

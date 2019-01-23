@@ -52,7 +52,13 @@
                           </div>
                           <div class="form-group">
                           <label>
-                             {!! Form::checkbox('online') !!}
+                          
+                             <div class="checkbox">
+                                    <input   id="checkbox" type="checkbox" name="online" > 
+                                    <label for="checkbox"   >
+                                            Etat 
+                                    </label>
+                                </div>
                              en ligne?
                              </label> 
                           </div>
