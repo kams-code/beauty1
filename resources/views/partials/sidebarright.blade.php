@@ -8,7 +8,7 @@
                         <li class="list-group-item">
                             <a href="#">
                                 <div class="avatar">
-                                    <img src="images/users/avatar-1.jpg" alt="">
+                                    <img src="{{asset('images/'.auth()->user()->image)}}" alt="">
                                 </div>
                                 <span class="name">Chadengle</span>
                                 <i class="fa fa-circle online"></i>

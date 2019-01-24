@@ -20,39 +20,46 @@
                             </div>
                         </div>
 
+                        <div class="row port">
+                                <div class="portfolioContainer">
+                                    <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
+                                        <div class="gal-detail thumb">
+                                            <a href="{{asset('images/'.$produit->image)}}" class="image-popup" title="Screenshot-1">
+                                                <img src="{{asset('images/'.$produit->image)}}" class="thumb-img" alt="work-thumbnail">
+                                            </a>
+                                            <h4>Image</h4>
+                                        </div>
+                                    </div>
+    
+                                   
+                                    
+    
+                                </div>
+                            </div> <!-- End row -->
+    
 
                         <div class="row">
-                           
-                            <div class="col-md-12">
+                        
+
+                            <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
                                    <div class="panel-body">
-                    {!! Form::open(['method' => 'PUT', 'url' => route('reservations.update', $reservation )]) !!}
+                    {!! Form::open(['method' => 'PUT', 'url' => route('produits.update', $produit ),'files'=>true]) !!}
                           <div class="form-group">
-                             {!! Form::label('code','Code') !!}
-                             {!! Form::text('code',$reservation->code, ['class' => 'form-control']) !!}
+                             {!! Form::label('nom','nom') !!}
+                             {!! Form::text('nom',$produit->nom, ['class' => 'form-control']) !!}
                           </div>
                           <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('date','Date :') !!}</label>
-                            <div class="col-sm-9">
-                              {!! Form::date('date',$reservation->date, ['class' => 'form-control']) !!}
-                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heure','Heure :') !!}</label>
-                            <div class="col-sm-9">
-                              {!! Form::time('heure',$reservation->heure, ['class' => 'form-control']) !!}
-                             </div>
-                        </div>    
+                             {!! Form::label('description','description') !!}
+                             {!! Form::text('description',$produit->description, ['class' => 'form-control']) !!}
+                          </div>
+                          
                           <div class="form-group">
-                             {!! Form::label('client_id','Client') !!}
-                             {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control']) !!}
-                          </div> 
+                  {!! Form::label('imageup','Image') !!}
+                                  {!! Form::file('imageup') !!}
 
-                          <div class="form-group">
-                             {!! Form::label('service_id','Service') !!}
-                            {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
-     </div> 
+                            </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
                 </div> <!-- panel-body -->
@@ -65,10 +72,12 @@
                     </div> <!-- container -->
                                
                 </div> <!-- content -->
-
-                <footer class="footer text-right">
+ @can('edit_produits', 'delete_produits')
+                    <footer class="footer text-right">
                     2019 © QuickBeauty.
                 </footer>
+                @endcan
+                
 
             </div>
 

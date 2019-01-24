@@ -40,8 +40,18 @@ class EquipementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-			
+    { $user=Auth::user();
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+               $request->merge(['image' => $filename ]);
+        }
+        
+        $request->merge(['organisation_id' =>$user->organisation_id ]);
         $equipements = Equipements::create($request->all());
         return redirect(route('equipements.index'));
     }
@@ -79,7 +89,18 @@ class EquipementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
+    { $user=Auth::user();
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+               $request->merge(['image' => $filename ]);
+        }
+        
+        $request->merge(['organisation_id' =>$user->organisation_id ]);
         $equipement = Equipements::findOrFail($id);
         $equipement->update($request->all());
         return redirect(route('equipements.index'));

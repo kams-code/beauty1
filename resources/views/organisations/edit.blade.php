@@ -19,15 +19,41 @@
                                 </ol>
                             </div>
                         </div>
+                        <div class="row port">
+                                <div class="portfolioContainer">
+                                    <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
+                                        <div class="gal-detail thumb">
+                                            <a href="{{asset('images/'.$organisation->image)}}" class="image-popup" title="Screenshot-1">
+                                                <img src="{{asset('images/'.$organisation->image)}}" class="thumb-img" alt="work-thumbnail">
+                                            </a>
+                                            <h4>Logo</h4>
+                                        </div>
+                                    </div>
+    
+                                   
+                                    
+    
+                                </div>
+                            </div> <!-- End row -->
+    
 
                       <div class="row">
+                           
                             <div class="col-md-12">
+                                    
                                 <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                   <div class="panel-body">
-                    
-                                   {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation )]) !!}
-                          <div class="form-group">
+                                    <div class="panel-heading"><h3 class="panel-title">Formulaire</h3></div>
+                                   
+                                    <div class="panel-body">
+                                     
+                                   {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation ),'files'=>true]) !!}
+                                   <div class="form-group">
+                                      {!! Form::label('imageup','Logo') !!}
+                                      
+                                          {!! Form::file('imageup') !!}
+
+                                    </div>
+                                   <div class="form-group">
                              {!! Form::label('nom','nom') !!}
                              {!! Form::text('nom',$organisation->nom, ['class' => 'form-control']) !!}
                           </div>

@@ -149,11 +149,16 @@
                                             <td> {{ $service->description }}</td>
                                             <td> {{ $service->created_at }}</td>
                                             <td> {{ $service->is_promote }}</td>
-                                            @if($service->user)
-                                              @foreach ($service->user as $tag)
-                                                <td> {{ $service->user->name }}</td>
+                                    
+                                     <td>
+                                  
+                                              @foreach ($Users as $ser)
+                                              @if($service->id===$ser->service_id)
+                                            <p>  {{ $ser->name }}</p>
+                                                @endif
                                               @endforeach
-                                            @endif
+                                             
+                                            </td>
                                             <td> {{ $service->is_promote }}</td>
                                             <td class="actions">
                                                 @can('edit_services','delete_services')

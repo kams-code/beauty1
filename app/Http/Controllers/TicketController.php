@@ -68,8 +68,7 @@ class TicketController extends Controller
     {
         //
     }
-
-    /**
+ /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -77,10 +76,8 @@ class TicketController extends Controller
      */
     public function edit($id)
     {
-        $services=Services::pluck('nom', 'id');
-      
         $ticket=Tickets::findOrFail($id);
-        return view ('tickets.edit',compact('ticket','services'));
+        return view('tickets.edit',compact('ticket'));
     }
 
     /**

@@ -82,8 +82,8 @@ class CategorieController extends Controller
      */
     public function edit($id)
     {
-        $categorie = Categories::findOrFail($id);
-        return view('categories.edit',compact('categorie'));
+        $produit = Categories::findOrFail($id);
+        return view('categories.edit',compact('produit'));
     }
 
     /**

@@ -138,11 +138,10 @@
                                                 </button>
                                             {!! Form::close() !!}
 
-                                                <a href="{{ route('fournisseurs.destroy',$fournisseur) }} }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                                <a href="{{ route('fournisseurs.destroy',$fournisseur) }} }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('fournisseurs.destroy',$fournisseur) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                                <a href="{{ route('fournisseurs.destroy',$fournisseur) }}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                            @endcan
+                                                <a href="{{ route('fournisseurs.edit',$fournisseur) }} }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                <a href="{{ route('fournisseurs.edit',$fournisseur) }} }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                <a href="{{ route('fournisseurs.edit',$fournisseur) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                 @endcan
                                             </td>
                                         </tr> 
     @endforeach

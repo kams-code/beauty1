@@ -19,9 +19,8 @@
     @if ($errors->has('password')) <p class="help-block">{{ $errors->first('password') }}</p> @endif
 </div>
 <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('image','Image') !!}</label>
-    <div class="col-sm-9">
+{!! Form::label('image','Image') !!}
       {!! Form::file('image') !!}
-</div>
+
 </div>
 <!-- Roles Form Input -->

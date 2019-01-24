@@ -146,7 +146,7 @@ return view('home',compact('chart','value','chart1','commandes','services','nomb
 
         $roles =        DB::table('roles')->where('id','!=', 1)->pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
-        return view('profile',compact('users','plannings','jours','Users','organisations','roles','permissions'));
+        return view('profile',compact('users','plannings','jours','user','Users','organisations','roles','permissions'));
           
     }
 }

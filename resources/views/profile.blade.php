@@ -240,7 +240,7 @@
                                                                 <h3 class="panel-title">Edit Profile</h3> 
                                                             </div> 
                                                             <div class="panel-body"> 
-                                                                    {!! Form::model($user, ['method' => 'PUT', 'route' => ['users.update',  auth()->user()->id] ]) !!}
+                                                                    {!! Form::model($user, ['method' => 'PUT', 'route' => ['users.update',  $user->id],'files'=>true ]) !!}
                                                                     @include('user._form1')
                                                                     <!-- Submit Form Button -->
                                                                     {!! Form::submit('Save Changes', ['class' => 'btn btn-primary']) !!}

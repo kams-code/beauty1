@@ -43,14 +43,19 @@
                                                     </div> 
                                                     <div class="modal-body"> 
                                                         <div class="row"> 
-                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('equipements.store')]) !!}
+                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('equipements.store'),'files'=>true]) !!}
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','nom') !!}</label>
                                                 <div class="col-sm-9">
                                                   {!! Form::text('nom',null, ['class' => 'form-control']) !!}
                                                  </div>
                                             </div>
-                                            
+                                            <div class="form-group">
+                                                <label for="inputEmail3" class="col-sm-3 control-label"> {!! Form::label('imageup','Image') !!}</label>
+                                                <div class="col-sm-9">
+                                                    {!! Form::file('imageup') !!}
+                                                </div>
+                                              </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','description') !!}</label>
                                                 <div class="col-sm-9">

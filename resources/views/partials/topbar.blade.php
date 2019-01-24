@@ -96,7 +96,7 @@
                                 </a>
                                     </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="images/users/avatar-1.jpg" alt="user-img" class="img-circle"> </a>
+                                    <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('images/'.auth()->user()->image)}}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('profile') }}"><i class="md md-face-unlock"></i> Profile</a></li>
                                         <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>

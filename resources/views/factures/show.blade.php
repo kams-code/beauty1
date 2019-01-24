@@ -15,7 +15,7 @@
                                                   <ol class="breadcrumb pull-right">
                                                       <li><a href="#">QuickBeauty</a></li>
                                                       <li><a href="#">Pages</a></li>
-                                                      <li class="active">Invoice</li>
+                                                       <li class="active">Invoice</li>
                                                   </ol>
                                               </div>
                                           </div>
@@ -29,7 +29,7 @@
                                                       <div class="panel-body">
                                                           <div class="clearfix">
                                                               <div class="pull-left">
-                                                                  <h4 class="text-right"><img src="assets/images/logo_dark.png" alt="velonic"></h4>
+                                                                  <h4 class="text-right"><img height="50" width="50" src="{{asset('images/'.$organisation->image)}}" alt="velonic"></h4>
                                                                   
                                                               </div>
                                                               

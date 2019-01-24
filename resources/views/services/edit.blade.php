@@ -21,7 +21,15 @@
                         </div>
                         <div class="row port">
                                 <div class="portfolioContainer">
-                                   
+                                    <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
+                                        <div class="gal-detail thumb">
+                                            <a href="{{asset('images/'.$service->image)}}" class="image-popup" title="Screenshot-1">
+                                                <img src="{{asset('images/'.$service->image)}}" class="thumb-img" alt="work-thumbnail">
+                                            </a>
+                                            <h4>Logo</h4>
+                                        </div>
+                                    </div>
+    
                                    
                                     
     
@@ -38,32 +46,34 @@
                                    
                                     <div class="panel-body">
                                      
-                                   {!! Form::open(['method' => 'PUT', 'url' => route('tickets.update', $ticket ),'files'=>true]) !!}
+                                   {!! Form::open(['method' => 'PUT', 'url' => route('services.update', $service ),'files'=>true]) !!}
                                    <div class="form-group">
-                                                       {!! Form::label('titre','Titre') !!}
-                                                   
-                                                
-                                                        {!! Form::text('titre',null, ['class' => 'form-control']) !!}
-                                                     
-                                                </div>
-                                                
-                                                <div class="form-group">
-                                                           {!! Form::label('type','Type') !!}</label>
-                                                           {!! Form::text('type',null, ['class' => 'form-control']) !!}
-           
-                                                </div>
-                                                <div class="form-group">
-                                                  
-                                                          
-                                                            <div class="checkbox">
-                                                                    <input   id="checkbox" type="checkbox" name="etat" > 
-                                                                    <label for="checkbox"   >
-                                                                            Etat
-                                                                    </label>
-                                                                </div>
-                             
-              
-                                                </div>
+                                      {!! Form::label('imageup','Logo') !!}
+                                      
+                                          {!! Form::file('imageup') !!}
+
+                                    </div>
+                                   <div class="form-group">
+                             {!! Form::label('nom','nom') !!}
+                             {!! Form::text('nom',$service->nom, ['class' => 'form-control']) !!}
+                          </div>
+                          
+                          <div class="form-group">
+                             {!! Form::label('description','description') !!}
+                             {!! Form::textarea('description',$service->description, ['class' => 'form-control']) !!}
+                          </div>
+                          <div class="form-group">
+                            <label>
+                                    <div class="checkbox">
+                                            <input   id="checkbox" type="checkbox" name="online" > 
+                                            <label for="checkbox"   >
+                                                    Etat 
+                                            </label>
+                                        </div>
+                            
+                             en ligne?
+                             </label> 
+                          </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
 
@@ -77,10 +87,11 @@
                     </div> <!-- container -->
                                
                 </div> <!-- content -->
+ @can('edit_produits', 'delete_produits')
                     <footer class="footer text-right">
                     2019 © QuickBeauty.
                 </footer>
-              
+                @endcan
                 
 
             </div>

@@ -42,7 +42,7 @@ class OrganisationController extends Controller
         'ville'=> $request->get('nom'),
         'description'=> $request->get('nom'),
         'adresse'=> $request->get('nom'),
-        'telephone'=> $request->get('nom')
+        'telephone'=> $request->get('telephone')
 
         
        ]);
@@ -101,7 +101,17 @@ class OrganisationController extends Controller
     public function update(Request $request, $id)
     {
         $organisation = Organisations::findOrFail($id);
-        $organisation->update($request->all());
+        
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+               $request->merge(['image' => $filename ]);
+        }
+        $organisation->update($request->except('online'));
        // return redirect(route('organisations.edit',$id));
        return redirect(route('organisations.index'));
     }

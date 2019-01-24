@@ -38,6 +38,7 @@
                                                     </div> 
                                                     <div class="modal-body"> 
                                                         <div class="row"> 
+                                                                
                                                              {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('produits.store'),'files'=>true]) !!}
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','nom') !!}</label>

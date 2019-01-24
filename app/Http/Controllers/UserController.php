@@ -5,6 +5,7 @@ namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Role;
 use App\Permission;
+use App\Services;
 use App\Authorizable;
 use Illuminate\Http\Request;
 use DB;
@@ -33,8 +34,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'id');
-
-        return view('user.new', compact('roles'));
+        $services = Services::pluck('nom', 'id');
+        return view('user.new', compact('roles','services'));
     }
 
     /**
@@ -51,22 +52,22 @@ class UserController extends Controller
             'password' => 'required|min:6',
             'roles' => 'required|min:1'
         ]);
-        if($request->hasfile('image'))
+        if($request->hasfile('imageup'))
         {
      
-               $image=$request->file('image');
+               $image=$request->file('imageup');
                $filename=time().'.'.$image->getClientOriginalExtension();
                $location=public_path('images/'.$filename);
                Image::make($image)->resize(800,400)->save($location); 
-              
-               $request->merge(['image' => $filename]);
+               $request->merge(['image' => $filename ]);
         }
-       
-         
-        $stock['organisation_id']=$user->organisation_id;
+     
+        $user1=Auth::user();
         // hash password
         $request->merge(['password' => bcrypt($request->get('password'))]);
-        $request->merge(['organisation_id' =>$user->organisation_id ]);
+        $request->merge(['organisation_id' =>$user1->organisation_id ]);
+        
+       
         // Create the user
         if ( $user = User::create($request->except('roles', 'permissions')) ) {
 
@@ -101,10 +102,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles =        DB::table('roles')->where('id','!=', 1)->pluck('name', 'id');
+        $roles =        DB::table('roles')->pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
-
-        return view('user.edit', compact('user', 'roles', 'permissions'));
+        $services = Services::pluck('nom', 'id');
+        return view('user.edit', compact('user', 'roles', 'permissions','services'));
     }
 
     /**
@@ -124,6 +125,23 @@ class UserController extends Controller
 
         // Get the user
         $user = User::findOrFail($id);
+
+
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+               $request->merge(['image' => $filename ]);
+        }
+     
+        $user1=Auth::user();
+       
+       
+    
+
 
         // Update user
         $user->fill($request->except('roles', 'permissions', 'password'));

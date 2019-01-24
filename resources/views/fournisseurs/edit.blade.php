@@ -22,49 +22,7 @@
 
 
                         <div class="row">
-                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-                                                <div class="col-sm-9">
-                                                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword4" class="col-sm-3 control-label">Re Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword4" placeholder="Retype Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                    <div class="checkbox checkbox-primary">
-                                                        <input id="checkbox2" type="checkbox">
-                                                        <label for="checkbox2">
-                                                            Check me out !
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                  <button type="submit" class="btn btn-info waves-effect waves-light">Sign in</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
+                           
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
@@ -78,10 +36,30 @@
                              {!! Form::label('description','description') !!}
                              {!! Form::text('description',$fournisseur->description, ['class' => 'form-control']) !!}
                           </div>
+                                               
                           <div class="form-group">
-                             {!! Form::label('fournisseur_id','Fournisseur') !!}
-                             {!! Form::select('fournisseur_id',$fournisseurs,$fournisseur->fournisseur_id, ['class' => 'form-control']) !!}
-                          </div> 
+                                {!! Form::label('prenom','Prénom') !!}
+                                  {!! Form::text('prenom',$fournisseur->prenom, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="form-group">
+                             {!! Form::label('adresse','Adresse') !!}
+                                  {!! Form::text('adresse',$fournisseur->adresse, ['class' => 'form-control']) !!}
+
+                            </div>
+
+<div class="form-group">
+                   {!! Form::label('email','Email') !!}
+                                  {!! Form::text('email',$fournisseur->email, ['class' => 'form-control']) !!}
+
+                            </div>
+
+                            <div class="form-group">
+                            {!! Form::label('telephone','Telephone') !!}
+                                  {!! Form::text('telephone',$fournisseur->telephone, ['class' => 'form-control']) !!}
+
+                            </div>
+
+                          
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}
                 </div> <!-- panel-body -->
