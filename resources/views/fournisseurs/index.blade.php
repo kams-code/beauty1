@@ -30,8 +30,8 @@
                             
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="m-b-30">
+                                    <div class="col-sm-12">
+                                        <div class="m-b-30 pull-right">
                                         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
                                             <div class="modal-dialog"> 
                                                 <div class="modal-content"> 
@@ -97,13 +97,13 @@
                                             </div>
                                         </div><!-- /.modal -->
 
-                                                                                 @can('add_fournisseurs')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
+                                                                                 @can('add_fournisseurs')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                        
                                                                              
                                         </div>
                                     </div>
                                 </div>
-                                @can('view_fournisseurs')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
+                                @can('view_fournisseurs')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                     <thead>
@@ -130,17 +130,17 @@
                                              <td> {{ $fournisseur->adresse }}</td>
                                              <td> {{ $fournisseur->email }}</td>
                                              <td> {{ $fournisseur->telephone }}</td>
-                                            <td class="actions">
+                                            <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 @can('edit_fournisseurs')
                                                 {!! Form::open( ['method' => 'delete', 'url' => route('fournisseurs.destroy', $fournisseur->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             {!! Form::close() !!}
 
                                                 <a href="{{ route('fournisseurs.edit',$fournisseur) }} }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('fournisseurs.edit',$fournisseur) }} }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('fournisseurs.edit',$fournisseur) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('fournisseurs.edit',$fournisseur) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                  @endcan
                                             </td>
                                         </tr> 

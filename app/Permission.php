@@ -95,6 +95,11 @@ class Permission extends \Spatie\Permission\Models\Permission
             'add_services',
             'edit_services',
             'delete_services',
+
+            'view_type_abonnements',
+            'add_type_abonnements',
+            'edit_type_abonnements',
+            'delete_type_abonnements',
             
 
         ];

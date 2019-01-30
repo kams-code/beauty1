@@ -11,15 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 Route::get('create-chart/{type}','ChartController@makeChart');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('bar-chart', 'ChartController@index');
 Route::group( ['middleware' => ['auth']], function() {
+    Route::get('/');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('posts', 'PostController');
@@ -38,31 +37,21 @@ Route::group( ['middleware' => ['auth']], function() {
 });
 
 
-
+Route::get('/permissions', 'RoleController@index1')->name('permissions');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/main', 'MainController@index')->name('main');
 Route::get('/sortie', 'StockController@sortir')->name('sortie');
 Route::get('/facture/{}', 'FactureController@sotre1')->name('factures.validate');
-Route::get('/taglists/create', 'TagListController@create')->name('taglists.create');
-Route::post('/taglists/store', 'TagListController@store')->name('taglists.store');
-Route::get('/taglists/create1', 'TagListController@create1')->name('taglists.create1');
-Route::post('ajax', function() {
-    // grab the id
-    $id = \Input::get('id');
-
-    // return it back to the user in json response
-    return response()->json([
-        'id' => 'The id is: ' . $id
-    ]);
-});
 Route::get('form','FormController@create')->name('form');
 Route::post('form','FormController@store')->name('form');
 Route::resource('categories','CategorieController');
 // ------ les routes de clients ---------
 Route::resource('clients','ClientController');
 Route::resource('commandes','CommandeController');
+Route::resource('type_abonnements','Type_abonnementController');
+Route::resource('abonnements','AbonnementController');
 // ------- les routes de factures --------
 Route::resource('factures','FactureController');
 Route::resource('usertickets','UserticketController');

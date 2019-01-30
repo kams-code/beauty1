@@ -11,11 +11,11 @@
             <!-- Page-Title -->
             <div class="row">
                 <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Editable Table</h4>
+                    <h4 class="pull-left page-title">Editer la table</h4>
                     <ol class="breadcrumb pull-right">
                         <li><a href="#">QuickBeauty</a></li>
                         <li><a href="#">Tables</a></li>
-                        <li class="active">Editable Table</li>
+                        <li class="active">Utilisateur</li>
                     </ol>
                 </div>
             </div>
@@ -33,28 +33,39 @@
 
                        
                             <div class="result-set">
-                                @can('view_users')    
+                                @can('view_users')  
+                                
                                 <div class="row">
-                                    <div class="col-md-5">
-                                        <h3>Edit {{ $user->first_name }}</h3>
-                                    </div>
-                                    <div class="col-md-7 page-action text-right">
+                                   
+                                    <div class=" pull-right">
+                                            <div class="col-md-5">
+                                               
                                         <a href="{{ route('users.index') }}" class="btn btn-default btn-sm"> <i class="fa fa-arrow-left"></i> Back</a>
+                                    </div>
                                     </div>
                                 </div>
                             
                                 <div class="wrapper wrapper-content animated fadeInRight">
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-10">
                                             <div class="ibox float-e-margins">
                                                 <div class="ibox-content">
                                                         
-                                                            <div class="profile-info-name">
-                                                                    <img src="{{asset('images/'.$user->image)}}" class="thumb-lg img-circle img-thumbnail" alt="profile-image">
-                                                                    <h3 class="text-white">John Deon</h3>
-                                                                </div>
+                                                           
                                                     {!! Form::model($user, ['method' => 'PUT', 'route' => ['users.update',  $user->id ],'files'=>true ]) !!}
+                                                    <div class="col-md-12" style="padding: 0px">
+
+                                                            <center>
+                                                                @if ($user->image!=null)
+                                                                <img id="imgpreview" class="thumb-lg img-circle img-thumbnail" src="{{asset('images/'.$user->image)}}" style="width: 100px;cursor: pointer;">
+                                                                
+                                                                    @else
+                                                                    <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
                                                        
+                                                                @endif
+                                                                <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
+                                                            </center>
+                                                         </div>
                                                     @include('user._form')
                                                         <!-- Submit Form Button -->
                                                         {!! Form::submit('Save Changes', ['class' => 'btn btn-primary']) !!}

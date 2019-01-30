@@ -95,7 +95,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-8">
                                                         <div class="portlet"><!-- /portlet heading -->
-                                                            <table class="table table-bordered  table-striped" id="datatable-editable">
+                                                            <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                                                 <thead>
@@ -128,16 +128,16 @@
                                                                         
                                                                         
                                                                         <td> {{ $service->is_promote }}</td>
-                                                                        <td class="actions">
+                                                                        <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                                             @can('edit_services','delete_services')
                                                                             {!! Form::open( ['method' => 'delete', 'url' => route('services.destroy', $service->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                                            <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                                            <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                                                 <i class="fa fa-trash-o"></i>
                                                                             </button>
                                                                         {!! Form::close() !!}
                                                                             <a href="{{ route('services.edit',$service) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                                             <a href="{{ route('services.edit',$service) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                                            <a href="{{ route('services.edit',$service) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                                            <a href="{{ route('services.edit',$service) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                                             <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                                                         @endcan
                                                                         </td>
@@ -156,7 +156,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-8">
                                                         <div class="portlet"><!-- /portlet heading -->
-                                                            <table class="table table-bordered  table-striped" id="datatable-editable">
+                                                            <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                                                 <thead>
@@ -178,16 +178,16 @@
                                                                         </td>
                                                                         <td> {{ $commande->created_at }}</td>
                                                                          <td> {{ $commande->fournisseur_id }}</td>
-                                                                        <td class="actions">
+                                                                        <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                                             @can('edit_commandes','delete_commandes')
                                                                             {!! Form::open( ['method' => 'delete', 'url' => route('commandes.destroy', $commande->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                                            <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                                            <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                                                 <i class="fa fa-trash-o"></i>
                                                                             </button>
                                                                         {!! Form::close() !!}
                                                                             <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                                             <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                                            <a href="{{ route('commandes.destroy',$commande) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                                            <a href="{{ route('commandes.destroy',$commande) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                                             <a href="{{ route('commandes.destroy',$commande) }}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                                                         @endcan
                                                                         </td>

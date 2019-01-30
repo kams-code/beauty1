@@ -1,131 +1,204 @@
 @extends('layouts.mainlayout')
-@section('title', 'Roles & Permissions')
 @include('partials.topbar')
 @include('partials.sidebar')
-@section('content')
-<div class="content-page">
-        <!-- Start content -->
-        <div class="content">
-            <div class="container">
 
-                <!-- Page-Title -->
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h4 class="pull-left page-title">Editable Table</h4>
-                        <ol class="breadcrumb pull-right">
-                            <li><a href="#">QuickBeauty</a></li>
-                            <li><a href="#">Tables</a></li>
-                            <li class="active">Editer les tickets</li>
-                        </ol>
-                    </div>
-                </div>
+                                 @section('content')
+                  <style type="text/css">
+                      .form-horizontal .control-label{
+                        text-align: left;
+                      }
+                  </style>
+                  
+  <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
 
-
-                <div class="panel">
-                    
-                    <div class="panel-body">
+                        <!-- Page-Title -->
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="m-b-30">
+                            <div class="col-sm-12">
+                                <h4 class="pull-left page-title">Instituts</h4>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="home">Accueil</a></li>
+                                    <li class="active">Instituts</li>
+                                </ol>
+                            </div>
+                        </div>
+
+
+                        <div class="panel">
+                            
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="m-b-30 pull-right">
+                                                <div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            {!! Form::open(['method' => 'post']) !!}
+                                                
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="roleModalLabel">Role</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <!-- name Form Input -->
+                                                                    <div class="form-group @if ($errors->has('name')) has-error @endif">
+                                                                        {!! Form::label('name', 'Nom') !!}
+                                                                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom']) !!}
+                                                                        @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                
+                                                                    <!-- Submit Form Button -->
+                                                                    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                                                </div>
+                                                                {!! Form::close() !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="row">
+                                                       
+                                                        <div class="col-md-7 page-action text-right">
+                                                            @can('add_roles')
+                                                            <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#roleModal">Ajouter <i class="fa fa-plus"></i></button> 
+                                                            @endcan
+                                                        </div>
+                                                    </div>
+
+                                                   
+                                                    
+
+
+
+
+
+                                                                             
+                                                     
+    
+                                                                             
+                                        </div>
+                                    </div>
+                                </div>
+                                @can('view_organisations')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
-
-                                                                          
-
-
-
-                                </div>
+    
+                                    <thead>
+                                        <tr>
+                                            
+                                            <th>Nom</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                     
+                                                            @forelse ($roles as $role)
+       
+                                    <tr class="gradeC">
+                                                             <td> {{ $role->name }}</td>
+                                                        
+                                                              
+                                                             <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
+                                                                 @can('edit_organisations','delete_organisations')
+                                                                 {!! Form::open( ['method' => 'delete', 'url' => route('roles.destroy', $role->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
+                                                                 <button type="submit" class="btn-delete btndelete btn btn-danger">
+                                                                     <i class="fa fa-trash-o"></i>
+                                                                 </button>
+                                                             {!! Form::close() !!}
+                 
+                                                                 <a href="{{ route('roles.edit',$role) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                                 <a href="{{ route('roles.destroy',$role) }}" class="hidden on-editing cancel-row" ><i class="fa fa-times"></i></a>
+                                                                 <a data-toggle="modal" data-target="#editroleModal{{ $role->id }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
+                                                                 <div class="modal fade" id="editroleModal{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
+                                                                        <div class="modal-dialog" role="document">
+                                                                                {!! Form::open(['method' => 'PUT', 'url' => route('roles.update', $role )]) !!}
+                                                                
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header">
+                                                                                    <h4 class="modal-title" id="roleModalLabel">Role</h4>
+                                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                        <span aria-hidden="true">&times;</span>
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <!-- name Form Input -->
+                                                                                    <div class="form-group">
+                                                                                        {!! Form::label('name', 'Nom') !!}
+                                                                                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom']) !!}
+                                                                                       
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                
+                                                                                    <!-- Submit Form Button -->
+                                                                                    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                                                                </div>
+                                                                                {!! Form::close() !!}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                      
+                                                                 
+                                                                 
+                                                                 
+                                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                                            @endcan
+                                                             </td>
+                                                         </tr> 
+                     @endforeach
+                               </table>@endcan
                             </div>
-                        </div>
-                        <div class="row">
-                                <div class="col-md-5">
-                                    <h3>Create</h3>
-                                </div>
-                                <div class="col-md-7 page-action text-right">
-                                    <a href="{{ route('users.index') }}" class="btn btn-default btn-sm"> <i class="fa fa-arrow-left"></i> Back</a>
-                                </div>
-                            </div>
-                        
-                            <div class="row">
-                                <div class="col-lg-12">
-                                       <!-- Modal -->
-    <div class="modal fade" id="roleModal" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
-            <div class="modal-dialog" role="document">
-                {!! Form::open(['method' => 'post']) !!}
-    
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="roleModalLabel">Role</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- name Form Input -->
-                        <div class="form-group @if ($errors->has('name')) has-error @endif">
-                            {!! Form::label('name', 'Name') !!}
-                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Role Name']) !!}
-                            @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    
-                        <!-- Submit Form Button -->
-                        {!! Form::submit('Submit', ['class' => 'btn btn-primary']) !!}
-                    </div>
-                    {!! Form::close() !!}
-                </div>
+                            <!-- end: page -->
+
+                        </div> <!-- end Panel -->
+
+                    </div> <!-- container -->
+                               
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2019 © QuickBeauty.
+                </footer>
+
             </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-md-5">
-                <h3>Roles</h3>
-            </div>
-            <div class="col-md-7 page-action text-right">
-                @can('add_roles')
-                    <a href="#" class="btn btn-sm btn-success pull-right" data-toggle="modal" data-target="#roleModal"> <i class="glyphicon glyphicon-plus"></i> New</a>
-                @endcan
-            </div>
-        </div>
-    
-    
-        @forelse ($roles as $role)
-            {!! Form::model($role, ['method' => 'PUT', 'route' => ['roles.update',  $role->id ], 'class' => 'm-b']) !!}
-    
-            @if($role->name === 'Admin')
-                @include('shared._permissions', [
-                              'title' => $role->name .' Permissions',
-                              'options' => ['disabled'] ])
-            @else
-                @include('shared._permissions', [
-                              'title' => $role->name .' Permissions',
-                              'model' => $role ])
-                @can('edit_roles')
-                    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                @endcan
-            @endif
-    
-            {!! Form::close() !!}
-    
-        @empty
-            <p>No Roles defined, please run <code>php artisan db:seed</code> to seed some dummy data.</p>
-        @endforelse
-                                </div>
-                            </div>
-                    </div>
-                    <!-- end: page -->
+ 
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+       
+	    <!-- Examples -->
+	    <script src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
+	    <script src="{{asset('plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 
+	    <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
+	    <script src="{{asset('pages/datatables.editable.init.js')}}"></script>
 
-                </div> <!-- end Panel -->
-
-            </div> <!-- container -->
-                       
-        </div> <!-- content -->
-
-        <footer class="footer text-right">
-            2019 © QuickBeauty.
-        </footer>
-
-    </div>
-
-@endsection
+                
+                @endsection
+@include('partials.sidebarright')
+<script type="text/javascript">
+    $(document).on('click','#imgpreview',function(){
+        $('#inputimage').trigger('click');
+    });
+    
+    function readURL(input, ids) {
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+              
+              reader.onload = function (e) {
+                  $('#'+ids).attr('src', e.target.result);
+                  var src = $('#'+ids).attr('src');
+                  
+              }
+              
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+          
+      $(document).on('change','#inputimage',function(){
+          readURL(this,'imgpreview');
+      });
+</script>

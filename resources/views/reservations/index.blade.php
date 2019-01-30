@@ -1,18 +1,16 @@
-
-
-
 @extends('layouts.mainlayout')
 @include('partials.topbar')
 @include('partials.sidebar')
 
                                  @section('content')
-                                  @can('edit_produits', 'delete_produits')
-                    <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-                @endcan
-                 @can('edit_produits', 'delete_produits')
-                  
+                    
+             
+                  <!-- DataTables -->
+        <link href="{{asset('plugins/datatables/jquery.dataTables.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('plugins/datatables/buttons.bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('plugins/datatables/fixedHeader.bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('plugins/datatables/responsive.bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('plugins/datatables/scroller.bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
   <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -23,9 +21,8 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Reservations</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Tables</a></li>
-                                    <li class="active">Editer les reservations</li>
+                                    <li><a href="home">Acceuil</a></li>
+                                    <li class="active">Reservations</li>
                                 </ol>
                             </div>
                         </div>
@@ -35,35 +32,35 @@
                             
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="m-b-30">
+                                    <div class="col-sm-12">
+                                        <div class="m-b-30 pull-right">
                                         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
                                             <div class="modal-dialog"> 
                                                 <div class="modal-content"> 
                                                     <div class="modal-header"> 
                                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-                                                        <h4 class="modal-title">Réservation</h4> 
+                                                        <h4 class="modal-title">Ajouter réservation</h4> 
                                                     </div> 
                                                     <div class="modal-body"> 
                                                         <div class="row"> 
                                                              {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('reservations.store')]) !!}
-                                            <div class="form-group">
+                                            <div class="col-md-12" style="padding: 0px">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('code','Code') !!}</label>
-                                                <div class="col-sm-9">
+                                                <div class="col-sm-6">
                                                   {!! Form::text('code',null, ['class' => 'form-control']) !!}
                                                  </div>
                                             </div>
                                             
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('client_id','Client') !!}</label>
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('client_id','Client') !!}</label>
                                                 <div class="col-sm-9">
                                                     {!! Form::select('client_id',$clients,null, ['class' => 'form-control']) !!}
                          
-          </div>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Service') !!}</label>
-                                                <div class="col-sm-9">
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('service_id','Service') !!}</label>
+                                                <div class="col-sm-12">
                                                    
                                                     {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
           </div>
@@ -102,7 +99,7 @@
 
                                                                               
                                         @can('add_reservations')
-                                           @can('add_reservations')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
+                                           @can('add_reservations')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                     @endcan
                                        
                                        
@@ -111,7 +108,7 @@
                                     </div>
                                 </div>
                                                            
-                                @can('view_reservations')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
+                                @can('view_reservations')                                                                  <table class="table table-bordered  table-striped" id="datatable-buttons">
                                    
     
                                    <thead>
@@ -175,16 +172,16 @@
 
 
                                            
-                                           <td class="actions">
+                                           <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 @can('edit_reservations','delete_reservations')
                                                 {!! Form::open( ['method' => 'delete', 'url' => route('reservations.destroy', $reservation->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             {!! Form::close() !!}
                                                 <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('reservations.edit',$reservation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('reservations.edit',$reservation) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                     @endcan
                                            @foreach($reservations as $reservation)
@@ -217,18 +214,11 @@
                 </footer>
 
             </div>
- 
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-       
-	    <!-- Examples -->
-	    <script src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
-	    <script src="{{asset('plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 
-	    <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
-	    <script src="{{asset('pages/datatables.editable.init.js')}}"></script>
 
-                @endcan
+                
                 @endsection
 @include('partials.sidebarright')
+
 
 
 

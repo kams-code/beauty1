@@ -32,8 +32,8 @@
                             
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="m-b-30">
+                                    <div class="col-sm-12">
+                                        <div class="m-b-30 pull-right">
                                         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
                                             <div class="modal-dialog"> 
                                                 <div class="modal-content"> 
@@ -103,13 +103,13 @@
                                             </div>
                                         </div><!-- /.modal -->
 
-                                                                                 @can('add_factures')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
+                                                                                 @can('add_factures')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                        
                                                                              
                                         </div>
                                     </div>
                                 </div>
-                                @can('view_factures')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
+                                @can('view_factures')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                     <thead>
@@ -137,10 +137,10 @@
                                             <td> {{ $organisation->description }} </td>
                                             <td> {{ $organisation->created_at }}</td>
                                              
-                                            <td class="actions">
+                                            <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 <a href="{{ route('organisations.edit',$organisation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('organisations.destroy',$organisation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('organisations.edit',$organisation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('organisations.edit',$organisation) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr> 

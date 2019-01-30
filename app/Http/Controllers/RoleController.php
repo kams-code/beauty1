@@ -18,6 +18,16 @@ class RoleController extends Controller
     public function index()
     {
         $user_role=Auth::user()->roles->first()->name;
+
+        $roles = Role::get()->where('id','!=',1);
+  
+        $permissions = Permission::all();
+
+        return view('role.index', compact('roles', 'permissions'));
+    }
+    public function index1()
+    {
+        $user_role=Auth::user()->roles->first()->name;
 if( $user_role=="Admin"){
         $roles = Role::all();
     }else{
@@ -25,7 +35,7 @@ if( $user_role=="Admin"){
     }
         $permissions = Permission::all();
 
-        return view('role.index', compact('roles', 'permissions'));
+        return view('role.permission', compact('roles', 'permissions'));
     }
 
     /**
@@ -54,7 +64,9 @@ if( $user_role=="Admin"){
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        
+        $role = Role::findOrFail($id);
+        $role->update($request->all());
         if($role = Role::findOrFail($id)) {
             // admin role has everything
             if($role->name === 'Admin') {
@@ -70,7 +82,29 @@ if( $user_role=="Admin"){
         } else {
             flash()->error( 'Role with id '. $id .' note found.');
         }
+       
+        
 
         return redirect()->route('roles.index');
+    }
+
+       /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     * @return \Illuminate\Http\Response
+     * @internal param Request $request
+     */
+    public function destroy($id)
+    {
+       
+
+        if( Role::findOrFail($id)->delete() ) {
+            flash()->success('Role has been deleted');
+        } else {
+            flash()->success('Role not deleted');
+        }
+
+        return redirect()->back();
     }
 }

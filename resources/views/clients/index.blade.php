@@ -32,80 +32,86 @@
                             
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="m-b-30">
+                                    <div class="col-sm-12">
+                                        <div class="m-b-30 pull-right">
+                               
                                         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
-                                            <div class="modal-dialog"> 
-                                                <div class="modal-content"> 
-                                                    <div class="modal-header"> 
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-                                                        <h4 class="modal-title">Modal Content is Responsive</h4> 
-                                                    </div> 
-                                                    <div class="modal-body"> 
-                                                        <div class="row"> 
-                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('clients.store')]) !!}
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
-                                                 </div>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('pays','Pays') !!}</label>
-
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
-          </div>
-                                            </div>
-                            
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('adresse','Adresse') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
-          </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
-          </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('email','Email') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('email',null, ['class' => 'form-control']) !!}
-          </div>
-                                            </div>
-                                            
-                                           
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                
-     </div>
-                                            </div>
-                                            <div class="modal-footer"> 
-                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
-                                                       <button class="btn btn-primary">Envoyer</button>
-                                                    </div> 
-                                       {!! Form::close() !!}
+                                                <div class="modal-dialog"> 
+                                                    <div class="modal-content"> 
+                                                        <div class="modal-header"> 
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                                            <h4 class="modal-title">Ajouter un client</h4> 
                                                         </div> 
-
+                                                        <div class="modal-body"> 
+                                                            <div class="row"> 
+                                                                 {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('clients.store'),'files'=>true]) !!}
+                                               
+                                                <div class="col-md-6" style="padding: 0px">
+                                                    <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom',['class' => 'pull-left']) !!}</label>
+                                                    <div class="col-sm-12">
+                                                      {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                     </div>
+                                                </div>
+                                                <div class="col-md-6" style="padding: 0px">
+                                                    <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('prenom','Prénom',['class' => 'pull-left']) !!}</label>
+                                                    <div class="col-sm-12">
+                                                      {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
+              </div>
+                                                </div>
+                                              
+                                                <div class="col-md-6" style="padding: 0px">
+                                                    <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('adresse','Adresse',['class' => 'pull-left']) !!}</label>
+                                                    <div class="col-sm-12">
+                                                      {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+              </div>
+                                                </div>
+                                                <div class="col-md-6" style="padding: 0px">
+                                                    <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('telephone','Téléphone',['class' => 'pull-left']) !!}</label>
+                                                    <div class="col-sm-12">
+                                                      {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+              </div>
+                                                </div>
+                                                
+                                                <div class="col-md-6" style="padding: 0px">
+                                                    <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('email','Email',['class' => 'pull-left']) !!}</label>
+                                                    <div class="col-sm-12">
+                                                      {!! Form::text('email',null, ['class' => 'form-control']) !!}
+              </div>
+                                                </div>
+                                    
+                                               
+                                                
+                                                <div class="m-b-0">
+                                                    <div class="col-sm-offset-3 col-sm-9">
+                                                    
+         </div>
+                                                </div>
+                                                <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px"> 
+                                                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
+                                                           <button class="btn btn-primary">Enregistrer</button>
+                                                        </div> 
+                                           {!! Form::close() !!}
+                                                            </div> 
+    
+                                                            
+                                                        </div> 
                                                         
                                                     </div> 
-                                                    
-                                                </div> 
-                                            </div>
-                                        </div><!-- /.modal -->
+                                                </div>
+                                            </div> 
+                                        
+                                        
+                                        
+                                        
+                                        <!-- /.modal -->
 
-                                                                                 @can('add_clients')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
+                                                                                 @can('add_clients')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                        
                                                                              
                                         </div>
                                     </div>
                                 </div>
-                                @can('view_clients')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
+                                @can('view_clients')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                     <thead>
@@ -129,16 +135,16 @@
                                             <td>{{ $client->telephone }}</td>
                                             <td>{{ $client->email }}</td>
                                              
-                                            <td class="actions">
+                                            <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 @can('edit_clients','delete_clients')
                                                 {!! Form::open( ['method' => 'delete', 'url' => route('clients.destroy', $client->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             {!! Form::close() !!}
                                                 <a href="{{ route('clients.edit',$client) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('clients.edit',$client) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('clients.edit',$client) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('clients.edit',$client) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                             @endcan
                                             </td>

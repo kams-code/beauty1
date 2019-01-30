@@ -1,13 +1,8 @@
 <!-- Name Form Input -->
 
-<div class="form-group">
-   {!! Form::label('imageup','Image') !!}
-    
-      {!! Form::file('imageup', ['class' => 'form-control']) !!}
 
-</div>
 <div class="form-group @if ($errors->has('name')) has-error @endif">
-    {!! Form::label('name', 'Name') !!}
+    {!! Form::label('name', 'Nom') !!}
     {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
     @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
 </div>
@@ -29,7 +24,7 @@
 
 <!-- password Form Input -->
 <div class="form-group @if ($errors->has('password')) has-error @endif">
-    {!! Form::label('password', 'Password') !!}
+    {!! Form::label('password', 'Mot de passe') !!}
     {!! Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) !!}
     @if ($errors->has('password')) <p class="help-block">{{ $errors->first('password') }}</p> @endif
 </div>
@@ -42,6 +37,3 @@
 </div>
 
 <!-- Permissions -->
-@if(isset($user))
-    @include('shared._permissions', ['closed' => 'true', 'model' => $user ])
-@endif

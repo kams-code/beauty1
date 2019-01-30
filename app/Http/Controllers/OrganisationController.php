@@ -5,6 +5,10 @@ namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Organisations;
 use Image;
+use App\User;
+use App\Role;
+use App\Type_abonnement;
+use App\Abonnements;
 class OrganisationController extends Controller
 {
     /**
@@ -13,9 +17,10 @@ class OrganisationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {       $types=Type_abonnement::pluck('nom','id');
+
         $organisations = Organisations::get();
-        return view('organisations.index',compact('organisations'));
+        return view('organisations.index',compact('organisations','types'));
     }
 
     /**
@@ -36,6 +41,7 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
+       
         $produits =new Organisations([ 
             'nom'=> $request->get('nom'),
         'pays'=> $request->get('nom'),
@@ -47,22 +53,48 @@ class OrganisationController extends Controller
         
        ]);
     
-       if($request->hasfile('image'))
+       if($request->hasfile('imageup'))
        {
-    
-              $image=$request->file('image');
+              $image=$request->file('imageup');
               $filename=time().'.'.$image->getClientOriginalExtension();
               $location=public_path('images/'.$filename);
               Image::make($image)->resize(800,400)->save($location); 
-             
+              $request->merge(['image' => $filename ]);
+            
               $produits->image=$filename;
        }
        
+     
+
             $produits->save();
 
 
+         
+                  
+           
+         
+            $user1=Auth::user();
+            // hash password
+            $request->merge(['password' => bcrypt($request->get('password'))]);
+            $request->merge(['organisation_id' =>$produits->id ]);
+            
+           
+            // Create the user
+            if ( $user = User::create($request->except('roles', 'permissions')) ) {
+    
+                $roles = Role::get()->where('id','=',2);
 
+$user->syncRoles($roles);
+    
+            } else {
+                flash()->error('Unable to create user.');
+            }
 
+            $abonnement =new Abonnements([ 
+                'organisation_id'=>$produits->id,
+                'type_id'=>$request->get('type_id')
+           ]);  
+           $abonnement->save();
   
         return redirect(route('organisations.index'));
     }
