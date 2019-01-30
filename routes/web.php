@@ -18,7 +18,7 @@ Route::get('create-chart/{type}','ChartController@makeChart');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('bar-chart', 'ChartController@index');
 Route::group( ['middleware' => ['auth']], function() {
-    Route::get('/');
+    Route::get('/', 'HomeController@index');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('posts', 'PostController');

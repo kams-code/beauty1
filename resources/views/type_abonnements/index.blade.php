@@ -48,7 +48,7 @@
                                                              <div class="col-md-6" style="padding: 0px">
                                                                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','nom') !!}</label>
                                                                 <div class="col-sm-12">
-                                                                {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                                {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6" style="padding: 0px">
@@ -67,14 +67,14 @@
                                                             <div class="col-md-6" style="padding: 0px">
                                                                     <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('dateDeb','Debut') !!}</label>
                                                                     <div class="col-sm-12">
-                                                                            {!! Form::date('dateDeb',null, ['class' => 'form-control']) !!}
+                                                                            {!! Form::date('dateDeb',null, ['class' => 'form-control','required']) !!}
                                                     
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6" style="padding: 0px">
                                                                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('dateFin','Fin') !!}</label>
                                                                         <div class="col-sm-12">
-                                                                                {!! Form::date('dateFin',null, ['class' => 'form-control']) !!}
+                                                                                {!! Form::date('dateFin',null, ['class' => 'form-control','required']) !!}
                                                         
                                                                         </div>
                                                                     </div>

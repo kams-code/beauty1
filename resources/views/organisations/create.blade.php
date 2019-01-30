@@ -28,27 +28,27 @@
                                     {!! Form::open(['url' => route('organisations.store')]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('pays','pays') !!}
-                             {!! Form::text('pays',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('pays',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('ville','ville') !!}
-                             {!! Form::text('ville',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('ville',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('adresse','adresse') !!}
-                             {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','telephone') !!}
-                             {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('telephone',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('description','description') !!}
-                             {!! Form::textarea('description',null, ['class' => 'form-control']) !!}
+                             {!! Form::textarea('description',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                           <label>

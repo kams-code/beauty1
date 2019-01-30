@@ -55,12 +55,12 @@
                                     </div>
                                    <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$service->nom, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',$service->nom, ['class' => 'form-control','required']) !!}
                           </div>
                           
                           <div class="form-group">
                              {!! Form::label('description','description') !!}
-                             {!! Form::textarea('description',$service->description, ['class' => 'form-control']) !!}
+                             {!! Form::textarea('description',$service->description, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                             <label>

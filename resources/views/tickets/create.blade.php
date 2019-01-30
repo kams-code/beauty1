@@ -73,15 +73,15 @@
                     {!! Form::open(['url' => route('tickets.store')]) !!}
                           <div class="form-group">
                              {!! Form::label('titre','Titre') !!}
-                             {!! Form::text('titre',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('titre',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('type','Type') !!}
-                             {!! Form::text('type',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('type',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('etat','Etat') !!}
-                             {!! Form::checkbox('etat',null, ['class' => 'form-control']) !!}
+                             {!! Form::checkbox('etat',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

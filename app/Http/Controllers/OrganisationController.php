@@ -48,7 +48,9 @@ class OrganisationController extends Controller
         'ville'=> $request->get('nom'),
         'description'=> $request->get('nom'),
         'adresse'=> $request->get('nom'),
-        'telephone'=> $request->get('telephone')
+        'telephone'=> $request->get('telephone'),
+        'email'=> $request->get('email'),
+        'identifiant'=> $request->get('name')
 
         
        ]);
@@ -157,7 +159,7 @@ $user->syncRoles($roles);
     public function destroy($id)
     {
         
-        if( Organisation::findOrFail($id)->delete() ) {
+        if( Organisations::findOrFail($id)->delete() ) {
             flash()->success('organisation supprime');
         } else {
             flash()->success('organisation en vu');

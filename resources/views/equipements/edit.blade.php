@@ -30,11 +30,11 @@
                     {!! Form::open(['method' => 'PUT', 'url' => route('equipements.update', $equipement ),'files'=>true]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$equipement->nom, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',$equipement->nom, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('description','description') !!}
-                             {!! Form::text('description',$equipement->description, ['class' => 'form-control']) !!}
+                             {!! Form::text('description',$equipement->description, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                             {!! Form::label('imageup','Image') !!}
@@ -44,7 +44,7 @@
                           </div>
                           <div class="form-group">
                              {!! Form::label('fournisseur_id','Fournisseur') !!}
-                             {!! Form::select('fournisseur_id',$fournisseurs,$equipement->fournisseur_id, ['class' => 'form-control']) !!}
+                             {!! Form::select('fournisseur_id',$fournisseurs,$equipement->fournisseur_id, ['class' => 'form-control','required']) !!}
                           </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

@@ -42,7 +42,7 @@
                                                         {!! Form::label('titre','Titre') !!}
                                                     </label>
                                                     <div class="col-sm-9">
-                                                        {!! Form::text('titre',null, ['class' => 'form-control']) !!}
+                                                        {!! Form::text('titre',null, ['class' => 'form-control','required']) !!}
                                                      </div>
                                                 </div>
                                                 
@@ -50,7 +50,7 @@
                                                     <label for="inputPassword3" class="col-sm-3 control-label">
                                                             {!! Form::label('type','Type') !!}</label>
                                                     <div class="col-sm-9">
-                                                            {!! Form::text('type',null, ['class' => 'form-control']) !!}
+                                                            {!! Form::text('type',null, ['class' => 'form-control','required']) !!}
               </div>
                                                 </div>
                                                 <div class="form-group">
@@ -70,7 +70,7 @@
                                                 <div class="form-group">
                                                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Service') !!}</label>
                                                         <div class="col-sm-9">
-                                                            {!! Form::select('service_id',$services,null, ['class' => 'form-control']) !!}
+                                                            {!! Form::select('service_id',$services,null, ['class' => 'form-control','required']) !!}
                                  
                   </div>
                                                     </div>
@@ -78,7 +78,7 @@
                                                             <label for="inputPassword3" class="col-sm-3 control-label">
                                                                     {!! Form::label('valeur','Valeur') !!}</label>
                                                             <div class="col-sm-9">
-                                                                    {!! Form::text('valeur',null, ['class' => 'form-control']) !!}
+                                                                    {!! Form::text('valeur',null, ['class' => 'form-control','required']) !!}
                       </div>
                                                         </div>
                                                
@@ -122,7 +122,7 @@
                                                                                     <div class="form-group">
                                                                                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('client_id','Clients') !!}</label>
                                                                                         <div class="col-sm-9">
-                                                                                            {!! Form::select('clients[]',$clients, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                                                                                            {!! Form::select('clients[]',$clients, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
                                                                  
                                                   </div>
                                                                                     </div>
@@ -130,7 +130,7 @@
                                                                                         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('tickets','Tickets') !!}</label>
                                                                                         <div class="col-sm-9">
                                                                                            
-                                                                                            {!! Form::select('tickets[]', $tickets, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                                                                                            {!! Form::select('tickets[]', $tickets, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
                                                   </div>
                                                                                     </div>
                                                                                    

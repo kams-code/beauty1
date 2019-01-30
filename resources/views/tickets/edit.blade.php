@@ -43,13 +43,13 @@
                                                        {!! Form::label('titre','Titre') !!}
                                                    
                                                 
-                                                        {!! Form::text('titre',null, ['class' => 'form-control']) !!}
+                                                        {!! Form::text('titre',null, ['class' => 'form-control','required']) !!}
                                                      
                                                 </div>
                                                 
                                                 <div class="form-group">
                                                            {!! Form::label('type','Type') !!}</label>
-                                                           {!! Form::text('type',null, ['class' => 'form-control']) !!}
+                                                           {!! Form::text('type',null, ['class' => 'form-control','required']) !!}
            
                                                 </div>
                                                 <div class="form-group">

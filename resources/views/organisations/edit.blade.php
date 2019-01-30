@@ -55,27 +55,27 @@
                                     </div>
                                    <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$organisation->nom, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',$organisation->nom, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('pays','pays') !!}
-                             {!! Form::text('pays',$organisation->pays, ['class' => 'form-control']) !!}
+                             {!! Form::text('pays',$organisation->pays, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('ville','ville') !!}
-                             {!! Form::text('ville',$organisation->ville, ['class' => 'form-control']) !!}
+                             {!! Form::text('ville',$organisation->ville, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('adresse','adresse') !!}
-                             {!! Form::text('adresse',$organisation->adresse, ['class' => 'form-control']) !!}
+                             {!! Form::text('adresse',$organisation->adresse, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','telephone') !!}
-                             {!! Form::text('telephone',$organisation->telephone    , ['class' => 'form-control']) !!}
+                             {!! Form::text('telephone',$organisation->telephone    , ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('description','description') !!}
-                             {!! Form::textarea('description',$organisation->description, ['class' => 'form-control']) !!}
+                             {!! Form::textarea('description',$organisation->description, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                             <label>

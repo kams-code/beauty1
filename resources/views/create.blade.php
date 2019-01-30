@@ -32,7 +32,7 @@
     <div class="form-group">
         <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('filename[]','Fournisseur') !!}</label>
         <div class="col-sm-9">
-            {!! Form::file('filename[]',null, ['class' => 'form-control','enctype'=>"multipart/form-data"]) !!}
+            {!! Form::file('filename[]',null, ['class' => 'form-control','required','enctype'=>"multipart/form-data"]) !!}
 
 </div>
     </div>

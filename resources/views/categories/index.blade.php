@@ -40,13 +40,13 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                              <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('code','code') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('code',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             <div class="form-group">
@@ -60,7 +60,7 @@
                                        <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','Description') !!}</label>
                                                 <div class="col-sm-9">
-                                          {!! Form::text('description',null, ['class' => 'form-control']) !!}
+                                          {!! Form::text('description',null, ['class' => 'form-control','required']) !!}
                          
      
           </div>

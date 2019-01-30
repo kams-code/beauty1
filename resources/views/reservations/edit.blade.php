@@ -30,28 +30,28 @@
                     {!! Form::open(['method' => 'PUT', 'url' => route('reservations.update', $reservation )]) !!}
                           <div class="form-group">
                              {!! Form::label('code','Code') !!}
-                             {!! Form::text('code',$reservation->code, ['class' => 'form-control']) !!}
+                             {!! Form::text('code',$reservation->code, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                             <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('date','Date :') !!}</label>
                             <div class="col-sm-9">
-                              {!! Form::date('date',$reservation->date, ['class' => 'form-control']) !!}
+                              {!! Form::date('date',$reservation->date, ['class' => 'form-control','required']) !!}
                              </div>
                         </div>
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heure','Heure :') !!}</label>
                             <div class="col-sm-9">
-                              {!! Form::time('heure',$reservation->heure, ['class' => 'form-control']) !!}
+                              {!! Form::time('heure',$reservation->heure, ['class' => 'form-control','required']) !!}
                              </div>
                         </div>    
                           <div class="form-group">
                              {!! Form::label('client_id','Client') !!}
-                             {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control']) !!}
+                             {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control','required']) !!}
                           </div> 
 
                           <div class="form-group">
                              {!! Form::label('service_id','Service') !!}
-                            {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                            {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
      </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

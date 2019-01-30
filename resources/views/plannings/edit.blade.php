@@ -72,17 +72,17 @@
                     {!! Form::open(['method' => 'PUT', 'url' => route('reservations.update', $reservation )]) !!}
                           <div class="form-group">
                              {!! Form::label('code','Code') !!}
-                             {!! Form::text('code',$reservation->code, ['class' => 'form-control']) !!}
+                             {!! Form::text('code',$reservation->code, ['class' => 'form-control','required']) !!}
                           </div>
                 
                           <div class="form-group">
                              {!! Form::label('client_id','Client') !!}
-                             {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control']) !!}
+                             {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control','required']) !!}
                           </div> 
 
                           <div class="form-group">
                              {!! Form::label('service_id','Service') !!}
-                             {!! Form::select('service_id',$services,$reservation->service_id, ['class' => 'form-control']) !!}
+                             {!! Form::select('service_id',$services,$reservation->service_id, ['class' => 'form-control','required']) !!}
                           </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

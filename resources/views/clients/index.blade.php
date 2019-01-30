@@ -49,33 +49,33 @@
                                                 <div class="col-md-6" style="padding: 0px">
                                                     <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom',['class' => 'pull-left']) !!}</label>
                                                     <div class="col-sm-12">
-                                                      {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                      {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                      </div>
                                                 </div>
                                                 <div class="col-md-6" style="padding: 0px">
                                                     <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('prenom','Prénom',['class' => 'pull-left']) !!}</label>
                                                     <div class="col-sm-12">
-                                                      {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
+                                                      {!! Form::text('prenom',null, ['class' => 'form-control','required']) !!}
               </div>
                                                 </div>
                                               
                                                 <div class="col-md-6" style="padding: 0px">
                                                     <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('adresse','Adresse',['class' => 'pull-left']) !!}</label>
                                                     <div class="col-sm-12">
-                                                      {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+                                                      {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
               </div>
                                                 </div>
                                                 <div class="col-md-6" style="padding: 0px">
                                                     <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('telephone','Téléphone',['class' => 'pull-left']) !!}</label>
                                                     <div class="col-sm-12">
-                                                      {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+                                                      {!! Form::text('telephone',null, ['class' => 'form-control','required']) !!}
               </div>
                                                 </div>
                                                 
                                                 <div class="col-md-6" style="padding: 0px">
                                                     <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('email','Email',['class' => 'pull-left']) !!}</label>
                                                     <div class="col-sm-12">
-                                                      {!! Form::text('email',null, ['class' => 'form-control']) !!}
+                                                      {!! Form::text('email',null, ['class' => 'form-control','required']) !!}
               </div>
                                                 </div>
                                     

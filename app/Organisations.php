@@ -11,6 +11,8 @@ class Organisations extends Model
         'nom',
         'pays',
         'ville',
+        'email',
+        'identifiant',
         'description',
         'adresse',
         'image',

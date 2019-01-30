@@ -47,39 +47,39 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('pays','Pays') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('pays',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('pays',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('ville','Ville') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('ville',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('ville',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('adresse','Adresse') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('telephone',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','Description') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('description',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('description',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             

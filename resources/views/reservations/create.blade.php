@@ -74,25 +74,25 @@
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('code','Code') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('code',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('date','Date') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('date',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('date',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('heure','Heure de la reservation') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('heure',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('heure',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('client_id','Client') !!}</label>
                                                 <div class="col-sm-9">
-                                                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control']) !!}
+                                                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control','required']) !!}
                          
           </div>
                                             </div>
@@ -100,7 +100,7 @@
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Service') !!}</label>
                                                 <div class="col-sm-9">
-                                                {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                                                {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
           </div>
                                             </div>
                                             
