@@ -43,7 +43,11 @@
         
     </head>
 
-
+    <style type="text/css">
+        .form-horizontal .control-label{
+            text-align: left !important;
+        }
+    </style>
     <body class="fixed-left">
         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog"> 
@@ -185,6 +189,9 @@
         <!-- Datatable init js -->
         <script src="{{asset('pages/datatables.init.js')}}"></script>
         <script src="{{asset('js/jquery.app.js')}}"></script>
+
+        <script type="text/javascript" src="{{asset('assets/plugins/isotope/dist/isotope.pkgd.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
         <script type="text/javascript">
 
       
@@ -344,6 +351,45 @@
                   },
                 });
           });
+          $(window).load(function(){
+                var $container = $('.portfolioContainer');
+                $container.isotope({
+                    filter: '*',
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false
+                    }
+                });
+
+                $('.portfolioFilter a').click(function(){
+                    $('.portfolioFilter .current').removeClass('current');
+                    $(this).addClass('current');
+
+                    var selector = $(this).attr('data-filter');
+                    $container.isotope({
+                        filter: selector,
+                        animationOptions: {
+                            duration: 750,
+                            easing: 'linear',
+                            queue: false
+                        }
+                    });
+                    return false;
+                }); 
+            });
+            $(document).ready(function() {
+                $('.image-popup').magnificPopup({
+                    type: 'image',
+                    closeOnContentClick: true,
+                    mainClass: 'mfp-fade',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                    }
+                });
+            });
         </script>
     </body>
 
