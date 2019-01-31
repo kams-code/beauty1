@@ -30,7 +30,9 @@
 
                                 @can('add_organisations')
                                 <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-
+                                @can('delete_organisations')
+                                <button type="button"  style="display: none;"  data-toggle="modal" data-target="#deletemodal" id="boutdellAll" class="btn btn-danger"><i class="fa fa-trash-o"></i> Supprimer</button>
+                                @endcan
                             </div>
                         </div>
                     </div>
@@ -39,7 +41,7 @@
 
                         <thead>
                             <tr>
-                                <th><input id="checkbox" type="checkbox" name="etat"></th>
+                                <th><input  id="checkAll" type="checkbox"></th>
                                 <th>Image</th>
                                 <th>Nom</th>
                                 <th>Adresse</th>
@@ -49,7 +51,7 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="tablebody">
 
                             @foreach($organisations as $organisation)
                                 @php
@@ -57,7 +59,7 @@
                                 @endphp
                             <tr class="gradeC">
                                 <td>
-                                    <input id="checkbox" type="checkbox" name="etat">
+                                    <input  type="checkbox" class="check" onclick="verified();" value="{{ $organisation->id }}"  name="etat">
                                 </td>
                                 <td>
                                     <img style="width: 70px;height: 70px" src="{{asset('images/'.$organisation->image)}}" alt="user-img" >

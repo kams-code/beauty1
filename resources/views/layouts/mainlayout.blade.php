@@ -9,6 +9,7 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="{{asset('images/favicon_1.ico')}}">
 
         <!--
@@ -205,14 +206,6 @@
                 });
             });
         </script>
-
-          <!-- pour la gallery -->
-        <script src="{{asset('js/jquery.app.js')}}"></script>
-
-        <script type="text/javascript" src="{{asset('plugins/isotope/dist/isotope.pkgd.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
-        
-
         <!-- pour la galerie-->
         <script type="text/javascript">
             $(window).load(function(){
@@ -338,58 +331,78 @@
                 $('#boutondelete').attr('data-id',id);
                 $('#boutondelete').attr('data-lien',lien);
           });
-          $(document).on('click','#boutondelete',function(){
-                var lien = $(this).attr('data-lien');
-                var id = $(this).attr('data-id');
-                $.ajax({
-                  type: "DELETE",
-                  url: lien,
-                  data: {},
-                  dataType:'text',
-                  success: function(data){
-                    
-                  },
-                });
+          $(document).on('click','#boutdellAll',function(){
+                var start = document.getElementById('tablebody');
+                var cbs = start.getElementsByTagName('input');
+                var lien ="";
+                for(var i=0; i < cbs.length; i++) {
+                  if(cbs[i].type == 'checkbox') {
+                      if(cbs[i].checked){
+                          lien += ',organisations/'+cbs[i].value;
+                          alert(',organisations/'+cbs[i].value);
+                      }
+                  }
+                } 
+                $('#boutondelete').attr('data-lien',lien.substring(1, lien.length));
           });
-          $(window).load(function(){
-                var $container = $('.portfolioContainer');
-                $container.isotope({
-                    filter: '*',
-                    animationOptions: {
-                        duration: 750,
-                        easing: 'linear',
-                        queue: false
-                    }
-                });
-
-                $('.portfolioFilter a').click(function(){
-                    $('.portfolioFilter .current').removeClass('current');
-                    $(this).addClass('current');
-
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({
-                        filter: selector,
-                        animationOptions: {
-                            duration: 750,
-                            easing: 'linear',
-                            queue: false
-                        }
+          $(document).on('click','#boutondelete',function(){
+                var liendd = $(this).attr('data-lien');
+                var listelien = liendd.split(',');
+                for (var i = 0; i <listelien.length; i++) {
+                    var lien = listelien[i];
+                    $.ajax({
+                      type: "DELETE",
+                      headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                      },
+                      url: lien,
+                      data: { _token : $('meta[name="csrf-token"]').attr('content')},
+                      dataType:'text',
+                      success: function(data){
+                            location.reload();
+                      },
                     });
-                    return false;
-                }); 
-            });
-            $(document).ready(function() {
-                $('.image-popup').magnificPopup({
-                    type: 'image',
-                    closeOnContentClick: true,
-                    mainClass: 'mfp-fade',
-                    gallery: {
-                        enabled: true,
-                        navigateByImgClick: true,
-                        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-                    }
-                });
-            });
+                }
+                
+                setTimeout(function(){ location.reload(); }, 2500);
+
+          });
+          function checkAll(bx) {
+            var start = document.getElementById('tablebody');
+            var cbs = start.getElementsByTagName('input');
+            for(var i=0; i < cbs.length; i++) {
+              if(cbs[i].type == 'checkbox') {
+                cbs[i].checked = bx;
+              }
+            }
+            
+            verified();
+          }
+          function verified(){
+            var start = document.getElementById('tablebody');
+            var cbs = start.getElementsByTagName('input');
+            var count = 0;
+            var id_s = '';
+            for(var i=0; i < cbs.length; i++) {
+              if(cbs[i].type == 'checkbox') {
+                  if(cbs[i].checked){
+                      count++;
+                  }
+              }
+            } 
+            if(count>0){
+                $('#boutdellAll').show();
+            }
+            else {
+                $('#boutdellAll').hide();
+            }
+          }
+          $(document).on('click', '.check', function(){
+            verified();
+          });
+          $(document).on('click', '#checkAll', function(){
+            checkAll($('#checkAll').is(':checked'));
+          });
         </script>
     </body>
 
