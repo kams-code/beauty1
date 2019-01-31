@@ -1,127 +1,91 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Modifier un institut</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('organisations.update',$organisation),'files'=>true]) !!}
+            <div class="col-md-12">
+                <h4>Informations de base</h4>
+            </div>
+            <div class="col-md-12" style="padding: 0px">
+                <center>
+                    <img id="imgpreview" src="{{asset('images/'.$organisation->image)}}" style="width: 100px;cursor: pointer;" required>
+                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
 
-                                 @section('content')
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">General elements</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Forms</a></li>
-                                    <li class="active">General elements</li>
-                                </ol>
-                            </div>
-                        </div>
-                        <div class="row port">
-                                <div class="portfolioContainer">
-                                    <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
-                                        <div class="gal-detail thumb">
-                                            <a href="{{asset('images/'.$organisation->image)}}" class="image-popup" title="Screenshot-1">
-                                                <img src="{{asset('images/'.$organisation->image)}}" class="thumb-img" alt="work-thumbnail">
-                                            </a>
-                                            <h4>Logo</h4>
-                                        </div>
-                                    </div>
-    
-                                   
-                                    
-    
-                                </div>
-                            </div> <!-- End row -->
-    
-
-                      <div class="row">
-                           
-                            <div class="col-md-12">
-                                    
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Formulaire</h3></div>
-                                   
-                                    <div class="panel-body">
-                                     
-                                   {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation ),'files'=>true]) !!}
-                                   <div class="form-group">
-                                      {!! Form::label('imageup','Logo') !!}
-                                      
-                                          {!! Form::file('imageup') !!}
-
-                                    </div>
-                                   <div class="form-group">
-                             {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$organisation->nom, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('pays','pays') !!}
-                             {!! Form::text('pays',$organisation->pays, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('ville','ville') !!}
-                             {!! Form::text('ville',$organisation->ville, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('adresse','adresse') !!}
-                             {!! Form::text('adresse',$organisation->adresse, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('telephone','telephone') !!}
-                             {!! Form::number('telephone',$organisation->telephone    , ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('description','description') !!}
-                             {!! Form::textarea('description',$organisation->description, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                            <label>
-                                    <div class="checkbox">
-                                            <input   id="checkbox" type="checkbox" name="online" > 
-                                            <label for="checkbox"   >
-                                                    Etat 
-                                            </label>
-                                        </div>
-                            
-                             en ligne?
-                             </label> 
-                          </div>
-                          <button class="btn btn-primary">envoyer</button>
-                    {!! Form::close() !!}
-
-                                   </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                        </div> <!-- End row -->
-
-
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
- @can('edit_produits', 'delete_produits')
-                    <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-                @endcan
-                
-
+                </center>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="nom" value="{{$organisation->nom}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('telephone','Téléphone*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="number" class="form-control" name="telephone" value="{{$organisation->telephone}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('email','Email*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="email" class="form-control" name="email" value="{{$organisation->email}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('adresse','Adresse*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="adresse" value="{{$organisation->adresse}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('pays','Pays*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="pays" value="{{$organisation->pays}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('ville','Ville*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="ville" value="{{$organisation->ville}}" required="">
+                </div>
+            </div>
+            <div class="col-md-12" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
+                <div class="col-sm-12">
+                    <textarea class="form-control" name="description" required>{{$organisation->description}}</textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4><b >Informations de connexion</b></h4>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('name','Identifiant*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" name="name" class="form-control" required value="{{$organisation->identifiant}}">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('password','Mot de passe*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="password" name="password" class="form-control" required>
+                </div>
             </div>
 
-@endsection
-@include('partials.sidebarright')
+            <div class="m-b-0">
+                <div class="col-sm-offset-3 col-sm-9">
 
+                </div>
+            </div>
+            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
+                <button class="btn btn-primary">Modifier</button>
+            </div>
+            {!! Form::close() !!}
+        </div>
 
+    </div>
 
-
-
-
-
-
-
-
-
-
+</div>

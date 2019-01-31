@@ -107,10 +107,11 @@ $user->syncRoles($roles);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        $organisation = Organisations::get()->where('id',$id);
-        return $organisation;
+        $organisation = Organisations::find($id);
+        
+        return view('organisations.show',compact('organisation'));
     }
 
     /**
@@ -119,10 +120,11 @@ $user->syncRoles($roles);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        $organisation = Organisations::findOrFail($id);
-        return view('organisations.edit',compact('organisation'));
+        $organisation = Organisations::find($id);
+        
+        return view('organisations.edit',compact('organisation','id'));
     }
 
     /**
@@ -158,15 +160,14 @@ $user->syncRoles($roles);
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        
-        if( Organisations::findOrFail($id)->delete() ) {
+        if( Organisations::find($id)->delete() ) {
             flash()->success('organisation supprime');
         } else {
             flash()->success('organisation en vu');
         }
 
-        return redirect()->back();
+        return redirect(route('organisations.index'));
     }
 }

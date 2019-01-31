@@ -211,8 +211,8 @@
     
                                      <a href="{{ route('clients.destroy',$client) }}" class="hidden on-editing cancel-row" ><i class="fa fa-times"></i></a>
                                      <a data-toggle="modal" data-target="#editroleModal{{ $client->id }}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-pencil"></i></a>
-                                     <div class="modal fade" id="editroleModal{{ $client->id }}" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
-                                            <div class="modal-dialog" role="document">
+                                     <div class="modal fade" id="editroleModal{{ $client->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+                                            <div class="modal-dialog" >
                                                     {!! Form::open(['method' => 'PUT', 'url' => route('clients.update', $client ),'files'=>true]) !!}
                                     
                                                 <div class="modal-content">

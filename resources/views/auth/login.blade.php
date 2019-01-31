@@ -62,7 +62,7 @@
                 <div class="panel-heading bg-img" style="padding: 0px"> 
                     <div class="bg-overlay" style="background: #fd3264;"></div>
                     <h3 class="text-center m-t-10 text-white" style="margin: 0px">
-                        <img src="/images/logo_dark.png" style="width: 150px;">
+                        <img src="/images/logo_dark.png" style="width: 200px;">
                     </h3>
                 </div> 
 
@@ -106,7 +106,7 @@
                             <div class="col-md-6" style="text-align: right;text-align: right;">
                                  @if (Route::has('password.request'))
                                     <a class="btn btn-link" style="padding: 0px;box-shadow: 0px 0px" href="{{ route('password.request') }}">
-                                        {{ __('Mot de passe oublier?') }}
+                                        {{ __('Mot de passe oublié?') }}
                                     </a>
                                 @endif
                             </div>
