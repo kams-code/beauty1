@@ -278,17 +278,12 @@
                                                                 </div> 
                                                                 <div class="modal-body"> 
                                                                     <div class="row"> 
+
                                                                             {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation ),'files'=>true]) !!}
                                                                             <div class="col-md-12">
                                                             <h4>Informations de base</h4>
                                                         </div>
-                                                        <div class="col-md-12" style="padding: 0px">
-                                                            <center>
-                                                                <img class="imgpreviewupdate" id="imgpreview{{$organisation->id}}" data-id="{{$organisation->id}}" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;" required>
-                                                                <input id="inputimage{{$organisation->id}}" data-id="{{$organisation->id}}" class="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
-                                                           
-                                                            </center>
-                                                        </div>
+                                                       
                                                         <div class="col-md-6" style="padding: 0px">
                                                             <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
                                                             <div class="col-sm-12">
@@ -369,6 +364,136 @@
                                                 <a data-toggle="modal" data-target="#con-close-modaledit{{$organisation->id}}" class="btndelete btn btn-danger"><i class="fa fa-pencil"></i></a>
                                             
                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                <div class="modal fade" id="editroleModal{{ $organisation->id }}" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                                {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation ),'files'=>true]) !!}
+                                                
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h4 class="modal-title" id="roleModalLabel">Institut</h4>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                        <div class="row"> 
+
+                                       
+                                                                                <div class="col-md-12">
+                                                                <h4>Informations de base</h4>
+                                                            </div>
+                                                            <div class="col-md-12" style="padding: 0px">
+                                                                <center>
+                                                                    <img class="imgpreviewupdate" id="imgpreview{{$organisation->id}}" data-id="{{$organisation->id}}" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;" required>
+                                                                    <input id="inputimage{{$organisation->id}}" data-id="{{$organisation->id}}" class="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
+                                                               
+                                                                </center>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
+                                                                 </div>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('telephone','Téléphone*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
+                          </div>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('email','Email*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  {!! Form::email('email',null, ['class' => 'form-control','required']) !!}
+                          </div>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('adresse','Adresse*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
+                          </div>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('pays','Pays*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  {!! Form::text('pays',null, ['class' => 'form-control','required']) !!}
+                          </div>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('ville','Ville*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  {!! Form::text('ville',null, ['class' => 'form-control','required']) !!}
+                          </div>
+                                                            </div>
+                                                            <div class="col-md-12" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  <textarea class="form-control" name="description" required></textarea>
+                          </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <h4 ><b >Informations de connexion</b></h4>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('name','Identifiant*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  <input type="text" name="name" class="form-control" required>
+                          </div>
+                                                            </div>
+                                                            <div class="col-md-6" style="padding: 0px">
+                                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('password','Mot de passe*') !!}</label>
+                                                                <div class="col-sm-12">
+                                                                  <input type="password" name="password" class="form-control" required>
+                          </div>
+                                                            </div>
+                                                           
+                                                           
+                                                            <div class="m-b-0">
+                                                                <div class="col-sm-offset-3 col-sm-9">
+                                                                
+                     </div>
+                                                            </div>
+                                                        
+                                                                        </div> 
+                
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                
+                                                                    <!-- Submit Form Button -->
+                                                                    {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                                                </div>
+                                                                {!! Form::close() !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                      
+                                                 
+                                                 
+                                                 
+                                                    <a data-toggle="modal" data-target="#editroleModal{{ $organisation->id }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
+                                                                                                           
                                             {!! Form::open( ['method' => 'delete', 'url' => route('organisations.destroy', $organisation), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
                                             <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                 <i class="fa fa-trash-o"></i>

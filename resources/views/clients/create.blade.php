@@ -41,7 +41,7 @@
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','Telephone') !!}
-                             {!! Form::text('telephone',null, ['class' => 'form-control','required']) !!}
+                             {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('email','Email') !!}

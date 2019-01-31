@@ -109,7 +109,7 @@ class ProduitController extends Controller
     {
         $produit = Produits::findOrFail($id);
         $produit->update($request->all());
-        return redirect(route('produits.edit',$id));
+        return redirect()->route('produits.index');
     } 
 
     /**

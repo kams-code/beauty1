@@ -18,8 +18,9 @@ class EquipementController extends Controller
     public function index()
     {
         $equipements = Equipements::with('fournisseur')->get();
+        $Fournisseurs = Fournisseurs::all();
         $fournisseurs = Fournisseurs::pluck('nom','id');
-        return view('equipements.index',compact('equipements','fournisseurs'));
+        return view('equipements.index',compact('equipements','fournisseurs','Fournisseurs'));
     }
 
     /**

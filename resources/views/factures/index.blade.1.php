@@ -72,7 +72,7 @@
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('telephone',null, ['class' => 'form-control','required']) !!}
+                                                  {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             

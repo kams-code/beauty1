@@ -128,7 +128,7 @@
                                             <div class="col-md-6" style="padding: 0px">
                                                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('email','Email') !!}</label>
                                                 <div class="col-sm-12">
-                                                  {!! Form::text('email',null, ['class' => 'form-control','required']) !!}
+                                                  {!! Form::email('email',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="col-md-6" style="padding: 0px">

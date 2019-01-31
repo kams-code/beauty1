@@ -65,14 +65,14 @@
 <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('email','Email') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('email',null, ['class' => 'form-control','required']) !!}
+                                                  {!! Form::email('email',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('telephone',null, ['class' => 'form-control','required']) !!}
+                                                  {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 

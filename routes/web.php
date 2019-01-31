@@ -35,8 +35,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('stocks','StockController');
 
 });
-
-
+Route::post( '/organisations/{id}','OrganisationController@update');
 Route::get('/permissions', 'RoleController@index1')->name('permissions');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

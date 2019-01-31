@@ -53,7 +53,7 @@
                                                             </div>
                                                             <div class="col-md-6" style="padding: 0px">
                                                                     <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('periode','Periode') !!}</label>
-                                                                    <div class="col-sm-10">
+                                                                    <div class="col-sm-12">
                                                                             
                                                                             <select class="form-control input-sm" name="periode" id="category"> 
                                                                   
@@ -63,23 +63,7 @@
                                                                              </select>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                            <div class="col-md-6" style="padding: 0px">
-                                                                    <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('dateDeb','Debut') !!}</label>
-                                                                    <div class="col-sm-12">
-                                                                            {!! Form::date('dateDeb',null, ['class' => 'form-control','required']) !!}
-                                                    
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6" style="padding: 0px">
-                                                                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('dateFin','Fin') !!}</label>
-                                                                        <div class="col-sm-12">
-                                                                                {!! Form::date('dateFin',null, ['class' => 'form-control','required']) !!}
-                                                        
-                                                                        </div>
-                                                                    </div>
-
-                                                                </div>     
+                                                     
 
                                                                     
                                                             <div class="col-md-12" style="padding: 0px">

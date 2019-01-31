@@ -41,11 +41,11 @@
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','telephone') !!}
-                             {!! Form::text('telephone',$client->telephone    , ['class' => 'form-control','required']) !!}
+                             {!! Form::number('telephone',$client->telephone    , ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('email','email') !!}
-                             {!! Form::text('email',$client->ville, ['class' => 'form-control','required']) !!}
+                             {!! Form::email('email',$client->ville, ['class' => 'form-control','required']) !!}
                           </div>
                         
                           <button class="btn btn-primary">envoyer</button>

@@ -10,7 +10,7 @@
 <!-- email Form Input -->
 <div class="form-group @if ($errors->has('email')) has-error @endif">
     {!! Form::label('email', 'Email') !!}
-    {!! Form::text('email', null, ['class' => 'form-control','required', 'placeholder' => 'Email']) !!}
+    {!! Form::email('email', null, ['class' => 'form-control','required', 'placeholder' => 'Email']) !!}
     @if ($errors->has('email')) <p class="help-block">{{ $errors->first('email') }}</p> @endif
 </div>
 

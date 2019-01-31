@@ -135,16 +135,14 @@ $user->syncRoles($roles);
     public function update(Request $request, $id)
     {
         $organisation = Organisations::findOrFail($id);
-    
+        
         if($request->hasfile('imageup'))
         {
-        
+     
                $image=$request->file('imageup');
                $filename=time().'.'.$image->getClientOriginalExtension();
                $location=public_path('images/'.$filename);
                Image::make($image)->resize(800,400)->save($location); 
-               $organisation['image'] = $filename;
-               
                $request->merge(['image' => $filename ]);
         }
         $organisation->update($request->except('online'));

@@ -49,13 +49,13 @@
 
 <div class="form-group">
                    {!! Form::label('email','Email') !!}
-                                  {!! Form::text('email',$fournisseur->email, ['class' => 'form-control','required']) !!}
+                                  {!! Form::email('email',$fournisseur->email, ['class' => 'form-control','required']) !!}
 
                             </div>
 
                             <div class="form-group">
                             {!! Form::label('telephone','Telephone') !!}
-                                  {!! Form::text('telephone',$fournisseur->telephone, ['class' => 'form-control','required']) !!}
+                                  {!! Form::number('telephone',$fournisseur->telephone, ['class' => 'form-control','required']) !!}
 
                             </div>
 
