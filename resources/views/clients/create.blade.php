@@ -28,24 +28,24 @@
                                     {!! Form::open(['url' => route('clients.store')]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','Nom') !!}
-                             {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('prenom','Prenom') !!}
-                             {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('prenom',null, ['class' => 'form-control','required']) !!}
                           </div>
                           
                           <div class="form-group">
                              {!! Form::label('adresse','adresse') !!}
-                             {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','Telephone') !!}
-                             {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+                             {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('email','Email') !!}
-                             {!! Form::email('email',null, ['class' => 'form-control']) !!}
+                             {!! Form::email('email',null, ['class' => 'form-control','required']) !!}
                           </div>
                       
                           

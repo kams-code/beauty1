@@ -4,6 +4,7 @@ namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 use App\Services;
 use App\Services_Users;
 use App\User;
+use App\Stocks;
 use App\ServiceUser;
 use Illuminate\Http\Request;
 use App\Categories;
@@ -36,7 +37,8 @@ class ServiceController extends Controller
         $users=User::pluck('nom', 'id');
         $categories=Categories::pluck('nom', 'id');
         $services=Stocks::get();
-        return view('services.index',compact('services','users','categories'));
+        return view('services.create',compact('services','users','categories'));
+        //return view('services.create');
     }
 
     /**
@@ -57,14 +59,14 @@ class ServiceController extends Controller
             'is_promote'=> $request->get('is_promote'),
             'categorie_id'=> $request->get('categorie_id')
           ]);
-          if($request->hasfile('image'))
+          if($request->hasfile('imageup'))
           {
        
-                 $image=$request->file('image');
+                 $image=$request->file('imageup');
                  $filename=time().'.'.$image->getClientOriginalExtension();
                  $location=public_path('images/'.$filename);
                  Image::make($image)->resize(800,400)->save($location); 
-                
+                $request->merge(['image' => $filename]);
                  $service->image=$filename;
           }
          
@@ -79,7 +81,7 @@ class ServiceController extends Controller
        
               $service['organisation_id']=$user->organisation_id;
   $service->save();
- /**
+ /*
         $users_ids=$request->get('users');
         
         foreach($users_ids as $key=>$value)
@@ -96,7 +98,8 @@ class ServiceController extends Controller
         }*/
        
       
-        return redirect(route('reservations.index'));
+       // d return redirect(route('reservations.index'));
+       return redirect(route('services.index'));
     }
 
     /**

@@ -47,12 +47,20 @@
                                     </div>
                                 
                                     <div class="row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-10">
                                             {!! Form::open(['route' => ['users.store'],'files'=>true ]) !!}
-                                                @include('user._form')
+                                            <div class="col-md-12" style="padding: 0px">
+                                                    <center>
+                                                        <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
+                                                        <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
+                                                    </center>
+                                                 </div>    
+                                            @include('user._form')
                                                 <!-- Submit Form Button -->
+                                        <center>
                                                 {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
-                                            {!! Form::close() !!}
+                                            </center>
+                                                {!! Form::close() !!}
                                         </div>
                                     </div>
                             </div>

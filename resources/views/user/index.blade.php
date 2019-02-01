@@ -31,12 +31,12 @@
                                     
                                       </div>
                                 </div>
-
+                               
+                                       
                                 <div class="row">
-                                        <div class="col-md-5">
-                                            <h3 class="modal-title">{{ $result->total() }} {{ str_plural('User', $result->count()) }} </h3>
-                                        </div>
-                                        <div class="col-md-7 page-action text-right">
+                                        <h3 >{{ $result->total() }} {{ str_plural('User', $result->count()) }} </h3>
+                                     
+                                        <div class="pull-right">
                                             @can('add_users')
                                                 <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm"> <i class="glyphicon glyphicon-plus-sign"></i> Create</a>
                                             @endcan
@@ -100,26 +100,6 @@
             </footer>
 
         </div>
-<script>
-        var resizefunc = [];
-    </script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('js/detect.js')}}"></script>
-    <script src="{{asset('js/fastclick.js')}}"></script>
-    <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
-    <script src="{{asset('js/jquery.blockUI.js')}}"></script>
-    <script src="{{asset('js/waves.js')}}"></script>
-    <script src="{{asset('js/wow.min.js')}}"></script>
-    <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
-    <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
 
-    <script src="{{asset('js/jquery.app.js')}}"></script>
-
-    <!-- Examples -->
-    <script src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
-    <script src="{{asset('plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 
-    <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
-    <script src="{{asset('pages/datatables.editable.init.js')}}"></script>
 @endsection
 @include('partials.sidebarright')

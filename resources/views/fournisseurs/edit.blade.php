@@ -30,32 +30,32 @@
                     {!! Form::open(['method' => 'PUT', 'url' => route('fournisseurs.update', $fournisseur )]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$fournisseur->nom, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',$fournisseur->nom, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('description','description') !!}
-                             {!! Form::text('description',$fournisseur->description, ['class' => 'form-control']) !!}
+                             {!! Form::text('description',$fournisseur->description, ['class' => 'form-control','required']) !!}
                           </div>
                                                
                           <div class="form-group">
                                 {!! Form::label('prenom','Prénom') !!}
-                                  {!! Form::text('prenom',$fournisseur->prenom, ['class' => 'form-control']) !!}
+                                  {!! Form::text('prenom',$fournisseur->prenom, ['class' => 'form-control','required']) !!}
                             </div>
                             <div class="form-group">
                              {!! Form::label('adresse','Adresse') !!}
-                                  {!! Form::text('adresse',$fournisseur->adresse, ['class' => 'form-control']) !!}
+                                  {!! Form::text('adresse',$fournisseur->adresse, ['class' => 'form-control','required']) !!}
 
                             </div>
 
 <div class="form-group">
                    {!! Form::label('email','Email') !!}
-                                  {!! Form::text('email',$fournisseur->email, ['class' => 'form-control']) !!}
+                                  {!! Form::email('email',$fournisseur->email, ['class' => 'form-control','required']) !!}
 
                             </div>
 
                             <div class="form-group">
                             {!! Form::label('telephone','Telephone') !!}
-                                  {!! Form::text('telephone',$fournisseur->telephone, ['class' => 'form-control']) !!}
+                                  {!! Form::number('telephone',$fournisseur->telephone, ['class' => 'form-control','required']) !!}
 
                             </div>
 

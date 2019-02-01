@@ -46,18 +46,18 @@
                                     <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
                                    <div class="panel-body">
                     {!! Form::open(['method' => 'PUT', 'url' => route('produits.update', $produit ),'files'=>true]) !!}
-                          <div class="form-group">
-                             {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$produit->nom, ['class' => 'form-control']) !!}
+                                                                          <div class="col-md-6" style="padding: 0px">
+                             {!! Form::label('nom','nom*') !!}                                   <div class="col-md-6" style="padding: 0px">
+                             {!! Form::text('nom',$produit->nom, ['class' => 'form-control','required']) !!}
                           </div>
-                          <div class="form-group">
-                             {!! Form::label('description','description') !!}
-                             {!! Form::text('description',$produit->description, ['class' => 'form-control']) !!}
+                                                                          <div class="col-md-6" style="padding: 0px">
+                             {!! Form::label('description','description*') !!}                                   <div class="col-md-6" style="padding: 0px">
+                             {!! Form::text('description',$produit->description, ['class' => 'form-control','required']) !!}
                           </div>
                           
-                          <div class="form-group">
-                  {!! Form::label('imageup','Image') !!}
-                                  {!! Form::file('imageup') !!}
+                                                                          <div class="col-md-6" style="padding: 0px">
+                  {!! Form::label('imageup','Image*') !!}                                   <div class="col-md-6" style="padding: 0px">
+                                  {!! Form::file('imageup*') !!}                                   <div class="col-md-6" style="padding: 0px">
 
                             </div>
                           <button class="btn btn-primary">envoyer</button>

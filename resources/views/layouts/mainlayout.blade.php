@@ -9,7 +9,7 @@
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="{{asset('images/favicon_1.ico')}}">
 
         <!--
@@ -44,9 +44,40 @@
         
     </head>
 
-
+    <style type="text/css">
+        .form-horizontal .control-label{
+            text-align: left !important;
+        }
+    </style>
     <body class="fixed-left">
-        
+        <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog"> 
+                
+            </div>
+        </div><!-- /.modal -->
+
+        <div id="deletemodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="background: red"> 
+                <div class="modal-content" style="padding: 0px;border:0px">
+                    <div class="modal-header" style="padding: 10px;background: red;border-color: red">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;opacity: 1">×</button>
+                        <h4 class="modal-title" style="color: white">Confirmation</h4>
+                    </div>
+                    <div class="modal-body" style="padding: 30px">
+                        <div class="row">
+                            <div class="col-md-12" style="text-align: center;">
+                                <h4>Voulez-vraiment cet élément?</h4>
+                            </div>
+                            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
+                                <button class="btn btn-danger" id="boutondelete">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div><!-- /.modal -->
         <!-- Begin page -->
         <div id="wrapper">
         
@@ -102,6 +133,10 @@
         <script src="{{asset('js/wow.min.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
         <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
+
+
+
+       
         <!-- jQuery  -->
         <script src="{{asset('plugins/moment/moment.js')}}"></script>
         <!-- jQuery  -->
@@ -155,7 +190,12 @@
         <!-- Datatable init js -->
         <script src="{{asset('pages/datatables.init.js')}}"></script>
         <script src="{{asset('js/jquery.app.js')}}"></script>
+
+        <script type="text/javascript" src="{{asset('assets/plugins/isotope/dist/isotope.pkgd.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
         <script type="text/javascript">
+
+      
             /* ==============================================
             Counter Up
             =============================================== */
@@ -166,6 +206,49 @@
                 });
             });
         </script>
+        <!-- pour la galerie-->
+        <script type="text/javascript">
+            $(window).load(function(){
+                var $container = $('.portfolioContainer');
+                $container.isotope({
+                    filter: '*',
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false
+                    }
+                });
+
+                $('.portfolioFilter a').click(function(){
+                    $('.portfolioFilter .current').removeClass('current');
+                    $(this).addClass('current');
+
+                    var selector = $(this).attr('data-filter');
+                    $container.isotope({
+                        filter: selector,
+                        animationOptions: {
+                            duration: 750,
+                            easing: 'linear',
+                            queue: false
+                        }
+                    });
+                    return false;
+                }); 
+            });
+            $(document).ready(function() {
+                $('.image-popup').magnificPopup({
+                    type: 'image',
+                    closeOnContentClick: true,
+                    mainClass: 'mfp-fade',
+                    gallery: {
+                        enabled: true,
+                        navigateByImgClick: true,
+                        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+                    }
+                });
+            });
+        </script>
+
 
         <script type="text/javascript">
             TableManageButtons.init();
@@ -174,22 +257,152 @@
             });
             
             function readURL(input, ids) {
-                  if (input.files && input.files[0]) {
-                      var reader = new FileReader();
+              if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+                  
+                  reader.onload = function (e) {
+                      $('#'+ids).attr('src', e.target.result);
+                      var src = $('#'+ids).attr('src');
                       
-                      reader.onload = function (e) {
-                          $('#'+ids).attr('src', e.target.result);
-                          var src = $('#'+ids).attr('src');
-                          
+                  }
+                  
+                  reader.readAsDataURL(input.files[0]);
+              }
+          }
+       
+          $(document).on('change','#inputimage',function(){
+              readURL(this,'imgpreview');
+          });
+          $(document).on('click','.imgpreviewupdate',function(){
+            var id = $(this).attr('data-id');
+                $('#inputimage'+id).trigger('click');
+            });
+          $(document).on('change','.inputimage',function(){
+            var id = $(this).attr('data-id');
+              readURL(this,'imgpreview'+id);
+          });
+          $(document).on('click','.btnadd',function(){
+                var lien = $(this).attr('data-lien');
+                $.ajax({
+                  type: "GET",
+                  url: lien,
+                  data: {},
+                  dataType:'text',
+                  success: function(data){
+                    $('#con-close-modal .modal-dialog').html(data);
+                  },
+                });
+          });
+
+          $(document).on('click','.btnedit',function(){
+              // data-lien est le lien sur le bouton sur la vue index au niveau du boutton
+                var lien = $(this).attr('data-lien');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                    //type de retour de la page
+                  type: "GET",
+                  url: lien,
+                  data: {},
+                  // type de retour de la function
+                  dataType:'text',
+                  success: function(data){
+                    $('#con-close-modal .modal-dialog').html(data);
+                  },
+                });
+          });
+
+          $(document).on('click','.seedetails',function(){
+                var lien = $(this).attr('data-lien');
+                var id = $(this).attr('data-id');
+                $.ajax({
+                  type: "GET",
+                  url: lien,
+                  data: {'id':id},
+                  dataType:'text',
+                  success: function(data){
+                    $('#con-close-modal .modal-dialog').html(data);
+                  },
+                });
+          });
+
+          $(document).on('click','.btndelete',function(){
+                var lien = $(this).attr('data-lien');
+                var id = $(this).attr('data-id');
+                $('#boutondelete').attr('data-id',id);
+                $('#boutondelete').attr('data-lien',lien);
+          });
+          $(document).on('click','#boutdellAll',function(){
+                var start = document.getElementById('tablebody');
+                var cbs = start.getElementsByTagName('input');
+                var lien ="";
+                for(var i=0; i < cbs.length; i++) {
+                  if(cbs[i].type == 'checkbox') {
+                      if(cbs[i].checked){
+                          lien += ',organisations/'+cbs[i].value;
+                          alert(',organisations/'+cbs[i].value);
                       }
-                      
-                      reader.readAsDataURL(input.files[0]);
+                  }
+                } 
+                $('#boutondelete').attr('data-lien',lien.substring(1, lien.length));
+          });
+          $(document).on('click','#boutondelete',function(){
+                var liendd = $(this).attr('data-lien');
+                var listelien = liendd.split(',');
+                for (var i = 0; i <listelien.length; i++) {
+                    var lien = listelien[i];
+                    $.ajax({
+                      type: "DELETE",
+                      headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                      },
+                      url: lien,
+                      data: { _token : $('meta[name="csrf-token"]').attr('content')},
+                      dataType:'text',
+                      success: function(data){
+                            location.reload();
+                      },
+                    });
+                }
+                
+                setTimeout(function(){ location.reload(); }, 2500);
+
+          });
+          function checkAll(bx) {
+            var start = document.getElementById('tablebody');
+            var cbs = start.getElementsByTagName('input');
+            for(var i=0; i < cbs.length; i++) {
+              if(cbs[i].type == 'checkbox') {
+                cbs[i].checked = bx;
+              }
+            }
+            
+            verified();
+          }
+          function verified(){
+            var start = document.getElementById('tablebody');
+            var cbs = start.getElementsByTagName('input');
+            var count = 0;
+            var id_s = '';
+            for(var i=0; i < cbs.length; i++) {
+              if(cbs[i].type == 'checkbox') {
+                  if(cbs[i].checked){
+                      count++;
                   }
               }
-                  
-              $(document).on('change','#inputimage',function(){
-                  readURL(this,'imgpreview');
-              });
+            } 
+            if(count>0){
+                $('#boutdellAll').show();
+            }
+            else {
+                $('#boutdellAll').hide();
+            }
+          }
+          $(document).on('click', '.check', function(){
+            verified();
+          });
+          $(document).on('click', '#checkAll', function(){
+            checkAll($('#checkAll').is(':checked'));
+          });
         </script>
     </body>
 

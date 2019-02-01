@@ -32,13 +32,13 @@
                                     </div>
                                 </div>
     
-                                <h2>service Name: </h2>
-<{{ $service->name }} || ${{ money_format($service->montant, 2) }}</p>
+                                <h2>categorie Name: </h2>
+<{{ $categorie->name }} || ${{ money_format($categorie->montant, 2) }}</p>
 
-<h3>Service Belongs to</h3>
+<h3>categorie Belongs to</h3>
 
 <ul>
-    @foreach($service->users as $user)
+    @foreach($categorie->users as $user)
     <li>{{ $user->name}}</li>
     @endforeach
 </ul>

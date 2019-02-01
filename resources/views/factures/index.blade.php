@@ -45,34 +45,34 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','nom') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('prenom','Prénom') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('prenom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('prenom',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('adresse','Adresse') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 
 <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('email','Email') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('email',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::email('email',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 
@@ -136,7 +136,7 @@
                                             {!! Form::open(['method' => 'DELETE','route' => ['factures.destroy', $member->id],'style'=>'display:inline']) !!}
                                             {!! Form::button('Valider', ['class' => 'btn btn-danger','data-toggle'=>'confirmation']) !!}
                                             {!! Form::close() !!}
-                                            <a href="{{ route('factures.show',$member->id) }}" class="on-default edit-row"><i class="fa fa-eye"></i></a>
+                                            <a href="{{ route('factures.show',$member->id) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-eye"></i></a>
                                                
                                         </td>
                                     </tr>

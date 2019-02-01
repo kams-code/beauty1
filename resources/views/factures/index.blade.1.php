@@ -47,39 +47,39 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('pays','Pays') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('pays',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('pays',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('ville','Ville') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('ville',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('ville',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('adresse','Adresse') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','Description') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('description',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('description',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             
@@ -137,10 +137,10 @@
                                             <td> {{ $organisation->description }} </td>
                                             <td> {{ $organisation->created_at }}</td>
                                              
-                                            <td class="actions">
+                                            <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 <a href="{{ route('organisations.edit',$organisation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('organisations.destroy',$organisation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('organisations.edit',$organisation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('organisations.edit',$organisation) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr> 

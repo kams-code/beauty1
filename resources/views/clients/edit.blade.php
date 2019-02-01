@@ -29,23 +29,23 @@
                                    {!! Form::open(['method' => 'PUT', 'url' => route('clients.update', $client )]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$client->nom, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',$client->nom, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('prenom','prenom') !!}
-                             {!! Form::text('prenom',$client->prenom, ['class' => 'form-control']) !!}
+                             {!! Form::text('prenom',$client->prenom, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('adresse','adresse') !!}
-                             {!! Form::text('adresse',$client->adresse, ['class' => 'form-control']) !!}
+                             {!! Form::text('adresse',$client->adresse, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('telephone','telephone') !!}
-                             {!! Form::text('telephone',$client->telephone    , ['class' => 'form-control']) !!}
+                             {!! Form::number('telephone',$client->telephone    , ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('email','email') !!}
-                             {!! Form::text('email',$client->ville, ['class' => 'form-control']) !!}
+                             {!! Form::email('email',$client->ville, ['class' => 'form-control','required']) !!}
                           </div>
                         
                           <button class="btn btn-primary">envoyer</button>

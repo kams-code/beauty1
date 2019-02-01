@@ -72,15 +72,15 @@
                     {!! Form::open(['method' => 'PUT', 'url' => route('commandes.update', $commande )]) !!}
                           <div class="form-group">
                              {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$commande->nom, ['class' => 'form-control']) !!}
+                             {!! Form::text('nom',$commande->nom, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('quantite','quantite') !!}
-                             {!! Form::text('quantite',$commande->quantite, ['class' => 'form-control']) !!}
+                             {!! Form::text('quantite',$commande->quantite, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('fournisseur_id','Fournisseur') !!}
-                             {!! Form::select('fournisseur_id',$fournisseurs,$commande->fournisseur_id, ['class' => 'form-control']) !!}
+                             {!! Form::select('fournisseur_id',$fournisseurs,$commande->fournisseur_id, ['class' => 'form-control','required']) !!}
                           </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

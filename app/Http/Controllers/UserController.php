@@ -52,6 +52,7 @@ class UserController extends Controller
             'password' => 'required|min:6',
             'roles' => 'required|min:1'
         ]);
+       
         if($request->hasfile('imageup'))
         {
      
@@ -199,7 +200,7 @@ class UserController extends Controller
 
         // Get the roles
         $roles = Role::find($roles);
-
+        dd($roles);
         // check for current role changes
         if( ! $user->hasAllRoles( $roles ) ) {
             // reset all direct permissions for user

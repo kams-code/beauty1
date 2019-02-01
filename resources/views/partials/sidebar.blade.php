@@ -76,10 +76,17 @@
                                                         <a href="{{ route('profile') }}" class="waves-effect"><i class="md md-settings"></i> <span> Profile </span> <span class="pull-right"></span></a>
                                                      </li>
                                                      <li >
+<<<<<<< HEAD
                                                             <a href="{{ route('profile') }}" class="waves-effect"><i class="md md-settings"></i> <span> Configuration </span> <span class="pull-right"></span></a>
                                                          </li>
                                                          <li >
                                                                 <a href="{{ route('profile') }}" class="waves-effect"><i class="md md-settings"></i> <span> Abonnement
+=======
+                                                            <a href="{{ route('type_abonnements.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Configuration </span> <span class="pull-right"></span></a>
+                                                         </li>
+                                                         <li >
+                                                                <a href="{{ route('abonnements.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Abonnement
+>>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                                     
                                                                      </span> <span class="pull-right"></span></a>
                                                              </li>

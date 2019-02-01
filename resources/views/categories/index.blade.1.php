@@ -43,43 +43,43 @@
                                                     </div> 
                                                     <div class="modal-body"> 
                                                         <div class="row"> 
-                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('organisations.store')]) !!}
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom') !!}</label>
+                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('categories.store')]) !!}
+                                                                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','Nom*') !!}                                   <div class="col-md-6" style="padding: 0px"></label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('pays','Pays') !!}</label>
+                                                                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('pays','Pays*') !!}                                   <div class="col-md-6" style="padding: 0px"></label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('pays',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('pays',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('ville','Ville') !!}</label>
+                                                                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('ville','Ville*') !!}                                   <div class="col-md-6" style="padding: 0px"></label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('ville',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('ville',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('adresse','Adresse') !!}</label>
+                                                                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('adresse','Adresse*') !!}                                   <div class="col-md-6" style="padding: 0px"></label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('adresse',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone') !!}</label>
+                                                                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('telephone','Telephone*') !!}                                   <div class="col-md-6" style="padding: 0px"></label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('telephone',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','Description') !!}</label>
+                                                                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('description','Description*') !!}                                   <div class="col-md-6" style="padding: 0px"></label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('description',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('description',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             
@@ -126,21 +126,21 @@
                                     </thead>
                                     <tbody>
                                      
-                                        @foreach($organisations as $organisation)
+                                        @foreach($categories as $categorie)
        
                    <tr class="gradeC">
-                                            <td> {{ $organisation->nom }}</td>
-                                            <td> {{ $organisation->pays }}</td>
-                                            <td> {{ $organisation->ville }}</td>
-                                            <td> {{ $organisation->adresse }}</td>
-                                            <td> {{ $organisation->telephone}}</td>
-                                            <td> {{ $organisation->description }} </td>
-                                            <td> {{ $organisation->created_at }}</td>
+                                            <td> {{ $categorie->nom }}</td>
+                                            <td> {{ $categorie->pays }}</td>
+                                            <td> {{ $categorie->ville }}</td>
+                                            <td> {{ $categorie->adresse }}</td>
+                                            <td> {{ $categorie->telephone}}</td>
+                                            <td> {{ $categorie->description }} </td>
+                                            <td> {{ $categorie->created_at }}</td>
                                              
-                                            <td class="actions">
-                                                <a href="{{ route('organisations.edit',$organisation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                                <a href="{{ route('organisations.destroy',$organisation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('organisations.edit',$organisation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                            <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
+                                                <a href="{{ route('categories.edit',$categorie) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                <a href="{{ route('categories.destroy',$categorie) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                <a href="{{ route('categories.edit',$categorie) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                             </td>
                                         </tr> 

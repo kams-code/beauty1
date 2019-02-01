@@ -45,14 +45,14 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','nom') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('quantite','quantite') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('quantite',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('quantite',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                              <div class="form-group">
@@ -70,14 +70,14 @@
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('fournisseur_id','Fournisseur') !!}</label>
                                                 <div class="col-sm-9">
-                                                    {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control']) !!}
+                                                    {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control','required']) !!}
                          
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('produit_id','Produit') !!}</label>
                                                 <div class="col-sm-9">
-                                                    {!! Form::select('produit_id',$produits,null, ['class' => 'form-control']) !!}
+                                                    {!! Form::select('produit_id',$produits,null, ['class' => 'form-control','required']) !!}
                          
           </div>
                                             </div>
@@ -130,16 +130,16 @@
                                             </td>
                                             <td> {{ $commande->created_at }}</td>
                                              <td> {{ $commande->fournisseur_id }}</td>
-                                            <td class="actions">
+                                            <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 @can('edit_commandes','delete_commandes')
                                                 {!! Form::open( ['method' => 'delete', 'url' => route('commandes.destroy', $commande->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             {!! Form::close() !!}
                                                 <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('commandes.destroy',$commande) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('commandes.destroy',$commande) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                 <a href="{{ route('commandes.destroy',$commande) }}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                             @endcan
                                             </td>

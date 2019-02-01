@@ -72,17 +72,29 @@
                     {!! Form::open(['method' => 'PUT', 'url' => route('reservations.update', $reservation )]) !!}
                           <div class="form-group">
                              {!! Form::label('code','Code') !!}
+<<<<<<< HEAD
                              {!! Form::text('code',$reservation->code, ['class' => 'form-control']) !!}
+=======
+                             {!! Form::text('code',$reservation->code, ['class' => 'form-control','required']) !!}
+>>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                           </div>
                 
                           <div class="form-group">
                              {!! Form::label('client_id','Client') !!}
+<<<<<<< HEAD
                              {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control']) !!}
+=======
+                             {!! Form::select('client_id',$clients,$reservation->client_id, ['class' => 'form-control','required']) !!}
+>>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                           </div> 
 
                           <div class="form-group">
                              {!! Form::label('service_id','Service') !!}
+<<<<<<< HEAD
                              {!! Form::select('service_id',$services,$reservation->service_id, ['class' => 'form-control']) !!}
+=======
+                             {!! Form::select('service_id',$services,$reservation->service_id, ['class' => 'form-control','required']) !!}
+>>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                           </div> 
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

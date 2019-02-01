@@ -29,26 +29,26 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('nom','nom') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('nom',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('quantite','quantite') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::text('quantite',null, ['class' => 'form-control']) !!}
-             {!! Form::text('quantite',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::text('quantite',null, ['class' => 'form-control','required']) !!}
+             {!! Form::text('quantite',null, ['class' => 'form-control','required']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('fournisseur_id','Fournisseur') !!}</label>
                                                 <div class="col-sm-9">
             
-                                                    {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control']) !!}
+                                                    {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control','required']) !!}
                          {!! Form::select('produits[]', 
     $produits, 
     null, 
-    ['class' => 'form-control', 
+    ['class' => 'form-control','required', 
     'multiple' => 'multiple']) !!}
 
   

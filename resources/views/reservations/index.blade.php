@@ -47,14 +47,18 @@
                                             <div class="col-md-12" style="padding: 0px">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('code','Code') !!}</label>
                                                 <div class="col-sm-6">
+<<<<<<< HEAD
                                                   {!! Form::text('code',null, ['class' => 'form-control']) !!}
+=======
+                                                  {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
+>>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                  </div>
                                             </div>
                                             
                                             <div class="col-md-6" style="padding: 0px">
                                                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('client_id','Client') !!}</label>
                                                 <div class="col-sm-9">
-                                                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control']) !!}
+                                                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control','required']) !!}
                          
                                                 </div>
                                             </div>
@@ -62,19 +66,19 @@
                                                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('service_id','Service') !!}</label>
                                                 <div class="col-sm-12">
                                                    
-                                                    {!! Form::select('services[]', $services, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                                                    {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
           </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('date','Date :') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::date('date',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::date('date',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heure','Heure :') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::time('heure',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::time('heure',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                            
@@ -97,10 +101,93 @@
                                             </div>
                                         </div><!-- /.modal -->
 
+
+
+
+
+
+                                        <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
+                                            <div class="modal-dialog"> 
+                                                <div class="modal-content"> 
+                                                    <div class="modal-header"> 
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
+                                                        <h4 class="modal-title">Ajouter un institut</h4> 
+                                                    </div> 
+                                                    <div class="modal-body"> 
+                                                        <div class="row"> 
+                                                             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('organisations.store'),'files'=>true]) !!}
+                                           
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('client_id','Client') !!}</label>
+                                                <div class="col-sm-12">
+                                                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control','required']) !!}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('date','Date') !!}</label>
+                                                <div class="col-sm-12">
+                                                    {!! Form::date('date',null, ['class' => 'form-control','required']) !!}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('email','Email') !!}</label>
+                                                <div class="col-sm-12">
+                                                  {!! Form::email('email',null, ['class' => 'form-control','required']) !!}
+          </div>
+                                            </div>
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('adresse','Adresse') !!}</label>
+                                                <div class="col-sm-12">
+                                                  {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
+          </div>
+                                            </div>
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('pays','Pays') !!}</label>
+                                                <div class="col-sm-12">
+                                                  {!! Form::text('pays',null, ['class' => 'form-control','required']) !!}
+          </div>
+                                            </div>
+                                            <div class="col-md-6" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('ville','Ville') !!}</label>
+                                                <div class="col-sm-12">
+                                                  {!! Form::text('ville',null, ['class' => 'form-control','required']) !!}
+          </div>
+                                            </div>
+                                            <div class="col-md-12" style="padding: 0px">
+                                                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('services','Services') !!}</label>
+                                                <div class="col-sm-12">
+                                                    {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
+          </div>
+                                            </div>
+                                            
+                                            <div class="m-b-0">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                
+     </div>
+                                            </div>
+                                            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px"> 
+                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
+                                                       <button class="btn btn-primary">Enregistrer</button>
+                                                    </div> 
+                                       {!! Form::close() !!}
+                                                        </div> 
+
+                                                        
+                                                    </div> 
+                                                    
+                                                </div> 
+                                            </div>
+                                        </div>
                                                                               
+<<<<<<< HEAD
                                         @can('add_reservations')
                                            @can('add_reservations')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                     @endcan
+=======
+                                    
+                                           @can('add_reservations')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
+                                  
+>>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                        
                                        
                                                                              
@@ -172,16 +259,16 @@
 
 
                                            
-                                           <td class="actions">
+                                           <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                 @can('edit_reservations','delete_reservations')
                                                 {!! Form::open( ['method' => 'delete', 'url' => route('reservations.destroy', $reservation->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                                <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                     <i class="fa fa-trash-o"></i>
                                                 </button>
                                             {!! Form::close() !!}
                                                 <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                 <a href="{{ route('reservations.edit',$reservation) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                <a href="{{ route('reservations.edit',$reservation) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="{{ route('reservations.edit',$reservation) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                 <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                     @endcan
                                            @foreach($reservations as $reservation)

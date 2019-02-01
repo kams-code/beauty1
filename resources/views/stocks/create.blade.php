@@ -73,15 +73,15 @@
                     {!! Form::open(['url' => route('stocks.store')]) !!}
                           <div class="form-group">
                              {!! Form::label('quantite_initial','quantite_initial') !!}
-                             {!! Form::text('quantite_initial',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('quantite_initial',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('quantite_final','quantite_final') !!}
-                             {!! Form::text('quantite_final',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('quantite_final',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <div class="form-group">
                              {!! Form::label('quantite_limite','quantite_limite') !!}
-                             {!! Form::text('quantite_limite',null, ['class' => 'form-control']) !!}
+                             {!! Form::text('quantite_limite',null, ['class' => 'form-control','required']) !!}
                           </div>
                           <button class="btn btn-primary">envoyer</button>
                     {!! Form::close() !!}

@@ -1,101 +1,87 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Détail de l'institut</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('organisations.store'),'files'=>true]) !!}
 
-                                 @section('content')
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">General elements</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Forms</a></li>
-                                    <li class="active">General elements</li>
-                                </ol>
-                            </div>
-                        </div>
-
-                      <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                   <div class="panel-body">
+                <div class="col-md-12">
+                    <h4>Informations de base</h4>
+                </div>
+                <div class="col-md-12">
                     
-                                   {!! Form::open(['method' => 'PUT', 'url' => route('organisations.update', $organisation )]) !!}
-                          <div class="form-group">
-                             {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$organisation->nom, ['class' => 'form-control']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('pays','pays') !!}
-                             {!! Form::text('pays',$organisation->pays, ['class' => 'form-control']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('ville','ville') !!}
-                             {!! Form::text('ville',$organisation->ville, ['class' => 'form-control']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('adresse','adresse') !!}
-                             {!! Form::text('adresse',$organisation->adresse, ['class' => 'form-control']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('telephone','telephone') !!}
-                             {!! Form::text('telephone',$organisation->telephone    , ['class' => 'form-control']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('description','description') !!}
-                             {!! Form::textarea('description',$organisation->description, ['class' => 'form-control']) !!}
-                          </div>
-                          <div class="form-group">
-                            <label>
-                                    <div class="checkbox">
-                                            <input   id="checkbox" type="checkbox" name="online" > 
-                                            <label for="checkbox"   >
-                                                    Etat 
-                                            </label>
-                                        </div>
-                            
-                             en ligne?
-                             </label> 
-                          </div>
-                          <button class="btn btn-primary">envoyer</button>
-                    {!! Form::close() !!}
+                    <style>
+                        .col-md-9 label {
+                            margin-bottom: 10px
+                        }
+                    </style>
+                    <div class="col-md-3">
+                        <img style="width: 100%;height: 115px" src="{{asset('images/'.$organisation->image)}}">
+                    </div>
+                    <div class="col-md-9">
+                        <label>
+                            <strong>Nom:</strong> {{$organisation->nom}}
+                        </label>
+                        <br>
+                        <label>
+                            <strong>Téléphone:</strong> {{$organisation["telephone"]}}
+                        </label>
+                        <br>
+                        <label>
+                            <strong>Email:</strong> {{$organisation["email"]}}
+                        </label>
+                        <br>
+                        <label>
+                            <strong>Adresse:</strong> {{$organisation["adresse"]}}
+                        </label>
 
-                                   </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
+                    </div>
+                </div>
+                <div class="col-md-12">
 
-                        </div> <!-- End row -->
+                    <div class="col-md-6" style="padding: 4px">
+                        <strong>Pays:</strong>{{$organisation["pays"]}}
+                    </div>
 
+                    <div class="col-md-6" style="padding: 4px">
+                        <strong>Ville:</strong>{{$organisation["ville"]}}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6" style="padding: 4px">
+                        <strong>Description:</strong>
+                    </div>
+                    <div class="col-sm-12">
+                        {{$organisation["description"]}}
 
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
- @can('edit_produits', 'delete_produits')
-                    <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-                @endcan
-                
+                    </div>
+                    <label></label>
+
+                </div>
+                <div class="col-md-12">
+                    <h4><b >Informations de connexion</b></h4>
+                </div>
+                <div class="col-md-6" style="padding: 0px">
+                    <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('name','Identifiant') !!}</label>
+                    <div class="col-sm-12">
+                        {{$organisation["identifiant"]}}
+                    </div>
+                </div>
+
+            <div class="m-b-0">
+                <div class="col-sm-offset-3 col-sm-9">
+
+                </div>
+            </div>
+            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
 
             </div>
 
-@endsection
-@include('partials.sidebarright')
+        </div>
 
+    </div>
 
-
-
-
-
-
-
-
-
-
-
+</div>  

@@ -47,35 +47,35 @@
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('dateDeb','Date de debut') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::date('dateDeb',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::date('dateDeb',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('dateFin','Date de fin') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::date('dateFin',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::date('dateFin',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heureDeb','Heure de debut') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::time('heureDeb',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::time('heureDeb',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heureDeb','Heure de debut') !!}</label>
                                                 <div class="col-sm-9">
-                                                  {!! Form::time('heureFin',null, ['class' => 'form-control']) !!}
+                                                  {!! Form::time('heureFin',null, ['class' => 'form-control','required']) !!}
                                                  </div>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('User_id','Employe ') !!}</label>
                                                 <div class="col-sm-9">
-                                                    {!! Form::select('user_id',$users,null, ['class' => 'form-control']) !!}
+                                                    {!! Form::select('user_id',$users,null, ['class' => 'form-control','required']) !!}
                          
           </div>
                                             </div>
@@ -83,7 +83,7 @@
                                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('jour_id','jour de la semaine') !!}</label>
                                                 <div class="col-sm-9">
                                                    
-                                                    {!! Form::select('jours[]', $jours, null, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                                                    {!! Form::select('jours[]', $jours, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
           </div>
                                             </div>
                                            
@@ -144,17 +144,17 @@
                                            <td> {{ $planning->heureDeb }}</td>
                                            <td> {{ $planning->heureFin }}</td>
                                         
-                                           <td class="actions">
+                                           <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                @can('edit_plannings','delete_plannings')
                                                {!! Form::open( ['method' => 'delete', 'url' => route('plannings.destroy', $planning->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                               <button type="submit" class="btn-delete btn btn-sm btn-light">
+                                               <button type="submit" class="btn-delete btndelete btn btn-danger">
                                                    <i class="fa fa-trash-o"></i>
                                                </button>
                                            {!! Form::close() !!}
 
                                                <a href="{{ route('plannings.edit',$planning) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                <a href="{{ route('plannings.edit',$planning) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                               <a href="{{ route('plannings.edit',$planning) }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                               <a href="{{ route('plannings.edit',$planning) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
                                                <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
                                            @endcan
                                             </td>
