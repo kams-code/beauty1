@@ -30,8 +30,8 @@
                             
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="m-b-30">
+                                    <div class="col-sm-12">
+                                        <div class="m-b-30 pull-right">
                                         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
                                             <div class="modal-dialog"> 
                                                 <div class="modal-content"> 
@@ -97,13 +97,13 @@
                                             </div>
                                         </div><!-- /.modal -->
 
-                                                                                 @can('add_fournisseurs')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Add <i class="fa fa-plus"></i></button>                                     @endcan
+                                                                                 @can('add_fournisseurs')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                        
                                                                              
                                         </div>
                                     </div>
                                 </div>
-                                @can('view_fournisseurs')                                                                  <table class="table table-bordered  table-striped" id="datatable-editable">
+                                @can('view_fournisseurs')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                     <thead>

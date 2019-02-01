@@ -42,14 +42,7 @@ class HomeController extends Controller
         $Reservations=Reservations::all()->groupBy('service_id');
         $Produits=Produits::all();
         $count= 0;
-        foreach( $clients as $client){
-            $services=Services::get()->where('client_id',$client->id)->first();
-            if( $count>count($services))
-            {
-
-                $count= count($services);
-            }
-        }
+        
         $clients=Clients::all();
         $services=Services::all();  
         $serv=Services::pluck('nom');
@@ -71,14 +64,7 @@ class HomeController extends Controller
         
         $Produits=Produits::all();
         $count= 0;
-        foreach( $clients as $client){
-            $services=Services::get()->where('client_id',$client->id)->first();
-            if( $count>count($services))
-            {
-
-                $count= count($services);
-            }
-        }
+        
         $clients=Clients::all();
         $services=Services::all();  
         $serv=Services::pluck('nom');

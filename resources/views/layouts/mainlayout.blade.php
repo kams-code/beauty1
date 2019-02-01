@@ -102,20 +102,13 @@
         <script src="{{asset('js/wow.min.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
         <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
-
-        <script src="{{asset('js/jquery.app.js')}}"></script>
-        
         <!-- jQuery  -->
         <script src="{{asset('plugins/moment/moment.js')}}"></script>
-        
         <!-- jQuery  -->
         <script src="{{asset('plugins/waypoints/lib/jquery.waypoints.js')}}"></script>
         <script src="{{asset('plugins/counterup/jquery.counterup.min.js')}}"></script>
-        
         <!-- jQuery  -->
         <script src="{{asset('plugins/sweetalert/dist/sweetalert.min.js')}}"></script>
-        
-        
         <!-- flot Chart -->
         <script src="{{asset('plugins/flot-chart/jquery.flot.js')}}"></script>
         <script src="{{asset('plugins/flot-chart/jquery.flot.time.js')}}"></script>
@@ -135,16 +128,33 @@
         <!-- jQuery  -->
         <script src="{{asset('pages/jquery.dashboard.js')}}"></script>
 
-
         <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
         <script src="{{asset('plugins/select2/dist/js/select2.min.js')}}" type="text/javascript"></script>
 
-           <!-- BEGIN PAGE SCRIPTS -->
-           <script src="{{asset('plugins/moment/moment.js')}}"></script>
+        <!-- BEGIN PAGE SCRIPTS -->
+        <script src="{{asset('plugins/moment/moment.js')}}"></script>
         <script src="{{asset('plugins/fullcalendar/dist/fullcalendar.min.js')}}"></script>
         <script src="{{asset('pages/jquery.fullcalendar.js')}}"></script>
 
-        
+        <!-- Datatables-->
+        <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/buttons.bootstrap.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/jszip.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/pdfmake.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/vfs_fonts.js')}}"></script>
+        <script src="{{asset('plugins/datatables/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/buttons.print.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.fixedHeader.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.keyTable.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/responsive.bootstrap.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.scroller.min.js')}}"></script>
+
+        <!-- Datatable init js -->
+        <script src="{{asset('pages/datatables.init.js')}}"></script>
+        <script src="{{asset('js/jquery.app.js')}}"></script>
         <script type="text/javascript">
             /* ==============================================
             Counter Up
@@ -157,7 +167,30 @@
             });
         </script>
 
-    
+        <script type="text/javascript">
+            TableManageButtons.init();
+            $(document).on('click','#imgpreview',function(){
+                $('#inputimage').trigger('click');
+            });
+            
+            function readURL(input, ids) {
+                  if (input.files && input.files[0]) {
+                      var reader = new FileReader();
+                      
+                      reader.onload = function (e) {
+                          $('#'+ids).attr('src', e.target.result);
+                          var src = $('#'+ids).attr('src');
+                          
+                      }
+                      
+                      reader.readAsDataURL(input.files[0]);
+                  }
+              }
+                  
+              $(document).on('change','#inputimage',function(){
+                  readURL(this,'imgpreview');
+              });
+        </script>
     </body>
 
 <!-- Mirrored from QuickBeauty.coderthemes.com/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 01 Nov 2019 13:26:43 GMT -->

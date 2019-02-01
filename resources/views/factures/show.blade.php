@@ -73,7 +73,7 @@
                                                             </div>
                                                               <div class="col-md-12">
                                                                   <div class="table-responsive">
-                                                                      <table class="table m-t-30">
+                                                                      <table id="datatable-buttons" class="table m-t-30">
                                                                           <thead>
                                                                               <tr><th>#</th>
                                                                               <th>Services</th>
@@ -127,7 +127,7 @@
                                                           <div class="row">
                                                               <div class="col-md-12">
                                                                   <div class="table-responsive">
-                                                                      <table class="table m-t-30">
+                                                                      <table id="datatable-buttons" class="table m-t-30">
                                                                           <thead>
                                                                               <tr><th>#</th>
                                                                               <th>Titre</th>

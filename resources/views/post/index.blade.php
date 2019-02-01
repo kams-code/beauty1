@@ -15,7 +15,7 @@
     </div>
 
     <div class="result-set">
-        @can('view_reservations')                                                                  <table class="table table-bordered  table-striped table-hover" id="data-table">
+        @can('view_reservations')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped table-hover" id="data-table">
             <thead>
             <tr>
                 <th>Id</th>

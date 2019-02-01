@@ -44,7 +44,7 @@
                                     </div>
                                 
                                     <div class="result-set">
-                                        @can('view_users')                                                                  <table class="table table-bordered  table-striped table-hover" id="data-table">
+                                        @can('view_users')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped table-hover" id="data-table">
                                             <thead>
                                             <tr>
                                                 <th>Id</th>

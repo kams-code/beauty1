@@ -95,7 +95,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-8">
                                                         <div class="portlet"><!-- /portlet heading -->
-                                                            <table class="table table-bordered  table-striped" id="datatable-editable">
+                                                            <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                                                 <thead>
@@ -156,7 +156,7 @@
                                                 <div class="row">
                                                     <div class="col-lg-8">
                                                         <div class="portlet"><!-- /portlet heading -->
-                                                            <table class="table table-bordered  table-striped" id="datatable-editable">
+                                                            <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
                                    
     
                                                                 <thead>

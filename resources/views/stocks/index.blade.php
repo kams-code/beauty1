@@ -25,8 +25,8 @@
                             
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="m-b-30">
+                                    <div class="col-sm-12">
+                                        <div class="m-b-30 pull-right">
                                         <div id="con-close-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
     <div class="modal-dialog"> 
         <div class="modal-content"> 
@@ -171,7 +171,7 @@
     
 
                                
-                                <table class="table table-bordered table-striped" id="datatable-editable">
+                                <table id="datatable-buttons" class="table table-bordered table-striped" id="datatable-editable">
                                    
     
                                     <thead>

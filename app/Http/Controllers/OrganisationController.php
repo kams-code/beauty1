@@ -36,6 +36,7 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         $produits =new Organisations([ 
             'nom'=> $request->get('nom'),
         'pays'=> $request->get('nom'),

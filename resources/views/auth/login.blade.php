@@ -10,7 +10,7 @@
         <meta content="Coderthemes" name="author" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <link rel="shortcut icon" href="{{asset('images/favicon_1.ico')}}">
+        <link rel="shortcut icon" href="{{asset('images/logo_dark.PNG')}}">
 
         <!--
       calendar css-->
@@ -43,14 +43,27 @@
 
         
     </head>
-    <body>
-
-
+    <style type="text/css">
+        html{
+            background-image: url('../images/background.jpg');
+            background-size: cover;
+        }
+        body{
+            background: transparent;
+        }
+        .btn.btn-primary{
+            padding: 10px 16px;
+            min-width: 140px;
+        }   
+    </style>
+    <body >
         <div class="wrapper-page">
             <div class="panel panel-color panel-primary panel-pages">
-                <div class="panel-heading bg-img"> 
-                    <div class="bg-overlay"></div>
-                    <h3 class="text-center m-t-10 text-white"> Sign In  <strong>QuickBeauty</strong> </h3>
+                <div class="panel-heading bg-img" style="padding: 0px"> 
+                    <div class="bg-overlay" style="background: #fd3264;"></div>
+                    <h3 class="text-center m-t-10 text-white" style="margin: 0px">
+                        <img src="/images/logo_dark.png" style="width: 150px;">
+                    </h3>
                 </div> 
 
                 <div class="panel-body">
@@ -60,24 +73,19 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label style="height: 45px;display: flex;justify-content: end;align-items: center;" for="email" class="col-md-12 col-form-label text-md-right">{{ __('Identifiant') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+                            <div class="col-md-12">
+                                <input type="text" style="height: 46px" class="form-control" name="email"  value="{{ old('email') }}" required autofocus>
+                             
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-12 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                            <div class="col-md-12">
+                                <input id="password" style="height: 46px" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback" role="alert">
@@ -88,37 +96,43 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
+                            <div class="col-md-6">
+                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Se rappeler de moi') }}
+                                </label>
+                            </div>
+                            <div class="col-md-6" style="text-align: right;text-align: right;">
+                                 @if (Route::has('password.request'))
+                                    <a class="btn btn-link" style="padding: 0px;box-shadow: 0px 0px" href="{{ route('password.request') }}">
+                                        {{ __('Mot de passe oublier?') }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+                                <div align="center">
+                                    <div >
+                                            <button type="submit" class="btn btn-primary">
+                                                    {{ __('Connexion') }}
+                                                </button>
+                                                        </div>
+                               
                             </div>
+                            
                         </div>
                     </form>
                 </div>                                 
             </div> 
             </div>
+            
         </div>
 
-        
+        <div style="position: absolute;bottom: 0px;width: 100%;height: 40px;text-align: center;">
+                <h5 style="color: white">Copyright &copy;2019 worldevs. All Rights Reserved</h5>
+            </div>
         <script>
                 var resizefunc = [];
             </script>

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 //use App\Http\Requests\ImageRequest;
 use App\Fournisseurs;
 use App\Equipements;
-
+use Image;
 class EquipementController extends Controller
 {
     /**
@@ -53,7 +53,8 @@ class EquipementController extends Controller
         
         $request->merge(['organisation_id' =>$user->organisation_id ]);
         $equipements = Equipements::create($request->all());
-        return redirect(route('equipements.index'));
+        //dd($request);
+         return redirect(route('equipements.index'));
     }
 
     /**

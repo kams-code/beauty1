@@ -11,15 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 Route::get('create-chart/{type}','ChartController@makeChart');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('bar-chart', 'ChartController@index');
 Route::group( ['middleware' => ['auth']], function() {
+    Route::get('/');
     Route::resource('users', 'UserController');
     Route::resource('roles', 'RoleController');
     Route::resource('posts', 'PostController');
@@ -38,7 +37,7 @@ Route::group( ['middleware' => ['auth']], function() {
 });
 
 
-
+Route::get('/permissions', 'RoleController@index1')->name('permissions');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'HomeController@profile')->name('profile');

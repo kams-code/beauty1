@@ -5,7 +5,9 @@
                 <!-- LOGO -->
                 <div class="topbar-left">
                     <div class="text-center">
-                        <a href="index-2.html" class="logo"><i class="md md-terrain"></i> <span>QuickBeauty </span></a>
+                        <a href="home" class="logo">
+                          <img src="/images/logo_dark.png" style="width: 70px;">
+                        </a>
                     </div>
                 </div>
                 <!-- Button mobile view to collapse sidebar menu -->
@@ -18,10 +20,6 @@
                                 </button>
                                 <span class="clearfix"></span>
                             </div>
-                            <form class="navbar-form pull-left" role="search">
-                                
-                                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
-                            </form>
 
                             <ul class="nav navbar-nav navbar-right pull-right">
                                 <li class="dropdown hidden-xs">
@@ -81,27 +79,16 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="hidden-xs">
-                                    <a href="#" id="btn-fullscreen" class="waves-effect waves-light"><i class="md md-crop-free"></i></a>
-                                </li>
-                                
-                                <li class="hidden-xs">
-                                    <a href="#" class="right-bar-toggle waves-effect waves-light"><i class="md md-chat"></i></a>
-                                </li>
                                  <li class="hidden-xs">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ auth()->user()->name }}
-                                    <span class="badge badge-warning">{{ auth()->user()->roles->first()->name }}</span>
-                                    <span class="caret"></span>
                                 </a>
                                     </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('images/'.auth()->user()->image)}}" alt="user-img" class="img-circle"> </a>
+                                    <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('images/'.strlen(auth()->user()->image) ==0 ? 'images/profile.jpg' : 'images/'.auth()->user()->image)}}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="{{ route('profile') }}"><i class="md md-face-unlock"></i> Profile</a></li>
-                                        <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
-                                        <li><a href="javascript:void(0)"><i class="md md-lock"></i> Lock screen</a></li>
-                                        <li><a href="{{ route('logout') }}"><i class="md md-settings-power"></i> Logout</a></li>
+                                        <li><a href="{{ route('profile') }}"><i class="md md-face-unlock"></i> Profil</a></li>
+                                        <li><a href="{{ route('logout') }}"><i class="md md-settings-power"></i> Déconnexion</a></li>
                                     </ul>
                                 </li>
                             </ul>
