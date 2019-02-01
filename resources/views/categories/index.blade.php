@@ -86,11 +86,7 @@
                                                 </div> 
                                             </div>
                                         </div><!-- /.modal -->
-<<<<<<< HEAD
-                                        Table  des catégories de services
-=======
                                         Table  des catégories de categories
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                                                  @can('add_categories')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                        
                                                                              
@@ -166,22 +162,6 @@
                 </footer>
 
             </div>
-<<<<<<< HEAD
-
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/detect.js')}}"></script>
-        <script src="{{asset('js/fastclick.js')}}"></script>
-        <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
-        <script src="{{asset('js/jquery.blockUI.js')}}"></script>
-        <script src="{{asset('js/waves.js')}}"></script>
-        <script src="{{asset('js/wow.min.js')}}"></script>
-        <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
-        <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
-
-        <script src="{{asset('js/jquery.app.js')}}"></script>
-=======
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
 
     @endsection
 @include('partials.sidebarright')

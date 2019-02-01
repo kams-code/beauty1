@@ -7,6 +7,17 @@ use App\Role;
 use App\Permission;
 use App\Services;
 use App\Authorizable;
+use App\Clients;
+use App\Commandes;
+use App\Reservations;
+use App\Produits;
+use App\Roles;
+use App\Http\Requests;
+use Charts;
+use  App\Factures;
+use  App\Jours;
+use  App\Plannings;
+use  App\Organisations;
 use Illuminate\Http\Request;
 use DB;
 use Image;
@@ -90,8 +101,16 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    { $users = User::pluck('name','id');
+        $Users = User::get()->all();
+        $jours = Jours::pluck('nom','id'); $user=User::where('id','=',$id)->first();
+        $plannings = Plannings::where('user_id','=',$id)->get();
+        $organisations=Organisations::where('id','=',$user->organisation_id)->get()->first();
+
+        $roles =        DB::table('roles')->where('id','!=', 1)->pluck('name', 'id');
+        $permissions = Permission::all('name', 'id');
+        return view('user.show',compact('users','plannings','jours','user','Users','organisations','roles','permissions'));
+          
     }
 
     /**

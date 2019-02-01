@@ -7,6 +7,7 @@ use App\Reservations;
 use App\Clients;
 use App\Services;
 use App\Factures;
+use App\Produits;
 use App\Categories;
 use App\Tickets;
 use App\Usertickets; 
@@ -49,10 +50,10 @@ class FactureController extends Controller
     {
         $clients=Clients::pluck('nom','id');
         $services = Services::pluck('nom','id');
-
+        $produits = Produits::pluck('nom','id');
       
         
-        return view('reservations.create',compact('clients','services'));
+        return view('factures.create',compact('clients','services','produits'));
     }
 
     /**
@@ -83,6 +84,9 @@ class FactureController extends Controller
        $facture['organisation_id']=$user->organisation_id;
         $facture->is_paid=1;
         $facture->save();
+    }
+    if($request->get('id')===null){
+        
     }
         
        

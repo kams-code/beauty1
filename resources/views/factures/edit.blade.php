@@ -1,17 +1,17 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modifier un institut</h4>
+        <h4 class="modal-title">Modifier un facture</h4>
     </div>
     <div class="modal-body">
         <div class="row">
-            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('clients.update',$client),'files'=>true]) !!}
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('factures.update',$facture),'files'=>true]) !!}
             <div class="col-md-12">
                 <h4>Informations de base</h4>
             </div>
             <div class="col-md-12" style="padding: 0px">
                 <center>
-                    <img id="imgpreview" src="{{asset('images/'.$client->image)}}" style="width: 100px;cursor: pointer;" required>
+                    <img id="imgpreview" src="{{asset('images/'.$facture->image)}}" style="width: 100px;cursor: pointer;" required>
                     <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
 
                 </center>
@@ -19,46 +19,60 @@
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" name="nom" value="{{$client->nom}}" required="">
-                </div>
-            </div>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('prenom','Prenom*') !!}</label>
-                <div class="col-sm-12">
-                    {!! Form::text('prenom',null, ['class' => 'form-control','required']) !!}
+                    <input type="text" class="form-control" name="nom" value="{{$facture->nom}}" required="">
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('telephone','Téléphone*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="number" class="form-control" name="telephone" value="{{$client->telephone}}" required="">
+                    <input type="number" class="form-control" name="telephone" value="{{$facture->telephone}}" required="">
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('email','Email*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="email" class="form-control" name="email" value="{{$client->email}}" required="">
+                    <input type="email" class="form-control" name="email" value="{{$facture->email}}" required="">
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('adresse','Adresse*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" name="adresse" value="{{$client->adresse}}" required="">
+                    <input type="text" class="form-control" name="adresse" value="{{$facture->adresse}}" required="">
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('pays','Pays*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" name="pays" value="{{$client->pays}}" required="">
+                    <input type="text" class="form-control" name="pays" value="{{$facture->pays}}" required="">
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('ville','Ville*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" name="ville" value="{{$client->ville}}" required="">
+                    <input type="text" class="form-control" name="ville" value="{{$facture->ville}}" required="">
                 </div>
             </div>
-    
+            <div class="col-md-12" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
+                <div class="col-sm-12">
+                    <textarea class="form-control" name="description" required>{{$facture->description}}</textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4><b >Informations de connexion</b></h4>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('name','Identifiant*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" name="name" class="form-control" required value="{{$facture->identifiant}}">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('password','Mot de passe*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+            </div>
 
             <div class="m-b-0">
                 <div class="col-sm-offset-3 col-sm-9">

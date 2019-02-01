@@ -47,11 +47,7 @@
                                             <div class="col-md-12" style="padding: 0px">
                                                 <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('code','Code') !!}</label>
                                                 <div class="col-sm-6">
-<<<<<<< HEAD
-                                                  {!! Form::text('code',null, ['class' => 'form-control']) !!}
-=======
                                                   {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                  </div>
                                             </div>
                                             
@@ -179,15 +175,9 @@
                                             </div>
                                         </div>
                                                                               
-<<<<<<< HEAD
-                                        @can('add_reservations')
-                                           @can('add_reservations')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
-                                    @endcan
-=======
                                     
                                            @can('add_reservations')                                         <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#con-close-modal">Ajouter <i class="fa fa-plus"></i></button>                                     @endcan
                                   
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                        
                                        
                                                                              

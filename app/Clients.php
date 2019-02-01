@@ -10,6 +10,9 @@ class Clients extends Model
 
         'nom',
         'prenom',
+        'pays',
+        'ville',
+        'image',
         'adresse',
         'email',
         'telephone' 

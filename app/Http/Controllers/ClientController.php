@@ -4,6 +4,22 @@ namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Clients;
+use App\Commandes;
+use App\Reservations;
+use App\Produits;
+use App\Services;
+use App\User;
+use App\Roles;use App\Permission;
+use App\Http\Requests;
+use Charts;
+use Image;
+use  App\Factures;
+use  App\Jours;
+use  App\Plannings;
+use  App\Organisations;
+
+
+use DB;
 
 class ClientController extends Controller
 {
@@ -44,6 +60,16 @@ class ClientController extends Controller
             'telephone' => 'required',
             'email' => 'required|email|unique:clients',
         ]);*/
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+              $request->merge(['image' => $filename]);
+               
+        }
         $client = Clients::create($request->all());
         return redirect(route('clients.index'));
     }
@@ -56,8 +82,11 @@ class ClientController extends Controller
      */
     public function show($id)
     {
-        $client = Clients::get()->where('id',$id);
-        return $client;
+        $client = Clients::get()->where('id',$id)->first();
+
+        $services = Reservations::get()->where('client_id','=',$id);
+       
+        return view('clients.show',compact('client','services'));
     }
 
     /**
