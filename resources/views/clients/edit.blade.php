@@ -5,14 +5,15 @@
     </div>
     <div class="modal-body">
         <div class="row">
-            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('clients.update',$client),'files'=>true]) !!}
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form'
+            ,'method' => 'post','url' => route('clients.update',$client),'files'=>true]) !!}
             <div class="col-md-12">
                 <h4>Informations de base</h4>
             </div>
             <div class="col-md-12" style="padding: 0px">
                 <center>
                     <img id="imgpreview" src="{{asset('images/'.$client->image)}}" style="width: 100px;cursor: pointer;" required>
-                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
+                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
 
                 </center>
             </div>
@@ -25,7 +26,9 @@
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('prenom','Prenom*') !!}</label>
                 <div class="col-sm-12">
-                    {!! Form::text('prenom',null, ['class' => 'form-control','required']) !!}
+                        <input type="text" class="form-control" name="prenom" value="{{$client->prenom}}" required="">
+
+          
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">

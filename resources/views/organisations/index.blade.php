@@ -24,6 +24,14 @@
                                 </ol>
                             </div>
                         </div>
+                        <div class="m-b-30 pull-right">
+
+                            @can('add_organisations')
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+                            @can('delete_organisations')
+                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+
+                        </div>
                     </div>
                     @can('view_organisations')
                     <table class="table table-bordered  table-striped" id="datatable-buttons">

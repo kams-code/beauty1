@@ -1,88 +1,122 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Modifier un institut</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            {!! Form::open(['method' => 'PUT','class' => 'form-horizontal','role' => 'form','url' => route('produits.update',$produit),'files'=>true]) !!}
+            
+            <div class="col-md-12" style="padding: 0px">
+                    <center>
+                        <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
+                        <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
+                   
+                    </center>
+                </div>
 
-                                 @section('content')
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
 
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">General elements</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Forms</a></li>
-                                    <li class="active">General elements</li>
-                                </ol>
-                            </div>
+                <div class="col-md-6" style="padding: 0px">
+                        <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="nom" value="{{$produit->nom}}" required="">
                         </div>
+                    </div>
+                    
+                  
+               
 
-                        <div class="row port">
-                                <div class="portfolioContainer">
-                                    <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
-                                        <div class="gal-detail thumb">
-                                            <a href="{{asset('images/'.$produit->image)}}" class="image-popup" title="Screenshot-1">
-                                                <img src="{{asset('images/'.$produit->image)}}" class="thumb-img" alt="work-thumbnail">
-                                            </a>
-                                            <h4>Image</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="col-md-6" style="padding: 0px">
+                    <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur', ['class' => 'pull-left']) !!}</label>
+                    <div class="col-sm-12">
+                            <select id="pet-select" name="fournisseur_id"  class="form-control">
+                                @foreach ($fournisseurs as $fournisseur )
+                                <option value="{{$fournisseur->id}}">{{$fournisseur->nom}}</option>
+
+                                @endforeach
+                                  
+                                </select>
+                     </div>
+                </div>
+                <div class="col-md-6" style="padding: 0px">
+                        <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('categorie_id','Categorie', ['class' => 'pull-left']) !!}</label>
+                        <div class="col-sm-12">
+                                <select id="pet-select" name="categorie_id" class="form-control">
+                                        @foreach ($categories as $categorie )
+                                        <option value="{{$categorie->id}}">{{$categorie->nom}}</option>
+        
+                                        @endforeach
+                                          
+                                        </select>
+                         </div>
+                    </div>
+                    <div class="col-md-6" style="padding: 0px">
+                            <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('vendable','Vendable') !!}</label>
+                            <div class="col-sm-12">
+                                    <div class="checkbox">
+                                            <input   id="checkbox" type="checkbox" name="vendable" > 
+                                            <label for="checkbox"   >
+                                                    Le produit est il vendable? 
+                                            </label>
+                                        </div>
+                            
+</div>
+                        </div>
+                        <div class="col-md-6" style="padding: 0px">
+                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('stockable','Stockable') !!}</label>
+                                <div class="col-sm-12">
+                                        <div class="checkbox">
+                                                <input   id="checkbox" type="checkbox" name="stockable" > 
+                                                <label for="checkbox"   >
+                                                      Est il stockable?
+                                                </label>
+                                            </div>
+                                
+</div>
+                            </div>
+
+                            <div class="col-md-6" style="padding: 0px">
+                                    <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom', ['class' => 'pull-left']) !!}</label>
+                                    <div class="col-sm-12">
+                                            <input type="text" class="form-control" name="prix"  required="">
+                            
+                                      {!! Form::text('prix',null, ['class' => 'form-control']) !!}
+                                     </div>
+                                </div>
+                                
+                                <div class="col-md-12" style="padding: 0px">
+                                        <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
+                                        <div class="col-sm-12">
+                                            <textarea class="form-control" name="description" required></textarea>
                                         </div>
                                     </div>
-    
-                                   
-                                    
-    
-                                </div>
-                            </div> <!-- End row -->
-    
+                            
+            <div class="m-b-0">
+                <div class="col-sm-offset-3 col-sm-9">
 
-                        <div class="row">
-                        
-
-                            <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                   <div class="panel-body">
-                    {!! Form::open(['method' => 'PUT', 'url' => route('produits.update', $produit ),'files'=>true]) !!}
-                          <div class="form-group">
-                             {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$produit->nom, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('description','description') !!}
-                             {!! Form::text('description',$produit->description, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('fournisseur_id','Fournisseur') !!}
-                             {!! Form::select('fournisseur_id',$fournisseurs,$produit->fournisseur_id, ['class' => 'form-control','required']) !!}
-                          </div> 
-                          <div class="form-group">
-                  {!! Form::label('imageup','Image') !!}
-                                  {!! Form::file('imageup') !!}
-
-                            </div>
-                          <button class="btn btn-primary">envoyer</button>
-                    {!! Form::close() !!}
-                </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                        </div> <!-- End row -->
-
-
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
- @can('edit_produits', 'delete_produits')
-                    <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-                @endcan
-                
-
+                </div>
             </div>
+            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
+                <button class="btn btn-primary">Modifier</button>
+            </div>
+            {!! Form::close() !!}
+        </div>
 
-@endsection
-@include('partials.sidebarright')
+    </div>
+
+</div>

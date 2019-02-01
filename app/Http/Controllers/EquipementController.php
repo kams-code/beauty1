@@ -17,8 +17,9 @@ class EquipementController extends Controller
      */
     public function index()
     {
-        $equipements = Equipements::with('fournisseur')->get();
+        //$equipements = Equipements::with('fournisseur')->get();
         $Fournisseurs = Fournisseurs::all();
+        $equipements = Equipements::get();
         $fournisseurs = Fournisseurs::pluck('nom','id');
         return view('equipements.index',compact('equipements','fournisseurs','Fournisseurs'));
     }
@@ -41,7 +42,15 @@ class EquipementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { $user=Auth::user();
+    {
+         $user=Auth::user();
+
+        $equipement= new Equipements([
+            
+            'nom'=> $request->get('nom'),
+            'description'=> $request->get('description'),
+            'fournisseur_id'=> $request->get('fournisseur_id')
+          ]);
         if($request->hasfile('imageup'))
         {
      
@@ -50,10 +59,13 @@ class EquipementController extends Controller
                $location=public_path('images/'.$filename);
                Image::make($image)->resize(800,400)->save($location); 
                $request->merge(['image' => $filename ]);
+               $equipement->image = $filename;
         }
+       
         
         $request->merge(['organisation_id' =>$user->organisation_id ]);
-        $equipements = Equipements::create($request->all());
+        $equipement->save();
+        //$equipements = Equipements::create($request->all());
         //dd($request);
          return redirect(route('equipements.index'));
     }
@@ -66,8 +78,9 @@ class EquipementController extends Controller
      */
     public function show($id)
     {
-        $equipement = Equipements::get()->where('id',$id);
-        return $equipement;
+        //$equipement = Equipements::get()->where('id',$id);
+        $equipement = Equipements::findOrFail($id);
+        return view('equipements.show',compact('equipement'));
     }
 
     /**
@@ -79,8 +92,9 @@ class EquipementController extends Controller
     public function edit($id)
     {
         $equipement = Equipements::findOrFail($id);
-        $fournisseurs = Fournisseurs::pluck('nom','id')->all();
-        return view('equipements.edit',compact('equipement','fournisseurs'));
+        return view('equipements.edit',compact('equipement'));
+        //$fournisseurs = Fournisseurs::pluck('nom','id')->all();
+        //return view('equipements.edit',compact('equipement','fournisseurs'));
     }
 
     /**
@@ -92,6 +106,7 @@ class EquipementController extends Controller
      */
     public function update(Request $request, $id)
     { $user=Auth::user();
+
         if($request->hasfile('imageup'))
         {
      
@@ -123,6 +138,6 @@ class EquipementController extends Controller
             flash()->success('equipement en vu');
         }
 
-        return redirect()->back();
+        return redirect(route('equipements.index'));
     }
 }

@@ -12,6 +12,11 @@ class Produits extends Model
         'description',
         'fournisseur_id',
         'image',
+        'prix',
+        'categori_id',
+        'vendable',
+        'stockable',
+        'organisation_id'
                
     ];
 

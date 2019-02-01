@@ -73,7 +73,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label style="height: 45px;display: flex;justify-content: end;align-items: center;" for="email" class="col-md-12 col-form-label text-md-right">{{ __('Identifiant') }}</label>
+                           <label for="email" class="col-md-12 col-form-label text-md-right">{{ __('Identifiant') }}</label>
 
                             <div class="col-md-12">
                                 <input type="text" style="height: 46px" class="form-control" name="email"  value="{{ old('email') }}" required autofocus>

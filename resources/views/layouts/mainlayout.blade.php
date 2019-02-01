@@ -23,6 +23,21 @@
         <link rel="stylesheet" href="{{asset('plugins/jquery-datatables-editable/datatables.css')}}">
 
 
+  
+
+        <!-- Plugins css pour select-->
+        <link href="{{asset('plugins/tagsinput/jquery.tagsinput.css')}}" rel="stylesheet">
+        <link href="{{asset('plugins/toggles/toggles.css')}}" rel="stylesheet">
+        <link href="{{asset('plugins/timepicker/bootstrap-timepicker.min.css')}}" rel="stylesheet">
+        <link href="{{asset('plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}" rel="stylesheet">
+        <link href="{{asset('plugins/colorpicker/colorpicker.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('plugins/jquery-multi-select/multi-select.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('plugins/select2/dist/css/select2.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('plugins/select2/dist/css/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
+
+
+
 
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('css/core.css')}}" rel="stylesheet" type="text/css">
@@ -124,6 +139,7 @@
 
         <!-- jQuery  -->
         <script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
         <script src="{{asset('js/bootstrap.min.js')}}"></script>
         <script src="{{asset('js/detect.js')}}"></script>
         <script src="{{asset('js/fastclick.js')}}"></script>
@@ -133,10 +149,10 @@
         <script src="{{asset('js/wow.min.js')}}"></script>
         <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
         <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
-
-
-
-       
+        
+        <script src="{{asset('js/jquery.app.js')}}"></script>
+        <!-- pour les select -->
+        
         <!-- jQuery  -->
         <script src="{{asset('plugins/moment/moment.js')}}"></script>
         <!-- jQuery  -->
@@ -155,6 +171,17 @@
         <script src="{{asset('plugins/flot-chart/jquery.flot.crosshair.js')}}"></script>
 
         <!-- jQuery  -->
+        <script src="{{asset('plugins/select2/dist/js/select2.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('plugins/tagsinput/jquery.tagsinput.min.js')}}"></script>
+        <script src="{{asset('plugins/toggles/toggles.min.js')}}"></script>
+        <script src="{{asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/colorpicker/bootstrap-colorpicker.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/jquery-multi-select/jquery.multi-select.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/jquery-multi-select/jquery.quicksearch.js')}}"></script>
+        <script src="{{asset('plugins/bootstrap-inputmask/bootstrap-inputmask.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js')}}" type="text/javascript"></script>
+
         <script src="{{asset('pages/jquery.todo.js')}}"></script>
         
         <!-- jQuery  -->
@@ -162,9 +189,6 @@
         
         <!-- jQuery  -->
         <script src="{{asset('pages/jquery.dashboard.js')}}"></script>
-
-        <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-        <script src="{{asset('plugins/select2/dist/js/select2.min.js')}}" type="text/javascript"></script>
 
         <!-- BEGIN PAGE SCRIPTS -->
         <script src="{{asset('plugins/moment/moment.js')}}"></script>
@@ -189,10 +213,10 @@
 
         <!-- Datatable init js -->
         <script src="{{asset('pages/datatables.init.js')}}"></script>
-        <script src="{{asset('js/jquery.app.js')}}"></script>
 
         <script type="text/javascript" src="{{asset('assets/plugins/isotope/dist/isotope.pkgd.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('assets/plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
+
         <script type="text/javascript">
 
       
@@ -290,6 +314,9 @@
                   dataType:'text',
                   success: function(data){
                     $('#con-close-modal .modal-dialog').html(data);
+                    jQuery(".select2").select2({
+                        width: '100%'
+                    });
                   },
                 });
           });

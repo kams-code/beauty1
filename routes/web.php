@@ -37,6 +37,7 @@ Route::group( ['middleware' => ['auth']], function() {
 });
 Route::post( '/organisations/{id}','OrganisationController@update');
 Route::get('/permissions', 'RoleController@index1')->name('permissions');
+Route::get('/produits/categorie/{id}', 'ProduitController@index1')->name('categorieproduit');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'HomeController@profile')->name('profile');
@@ -46,6 +47,7 @@ Route::get('/facture/{}', 'FactureController@sotre1')->name('factures.validate')
 Route::get('form','FormController@create')->name('form');
 Route::post('form','FormController@store')->name('form');
 Route::resource('categories','CategorieController');
+Route::resource('categorieproduits','CategorieproduitController');
 // ------ les routes de clients ---------
 Route::resource('clients','ClientController');
 Route::resource('commandes','CommandeController');

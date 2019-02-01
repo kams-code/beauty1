@@ -44,14 +44,14 @@ class CategorieController extends Controller
             'nom'=> $request->get('nom'),
            'description'=> $request->get('description'),
        ]);
-        if($request->hasfile('image'))
+        if($request->hasfile('imageup'))
         {
      
-               $image=$request->file('image');
+               $image=$request->file('imageup');
                $filename=time().'.'.$image->getClientOriginalExtension();
                $location=public_path('images/'.$filename);
                Image::make($image)->resize(800,400)->save($location); 
-              
+              $request->merge(['image' => $filename]);
                $categorie->image=$filename;
         }
         $user=Auth::user();
@@ -70,8 +70,9 @@ class CategorieController extends Controller
      */
     public function show($id)
     {
-        $categorie = Categories::get()->where('id',$id);
-        return $categorie;
+        $categorie = Categories::findOrFail($id);
+        //$categorie = Categories::get()->where('id',$id);
+        return view('categories.show',compact('categorie'));
     }
 
     /**
@@ -96,6 +97,18 @@ class CategorieController extends Controller
     public function update(Request $request, $id)
     {
         $categorie = Categories::findOrFail($id);
+
+        if($request->hasfile('imageup'))
+        {
+        
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+               $categorie['image'] = $filename;
+               
+               $request->merge(['image' => $filename ]);
+        }
         $categorie->update($request->all());
        // return redirect(route('Categories.edit',$id));
        return redirect(route('categories.index'));
@@ -116,6 +129,6 @@ class CategorieController extends Controller
             flash()->success('categorie en vu');
         }
 
-        return redirect()->back();
+        return redirect(route('categories.index'));
     }
 }

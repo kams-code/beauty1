@@ -111,7 +111,8 @@ class ServiceController extends Controller
     public function show($id)
     {
 
-        $service = Services::get()->where('id',$id);
+       // $service = Services::get()->where('id',$id);
+       $service = Services::findOrFail($id);
         return view('services.show',compact('service'));
     }
 
@@ -123,7 +124,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Services::get()->where('id',$id)->first();
+        //$service = Services::get()->where('id',$id)->first();
+        $service = Services::findOrFail($id);
         return view('services.edit',compact('service'));
         
     }
@@ -137,7 +139,23 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $service = Services::findOrFail($id);
+    
+        if($request->hasfile('imageup'))
+        {
+        
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+               $organisation['image'] = $filename;
+               
+               $request->merge(['image' => $filename ]);
+        }
+        $service->update($request->except('is_promote'));
+       
+       return redirect(route('services.index'));
+
     }
 
     /**
@@ -149,11 +167,11 @@ class ServiceController extends Controller
     public function destroy($id)
     {
         if( Services::findOrFail($id)->delete() ) {
-            flash()->success('User has been deleted');
+            flash()->success('le service a ete supprime');
         } else {
-            flash()->success('User not deleted');
+            flash()->success('le service n\'a pas ete supprime');
         }
 
-        return redirect()->back();
+        return redirect(route('services.index'));
     }
 }

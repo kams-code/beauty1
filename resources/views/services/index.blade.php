@@ -44,8 +44,8 @@
                                 <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
                                     <div class="gal-detail thumb">
                                         <a href="assets/images/gallery/1.jpg" class="image-popup" title="Screenshot-1">
-                                        <a data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary pull-right">{{$service->montant}}</i></a>
-                                            <img  src="{{asset('images/'.$service->image)}}" class="thumb-img" alt="work-thumbnail">
+                                        <a style="position: absolute;right: 20px" data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary pull-right">{{$service->montant}}</i></a>
+                                            <img  src="{{asset('images/'.$service->image)}}" class="thumb-img" alt="work-thumbnail" style="height: 150px">
                                         </a>
                                         <div  >
                                             <div class="col-sm-12 control-label" style="padding: 0px">
@@ -53,11 +53,11 @@
                                                <p>{{ $service->description}} </p>
                                             
                                             </div> 
-                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="services/{{$service->id}}" data-id="{{$service->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> {{--@can('edit_service','delete_service')--}} 
-                                            
-                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                                <a data-toggle="modal" data-target="#deletemodal" data-id="{{$service->id}}" data-lien="organisations/{{$service->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a> 
-                                          {{--@endcan--}}  
+                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="services/{{$service->id}}" data-id="{{$service->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> 
+                                            @can('edit_services','delete_services')
+                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="services/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                                <a data-toggle="modal" data-target="#deletemodal" data-id="{{$service->id}}" data-lien="services/{{$service->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a> 
+                                            @endcan  
                                
                                         </div>
                                     </div>

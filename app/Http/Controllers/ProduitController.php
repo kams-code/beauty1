@@ -3,6 +3,7 @@
 namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 use App\Produits;
 use App\Fournisseurs;
+use App\Categorieproduits;
 use App\Form;
 use Illuminate\Http\Request;
 use Image;
@@ -18,7 +19,19 @@ class ProduitController extends Controller
     {
         $fournisseurs=Fournisseurs::pluck('nom', 'id');
         $produits=Produits::get();
-        return view ('produits.index',compact('produits','fournisseurs'));
+        $categories=Categorieproduits::get();
+        return view ('produits.index',compact('produits','fournisseurs','categories'));
+        
+    }
+
+    public function index1($id)
+
+    {
+        $fournisseurs=Fournisseurs::pluck('nom', 'id');
+        $produits=Produits::get();
+        $categories=Categorieproduits::get();
+        
+        return view ('produits.index1',compact('id','produits','fournisseurs','categories'));
         
     }
 
@@ -30,8 +43,8 @@ class ProduitController extends Controller
     public function create()
     {
         $fournisseurs=Fournisseurs::pluck('nom', 'id');
-      
-        return view ('produits.create',compact('fournisseurs'));
+        $categories=Categorieproduits::pluck('nom', 'id');
+        return view ('produits.create',compact('fournisseurs','categories'));
 
         
     }
@@ -53,6 +66,7 @@ class ProduitController extends Controller
      $produits =new Produits([ 
         'nom'=> $request->get('nom'),
        'description'=> $request->get('description'),
+
    ]);
 
    if($request->hasfile('image'))
@@ -68,6 +82,18 @@ class ProduitController extends Controller
    $user=Auth::user();
        
        $produits['organisation_id']=$user->organisation_id;
+       $produits['vendable']=$request->get('vendable');
+       if ($produits['vendable'] =="on"){
+        $produits['vendable']=1;
+        $produits['stockable']=1;
+        $produits['prix']=$request->get('prix');
+      }if ($produits['vendable'] !="on"){
+        $produits['vendable']=0;
+        $produits['stockable']!=0;
+ 
+      }
+      $produits['categori_id']=$request->get('categorie_id');
+     
         $produits->save();
         return redirect(route('produits.index'));
    
@@ -79,9 +105,11 @@ class ProduitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        //
+        $produit = Produits::find($id);
+        
+        return view('produits.show',compact('produit'));
     }
 
     /**
@@ -93,9 +121,9 @@ class ProduitController extends Controller
     public function edit($id)
     {
         $produit=Produits::findOrFail($id);
-        $fournisseurs=Fournisseurs::pluck('nom', 'id');
-      
-        return view ('produits.edit',compact('produit','fournisseurs'));
+        $fournisseurs=Fournisseurs::all();
+        $categories=Categorieproduits::all();
+        return view ('produits.edit',compact('produit','fournisseurs','categories'));
     }
 
     /**
@@ -107,8 +135,38 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produit = Produits::findOrFail($id);
-        $produit->update($request->all());
+        $produits = Produits::findOrFail($id);
+        $produits =new Produits([ 
+            'nom'=> $request->get('nom'),
+           'description'=> $request->get('description'),
+    
+       ]);
+    
+       if($request->hasfile('image'))
+       {
+    
+              $image=$request->file('image');
+              $filename=time().'.'.$image->getClientOriginalExtension();
+              $location=public_path('images/'.$filename);
+              Image::make($image)->resize(800,400)->save($location); 
+             
+              $produits->image=$filename;
+       }
+       $user=Auth::user();
+           
+           $produits['organisation_id']=$user->organisation_id;
+           $produits['vendable']=$request->get('vendable');
+           if ($produits['vendable'] =="on"){
+            $produits['vendable']=1;
+            $produits['stockable']=1;
+          }if ($produits['vendable'] !="on"){
+            $produits['vendable']=0;
+            $produits['stockable']!=0;
+     
+          }
+          $produits['categori_id']=$request->get('categorie_id');
+         
+        $produits->update();
         return redirect()->route('produits.index');
     } 
 
@@ -134,3 +192,4 @@ class ProduitController extends Controller
         return Redirect::to('produits');
     }
 }
+

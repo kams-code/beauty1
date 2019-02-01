@@ -12,7 +12,7 @@
             <div class="col-md-12" style="padding: 0px">
                 <center>
                     <img id="imgpreview" src="{{asset('images/'.$organisation->image)}}" style="width: 100px;cursor: pointer;" required>
-                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
+                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
 
                 </center>
             </div>

@@ -79,6 +79,7 @@
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
 
             </div>
+            {!! Form::close() !!}
 
         </div>
 

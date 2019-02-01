@@ -24,7 +24,7 @@ class FournisseurController extends Controller
      */
     public function create()
     {
-        return view('Fournisseurs.create');
+        return view('fournisseurs.create');
     }
 
     /**
@@ -35,6 +35,7 @@ class FournisseurController extends Controller
      */
     public function store(Request $request)
     {
+       
         $string = bin2hex(openssl_random_pseudo_bytes(10));
         $fournisseur= new Fournisseurs([
             'nom'=> $request->get('nom'),
@@ -42,7 +43,9 @@ class FournisseurController extends Controller
         'code'=> $request->get,
         'adresse'=> $request->get('adresse'),
         'email'=> $request->get('email'),
-        'telephone'=> $request->get('telephone')
+        'telephone'=> $request->get('telephone'),
+        'pays'=>$request->get('pays'),
+        'ville'=>$request->get('ville')
            
           ]);
           
@@ -65,8 +68,9 @@ class FournisseurController extends Controller
      */
     public function show($id)
     {
-        $fournisseur = Fournisseurs::get()->where('id',$id);
-        return $fournisseur;
+        //$fournisseur = Fournisseurs::get()->where('id',$id);
+        $fournisseur = Fournisseurs::findOrFail($id);
+        return view('fournisseurs.show',compact('fournisseur'));
     }
 
     /**
@@ -106,11 +110,11 @@ class FournisseurController extends Controller
     {  
    
         if( Fournisseurs::findOrFail($id)->delete() ) {
-            flash()->success('User has been deleted');
+            flash()->success('le fournisseur a bien ete supprime');
         } else {
-            flash()->success('User not deleted');
+            flash()->success('le fournisseur n\'a pas ete supprime');
         }
 
-        return redirect()->back();
+        return redirect(route('fournisseurs.index'));
     }
 }

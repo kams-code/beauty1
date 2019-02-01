@@ -1,93 +1,82 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Détail sur le service</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('services.store'),'files'=>true]) !!}
 
-                                 @section('content')
-  <div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
+                <div class="col-md-12">
+                    <h4>Informations sur le service</h4>
+                </div>
+                <div class="col-md-12">
+                    
+                    <style>
+                        .col-md-9 label {
+                            margin-bottom: 10px
+                        }
+                    </style>
+                    <div class="col-md-3">
+                        <img style="width: 100%;height: 115px" src="{{asset('images/'.$service->image)}}">
+                    </div>
+                    <div class="col-md-9">
+                        <label>
+                            <strong>Code:</strong> {{$service["code"]}}
+                        </label>
+                        <br>
+                        
+                        <label>
+                            <strong>Nom:</strong> {{$service->nom}}
+                        </label>
+                        <br>
+                        <label>
+                            <strong>Categorie:</strong> {{$service->categorie_id}}
+                        </label>
 
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Editable Table</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Tables</a></li>
-                                    <li class="active">Editable Table</li>
-                                </ol>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
 
+                    <div class="col-md-6" style="padding: 4px">
+                        <strong>Montant:</strong>{{$service["montant"]}}
+                    </div>
 
-                        <div class="panel">
-                            
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="m-b-30">
-                                            <button type="button" id="addToTable" class="btn btn-primary waves-effect waves-light">Ajouter <i class="fa fa-plus"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <h2>service Name: </h2>
-<{{ $service->name }} || ${{ money_format($service->montant, 2) }}</p>
+                    
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6" style="padding: 4px">
+                        <strong>Description:</strong>
+                    </div>
+                    <div class="col-sm-12">
+                        {{$service["description"]}}
 
-<h3>Service Belongs to</h3>
+                    </div>
+                    <label></label>
 
-<ul>
-    @foreach($service->users as $user)
-    <li>{{ $user->name}}</li>
-    @endforeach
-</ul>
-    
-                            </div>
-                            <!-- end: page -->
+                </div>
+                <div class="col-md-12">
+                    <h4><b >Informations sur les employes du service</b></h4>
+                </div>
+                <div class="col-md-6" style="padding: 0px">
+                    <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe') !!}</label>
+                    <div class="col-sm-12">
+                        {{$service["user_id"]}}
+                    </div>
+                </div>
 
-                        </div> <!-- end Panel -->
+            <div class="m-b-0">
+                <div class="col-sm-offset-3 col-sm-9">
 
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
-
-                <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
+                </div>
+            </div>
+            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
 
             </div>
- <script>
-            var resizefunc = [];
-        </script>
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/detect.js')}}"></script>
-        <script src="{{asset('js/fastclick.js')}}"></script>
-        <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
-        <script src="{{asset('js/jquery.blockUI.js')}}"></script>
-        <script src="{{asset('js/waves.js')}}"></script>
-        <script src="{{asset('js/wow.min.js')}}"></script>
-        <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
-        <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
 
-        <script src="{{asset('js/jquery.app.js')}}"></script>
+        </div>
 
-	    <!-- Examples -->
-	    <script src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
-	    <script src="{{asset('plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 
-	    <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
-	    <script src="{{asset('pages/datatables.editable.init.js')}}"></script>
-@endsection
-@include('partials.sidebarright')
+    </div>
 
-
-
-
-
-
-
-
-
-
-
+</div>  

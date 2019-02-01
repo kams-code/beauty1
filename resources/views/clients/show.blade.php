@@ -41,18 +41,7 @@
                                     <span class="hidden-xs">Activities</span> 
                                 </a> 
                             </li> 
-                            <li class="tab"> 
-                                <a href="#messages-2" data-toggle="tab" aria-expanded="true"> 
-                                    <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> 
-                                    <span class="hidden-xs">Projects</span> 
-                                </a> 
-                            </li> 
-                            <li class="tab"> 
-                                <a href="#settings-2" data-toggle="tab" aria-expanded="false"> 
-                                    <span class="visible-xs"><i class="fa fa-cog"></i></span> 
-                                    <span class="hidden-xs">Settings</span> 
-                                </a> 
-                            </li> 
+                          
                         <div class="indicator"></div></ul> 
                         </div>
                         <div class="hidden-xs col-sm-3 col-lg-6">
@@ -122,18 +111,7 @@
                                         <!-- Personal-Information -->
 
                                         <!-- Languages -->
-                                        <div class="panel panel-default panel-fill">
-                                            <div class="panel-heading"> 
-                                                <h3 class="panel-title">Languages</h3> 
-                                            </div> 
-                                            <div class="panel-body"> 
-                                                <ul>
-                                                    <li>English</li>
-                                                    <li>Franch</li>
-                                                    <li>Greek</li>
-                                                </ul>
-                                            </div> 
-                                        </div>
+                                   
                                         <!-- Languages -->
 
                                     </div>
@@ -208,144 +186,34 @@
 
 
                             <div class="tab-pane" id="profile-2">
-                                <!-- Personal-Information -->
-                                <div class="panel panel-default panel-fill">
-                                    
-                                    <div class="panel-body"> 
-                                        <div class="timeline-2">
-                                            @foreach ($services as $service )
-                                            <div class="time-item">
-                                                    <div class="item-info">
-                                                        <div class="text-muted"> {{$service->created_at}}</div>
-                                                        <p><strong><a href="#" class="text-info">{{$service->nom}}</a></strong> {{$service->description}} </p>
-                                                    </div>
-                                                </div>
-
-                                                
-                                            @endforeach
-                                       
-
-
-                                        
-                                    </div>
-
-                                    </div> 
-                                </div>
-                                <!-- Personal-Information -->
+                                    <div class="row">
+                                            <div class="col-md-12">
+                                                <section id="cd-timeline" class="cd-container">
+                                                  @foreach ($services as $service )
+                                                  <div class="cd-timeline-block">
+                                                        <div class="cd-timeline-img cd-success">
+                                                            <i class="fa fa-tag"></i>
+                                                        </div> <!-- cd-timeline-img -->
+                
+                                                        <div class="cd-timeline-content">
+                                                            <h3>Timeline Event One</h3>
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
+                                                            <span class="cd-date">{{$service->created_at}}</span>
+                                                        </div> <!-- cd-timeline-content -->
+                                                    </div> <!-- cd-timeline-block -->
+                                                    
+                                                    @endforeach
+                                                     <!-- cd-timeline-block -->
+                                                </section> <!-- cd-timeline -->
+                                            </div>
+                                        </div><!-- Row -->
+                
                             </div> 
+                            
 
 
 
-                            <div class="tab-pane" id="messages-2">
-                                <!-- Personal-Information -->
-                                <div class="panel panel-default panel-fill">
-                                    <div class="panel-heading"> 
-                                        <h3 class="panel-title">My Projects</h3> 
-                                    </div> 
-                                    <div class="panel-body"> 
-                                        <div class="table-responsive">
-                                                            <table class="table">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>#</th>
-                                                                        <th>Project Name</th>
-                                                                        <th>Start Date</th>
-                                                                        <th>Due Date</th>
-                                                                        <th>Status</th>
-                                                                        <th>Assign</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>Moltran Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-info">Work in Progress</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>2</td>
-                                                                        <td>Moltran Frontend</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-success">Pending</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>3</td>
-                                                                        <td>Moltran Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-pink">Done</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>4</td>
-                                                                        <td>Moltran Frontend</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-purple">Work in Progress</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td>5</td>
-                                                                        <td>Moltran Admin</td>
-                                                                        <td>01/01/2015</td>
-                                                                        <td>07/05/2015</td>
-                                                                        <td><span class="label label-warning">Coming soon</span></td>
-                                                                        <td>Coderthemes</td>
-                                                                    </tr>
-                                                                    
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
 
-                                    </div> 
-                                </div>
-                                <!-- Personal-Information -->
-                            </div> 
-
-
-                            <div class="tab-pane" id="settings-2">
-                                <!-- Personal-Information -->
-                                <div class="panel panel-default panel-fill">
-                                    <div class="panel-heading"> 
-                                        <h3 class="panel-title">Edit Profile</h3> 
-                                    </div> 
-                                    <div class="panel-body"> 
-                                        <form role="form">
-                                            <div class="form-group">
-                                                <label for="FullName">Full Name</label>
-                                                <input type="text" value="John Doe" id="FullName" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Email">Email</label>
-                                                <input type="email" value="first.last@example.com" id="Email" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Username">Username</label>
-                                                <input type="text" value="john" id="Username" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Password">Password</label>
-                                                <input type="password" placeholder="6 - 15 Characters" id="Password" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="RePassword">Re-Password</label>
-                                                <input type="password" placeholder="6 - 15 Characters" id="RePassword" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="AboutMe">About Me</label>
-                                                <textarea style="height: 125px" id="AboutMe" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
-                                            </div>
-                                            <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
-                                        </form>
-
-                                    </div> 
-                                </div>
-                                <!-- Personal-Information -->
-                            </div> 
                         </div> 
                     </div>
                     </div>

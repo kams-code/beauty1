@@ -18,6 +18,10 @@ class CreateProduitsTable extends Migration
             $table->string('nom');
             $table->string('description');
             $table->string('image');
+comm            $table->integer('prix');
+            $table->string('categori_id');
+            $table->boolean('vendable');
+            $table->boolean('stockable');
             $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
         Schema::table('commandes', function (Blueprint $table) {

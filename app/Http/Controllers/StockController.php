@@ -29,8 +29,10 @@ class StockController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('Stocks.create');
+    {$produits=Produits::pluck('nom', 'id');
+        $Produits=Produits::get();
+        $Stocks=Stocks::get();
+        return view('Stocks.create',compact('Stocks','produits','Produits'));
     }
 
     /**
@@ -105,7 +107,10 @@ $stocksortie->update(@json_decode(json_encode($stocksortie), true));
      */
     public function show($id)
     {
-        //
+        $stock = Stocks::get()->where('id',$id)->first();
+        $produit=Produits::get()->where('id',$stock->produit_id)->first();
+        
+        return view('stocks.show',compact('stock','produit'));
     }
 
     /**
