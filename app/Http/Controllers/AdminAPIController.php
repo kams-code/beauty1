@@ -28,7 +28,7 @@ class AdminAPIController extends Controller
 		foreach($appointments as $a) {
 
 			$customer = Clients::find($a['client_id']);
-			$customer = $customer->name.' '.$customer->email;
+			$customer = $customer->nom.' '.$customer->prenom;
 
 			
 			$startDate = date_create($a->datedebut);
@@ -53,7 +53,7 @@ class AdminAPIController extends Controller
 		foreach($appointments as $a) {
 
 			$customer = User::find($a['user_id']);
-			$customer = $customer->nom.' '.$customer->prenom;
+			$customer = $customer->name.' '.$customer->email;
 
 			
 			

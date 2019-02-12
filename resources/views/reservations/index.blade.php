@@ -30,9 +30,7 @@
                                 ================================================== -->  
                                 <div class="row">
                                    
-                                                 @can('add_organisations')
-                                                 <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="reservations/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-                                                 <div class="col-lg-8">
+                                                  <div class="col-lg-8">
                                                     <div id="error"></div>
                                                     <div id="calendar"></div>
                                                 </div>
