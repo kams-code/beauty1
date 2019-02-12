@@ -89,7 +89,12 @@ class CommandeController extends Controller
      */
     public function show($id)
     {
-        //
+        $commande = Commandes::find($id);
+        $produits=Produits::pluck('nom', 'id');
+        $users=User::pluck('name', 'id');
+        $services=Services::pluck('nom', 'id');
+        
+        return view('commandes.show',compact('commande','services','users','produits'));
     }
 
     /**
@@ -142,9 +147,9 @@ class CommandeController extends Controller
     public function destroy($id)
     {
         if( Commandes::findOrFail($id)->delete() ) {
-            flash()->success('User has been deleted');
+            flash()->success('commande a ete supprime');
         } else {
-            flash()->success('User not deleted');
+            flash()->success('commnade n\' est pas supprimee');
         }
 
         return redirect()->back();

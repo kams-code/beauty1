@@ -1,4 +1,4 @@
-@extends('layouts.layout1')
+@extends('layouts.layout2')
 @include('partials.topbar')
 @include('partials.sidebar')
 

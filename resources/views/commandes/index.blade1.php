@@ -53,7 +53,7 @@
                         </thead>
                         <tbody id="tablebody">
 
-                            @foreach($commandes as $organisation)
+                            @foreach($organisations as $organisation)
                                 @php
                                 $date=date('d-m-Y H:i:s', strtotime($organisation->created_at));
                                 @endphp

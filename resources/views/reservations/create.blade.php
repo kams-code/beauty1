@@ -27,11 +27,55 @@
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('heure','Heure :') !!}</label>
                 <div class="col-sm-12">
                     <select name="heure" class="form-control">
-                          <option value="12:00">12:00am</option><option class="ui-timepicker-am">12:30am</option><option class="ui-timepicker-am">1:00am</option><option class="ui-timepicker-am">1:30am</option><option class="ui-timepicker-am">2:00am</option><option class="ui-timepicker-am">2:30am</option><option class="ui-timepicker-am">3:00am</option><option class="ui-timepicker-am">3:30am</option><option class="ui-timepicker-am">4:00am</option><option class="ui-timepicker-am">4:30am</option><option class="ui-timepicker-am">5:00am</option><option class="ui-timepicker-am">5:30am</option><option class="ui-timepicker-am">6:00am</option><option class="ui-timepicker-am">6:30am</option><option class="ui-timepicker-am">7:00am</option><option class="ui-timepicker-am">7:30am</option><option class="ui-timepicker-am">8:00am</option><option class="ui-timepicker-am">8:30am</option><option class="ui-timepicker-am">9:00am</option><option class="ui-timepicker-am">9:30am</option><option class="ui-timepicker-am">10:00am</option><option class="ui-timepicker-am">10:30am</option><option class="ui-timepicker-am">11:00am</option><option class="ui-timepicker-am">11:30am</option><option class="ui-timepicker-pm">12:00pm</option><option class="ui-timepicker-pm">12:30pm</option><option class="ui-timepicker-pm">1:00pm</option><option class="ui-timepicker-pm">1:30pm</option><option class="ui-timepicker-pm">2:00pm</option><option class="ui-timepicker-pm">2:30pm</option><option class="ui-timepicker-pm">3:00pm</option><option class="ui-timepicker-pm">3:30pm</option><option class="ui-timepicker-pm">4:00pm</option><option class="ui-timepicker-pm">4:30pm</option><option class="ui-timepicker-pm">5:00pm</option><option class="ui-timepicker-pm">5:30pm</option><option class="ui-timepicker-pm">6:00pm</option><option class="ui-timepicker-pm">6:30pm</option><option class="ui-timepicker-pm">7:00pm</option><option class="ui-timepicker-pm">7:30pm</option><option class="ui-timepicker-pm">8:00pm</option><option class="ui-timepicker-pm">8:30pm</option><option class="ui-timepicker-pm">9:00pm</option><option class="ui-timepicker-pm">9:30pm</option><option class="ui-timepicker-pm">10:00pm</option><option class="ui-timepicker-pm">10:30pm</option><option class="ui-timepicker-pm">11:00pm</option><option class="ui-timepicker-pm">11:30pm</option>
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="mercedes">Mercedes</option>
-                        <option value="audi">Audi</option>
+                          <option value="12:00">12:00am</option>
+                          <option value="12:30">12:30am</option>
+                          <option value="1:00">1:00am</option>
+                          <option value="1:30">1:30am</option>
+                          <option value="2:00">2:00am</option>
+                          <option value="2:30">2:30am</option>
+                          <option value="3:00">3:00am</option>
+                          <option value="3:30">3:30am</option>
+                          <option value="4:00">4:00am</option>
+                          <option value="4:30">4:30am</option>
+                          <option value="5:00">5:00am</option>
+                          <option value="5:30">5:30am</option>
+                          <option value="6:00">6:00am</option>
+                          <option value="6:30">6:30am</option>
+                          <option value="7:00">7:00am</option>
+                          <option value="7:30">7:30am</option>
+                          <option value="8:00">8:00am</option>
+                          <option value="8:30">8:30am</option>
+                          <option value="12:00">9:00am</option>
+                          <option value="9:00">9:30am</option>
+                          <option value="10:00">10:00am</option>
+                          <option value="12:00">10:30am</option>
+                          <option value="10:30">11:00am</option>
+                          <option value="11:30">11:30am</option>
+                          <option value="12:00">12:00pm</option>
+                          <option value="12:30">12:30pm</option>
+                          <option value="1:00">1:00pm</option>
+                          <option value="1:30">1:30pm</option>
+                          <option value="2:00">2:00pm</option>
+                          <option value="2:30">2:30pm</option>
+                          <option value="3:00">3:00pm</option>
+                          <option value="3:30">3:30pm</option>
+                          <option value="4:00">4:00pm</option>
+                          <option value="4:30">4:30pm</option>
+                          <option value="5:00">5:00pm</option>
+                          <option value="5:30">5:30pm</option>
+                          <option value="6:00">6:00pm</option>
+                          <option value="6:30">6:30pm</option>
+                          <option value="7:00">7:00pm</option>
+                          <option value="7:30">7:30pm</option>
+                          <option value="8:00">8:00pm</option>
+                          <option value="8:30">8:30pm</option>
+                          <option value="12:00">9:00pm</option>
+                          <option value="9:00">9:30pm</option>
+                          <option value="10:00">10:00pm</option>
+                          <option value="12:00">10:30pm</option>
+                          <option value="10:30">11:00pm</option>
+                          <option value="11:30">11:30pm</option> 
+                        
                       </select>
                  </div>
             </div>
