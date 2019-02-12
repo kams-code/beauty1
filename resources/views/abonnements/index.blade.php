@@ -17,7 +17,7 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Instituts</h4>
+                                <h4 class="pull-left page-title">Abonnements</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="home">Accueil</a></li>
                                     <li class="active">Abonnements</li>

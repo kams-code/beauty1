@@ -34,6 +34,12 @@ class StockController extends Controller
         $Stocks=Stocks::get();
         return view('Stocks.create',compact('Stocks','produits','Produits'));
     }
+    public function remove()
+    {$produits=Produits::pluck('nom', 'id');
+        $Produits=Produits::get();
+        $Stocks=Stocks::get();
+        return view('stocks.remove',compact('Stocks','produits','Produits'));
+ }
 
     /**
      * Store a newly created resource in storage.

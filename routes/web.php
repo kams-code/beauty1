@@ -40,6 +40,7 @@ Route::get('/permissions', 'RoleController@index1')->name('permissions');
 Route::get('/produits/categorie/{id}', 'ProduitController@index1')->name('categorieproduit');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/stocksremove', 'StockController@remove')->name('stocksremove');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/main', 'MainController@index')->name('main');
 Route::get('/sortie', 'StockController@sortir')->name('sortie');

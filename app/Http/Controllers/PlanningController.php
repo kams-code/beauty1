@@ -83,7 +83,8 @@ class PlanningController extends Controller
     public function show($id)
     {
         $planning = Plannings::get()->where('id',$id);
-        return $planning;
+        $user=User::get()->where('id',$id)->first();
+        return view('plannings.show',compact('users','planning','jours','user'));
     }
 
     /**

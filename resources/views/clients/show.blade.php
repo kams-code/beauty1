@@ -189,16 +189,21 @@
                                     <div class="row">
                                             <div class="col-md-12">
                                                 <section id="cd-timeline" class="cd-container">
-                                                  @foreach ($services as $service )
+                                                  @foreach ($reservations as $reservation )
                                                   <div class="cd-timeline-block">
                                                         <div class="cd-timeline-img cd-success">
                                                             <i class="fa fa-tag"></i>
                                                         </div> <!-- cd-timeline-img -->
                 
                                                         <div class="cd-timeline-content">
-                                                            <h3>Timeline Event One</h3>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, optio, dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad debitis unde? Iste voluptatibus minus veritatis qui ut.</p>
-                                                            <span class="cd-date">{{$service->created_at}}</span>
+                                                            @foreach ($services as $service)
+                                                                @if ($reservation->service_id==$service->id)
+                                                                <h3>{{$service->nom}}</h3>
+                                                                <p>{{$service->nom}}</p> 
+                                                                @endif
+                                                            @endforeach
+                                                           
+                                                            <span class="cd-date">{{$reservation->created_at}}</span>
                                                         </div> <!-- cd-timeline-content -->
                                                     </div> <!-- cd-timeline-block -->
                                                     

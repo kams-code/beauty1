@@ -13,7 +13,9 @@ class Fournisseurs extends Model
         'code',
         'adresse',
         'email',
-        'telephone'
+        'telephone',
+        'pays',
+        'ville'
                
     ];
     public function produits(){

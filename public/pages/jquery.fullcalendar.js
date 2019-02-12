@@ -137,6 +137,9 @@
         var form = '';
         var today = new Date($.now());
 
+
+        
+
         var defaultEvents =  [{
                 title: 'Hey!',
                 start: new Date($.now() + 158000000),
@@ -166,7 +169,7 @@
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            events: defaultEvents,
+          
             editable: true,
             droppable: true, // this allows things to be dropped onto the calendar !!!
             eventLimit: true, // allow "more" link when too many events

@@ -36,7 +36,7 @@ class AdminAPIController extends Controller
 			
 			$event = array(
 				'id' => $a['id'],
-				'title' => 'Appointment with '.$customer,
+				'title' => 'Rendez vous avec '.$customer,
 				'start' => $startDate->format('Y-m-d\TH:i:s'),
 				'end' => $endDate->format('Y-m-d\TH:i:s'),
 			);
@@ -94,7 +94,7 @@ for ($current_date = $from_date; $current_date <= $to_date; $current_date += (60
 			
 			$event = array(
 				'id' => $a['id'],
-				'title' => 'Appointment with '.$customer,
+				'title' => 'Planning de l employer '.$customer,
 				'start' => $startDate->format('Y-m-d\TH:i:s'),
 				'end' => $endDate->format('Y-m-d\TH:i:s'),
 			);

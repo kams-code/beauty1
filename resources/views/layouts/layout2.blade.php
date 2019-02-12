@@ -74,6 +74,29 @@
         <div class="modal-dialog"> 
             
         </div>
+    </div>
+    
+    <div id="deletemodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="background: red"> 
+            <div class="modal-content" style="padding: 0px;border:0px">
+                <div class="modal-header" style="padding: 10px;background: red;border-color: red">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="color: white;opacity: 1">×</button>
+                    <h4 class="modal-title" style="color: white">Confirmation</h4>
+                </div>
+                <div class="modal-body" style="padding: 30px">
+                    <div class="row">
+                        <div class="col-md-12" style="text-align: center;">
+                            <h4>Voulez-vraiment cet élément?</h4>
+                        </div>
+                        <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
+                            <button class="btn btn-danger" id="boutondelete">Supprimer</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
     </div><!-- /.modal -->
 
 
@@ -120,6 +143,83 @@
 <script src="js/jquery.scrollTo.min.js"></script>
 
 <script src="js/jquery.app.js"></script>
+<script src="{{asset('js/jquery.min.js')}}"></script>
+        <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('js/detect.js')}}"></script>
+        <script src="{{asset('js/fastclick.js')}}"></script>
+        <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
+        <script src="{{asset('js/jquery.blockUI.js')}}"></script>
+        <script src="{{asset('js/waves.js')}}"></script>
+        <script src="{{asset('js/wow.min.js')}}"></script>
+        <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
+        <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
+        
+        <script src="{{asset('js/jquery.app.js')}}"></script>
+        <!-- pour les select -->
+        
+        <!-- jQuery  -->
+        <script src="{{asset('plugins/moment/moment.js')}}"></script>
+        <!-- jQuery  -->
+        <script src="{{asset('plugins/waypoints/lib/jquery.waypoints.js')}}"></script>
+        <script src="{{asset('plugins/counterup/jquery.counterup.min.js')}}"></script>
+        <!-- jQuery  -->
+        <script src="{{asset('plugins/sweetalert/dist/sweetalert.min.js')}}"></script>
+        <!-- flot Chart -->
+        <script src="{{asset('plugins/flot-chart/jquery.flot.js')}}"></script>
+        <script src="{{asset('plugins/flot-chart/jquery.flot.time.js')}}"></script>
+        <script src="{{asset('plugins/flot-chart/jquery.flot.tooltip.min.js')}}"></script>
+        <script src="{{asset('plugins/flot-chart/jquery.flot.resize.js')}}"></script>
+        <script src="{{asset('plugins/flot-chart/jquery.flot.pie.js')}}"></script>
+        <script src="{{asset('plugins/flot-chart/jquery.flot.selection.js')}}"></script>
+        <script src="{{asset('plugins/flot-chart/jquery.flot.stack.js')}}"></script>
+        <script src="{{asset('plugins/flot-chart/jquery.flot.crosshair.js')}}"></script>
+
+        <!-- jQuery  -->
+        <script src="{{asset('plugins/select2/dist/js/select2.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('plugins/tagsinput/jquery.tagsinput.min.js')}}"></script>
+        <script src="{{asset('plugins/toggles/toggles.min.js')}}"></script>
+        <script src="{{asset('plugins/timepicker/bootstrap-timepicker.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/bootstrap-datepicker/js/bootstrap-datepicker.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/colorpicker/bootstrap-colorpicker.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/jquery-multi-select/jquery.multi-select.js')}}"></script>
+        <script type="text/javascript" src="{{asset('plugins/jquery-multi-select/jquery.quicksearch.js')}}"></script>
+        <script src="{{asset('plugins/bootstrap-inputmask/bootstrap-inputmask.min.js')}}" type="text/javascript"></script>
+        <script src="{{asset('plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js')}}" type="text/javascript"></script>
+
+        <script src="{{asset('pages/jquery.todo.js')}}"></script>
+        
+        <!-- jQuery  -->
+        <script src="{{asset('pages/jquery.chat.js')}}"></script>
+        
+        <!-- jQuery  -->
+        <script src="{{asset('pages/jquery.dashboard.js')}}"></script>
+
+        <!-- BEGIN PAGE SCRIPTS -->
+        <script src="{{asset('plugins/moment/moment.js')}}"></script>
+        <script src="{{asset('plugins/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+        <script src="{{asset('pages/jquery.fullcalendar.js')}}"></script>
+
+        <!-- Datatables-->
+        <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.buttons.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/buttons.bootstrap.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/jszip.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/pdfmake.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/vfs_fonts.js')}}"></script>
+        <script src="{{asset('plugins/datatables/buttons.html5.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/buttons.print.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.fixedHeader.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.keyTable.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.responsive.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/responsive.bootstrap.min.js')}}"></script>
+        <script src="{{asset('plugins/datatables/dataTables.scroller.min.js')}}"></script>
+
+        <!-- Datatable init js -->
+        <script src="{{asset('pages/datatables.init.js')}}"></script>
+
+        <script type="text/javascript" src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
 
 <!-- Modal-Effect -->
 <script src="plugins/modal-effect/js/classie.js"></script>

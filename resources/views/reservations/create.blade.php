@@ -51,7 +51,7 @@
                           <option value="12:00">10:30am</option>
                           <option value="10:30">11:00am</option>
                           <option value="11:30">11:30am</option>
-                          <option value="12:00">12:00pm</option>
+                             <option value="12:00">12:00pm</option>
                           <option value="12:30">12:30pm</option>
                           <option value="1:00">1:00pm</option>
                           <option value="1:30">1:30pm</option>

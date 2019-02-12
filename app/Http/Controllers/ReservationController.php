@@ -114,7 +114,7 @@ $reservation_list=[];
         $user=Auth::user();
        
        $reservation['organisation_id']=$user->organisation_id;
-       
+      
         $reservation ->save();
         }
         $client = Clients::get()->where('id',$request->get('client_id'))->first();
@@ -142,8 +142,12 @@ $reservation_list=[];
      */
     public function show($id)
     {
-        $reservation = Reservations::get()->where('id',$id);
-        return $reservation;
+        $services=Services::all();
+       
+        $reservation = Reservations::get()->where('id',$id)->first();
+        $client=Clients::get()->where('id',$reservation->client_id)->first();
+        $reservations=Reservations::get()->where('code',$reservation->code);
+        return view('reservations.show',compact('reservations','services','client'));
     }
 
     /**
@@ -155,9 +159,10 @@ $reservation_list=[];
     public function edit($id)
     {
         $reservation = Reservations::findOrFail($id);
+        $client=Clients::findOrFail( $reservation->client_id);
         $clients = Clients::pluck('nom','id')->all();
         $services = Services::pluck('nom','id')->all();
-        return view('reservations.edit',compact('reservation','clients','services'));
+        return view('reservations.edit',compact('reservation','clients','client','services'));
     }
 
     /**

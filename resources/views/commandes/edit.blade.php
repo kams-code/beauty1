@@ -1,107 +1,55 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
-
-                                 @section('content')
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">General elements</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Forms</a></li>
-                                    <li class="active">General elements</li>
-                                </ol>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-                                                <div class="col-sm-9">
-                                                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword4" class="col-sm-3 control-label">Re Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword4" placeholder="Retype Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                    <div class="checkbox checkbox-primary">
-                                                        <input id="checkbox2" type="checkbox">
-                                                        <label for="checkbox2">
-                                                            Check me out !
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                  <button type="submit" class="btn btn-info waves-effect waves-light">Sign in</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                            <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                   <div class="panel-body">
-                    {!! Form::open(['method' => 'PUT', 'url' => route('commandes.update', $commande )]) !!}
-                          <div class="form-group">
-                             {!! Form::label('nom','nom') !!}
-                             {!! Form::text('nom',$commande->nom, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('quantite','quantite') !!}
-                             {!! Form::text('quantite',$commande->quantite, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('fournisseur_id','Fournisseur') !!}
-                             {!! Form::select('fournisseur_id',$fournisseurs,$commande->fournisseur_id, ['class' => 'form-control','required']) !!}
-                          </div> 
-                          <button class="btn btn-primary">envoyer</button>
-                    {!! Form::close() !!}
-                </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                        </div> <!-- End row -->
-
-
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
- @can('edit_commandes', 'delete_commandes')
-                    <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-                @endcan
-                
-
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Modifier une commande</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('commandes.update',$commande),'files'=>true]) !!}
+            <div class="col-md-12">
+                <h4>Informations de base</h4>
             </div>
+            
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="nom" value="{{$commande->nom}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="number" class="form-control" name="telephone" value="{{$commande->user_id}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('produit_id','Produit*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="email" class="form-control" name="email" value="{{$commande->produit_id}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control" name="adresse" value="{{$commande->fournisseur_id}}" required="">
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+    
+           
+          
+            <div class="m-b-0">
+                <div class="col-sm-offset-3 col-sm-9">
 
-@endsection
-@include('partials.sidebarright')
+                </div>
+            </div>
+            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
+                <button class="btn btn-primary">Modifier</button>
+            </div>
+            {!! Form::close() !!}
+        </div>
+
+    </div>
+
+</div>

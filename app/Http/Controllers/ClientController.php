@@ -84,9 +84,9 @@ class ClientController extends Controller
     {
         $client = Clients::get()->where('id',$id)->first();
 
-        $services = Reservations::get()->where('client_id','=',$id);
-       
-        return view('clients.show',compact('client','services'));
+        $reservations = Reservations::get()->where('client_id','=',$id);
+        $services = Services::all();
+        return view('clients.show',compact('client','services','reservations'));
     }
 
     /**

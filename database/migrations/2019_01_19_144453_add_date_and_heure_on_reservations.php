@@ -14,8 +14,7 @@ class AddDateAndHeureOnReservations extends Migration
     public function up()
     {
         Schema::table('reservations', function (Blueprint $table) {
-            $table->date('datedebut');
-            $table->date('datefin');
+         
         });
     }
 

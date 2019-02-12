@@ -36,10 +36,11 @@ $(document).ready(function() {
           var details = '<h3>'+calEvent.title+'</h3>' +
             '<p><b>Begins</b>: '+start+'</p>' +
             '<p><b>Ends</b>: '+end+'</p>' +
-            ' <a href="" class="on-default seedetails btn btn-primary"  data-target="#con-close-modal"><i class="fa fa-eye"></i></a> '+
+            
+            '                                    <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="reservations/'+calEvent.id+'" data-id="'+calEvent.id+'" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> '+
                  
-            ' <a data-toggle="modal" data-target="#con-close-modal" data-lien="plannings/'+calEvent.id+'/edit" data-id="'+calEvent.id+'" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>'+
-            ' <a data-toggle="modal" data-target="#deletemodal" data-id="'+calEvent.id+'" data-lien="plannings/'+calEvent.id+'" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>   </p>';
+            ' <a data-toggle="modal" data-target="#con-close-modal" data-lien="reservations/'+calEvent.id+'/edit" data-id="'+calEvent.id+'" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>'+
+            ' <a data-toggle="modal" data-target="#deletemodal" data-id="'+calEvent.id+'" data-lien="reservations/'+calEvent.id+'" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>   </p>';
            detailView.empty();
            detailView.append(details);
         });
