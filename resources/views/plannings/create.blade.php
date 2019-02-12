@@ -1,120 +1,91 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ajouter un planning</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row"> 
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('plannings.store')]) !!}
+            <div class="col-md-12" style="padding: 0px">
+                <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heureDeb','Jours') !!}</label>
+               
+                </div>
 
-                                 @section('content')
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
+            <div class="col-md-6" style="padding: 0px">
+<label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('dateDeb','Debut') !!}</label>
+<div class="col-sm-12">
+ {!! Form::date('dateDeb',null, ['class' => 'form-control','required']) !!}
+</div>
+</div>
 
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">General elements</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Forms</a></li>
-                                    <li class="active">General elements</li>
-                                </ol>
-                            </div>
-                        </div>
+<div class="col-md-6" style="padding: 0px">
+<label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('dateFin','Fin') !!}</label>
+<div class="col-sm-12">
+ {!! Form::date('dateFin',null, ['class' => 'form-control','required']) !!}
+</div>
+</div>
+<div class="col-md-12" style="padding: 0px">
+    <label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heureDeb','Plage horaire') !!}</label>
+   
+    </div>
+<div class="col-md-6" style="padding: 0px">
+<label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heureDeb','Debut') !!}</label>
+<div class="col-sm-12">
+ {!! Form::time('heureDeb',null, ['class' => 'form-control','required']) !!}
+</div>
+</div>
 
+<div class="col-md-6" style="padding: 0px">
+<label for="inputEmail3" class="col-sm-3 control-label">{!! Form::label('heureDeb','Fin') !!}</label>
+<div class="col-sm-12">
+ {!! Form::time('heureFin',null, ['class' => 'form-control','required']) !!}
+</div>
+</div>
 
-                        <div class="row">
-                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-                                                <div class="col-sm-9">
-                                                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword4" class="col-sm-3 control-label">Re Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword4" placeholder="Retype Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                    <div class="checkbox checkbox-primary">
-                                                        <input id="checkbox2" type="checkbox">
-                                                        <label for="checkbox2">
-                                                            Check me out !
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                  <button type="submit" class="btn btn-info waves-effect waves-light">Sign in</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
+<div class="col-md-6" style="padding: 0px">
+<label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('User_id','Employé ') !!}</label>
+<div class="col-sm-12">
+   {!! Form::select('user_id',$users,null, ['class' => 'form-control','required']) !!}
 
-                            <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    <div class="panel-body">
-                                        {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('reservations.store')]) !!}
-                                        
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('code','Code') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
-          </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('client_id','Client') !!}</label>
-                                                <div class="col-sm-9">
-                                                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control','required']) !!}
-                         
-          </div>
-                                            </div>
+</div>
+</div>
 
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Service') !!}</label>
-                                                <div class="col-sm-9">
-                                                {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
-          </div>
-                                            </div>
-                                            
-                                           
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                <button class="btn btn-primary">envoyer</button>
+<div class="col-md-6" style="padding: 0px">
+    <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('categorie_id','Jours', ['class' => 'pull-left']) !!}</label>
+    <div class="col-sm-12">
+            <select id="pet-select" name="jours[]" class="form-control" multiple="multiple">
+                     <option value="Monday">Lundi</option>
+                     <option value="Tuesday">Mardi</option>
+                     <option value="Wednesday">Mercredi</option>
+                     <option value="Thursday">Jeudi</option>
+                     <option value="Friday">Vendredi</option>
+                     <option value="Saturday">Samedi</option>
+                     <option value="Sunday">Dimanche</option>
+                    </select>
+                    <select id="pet-select" hidden class="form-control" multiple="multiple">
+                        <option value="1">Lundi</option>
+                        <option value="2">Mardi</option>
+                        <option value="3">Mercredi</option>
+                        <option value="4">Jeudi</option>
+                        <option value="5">Vendredi</option>
+                        <option value="6">Samedi</option>
+                        <option value="7">Dimanche</option>
+                       </select>
      </div>
-                                            </div>
-                                       {!! Form::close() !!}
-                                    </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
+</div>
 
-                        </div> <!-- End row -->
+<div class="form-group m-b-0">
+<div class="col-sm-offset-3 col-sm-9">
 
+</div>
+</div>
+<div class="modal-footer"> 
+       <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
+      <button class="btn btn-primary">Envoyer</button>
+   </div> 
+{!! Form::close() !!}
+       </div> 
 
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
+    </div>
 
-                <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-
-            </div>
-
-@endsection
-@include('partials.sidebarright')
+</div>

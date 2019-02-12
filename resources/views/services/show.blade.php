@@ -56,7 +56,7 @@
 
                 </div>
                 <div class="col-md-12">
-                    <h4><b >Informations sur les employes du service</b></h4>
+                    <h4><b >Informations sur les emploOUI du service</b></h4>
                 </div>
                 <div class="col-md-6" style="padding: 0px">
                     <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe') !!}</label>

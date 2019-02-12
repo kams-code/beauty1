@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Type_abonnement;
+use App\Abonnements;
+use App\Organisations;
+use Date;
 
-class Type_abonnementController extends Controller
+class AbonnementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +16,10 @@ class Type_abonnementController extends Controller
      */
     public function index()
     {   
-        
-       $type_abonnements = Type_abonnement::all();
-
+       $organisations  = Organisations::pluck('nom','id');
+       $abonnements  =  Abonnements::all();
      
-       return view('type_abonnements.index',compact('type_abonnements'));
+       return view('abonnements.index',compact('organisations','abonnements'));
     }
 
     /**
@@ -27,8 +28,9 @@ class Type_abonnementController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {    $organisations  = Organisations::pluck('nom','id');
+        $abonnements  =  Abonnements::all();
+        return view('abonnements.create',compact('organisations','abonnements'));
     }
 
     /**
@@ -39,10 +41,24 @@ class Type_abonnementController extends Controller
      */
     public function store(Request $request)
     {
-        if( Type_abonnement::create($request->all()) ) {
-            flash('Type_abonnement Added');
-        }
+        $string = bin2hex(openssl_random_pseudo_bytes(10));
+        $time=new date($request->get('datedebut'));
+        $organisation = Organisations::find($request->get('organisation_id'));
+        $reservation =new Abonnements([ 
+            'code'=>$string,
+            'datedebut'=> $time,
+            'nominstitut'=>  $organisation->nom,
+            'type'=> $request->get('heure'),
 
+            'organisation_id'=>  $organisation->id,
+            'etat'=> $request->get('etat'),
+       ]);  
+       if ($reservation['etat'] =="on"){
+        $reservation['etat']=1;
+      }if ($reservation['etat'] !="on"){
+        $reservation['etat']=0; 
+      }
+      $reservation->save();
         return redirect()->back();
     }
 
@@ -52,9 +68,11 @@ class Type_abonnementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        //
+        $abonnement = Abonnements::find($id);
+        
+        return view('abonnements.show',compact('abonnement'));
     }
 
     /**
@@ -63,9 +81,11 @@ class Type_abonnementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $abonnement = Abonnements::find($id);
+        $organisations  = Organisations::pluck('nom','id');
+        return view('abonnements.edit',compact('abonnement','organisations'));
     }
 
     /**
@@ -77,7 +97,23 @@ class Type_abonnementController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+        $reservation = Abonnements::findOrFail($id);
+        $time=new date($request->get('datedebut'));
+        $organisation = Organisations::find($request->get('organisation_id'));
+
+        $reservation['datedebut']= $time;
+        $reservation['nominstitut']=$organisation->nom;
+        $reservation['type']=$request->get('heure');
+        $reservation['organisation_id']= $organisation->id;
+       
+       if ($request->get('etat')=="on"){
+        $reservation['etat']=1;
+      }if ($request->get('etat') !="on"){
+        $reservation['etat']=0; 
+      }
+      
+      $reservation->update();
     }
 
     /**
@@ -86,8 +122,15 @@ class Type_abonnementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+ 
+    public function destroy(Request $request,$id)
     {
-        //
+        if( Abonnements::find($id)->delete() ) {
+            flash()->success('Abonnement supprime');
+        } else {
+            flash()->success('Abonnement en vu');
+        }
+
+        return redirect(route('organisations.index'));
     }
 }

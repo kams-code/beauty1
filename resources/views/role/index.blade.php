@@ -47,11 +47,7 @@
                                                                     <!-- name Form Input -->
                                                                     <div class="form-group @if ($errors->has('name')) has-error @endif">
                                                                         {!! Form::label('name', 'Nom') !!}
-<<<<<<< HEAD
-                                                                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom']) !!}
-=======
                                                                         {!! Form::text('name', null, ['class' => 'form-control','required', 'placeholder' => 'Nom']) !!}
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                                         @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
                                                                     </div>
                                                                 </div>
@@ -107,28 +103,17 @@
                                                              <td> {{ $role->name }}</td>
                                                         
                                                               
-<<<<<<< HEAD
-                                                             <td class="actions">
-                                                                 @can('edit_organisations','delete_organisations')
-                                                                 {!! Form::open( ['method' => 'delete', 'url' => route('roles.destroy', $role->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                                 <button type="submit" class="btn-delete btn btn-sm btn-light">
-=======
                                                              <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
                                                                  @can('edit_organisations','delete_organisations')
                                                                  {!! Form::open( ['method' => 'delete', 'url' => route('roles.destroy', $role->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
                                                                  <button type="submit" class="btn-delete btndelete btn btn-danger">
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                                      <i class="fa fa-trash-o"></i>
                                                                  </button>
                                                              {!! Form::close() !!}
                  
                                                                  <a href="{{ route('roles.edit',$role) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
                                                                  <a href="{{ route('roles.destroy',$role) }}" class="hidden on-editing cancel-row" ><i class="fa fa-times"></i></a>
-<<<<<<< HEAD
-                                                                 <a data-toggle="modal" data-target="#editroleModal{{ $role->id }}" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-=======
                                                                  <a data-toggle="modal" data-target="#editroleModal{{ $role->id }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                                  <div class="modal fade" id="editroleModal{{ $role->id }}" tabindex="-1" role="dialog" aria-labelledby="roleModalLabel">
                                                                         <div class="modal-dialog" role="document">
                                                                                 {!! Form::open(['method' => 'PUT', 'url' => route('roles.update', $role )]) !!}
@@ -144,11 +129,7 @@
                                                                                     <!-- name Form Input -->
                                                                                     <div class="form-group">
                                                                                         {!! Form::label('name', 'Nom') !!}
-<<<<<<< HEAD
-                                                                                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nom']) !!}
-=======
                                                                                         {!! Form::text('name', null, ['class' => 'form-control','required', 'placeholder' => 'Nom']) !!}
->>>>>>> cb51a88d04e18f675a4f53417688c4b9a978eac5
                                                                                        
                                                                                     </div>
                                                                                 </div>
@@ -187,13 +168,6 @@
 
             </div>
  
-    <script src="{{asset('js/jquery.min.js')}}"></script>
-       
-	    <!-- Examples -->
-	    <script src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
-	    <script src="{{asset('plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 
-	    <script src="{{asset('plugins/datatables/dataTables.bootstrap.js')}}"></script>
-	    <script src="{{asset('pages/datatables.editable.init.js')}}"></script>
 
                 
                 @endsection

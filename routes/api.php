@@ -16,3 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group(['prefix' => 'api'], function()
+{
+	// Customer API Routes
+	Route::get('get-available-days', 'APIController@GetAvailableDays');
+
+	// Admin API Routes
+	Route::get('get-all-appointments', 'AdminAPIController@GetAllAppointments');
+	Route::get('get-appointment-info/{id}', 'AdminAPIController@GetAppointmentInfo');
+	Route::get('get-all-availability', 'AdminAPIController@GetAllAvailability');
+	Route::any('set-availability', 'AdminAPIController@SetAvailability');
+});

@@ -7,8 +7,6 @@ use App\Organisations;
 use Image;
 use App\User;
 use App\Role;
-use App\Type_abonnement;
-use App\Abonnements;
 class OrganisationController extends Controller
 {
     /**
@@ -17,10 +15,10 @@ class OrganisationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {       $types=Type_abonnement::pluck('nom','id');
+    {      
 
         $organisations = Organisations::get();
-        return view('organisations.index',compact('organisations','types'));
+        return view('organisations.index',compact('organisations'));
     }
 
     /**
@@ -92,11 +90,7 @@ $user->syncRoles($roles);
                 flash()->error('Unable to create user.');
             }
 
-            $abonnement =new Abonnements([ 
-                'organisation_id'=>$produits->id,
-                'type_id'=>$request->get('type_id')
-           ]);  
-           $abonnement->save();
+         
   
         return redirect(route('organisations.index'));
     }

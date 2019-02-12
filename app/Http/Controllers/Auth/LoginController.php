@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Organisations;
+use App\Abonnements;
+use App\User;
+use Date;
+
 
 class LoginController extends Controller
 {
@@ -45,7 +50,12 @@ class LoginController extends Controller
      * @return array
      */
     protected function credentials(Request $request)
-    {
+    { 
+        $user = User::get()->where('name','=',$request->get($this->username()))->first();
+      
+        $abonnement = Abonnements::get()->where('organisation_id','=',$user->organisation_id)->first();
+      // et $abonnement->etat==1
+if(true){
         $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
             ? $this->username()
             : 'name';
@@ -54,5 +64,15 @@ class LoginController extends Controller
             $field => $request->get($this->username()),
             'password' => $request->password,
         ];
+    }else{
+        $abonnement['etat']=0;
+        $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
+            ? $this->username()
+            : 'name';
+        return [
+            $field => $request->get($this->username()),
+            'password' => $request->password,
+        ];
+    }
     }
 }

@@ -55,18 +55,17 @@
                                 <td>
                                     <input  type="checkbox" class="check" onclick="verified();" value="{{ $facture->id }}"  name="etat">
                                 </td>
-                                <td>
-                                    <img style="width: 70px;height: 70px" src="{{asset('images/'.$facture->image)}}" alt="user-img" >
-                                </td>
+                              
                                 <td> {{ $facture->code }}</td>
-                                <td> {{ $facture->is_paid }}</td>
-                                <td> {{ user}}</td>
+                                <td> {{ $facture->is_paid == 1 ? 'OUI' : 'NON'}}</td>
+                                <td> {{ $facture->nom }}</td>
 
                                 <td> {{ $date}}</td>
 
                                 <td class="actions">
-                                    
-                                    <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="factures/{{$facture->id}}" data-id="{{$facture->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_factures','delete_factures')
+                                    <a href="{{ route('factures.show',$facture) }}" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
+ 
+ @can('edit_factures','delete_factures')
 
 
                                     <a data-toggle="modal" data-target="#con-close-modal" data-lien="factures/{{$facture->id}}/edit" data-id="{{$facture->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>

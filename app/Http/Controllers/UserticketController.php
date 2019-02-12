@@ -54,28 +54,30 @@ class UserticketController extends Controller
      */
     public function store(Request $request)
     {
-        $clients=$request->get('clients');
+        $clients=$request->get('users');
         $tickets=$request->get('tickets');
-        for($i=0; $i<count($clients); $i++)
-        {
-        for($j=0; $j<count($tickets); $j++)
-            {$b=$clients[$i];
+      
+        for ($i = 0; $i <count($clients) ; $i = $i + 1) {
+            for ($j = 0; $j <count($tickets); $j = $j + 1) {
+                for ($k = 1; $k < 3; $k = $k + 1) {
+                    print "I: $i, J: $j, K: $k\n";
+                }
+                $b=$clients[$i];
                $a=$tickets[$j];
+             
                     $userticket =new Usertickets([ 
                         'user_id'=>$b,
                        'ticket_id'=>$a
                    ]); 
-                   
+                 
                 
                 $userticket ->save();
-
-             
-           
+            }
         }
 
-       
-     
-    }
+
+
+
     
         
     }

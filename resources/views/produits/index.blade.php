@@ -49,7 +49,7 @@
                                         
                                             @foreach($produits as $produit)
                                          
-                                        <div class="col-sm-6 col-lg-3 col-md-4  {{$produit->categorie_id}}  illustrator">
+                                        <div class="col-sm-6 col-lg-3 col-md-4  {{$produit->categori_id}}  illustrator">
                                             <div class="gal-detail thumb">
                                                 <a href="{{asset('images/'.$produit->image)}}" class="image-popup" title="Screenshot-1">
                                                     <img src="{{asset('images/'.$produit->image)}}" class="thumb-img" alt="work-thumbnail">

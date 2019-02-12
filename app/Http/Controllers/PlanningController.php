@@ -33,7 +33,7 @@ class PlanningController extends Controller
     {
         $jours = Jours::pluck('nom','id');
         $users = User::pluck('name','id');
-        return view('planning.create',compact('users','jours'));
+        return view('plannings.create',compact('users','jours'));
     }
 
     /**
@@ -46,25 +46,29 @@ class PlanningController extends Controller
     {
         $jours=$request->get('jours');
         $montant=0;
+        $val="";
         foreach($jours as $key=>$value)
         {
-            $plannings = Plannings::get()->where('id',$value)->first();
-   
-            $plannings =new Plannings([ 
-             'heureDeb'=>$request->get('heureDeb'),
-             'heureFin'=>$request->get('heureFin'),
-             'dateDeb'=>$request->get('dateDeb'),
-            'dateFin'=>$request->get('dateFin'),
-            'jour_id'=>$value,
-            'user_id'=>$request->get('user_id'),
-        ]);  
-       
-        $user=Auth::user();
-       
-       $plannings['organisation_id']=$user->organisation_id;
-        
-        $plannings ->save();
+            $val=$val. '/' .$value;
+           
         }
+        
+        $plannings = Plannings::get()->where('id',$value)->first();
+   
+        $plannings =new Plannings([ 
+         'heureDeb'=>$request->get('heureDeb'),
+         'heureFin'=>$request->get('heureFin'),
+         'dateDeb'=>$request->get('dateDeb'),
+        'dateFin'=>$request->get('dateFin'),
+        'jours'=>$val,
+        'user_id'=>$request->get('user_id'),
+    ]);  
+   
+    $user=Auth::user();
+   
+   $plannings['organisation_id']=$user->organisation_id;
+    
+    $plannings ->save();
 
 
         return redirect(route('plannings.index'));

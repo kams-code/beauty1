@@ -151,6 +151,7 @@
                 start: new Date($.now() + 338000000),
                 className: 'bg-primary'
             }];
+            
 
         var $this = this;
         $this.$calendarObj = $this.$calendar.fullCalendar({

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "67e3bfaa2bae45819a0d0bb7f7c142d6",
+    "content-hash": "c9c6efdf7bae90654f51ee5a97d7bad5",
     "packages": [
         {
             "name": "consoletvs/charts",
@@ -629,7 +629,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2019-12-20T10:07:11+00:00"
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -962,7 +962,7 @@
                 "math",
                 "solve"
             ],
-            "time": "2019-03-02T22:35:41+00:00"
+            "time": "2016-03-02T22:35:41+00:00"
         },
         {
             "name": "laracasts/flash",
@@ -1552,6 +1552,53 @@
             "time": "2018-11-23T23:41:29+00:00"
         },
         {
+            "name": "maddhatter/laravel-fullcalendar",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maddhatter/laravel-fullcalendar.git",
+                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maddhatter/laravel-fullcalendar/zipball/6502ee3eee2d506d58fa37864af8f2003c9aaca1",
+                "reference": "6502ee3eee2d506d58fa37864af8f2003c9aaca1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MaddHatter\\LaravelFullcalendar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Calendar": "MaddHatter\\LaravelFullcalendar\\Facades\\Calendar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "MaddHatter\\LaravelFullcalendar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shawn Tunney",
+                    "email": "shawn.tunney@gmail.com"
+                }
+            ],
+            "description": "Laravel helper for FullCalendar.io",
+            "time": "2017-09-18T17:54:18+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.24.0",
             "source": {
@@ -1950,7 +1997,7 @@
                 "Guzzle",
                 "http"
             ],
-            "time": "2019-05-10T06:13:32+00:00"
+            "time": "2016-05-10T06:13:32+00:00"
         },
         {
             "name": "php-http/httplug",
@@ -2006,7 +2053,7 @@
                 "client",
                 "http"
             ],
-            "time": "2019-08-31T08:30:17+00:00"
+            "time": "2016-08-31T08:30:17+00:00"
         },
         {
             "name": "php-http/promise",
@@ -2056,7 +2103,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2019-01-26T13:27:02+00:00"
+            "time": "2016-01-26T13:27:02+00:00"
         },
         {
             "name": "psr/container",
@@ -2155,7 +2202,7 @@
                 "request",
                 "response"
             ],
-            "time": "2019-08-06T14:39:51+00:00"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -2364,7 +2411,7 @@
                 }
             ],
             "description": "A polyfill for getallheaders.",
-            "time": "2019-02-11T07:05:27+00:00"
+            "time": "2016-02-11T07:05:27+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -3997,7 +4044,7 @@
             "keywords": [
                 "test"
             ],
-            "time": "2019-01-20T08:20:44+00:00"
+            "time": "2016-01-20T08:20:44+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -5390,7 +5437,7 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2019-10-03T07:35:21+00:00"
+            "time": "2016-10-03T07:35:21+00:00"
         },
         {
             "name": "theseer/tokenizer",

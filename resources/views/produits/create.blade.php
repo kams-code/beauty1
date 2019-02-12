@@ -32,9 +32,9 @@
                             {!! Form::select('categorie_id',$categories,null, ['class' => 'form-control','required']) !!}
                          </div>
                     </div>
-                    <div class="form-group">
+                    <div class="col-md-6" style="padding: 0px">
                             <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('vendable','Vendable') !!}</label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-12">
                                     <div class="checkbox">
                                             <input   id="checkbox" type="checkbox" name="vendable" > 
                                             <label for="checkbox"   >
@@ -50,9 +50,16 @@
                                     <textarea class="form-control" name="description" required></textarea>
                                 </div>
                             </div>
-                        <div class="form-group">
+                            <div class="col-md-6" style="padding: 0px">
+                                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('prix','Prix', ['class' => 'pull-left']) !!}</label>
+                                <div class="col-sm-12">
+                                    
+                                  {!! Form::number('prix',null, ['class' => 'form-control']) !!}
+                                 </div>
+                            </div>
+                        <div class="col-md-6" style="padding: 0px">
                                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('stockable','Stockable') !!}</label>
-                                <div class="col-sm-9">
+                                <div class="col-sm-12">
                                         <div class="checkbox">
                                                 <input   id="checkbox" type="checkbox" name="stockable" > 
                                                 <label for="checkbox"   >
@@ -60,13 +67,7 @@
                                                 </label>
                                             </div>
                                 
-</div> <div class="col-md-6" style="padding: 0px">
-        <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('prix','Prix', ['class' => 'pull-left']) !!}</label>
-        <div class="col-sm-12">
-            
-          {!! Form::number('prix',null, ['class' => 'form-control']) !!}
-         </div>
-    </div>
+</div> 
                             </div>
 
             <div class="m-b-0">

@@ -85,5 +85,20 @@ Route::resource('roles','RoleController');
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
 
+
 //---les routes de stocks----
 Route::resource('stocks','StockController');
+Route::resource('abonnments','AbonnmentController');
+Route::group(['prefix' => 'api'], function()
+{
+	// Customer API Routes
+	Route::get('get-available-days', 'APIController@GetAvailableDays');
+
+	// Admin API Routes
+    Route::get('get-all-appointments', 'AdminAPIController@GetAllAppointments');
+    Route::get('get-all-plannings', 'AdminAPIController@GetAllPlannings');
+    Route::get('get-appointment-info/{id}', 'AdminAPIController@GetAppointmentInfo');
+    Route::get('get-planning-info/{id}', 'AdminAPIController@GetPlanningInfo');
+	Route::get('get-all-availability', 'AdminAPIController@GetAllAvailability');
+	Route::any('set-availability', 'AdminAPIController@SetAvailability');
+});

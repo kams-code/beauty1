@@ -20,7 +20,7 @@ class CreateJoursTable extends Migration
         });
 
         Schema::table('plannings', function (Blueprint $table) {
-            $table->integer('jour_id')->unsigned()->index();
+            $table->integer('jour_id')->nullable()->unsigned()->index();
           
         });
     }

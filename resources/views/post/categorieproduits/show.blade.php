@@ -30,11 +30,11 @@
                         </label>
                         <br>
                         <label>
-                            <strong>Stockable?:</strong> {{ $produit["stockable"] == 1 ? 'YES' : 'NO'}}
+                            <strong>Stockable?:</strong> {{ $produit["stockable"] == 1 ? 'OUI' : 'NON'}}
                         </label>
                         <br>
                         <label>
-                            <strong>Vendable?:</strong> {{ $produit["vendable"] == 1 ? 'YES' : 'NO'}}
+                            <strong>Vendable?:</strong> {{ $produit["vendable"] == 1 ? 'OUI' : 'NON'}}
                         </label>
 
                     </div>

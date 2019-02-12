@@ -12,6 +12,7 @@ class Plannings extends Model
       'dateDeb',
       'dateFin',
       'jour_id',
+      'jours',
       'user_id'
    ];
 

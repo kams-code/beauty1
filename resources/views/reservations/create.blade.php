@@ -1,132 +1,60 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ajouter une réservation</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('reservations.store'),'files'=>true]) !!}
+           
+            
+            <div class="col-md-12" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('client_id','Client') !!}</label>
+                <div class="col-sm-12">
+                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control','required']) !!}
 
-                                 @section('content')
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
-
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">General elements</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Forms</a></li>
-                                    <li class="active">General elements</li>
-                                </ol>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-                                                <div class="col-sm-9">
-                                                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword4" class="col-sm-3 control-label">Re Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword4" placeholder="Retype Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                    <div class="checkbox checkbox-primary">
-                                                        <input id="checkbox2" type="checkbox">
-                                                        <label for="checkbox2">
-                                                            Check me out !
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                  <button type="submit" class="btn btn-info waves-effect waves-light">Sign in</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                            <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    <div class="panel-body">
-                                        {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('reservations.store')]) !!}
-                                        
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('code','Code') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
-          </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('date','Date') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('date',null, ['class' => 'form-control','required']) !!}
-          </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('heure','Heure de la reservation') !!}</label>
-                                                <div class="col-sm-9">
-                                                  {!! Form::text('heure',null, ['class' => 'form-control','required']) !!}
-          </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('client_id','Client') !!}</label>
-                                                <div class="col-sm-9">
-                                                    {!! Form::select('client_id',$clients,null, ['class' => 'form-control','required']) !!}
-                         
-          </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Service') !!}</label>
-                                                <div class="col-sm-9">
-                                                {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
-          </div>
-                                            </div>
-                                            
-                                           
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                <button class="btn btn-primary">envoyer</button>
-     </div>
-                                            </div>
-                                       {!! Form::close() !!}
-                                    </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                        </div> <!-- End row -->
-
-
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
-
-                <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-
+                </div>
+            </div>
+          
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('date','Date de debut :') !!}</label>
+                <div class="col-sm-12">
+                  {!! Form::date('datedebut',null, ['class' => 'form-control','required']) !!}
+                 </div>
+            </div>
+            
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('heure','Heure :') !!}</label>
+                <div class="col-sm-12">
+                    <select name="heure" class="form-control">
+                          <option value="12:00">12:00am</option><option class="ui-timepicker-am">12:30am</option><option class="ui-timepicker-am">1:00am</option><option class="ui-timepicker-am">1:30am</option><option class="ui-timepicker-am">2:00am</option><option class="ui-timepicker-am">2:30am</option><option class="ui-timepicker-am">3:00am</option><option class="ui-timepicker-am">3:30am</option><option class="ui-timepicker-am">4:00am</option><option class="ui-timepicker-am">4:30am</option><option class="ui-timepicker-am">5:00am</option><option class="ui-timepicker-am">5:30am</option><option class="ui-timepicker-am">6:00am</option><option class="ui-timepicker-am">6:30am</option><option class="ui-timepicker-am">7:00am</option><option class="ui-timepicker-am">7:30am</option><option class="ui-timepicker-am">8:00am</option><option class="ui-timepicker-am">8:30am</option><option class="ui-timepicker-am">9:00am</option><option class="ui-timepicker-am">9:30am</option><option class="ui-timepicker-am">10:00am</option><option class="ui-timepicker-am">10:30am</option><option class="ui-timepicker-am">11:00am</option><option class="ui-timepicker-am">11:30am</option><option class="ui-timepicker-pm">12:00pm</option><option class="ui-timepicker-pm">12:30pm</option><option class="ui-timepicker-pm">1:00pm</option><option class="ui-timepicker-pm">1:30pm</option><option class="ui-timepicker-pm">2:00pm</option><option class="ui-timepicker-pm">2:30pm</option><option class="ui-timepicker-pm">3:00pm</option><option class="ui-timepicker-pm">3:30pm</option><option class="ui-timepicker-pm">4:00pm</option><option class="ui-timepicker-pm">4:30pm</option><option class="ui-timepicker-pm">5:00pm</option><option class="ui-timepicker-pm">5:30pm</option><option class="ui-timepicker-pm">6:00pm</option><option class="ui-timepicker-pm">6:30pm</option><option class="ui-timepicker-pm">7:00pm</option><option class="ui-timepicker-pm">7:30pm</option><option class="ui-timepicker-pm">8:00pm</option><option class="ui-timepicker-pm">8:30pm</option><option class="ui-timepicker-pm">9:00pm</option><option class="ui-timepicker-pm">9:30pm</option><option class="ui-timepicker-pm">10:00pm</option><option class="ui-timepicker-pm">10:30pm</option><option class="ui-timepicker-pm">11:00pm</option><option class="ui-timepicker-pm">11:30pm</option>
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                      </select>
+                 </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('service_id','Service') !!}</label>
+                <div class="col-sm-12">
+                   
+                    {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}
+</div>
             </div>
 
-@endsection
-@include('partials.sidebarright')
+            <div class="m-b-0">
+                <div class="col-sm-offset-3 col-sm-12">
+
+                </div>
+            </div>
+            <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
+                <button class="btn btn-primary">Enregistrer</button>
+            </div>
+            {!! Form::close() !!}
+        </div>
+
+    </div>
+
+</div>

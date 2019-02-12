@@ -8,6 +8,8 @@ use App\Clients;
 use App\Services;
 use App\Factures;
 use DB;
+use Date;
+use Calendar;
 class ReservationController extends Controller
 {
     /**
@@ -17,6 +19,7 @@ class ReservationController extends Controller
      */
     public function index()
     {   
+       
         /*$reservations = Reservations::with(['client' => function($query){
         $query->select('nom');  
         }]);*/
@@ -30,8 +33,32 @@ class ReservationController extends Controller
 
        $codedistinct=DB::table('reservations')
        ->distinct()->select('code')->get();
-     
-       return view('reservations.index',compact('reservations','Services','Clients','clients','services','codedistinct'));
+
+$reservation_list=[];
+       foreach($reservations as $reservation)
+       {
+           $reservation_list[]=Calendar::event($reservation->code,true,new \DateTime($reservation->datedebut),new \DateTime($reservation->datefin),
+           [
+               'url' => 'http://full-calendar.io',
+             
+           ]);
+          
+       }
+    
+       $calendar_details=Calendar::addEvents($reservation_list) ->setOptions(['firstDay'=> 1,
+       'editable'=> true,
+       'navLinks'=> true,
+       'selectable'  => true,
+       'durationeditable' => true,
+])->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
+    'eventClick' => ' function(calEvent, jsEvent, view) {
+        
+    }',
+    'viewRender' => 'function() {alert("Callbacks!");}'
+]);
+
+
+       return view('reservations.index',compact('calendar_details','reservations','Services','Clients','clients','services','codedistinct'));
     }
 
     /**
@@ -59,28 +86,40 @@ class ReservationController extends Controller
     {
         $services_ids=$request->get('services');
         $montant=0;
+        $time=new date($request->get('heure'));
+        $debut=$request->get('datedebut');
+        $debut.=" ";
+        $debut.=$time->format('h:i:s');
+        
+       
+        $fin=$request->get('datedebut');
+        $fin.= " ";
+        $fin.=date( "H:i:s", strtotime($time)+(60*30*count($services_ids)) )  ;
+        $string = bin2hex(openssl_random_pseudo_bytes(10));
         foreach($services_ids as $key=>$value)
         {
             $service = Services::get()->where('id',$value)->first();
-   
+           
             $reservation =new Reservations([ 
-             'code'=>$request->get('code'),
-             'date'=>$request->get('date'),
-             'heure'=>$request->get('heure'),
+             'code'=>$string,
+             'datedebut'=> $debut,
+             'datefin'=>$fin,
+        
             'client_id'=>$request->get('client_id'),
             'service_id'=>$value
         ]);  
+       
         $a=
         $montant=$montant+$service->montant;
         $user=Auth::user();
        
        $reservation['organisation_id']=$user->organisation_id;
-        
+       
         $reservation ->save();
         }
         $client = Clients::get()->where('id',$request->get('client_id'))->first();
         $facturetion =new Factures([ 
-            'code'=> $request->get('code'),
+            'code'=>$string,
            'nom'=> $client->nom,
            'montant'=> $montant,
            'is_paid'=>'0'
