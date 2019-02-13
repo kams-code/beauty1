@@ -54,8 +54,18 @@
                                              </li>
                              
 
-                            <li >
-                                <a href="{{ route('produits.index') }}" class="waves-effect"><i class="md md-layers"></i> <span> Produits </span> <span class="pull-right"></span></a>
+                          
+                             <li class="has_sub">
+                                    <a href="#" class="waves-effect"><i class="md md-layers"></i> <span> Produits </span> <span class="pull-right"><i class="md md-add"></i></span></a>
+                                    <ul class="list-unstyled">
+                                            <li >
+                                                    <a href="{{ route('produits.index') }}" class="waves-effect"><i class="md md-shop-two"></i> <span> Produits </span> <span class="pull-right"></span></a>
+                                                </li>
+                                                 <li >
+                                                        <a href="{{ route('categorieproduits.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Catégories</span> <span class="pull-right"></span></a>
+                                                     </li>
+                                    </ul>
+                             
                              </li>
                              <li >
                                     <a href="{{ route('equipements.index') }}" class="waves-effect"><i class="md md-layers"></i> <span> Equipements </span> <span class="pull-right"></span></a>
@@ -107,7 +117,7 @@
                                                             <a href="{{ route('roles.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Roles </span> <span class="pull-right"></span></a>
                                                          </li>
                                                          <li >
-                                                                <a href="{{ route('roles.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Privilèges </span> <span class="pull-right"></span></a>
+                                                                <a href="{{ route('permissions') }}" class="waves-effect"><i class="md md-settings"></i> <span> Privilèges </span> <span class="pull-right"></span></a>
                                                              </li>
                                                 
                                             </ul>

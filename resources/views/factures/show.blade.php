@@ -15,7 +15,7 @@
                                                   <ol class="breadcrumb pull-right">
                                                       <li><a href="#">QuickBeauty</a></li>
                                                       <li><a href="#">Pages</a></li>
-                                                       <li class="active">Invoice</li>
+                                                       <li class="active">Facture</li>
                                                   </ol>
                                               </div>
                                           </div>

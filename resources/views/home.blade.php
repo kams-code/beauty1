@@ -12,10 +12,10 @@
                                                 <!-- Page-Title -->
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <h4 class="pull-left page-title">Welcome !</h4>
+                                                        <h4 class="pull-left page-title">Bienvenue !</h4>
                                                         <ol class="breadcrumb pull-right">
                                                             <li><a href="#">QuickBeauty</a></li>
-                                                            <li class="active">Dashboard</li>
+                                                            <li class="active">Tableau de bords</li>
                                                         </ol>
                                                     </div>
                                                 </div>

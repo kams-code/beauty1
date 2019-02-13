@@ -49,20 +49,66 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
+if($request->get('type')=="Ajout"){
+
+    $produit=Produits::where('id', $request->get('produit_id'))->first();
+    $stock= new Stocks([
+        'quantite_initial' => $produit['quantite'],
+        //'quantite_limite'=> $produit['quantite_limite'],
+        'quantite_limite'=> $request->get('quantite'),
+        'quantite_final'=>$produit['quantite']+ $request->get('quantite'),
+        'produit_id'=> $request->get('produit_id'),
+        'type'=> $request->get('type')
+      ]);
+      $produit['quantite_final']=$stock['quantite_final'];
+          $produit->update();
+          $stock->save();
+}
+if($request->get('type')=="Retrait"){
+
+    $produit=Produits::where('id', $request->get('produit_id'))->first();
+    $stock= new Stocks([
+        'quantite_initial' => $produit['quantite'],
+        //'quantite_limite'=> $produit['quantite_limite'],
+        'quantite_limite'=> $request->get('quantite'),
+        'quantite_final'=>$produit['quantite']- $request->get('quantite'),
+        'produit_id'=> $request->get('produit_id'),
+        'type'=> $request->get('type')
+      ]);
+      $produit['quantite_final']=$stock['quantite_final'];
+          $produit->update();
+          $stock->save();
+}
+
+
+
+
+
+
+
+
+
+ /**
+
        if($request->get('sorti_produit_id')!=null) 
        {
 $produit_sortie=$request->get('sorti_produit_id');
 $quantite_sortie=$request->get('sorti_quantite');
 $stocksortie=Stocks::where('produit_id', $produit_sortie)->first();
+$produit=Produits::where('id', $request->get('sorti_produit_id'))->first();
+
 $qteinit=$stocksortie->quantite_final;
 $stocksortie->quantite_final=$qteinit-$quantite_sortie;
+$produit['quantite_final']=$stocksortie->quantite_final;
+$produit->update();
 $stocksortie->update(@json_decode(json_encode($stocksortie), true));
 
 
        }else{
+        $produit=Produits::where('id', $request->get('produit_id'))->first();
         $stock= new Stocks([
             'quantite_initial' => $request->get('quantite_initial'),
-            'quantite_limite'=> $request->get('quantite_limite'),
+            'quantite_limite'=> $produit['quantite_limite'],
             'produit_id'=> $request->get('produit_id')
           ]);
           $stockfind=Stocks::where('produit_id', $stock->produit_id)->first();
@@ -72,7 +118,7 @@ $stocksortie->update(@json_decode(json_encode($stocksortie), true));
        
             $stock= new Stocks([
                 'quantite_initial' => $request->get('quantite_initial')+$stockfind->quantite_initial,
-                'quantite_limite'=> $request->get('quantite_limite'),
+                'quantite_limite'=> $produit['quantite_limite'],
                 'produit_id'=> $request->get('produit_id')
               ]);
               $stock['quantite_final'] =$stock->quantite_final+$stockfind->quantite_final;
@@ -80,7 +126,8 @@ $stocksortie->update(@json_decode(json_encode($stocksortie), true));
 
 
           $stocks = Stocks::findOrFail($stock->produit_id);
-   
+          $produit['quantite_final']=$stock['quantite_final'];
+          $produit->update();
           $stocks->update(@json_decode(json_encode($stock), true));
           
 
@@ -92,7 +139,7 @@ $stocksortie->update(@json_decode(json_encode($stocksortie), true));
             $stock['organisation_id']=$user->organisation_id;
           $stock->save();
         }
-    }
+    }*/
         return redirect(route('stocks.index'));
    
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 use App\Produits;
+use App\Stocks;
 use App\Fournisseurs;
 use App\Categorieproduits;
 use App\Form;
@@ -18,7 +19,6 @@ class ProduitController extends Controller
     public function index()
     {
         $fournisseurs=Fournisseurs::pluck('nom', 'id');
-        $produits=Produits::get();
         $categories=Categorieproduits::get();
         return view ('produits.index',compact('produits','fournisseurs','categories'));
         
@@ -80,21 +80,32 @@ class ProduitController extends Controller
           $produits->image=$filename;
    }
    $user=Auth::user();
-       
+      
        $produits['organisation_id']=$user->organisation_id;
        $produits['vendable']=$request->get('vendable');
-       if ($produits['vendable'] =="on"){
+       if ($request->get('vendable') =="on"){
         $produits['vendable']=1;
-        $produits['stockable']=1;
         $produits['prix']=$request->get('prix');
-      }if ($produits['vendable'] !="on"){
-        $produits['vendable']=0;
-        $produits['stockable']!=0;
- 
+      }if ($request->get('stockable') =="on"){
+        $produits['stockable']=1;
+        
       }
       $produits['categori_id']=$request->get('categorie_id');
-     
+      $produits['quantite']=$request->get('quantite');
+      $produits['quantite_limite']=5;
         $produits->save();
+        if ($request->get('stockable') =="on"){
+           
+            $stock= new Stocks([
+                'quantite_initial' => $request->get('quantite'),
+                'quantite_limite'=> 5,
+                'type'=> "Ajout",
+                'produit_id'=>  $produits->id,
+                'quantite_final'=> $request->get('quantite')
+              ]);
+            $stock->save();
+          }
+         
         return redirect(route('produits.index'));
    
     }
@@ -121,8 +132,8 @@ class ProduitController extends Controller
     public function edit($id)
     {
         $produit=Produits::findOrFail($id);
-        $fournisseurs=Fournisseurs::all();
-        $categories=Categorieproduits::all();
+        $fournisseurs=Fournisseurs::pluck('nom', 'id');
+        $categories=Categorieproduits::pluck('nom', 'id');
         return view ('produits.edit',compact('produit','fournisseurs','categories'));
     }
 
@@ -136,12 +147,10 @@ class ProduitController extends Controller
     public function update(Request $request, $id)
     {
         $produits = Produits::findOrFail($id);
-        $produits =new Produits([ 
-            'nom'=> $request->get('nom'),
-           'description'=> $request->get('description'),
-    
-       ]);
-    
+        $produits [ 
+            'nom']= $request->get('nom');
+            $produits [ 
+                'description']= $request->get('description');
        if($request->hasfile('image'))
        {
     
@@ -154,19 +163,34 @@ class ProduitController extends Controller
        }
        $user=Auth::user();
            
-           $produits['organisation_id']=$user->organisation_id;
-           $produits['vendable']=$request->get('vendable');
-           if ($produits['vendable'] =="on"){
-            $produits['vendable']=1;
-            $produits['stockable']=1;
-          }if ($produits['vendable'] !="on"){
-            $produits['vendable']=0;
-            $produits['stockable']!=0;
-     
+       $produits['organisation_id']=$user->organisation_id;
+       $produits['vendable']=$request->get('vendable');
+       if ($request->get('vendable') =="on"){
+        $produits['vendable']=1;
+        $produits['prix']=$request->get('prix');
+      }if ($request->get('stockable') =="on"){
+        $produits['stockable']=1;
+        
+      }
+      $produits['categori_id']=$request->get('categorie_id');
+      $produits['quantite']=$request->get('quantite');
+      $produits['quantite_limite']=5;
+
+      $produits->update();
+        if ($request->get('stockable') =="on"){
+           
+            $stock= new Stocks([
+                'quantite_initial' => $request->get('quantite'),
+                'quantite_limite'=>$request->get('quantite'),
+                'type'=> "Ajout",
+                'produit_id'=>  $produits->id,
+                'quantite_final'=> $request->get('quantite')
+              ]);
+            $stock->save();
           }
-          $produits['categori_id']=$request->get('categorie_id');
          
-        $produits->update();
+         
+      
         return redirect()->route('produits.index');
     } 
 

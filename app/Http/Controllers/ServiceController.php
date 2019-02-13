@@ -20,9 +20,8 @@ class ServiceController extends Controller
     public function index()
     {
         $users=User::pluck('name', 'id');
-        $Users=User::pluck('name', 'id');
-        $services=Services::get();
-        $categories=Categories::all();
+        $services=Services::with('categories')->get();
+        //$categories=Categories::all();
         return view('services.index',compact('services','users','Users','categories'));
     }
 

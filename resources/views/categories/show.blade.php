@@ -32,16 +32,10 @@
                                     </div>
                                 </div>
     
-                                <h2>categorie Name: </h2>
-<{{ $categorie->name }} || ${{ money_format($categorie->montant, 2) }}</p>
+                                <h2>nom de la categorie: </h2>
+                                  <{{ $categorie->nom }} }}</p>
 
-<h3>categorie Belongs to</h3>
 
-<ul>
-    @foreach($categorie->users as $user)
-    <li>{{ $user->name}}</li>
-    @endforeach
-</ul>
     
                             </div>
                             <!-- end: page -->

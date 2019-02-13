@@ -21,4 +21,8 @@ class Fournisseurs extends Model
     public function produits(){
         return $this->belongsTo(Produits::class);
     }
+
+    public function equipements(){
+        return $this->hasMany(Equipements::class);
+    }
 }

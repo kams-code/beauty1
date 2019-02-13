@@ -9,7 +9,7 @@
            
             
             <div class="col-md-12" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('client_id','Client') !!}</label>
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('client_id','Client*') !!}</label>
                 <div class="col-sm-12">
                     {!! Form::select('client_id',$clients,null, ['class' => 'form-control','required']) !!}
 
@@ -17,14 +17,14 @@
             </div>
           
             <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('date','Date de debut :') !!}</label>
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('date','Date de debut* :') !!}</label>
                 <div class="col-sm-12">
                   {!! Form::date('datedebut',null, ['class' => 'form-control','required']) !!}
                  </div>
             </div>
             
             <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('heure','Heure :') !!}</label>
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('heure','Heure* :') !!}</label>
                 <div class="col-sm-12">
                     <select name="heure" class="form-control">
                           <option value="12:00">12:00am</option>
@@ -80,7 +80,7 @@
                  </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('service_id','Service') !!}</label>
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('service_id','Service*') !!}</label>
                 <div class="col-sm-12">
                    
                     {!! Form::select('services[]', $services, null, ['class' => 'form-control','required','multiple'=>'multiple']) !!}

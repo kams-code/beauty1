@@ -33,54 +33,60 @@
 
                         </div>
                     </div>
-                    @can('view_organisations')
-                    <table class="table table-bordered  table-striped" id="datatable-buttons">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @can('view_organisations')
+                            <table class="table table-bordered  table-striped" id="datatable-buttons">
 
-                        <thead>
-                            <tr>
-                                <th><input  id="checkAll" type="checkbox"></th>
-                                <th>Image</th>
-                                <th>Nom</th>
-                                <th>Adresse</th>
-                                <th>Téléphone</th>
-                                <th>Email</th>
-                                <th>Date de création</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tablebody">
+                                <thead>
+                                    <tr>
+                                        <th><input  id="checkAll" type="checkbox"></th>
+                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        <th>Adresse</th>
+                                        <th>Téléphone</th>
+                                        <th>Email</th>
+                                        <th>Date de création</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablebody">
 
-                            @foreach($organisations as $organisation)
-                                @php
-                                $date=date('d-m-Y H:i:s', strtotime($organisation->created_at));
-                                @endphp
-                            <tr class="gradeC">
-                                <td>
-                                    <input  type="checkbox" class="check" onclick="verified();" value="{{ $organisation->id }}"  name="etat">
-                                </td>
-                                <td>
-                                    <img style="width: 70px;height: 70px" src="{{asset('images/'.$organisation->image)}}" alt="user-img" >
-                                </td>
-                                <td> {{ $organisation->nom }}</td>
-                                <td> {{ $organisation->adresse }}</td>
-                                <td> {{ $organisation->telephone}}</td>
-                                <td> {{ $organisation->email }}</td>
+                                    @foreach($organisations as $organisation)
+                                        @php
+                                        $date=date('d-m-Y H:i:s', strtotime($organisation->created_at));
+                                        @endphp
+                                    <tr class="gradeC">
+                                        <td>
+                                            <input  type="checkbox" class="check" onclick="verified();" value="{{ $organisation->id }}"  name="etat">
+                                        </td>
+                                        <td>
+                                            <img style="width: 70px;height: 70px" src="{{asset('images/'.$organisation->image)}}" alt="user-img" >
+                                        </td>
+                                        <td> {{ $organisation->nom }}</td>
+                                        <td> {{ $organisation->adresse }}</td>
+                                        <td> {{ $organisation->telephone}}</td>
+                                        <td> {{ $organisation->email }}</td>
 
-                                <td> {{ $date}}</td>
+                                        <td> {{ $date}}</td>
 
-                                <td class="actions">
-                                    
-                                    <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="organisations/{{$organisation->id}}" data-id="{{$organisation->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_organisations','delete_organisations')
+                                        <td class="actions">
+                                            
+                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="organisations/{{$organisation->id}}" data-id="{{$organisation->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_organisations','delete_organisations')
 
 
-                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/{{$organisation->id}}/edit" data-id="{{$organisation->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{$organisation->id}}" data-lien="organisations/{{$organisation->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
-                                </td>
-                            </tr>
-                            @endforeach
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/{{$organisation->id}}/edit" data-id="{{$organisation->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$organisation->id}}" data-lien="organisations/{{$organisation->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
+                                        </td>
+                                    </tr>
+                                    @endforeach
 
-                        </tbody>
-                    </table>@endcan
+                                </tbody>
+                            </table>@endcan
+                        </div>
+                    </div>
+                </div>
                 </div>
                 <!-- end: page -->
 

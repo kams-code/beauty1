@@ -42,7 +42,7 @@
                 {!! Form::select('categorie_id',$categories,null, ['class' => 'form-control']) !!}
                 </div>
             </div>
-            <div class="col-md-12" style="padding: 0px">
+            <div class="col-md-12" style="padding: 0px;display: none;">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe') !!}</label>
                 <div class="col-sm-6">
                  {!! Form::select('users[]', $users, null, ['class' => 'form-control','multiple'=>'multiple']) !!} 
@@ -64,7 +64,7 @@
             <div class="col-md-12" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
                 <div class="col-sm-12">
-                    <textarea class="form-control" name="description" required></textarea>
+                    <textarea class="form-control" name="description" rows="10" required></textarea>
                 </div>
             </div>
          

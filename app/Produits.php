@@ -13,6 +13,8 @@ class Produits extends Model
         'fournisseur_id',
         'image',
         'prix',
+        'quantite',
+        'quantite_limite',
         'categori_id',
         'vendable',
         'stockable',

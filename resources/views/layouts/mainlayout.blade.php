@@ -12,6 +12,14 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="{{asset('images/favicon_1.ico')}}">
 
+        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/core.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/icons.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/components.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/menu.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css">
+        
         <!--
       calendar css-->
         <link href="{{asset('plugins/fullcalendar/dist/fullcalendar.css')}}" rel="stylesheet">
@@ -36,16 +44,6 @@
         <link href="{{asset('plugins/select2/dist/css/select2-bootstrap.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset('plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css')}}" rel="stylesheet" />
 
-
-
-
-        <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/core.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/icons.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/components.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/pages.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/menu.css')}}" rel="stylesheet" type="text/css">
-        <link href="{{asset('css/responsive.css')}}" rel="stylesheet" type="text/css">
         <script src="{{asset('js/modernizr.min.js')}}"></script>
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -56,9 +54,9 @@
         <![endif]-->
 
          <!--venobox lightbox-->
-         <link rel="stylesheet" href="plugins/magnific-popup/dist/magnific-popup.css">
+        
 
-         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+         <!--<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
          <link href="css/core.css" rel="stylesheet" type="text/css">
          <link href="css/icons.css" rel="stylesheet" type="text/css">
          <link href="css/components.css" rel="stylesheet" type="text/css">
@@ -66,7 +64,7 @@
          <link href="css/menu.css" rel="stylesheet" type="text/css">
          <link href="css/responsive.css" rel="stylesheet" type="text/css">
  
-         <script src="js/modernizr.min.js"></script>
+         <script src="js/modernizr.min.js"></script>-->
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
             (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -250,45 +248,7 @@
         </script>
         <!-- pour la galerie-->
         <script type="text/javascript">
-            $(window).load(function(){
-                var $container = $('.portfolioContainer');
-                $container.isotope({
-                    filter: '*',
-                    animationOptions: {
-                        duration: 750,
-                        easing: 'linear',
-                        queue: false
-                    }
-                });
-
-                $('.portfolioFilter a').click(function(){
-                    $('.portfolioFilter .current').removeClass('current');
-                    $(this).addClass('current');
-
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({
-                        filter: selector,
-                        animationOptions: {
-                            duration: 750,
-                            easing: 'linear',
-                            queue: false
-                        }
-                    });
-                    return false;
-                }); 
-            });
-            $(document).ready(function() {
-                $('.image-popup').magnificPopup({
-                    type: 'image',
-                    closeOnContentClick: true,
-                    mainClass: 'mfp-fade',
-                    gallery: {
-                        enabled: true,
-                        navigateByImgClick: true,
-                        preload: [0,1] // Will preload 0 - before current, and 1 after the current image
-                    }
-                });
-            });
+            
         </script>
 
 

@@ -2,7 +2,14 @@
 @include('partials.topbar')
 @include('partials.sidebar')
 
-<div class="content-page">
+                                 @section('content')
+                  <style type="text/css">
+                      .form-horizontal .control-label{
+                        text-align: left;
+                      }
+                  </style>
+                  
+  <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
                     <div class="container">
@@ -10,73 +17,93 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Gallery</h4>
+                                <h4 class="pull-left page-title">Equipements</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="home">Acceuil</a></li>
-                                    <li class="active">Equipement</li>
+                                    <li><a href="home">Accueil</a></li>
+                                    <li class="active">Equipements</li>
                                 </ol>
                             </div>
                         </div>
+                        <div class="m-b-30 pull-right">
 
-                        <!-- SECTION FILTER
-                        ================================================== -->  
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="portfolioFilter">
-                                    <a href="#" data-filter="*" class="current">tous les equipements</a>
-                                    <a href="#" data-filter=".webdesign">Web Design</a>
-                                    @can('add_equipements')
-                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+                            @can('add_equipements')
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un equipement </button> @endcan
+                            @can('delete_equipements')
+                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
 
-                                </div>
-                            </div>
                         </div>
+                    </div>
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @can('view_equipements')
+                            <table class="table table-bordered  table-striped" id="datatable-buttons">
 
-                        <div class="port">
-                            <div class="portfolioContainer row">
-                            <div class="m-b-30 pull-right">
+                                <thead>
+                                    <tr>
+                                        <th><input  id="checkAll" type="checkbox"></th>
+                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        <th>Fournisseur</th>
+                                        <th>Description</th>
+                                        
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablebody">
 
-                              
-                            </div> 
-                                @foreach($equipements as $equipement)
-                                <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
-                                    <div class="gal-detail thumb">
-                                        <a href="assets/images/gallery/1.jpg" class="image-popup" title="Screenshot-1">
-                                        </a>
-                                            <img  src="{{asset('images/'.$equipement->image)}}" class="thumb-img" alt="work-thumbnail">
-                                        </a>
-                                        <div  >
-                                            <div class="col-sm-12 control-label" style="padding: 0px">
-                                               <h4>{{ $equipement->nom }} </h4>
-                                               <p>{{ $equipement->description}} </p>
+                                    @foreach($equipements as $equipement)
+                                        @php
+                                        $date=date('d-m-Y H:i:s', strtotime($equipement->created_at));
+                                        @endphp
+                                    <tr class="gradeC">
+                                        <td>
+                                            <input  type="checkbox" class="check" onclick="verified();" value="{{ $equipement->id }}"  name="etat">
+                                        </td>
+                                        <td>
+                                            <img style="width: 70px;height: 70px" src="{{asset('images/'.$equipement->image)}}" alt="user-img" >
+                                        </td>
+                                        <td> {{ $equipement->nom }}</td>
+                                        
+                                       
+                                        <td> <a class="on-default seedetails" data-toggle="modal" data-lien="fournisseurs/{{$equipement->fournisseur_id}}" data-id="{{$equipement->id}}" data-target="#con-close-modal">{{$equipement->Fournisseur->nom}}</a></td>
+                                         
+                                        
+                                        <td> {{ $equipement->description}}</td>
+                                       
+
+                                        <td class="actions">
                                             
-                                            </div> 
-                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="equipements/{{$equipement->id}}" data-id="{{$equipement->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> 
-                                            @can('edit_equipements','delete_equipements')
-                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/{{$equipement->id}}/edit" data-id="{{$equipement->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                                <a data-toggle="modal" data-target="#deletemodal" data-id="{{$equipement->id}}" data-lien="equipements/{{$equipement->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a> 
-                                            @endcan  
-                               
-                                        </div>
-                                    </div>
-                                </div>
-                                @endforeach
-
-                                
+                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="equipements/{{$equipement->id}}" data-id="{{$equipement->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_equipements','delete_equipements')
 
 
-                                
-                                
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/{{$equipement->id}}/edit" data-id="{{$equipement->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$equipement->id}}" data-lien="equipements/{{$equipement->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
+                                        </td>
+                                    </tr>
+                                    @endforeach
 
-                            </div>
-                        </div> <!-- End row -->
-
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
-
-                <footer class="footer text-right">
-                    2016 © Moltran.
-                </footer>
+                                </tbody>
+                            </table>@endcan
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- end: page -->
 
             </div>
+            <!-- end Panel -->
+
+        </div>
+        <!-- container -->
+
+    </div>
+    <!-- content -->
+
+    <footer class="footer text-right">
+        2019 © QuickBeauty.
+    </footer>
+
+</div>
+
+@endsection @include('partials.sidebarright')

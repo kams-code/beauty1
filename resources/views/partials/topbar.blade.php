@@ -88,8 +88,20 @@
                                     <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{asset('images/'.strlen(auth()->user()->image) ==0 ? 'images/profile.jpg' : 'images/'.auth()->user()->image)}}" alt="user-img" class="img-circle"> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="{{ route('profile') }}"><i class="md md-face-unlock"></i> Profil</a></li>
-                                        <li><a href="{{ route('logout') }}"><i class="md md-settings-power"></i> Déconnexion</a></li>
+                                        <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                          document.getElementById('logout-form').submit();">
+                                             <i class="md md-settings-power"></i> Déconnexion
+                                         </a>
+                                        
+                                        
+                                           
+     
+                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                             @csrf
+                                         </form></li>
                                     </ul>
+                                    
                                 </li>
                             </ul>
                         </div>

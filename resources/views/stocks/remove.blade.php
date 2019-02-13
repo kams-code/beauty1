@@ -8,13 +8,13 @@
                     {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('stocks.store')]) !!}
                     
                     <div class="col-md-6" style="padding: 0px">
-                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('sorti_produit_id','Produit') !!}</label>
+                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('sorti_produit_id','Produit*') !!}</label>
                         <div class="col-sm-12">
                             {!! Form::select('sorti_produit_id',$produits,null, ['class' => 'form-control','required']) !!}
                         </div>
                     </div>
                     <div class="col-md-6" style="padding: 0px">
-                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('quantite','Quantite') !!}</label>
+                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('quantite','Quantité*') !!}</label>
                         <div class="col-sm-12">
                             {!! Form::text('quantite',null, ['class' => 'form-control','required']) !!}   
                             <br><br>

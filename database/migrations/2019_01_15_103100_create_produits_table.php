@@ -19,6 +19,8 @@ class CreateProduitsTable extends Migration
             $table->string('description');
             $table->string('image');
             $table->integer('prix');
+            $table->integer('quantite');
+            $table->integer('quantite_limite');
             $table->string('categori_id');
             $table->boolean('vendable');
             $table->boolean('stockable');

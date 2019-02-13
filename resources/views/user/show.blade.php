@@ -28,37 +28,25 @@
                                                     <li class="active tab">
                                                         <a href="#home-2" data-toggle="tab" aria-expanded="false" class="active"> 
                                                             <span class="visible-xs"><i class="fa fa-home"></i></span> 
-                                                            <span class="hidden-xs">About Me</span> 
+                                                            <span class="hidden-xs">Informations</span> 
                                                         </a> 
                                                     </li> 
                                                     
                                                     <li class="tab"> 
                                                         <a href="#messages-2" data-toggle="tab" aria-expanded="true"> 
                                                             <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> 
-                                                            <span class="hidden-xs">Planning</span> 
+                                                            <span class="hidden-xs">Plannings</span> 
                                                         </a> 
                                                     </li> 
                                                     <li class="tab"> 
                                                         <a href="#settings-2" data-toggle="tab" aria-expanded="false"> 
                                                             <span class="visible-xs"><i class="fa fa-cog"></i></span> 
-                                                            <span class="hidden-xs">Settings</span> 
+                                                            <span class="hidden-xs">Paramettres</span> 
                                                         </a> 
                                                     </li> 
                                                 <div class="indicator"></div></ul> 
                                                 </div>
-                                                <div class="hidden-xs col-sm-3 col-lg-6">
-                                                    <div class="pull-right">
-                                                        <div class="dropdown">
-                                                            <a data-toggle="dropdown" class="dropdown-toggle btn-rounded btn btn-primary waves-effect waves-light" href="#"> Following <span class="caret"></span></a>
-                                                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                                                                <li><a href="#">Poke</a></li>
-                                                                <li><a href="#">Private message</a></li>
-                                                                <li class="divider"></li>
-                                                                <li><a href="#">Unfollow</a></li>
-                                                            </ul>
-                                                        </div>
-                                                      </div>
-                                                </div>
+                                               
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-12"> 
@@ -70,7 +58,7 @@
                                                                 <!-- Personal-Information -->
                                                                 <div class="panel panel-default panel-fill">
                                                                     <div class="panel-heading"> 
-                                                                        <h3 class="panel-title">Personal Information</h3> 
+                                                                        <h3 class="panel-title">Informations personnel</h3> 
                                                                     </div> 
                                                                     <div class="panel-body"> 
                                                                         <div class="about-info-p">
@@ -79,7 +67,7 @@
                                                                             <p class="text-muted">{{auth()->user()->name}}</p>
                                                                         </div>
                                                                         <div class="about-info-p">
-                                                                            <strong>Mobile</strong>
+                                                                            <strong>Téléphone</strong>
                                                                             <br>
                                                                             <p class="text-muted">(123) 123 1234</p>
                                                                         </div>
@@ -89,7 +77,7 @@
                                                                             <p class="text-muted">{{auth()->user()->email}}</p>
                                                                         </div>
                                                                         <div class="about-info-p m-b-0">
-                                                                            <strong>Location</strong>
+                                                                            <strong>Pays</strong>
                                                                             <br>
                                                                             <p class="text-muted">USA</p>
                                                                         </div>

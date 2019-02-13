@@ -25,6 +25,10 @@ class Services extends Model
         return $this->belongsToMany('App\User');
     }
 
+    public function categorie(){
+        return $this->belongsTo(Categories::class);
+    }
+
    /* public function service_users()
     {
         return $this->hasMany('App\ServiceUser');
