@@ -95,57 +95,40 @@
                                                 <div class="row">
                                                     <div class="col-lg-8">
                                                         <div class="portlet"><!-- /portlet heading -->
-                                                            <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
-                                   
-    
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Image</th>
-                                                                        <th>Code</th>
-                                                                        <th>Nom</th>
-                                                                        <th>Desccription</th>
-                                                                        <th>Date de création</th>
-                                                                        <th>Employes</th>
-                                                                        <th>En promotion</th>
-                                                                        <th>Actions</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                 
+                                                            <div class="port">
+                                                                <div class="portfolioContainer row">
+                                                 
                                                                     @foreach($services as $service)
-                                   
-                                               <tr class="gradeC">
-                            
-                                                                        <td> {{ $service->image}}</td>
-                                                                        <td> {{ $service->code }}</td>
-                                                                        <td> {{ $service->nom }}</td>
-                                                                        <td> {{ $service->description }}</td>
-                                                                        <td> {{ $service->created_at }}</td>
-                                                                        <td> {{ $service->is_promote }}</td>
-                                                                        
-                                                                         
-                                                                            <td> {{ $service->user_id }}</td>
-                                                                        
-                                                                        
-                                                                        <td> {{ $service->is_promote }}</td>
-                                                                        <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
-                                                                            @can('edit_services','delete_services')
-                                                                            {!! Form::open( ['method' => 'delete', 'url' => route('services.destroy', $service->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                                            <button type="submit" class="btn-delete btndelete btn btn-danger">
-                                                                                <i class="fa fa-trash-o"></i>
-                                                                            </button>
-                                                                        {!! Form::close() !!}
-                                                                            <a href="{{ route('services.edit',$service) }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                                                            <a href="{{ route('services.edit',$service) }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                                            <a href="{{ route('services.edit',$service) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
-                                                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                                                        @endcan
-                                                                        </td>
-                                                                    </tr> 
-                                @endforeach
+                                                                    <div class="col-sm-6 col-lg-3 col-md-4 {{$service->categorie_id}}">
+                                                                        <div class="gal-detail thumb">
+                                                                            <a href="assets/images/gallery/1.jpg" class="image-popup" title="Screenshot-1"></a>
+                                                                            <a style="position: absolute;right: 20px" data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary pull-right">{{$service->montant}}</i></a>
+                                                                                <img  src="{{asset('images/'.$service->image)}}" class="thumb-img" alt="work-thumbnail" style="height: 150px">
+                                                                            </a>
+                                                                            <div  >
+                                                                                <div class="col-sm-12 control-label" style="padding: 0px">
+                                                                                   <h4>{{ $service->nom }} </h4>
+                                                                                   <p>{{ $service->description}} </p>
+                                                                                
+                                                                                </div> 
+                                                                                <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="services/{{$service->id}}" data-id="{{$service->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> 
+                                                                                @can('edit_services','delete_services')
+                                                                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="services/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                                                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{$service->id}}" data-lien="services/{{$service->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a> 
+                                                                                @endcan  
                                                                    
-                                                                </tbody>
-                                                           </table>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    @endforeach
+                                    
+                                                                    
+                                    
+                                    
+                                                                    
+                                                                    
+                                    
+                                                                </div>
                                                         </div> <!-- /Portlet -->
                                                     </div> <!-- end col -->
                         
@@ -156,46 +139,66 @@
                                                 <div class="row">
                                                     <div class="col-lg-8">
                                                         <div class="portlet"><!-- /portlet heading -->
-                                                            <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
-                                   
-    
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>nom</th>
-                                                                        <th>quantite</th>
-                                                                        <th>Date de création</th>
-                                                                        <th>Fournisseur</th>
-                                                                        <th>Actions</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                 
-                                                                    @foreach($commandes as $commande)
-                                   
-                                               <tr class="gradeC">
-                                                                        <td> {{ $commande->nom }}</td>
-                                                                        <td> {{ $commande->quantite }}
-                                                                        </td>
-                                                                        <td> {{ $commande->created_at }}</td>
-                                                                         <td> {{ $commande->fournisseur_id }}</td>
-                                                                        <td class="actions">   <a href="javascript:;" class="on-default seedetails btn btn-primary"><i class="fa fa-eye"></i></a>
-                                                                            @can('edit_commandes','delete_commandes')
-                                                                            {!! Form::open( ['method' => 'delete', 'url' => route('commandes.destroy', $commande->id), 'style' => 'display: inline', 'onSubmit' => 'return confirm("Are yous sure wanted to delete it?")']) !!}
-                                                                            <button type="submit" class="btn-delete btndelete btn btn-danger">
-                                                                                <i class="fa fa-trash-o"></i>
-                                                                            </button>
-                                                                        {!! Form::close() !!}
-                                                                            <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                                                            <a href="{{ route('commandes.destroy',$commande) }} }}" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                                                            <a href="{{ route('commandes.destroy',$commande) }}" class="btn-delete btn btn-sm btn-light"><i class="fa fa-pencil"></i></a>
-                                                                            <a href="{{ route('commandes.destroy',$commande) }}" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                                                        @endcan
-                                                                        </td>
-                                                                    </tr> 
-                                @endforeach
-                                                                   
-                                                                </tbody>
-                                                           </table></div> <!-- /Portlet -->
+                                                            @can('view_commandes')
+                    <table class="table table-bordered  table-striped" id="datatable-buttons">
+
+                        <thead>
+                            <tr>
+                                <th><input  id="checkAll" type="checkbox"></th>
+                                <th>Produit</th>
+                                <th>Quantite</th>
+                                <th>Employe</th>
+                                <th>Fournisseur</th>
+                                
+                                
+                                <th>Date de création</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablebody">
+
+                            @foreach($commandes as $commande)
+                                @php
+                                $date=date('d-m-Y H:i:s', strtotime($commande->created_at));
+                                @endphp
+                            <tr class="gradeC">
+                                <td>
+                                    <input  type="checkbox" class="check" onclick="verified();" value="{{ $commande->id }}"  name="etat">
+                                </td>
+                                <td>@foreach($produits as $produit)
+                                 @if($commande->produit_id)
+                                  {{ $produit->nom }}
+                                  @endif
+                                 @endforeach</td> 
+                                <td> {{ $commande->quantite }}</td>
+                                <td>@foreach($users as $user)
+                                 @if($commande->user_id )
+                                 <li>{{ $user->name }}</li>
+                                @endif
+                                @endforeach</td> 
+                                
+                                <td>@foreach($fournisseurs as $fournisseur)
+                                 @if($commande->fournisseur_id)
+                                 {{ $fournisseur->nom}}
+                                @endif
+                                @endforeach</td> 
+                                
+
+                                <td> {{ $date}}</td>
+
+                                <td class="actions">
+                                    
+                                    <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="commandes/{{$commande->id}}" data-id="{{$commande->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_commandes','delete_commandes')
+
+
+                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/{{$commande->id}}/edit" data-id="{{$commande->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a data-toggle="modal" data-target="#deletemodal" data-id="{{$commande->id}}" data-lien="commandes/{{$commande->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
+                                </td>
+                            </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>@endcan</div> <!-- /Portlet -->
                                                     </div> <!-- end col -->
                         
                         
