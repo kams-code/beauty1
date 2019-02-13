@@ -13,7 +13,7 @@
                                 <h4 class="pull-left page-title">Gallery</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="home">Acceuil</a></li>
-                                    <li class="active">categorie</li>
+                                    <li class="active">Categorie</li>
                                 </ol>
                             </div>
                         </div>
@@ -23,11 +23,14 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="portfolioFilter">
-                                    <a href="#" data-filter="*" class="current">tous les categories</a>
+                                    <a href="#" data-filter="*" class="current">toutes les categories</a>
                                     <a href="#" data-filter=".webdesign">Web Design</a>
                                     <a href="#" data-filter=".graphicdesign">Graphic Design</a>
                                   
                                 </div>
+                                @can('add_services')
+                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="categories/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+                           
                             </div>
                         </div>
 
@@ -35,10 +38,7 @@
                             <div class="portfolioContainer row">
                             <div class="m-b-30 pull-right">
 
-                                @can('add_categories')
-                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="categories/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-
-                            </div> 
+                             </div> 
                                 @foreach($categories as $categorie)
                                 <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
                                     <div class="gal-detail thumb">

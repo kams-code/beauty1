@@ -18,9 +18,9 @@ class CommandeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    { $fournisseurs=Fournisseurs::pluck('nom', 'id');
-        $produits=Produits::pluck('nom', 'id');
-        $users=User::pluck('name', 'id');
+    { $fournisseurs=Fournisseurs::all();
+        $produits=Produits::all();
+        $users=User::all();
         $commandes=Commandes::get();
         return view('commandes.index',compact('commandes','fournisseurs' ,'produits' ,'users'));
     }
@@ -35,8 +35,8 @@ class CommandeController extends Controller
         $produits=Produits::pluck('nom', 'id');
         $users=User::pluck('name', 'id');
         $commandes=Commandes::get();
-        $quantites=Commandes::pluck('quantite');;
-     return view('commandes.create',compact('commandes','fournisseurs' ,'produits' ,'users','quantites'));
+        //$quantites=Commandes::pluck('quantite');;
+     return view('commandes.create',compact('commandes','fournisseurs' ,'produits' ,'users'));
     }
 
     /**
@@ -46,8 +46,28 @@ class CommandeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    /*{
+        $user=Auth::user();
+
+       $commande= new Commandes([
+        'nom'=> $request->get('nom'),     
+        'quantite'=> $request->get('quantite'),
+        'fournisseur_id'=> $request->get('fournisseur_id'),
+        'produit_id'=> $request->get('produit_id'),
+        'user_id' => $request->get('user_id')
+      
+         ]);
+      
+      
+       
+       $request->merge(['organisation_id' =>$user->organisation_id ]);
+       $commande->save();
+       //$commandes = commandes::create($request->all());
+       //dd($request);
+        return redirect(route('commandes.index'));
+    }*/
     {
-        dd($request);
+       // dd($request);
         
         $tick= new Commandes([
             'nom'=> $request->get('nom'),
@@ -67,7 +87,7 @@ class CommandeController extends Controller
        
           $tick['organisation_id']=$user->organisation_id;
   $tick->save();
-  if($tick->etat===1){
+  /*if($tick->etat===1){
     $myRequest = new \Illuminate\Http\Request();
     $myRequest=$request;
     $myRequest->request->add(['quantite_initial' => $request->get('quantite')]);
@@ -76,7 +96,7 @@ class CommandeController extends Controller
     
     app('App\Http\Controllers\StockController')->store($myRequest);
 
-}
+  }*/
         return redirect(route('commandes.index'));
    
     }
@@ -89,12 +109,15 @@ class CommandeController extends Controller
      */
     public function show($id)
     {
-        $commande = Commandes::find($id);
+        $commande = Commandes::findOrFail($id);
         $produits=Produits::pluck('nom', 'id');
         $users=User::pluck('name', 'id');
-        $services=Services::pluck('nom', 'id');
+        $fournisseurs=Fournisseurs::pluck('nom', 'id');
+     // $fournisseurs = Fournisseurs::get()->where('id',$id);
+      // $users = User::get()->where('id',$id);
+       //$produits = Produits::get()->where('id',$id);
         
-        return view('commandes.show',compact('commande','services','users','produits'));
+        return view('commandes.show',compact('commande','fournisseurs','users','produits'));
     }
 
     /**
@@ -105,10 +128,13 @@ class CommandeController extends Controller
      */
     public function edit($id)
     {
-        $services=Services::pluck('nom', 'id');
-      
+       // $services=Services::pluck('nom', 'id');
+       $fournisseurs=Fournisseurs::pluck('nom', 'id');
+        $produits=Produits::pluck('nom', 'id');
+        $users=User::pluck('name', 'id');
+        
         $commande=Commandes::findOrFail($id);
-        return view ('commandes.edit',compact('commande','services'));
+        return view ('commandes.edit',compact('commande','fournisseurs','users','produits'));
     }
 
     /**
@@ -120,7 +146,7 @@ class CommandeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $commande = Commandes::findOrFail($id);
+        /*$commande = Commandes::findOrFail($id);
 
         if($commande->etat===1){
             $myRequest = new \Illuminate\Http\Request();
@@ -129,13 +155,26 @@ class CommandeController extends Controller
             $myRequest->request->add(['quantite_limite' => $request->get('quantite')]);
             $myRequest->request->add(['produit_id' => $request->get('produit_id')]);
             
-            app('App\Http\Controllers\StockController')->store($myRequest);
+            app('App\Http\Controllers\StockController')->store($myRequest);*/
+            
+            //dd ($request);
+            $user=Auth::user();
+           
+        $request->merge(['organisation_id' =>$user->organisation_id ]);
+        $commande = Commandes::findOrFail($id);
+                $commande->nom = $request->nom;
+                $commande->quantite = $request->quantite;
+                $commande->user_id = $request->user_id;
+                $commande->produit_id = $request->produit_id;
+        if ($request->etat =="on"){
+            $commande['etat']=1;
+          }if ($request->etat!="on"){
+            $commande['etat']=0; 
+          }
+          //dd($request);
+        $commande->update($request->except('etat'));
+        return redirect(route('commandes.index'));
         
-        }
-
-         
-        $commande->update($request->all());
-        return redirect(route('commandes.edit',$id));
     } 
 
     /**

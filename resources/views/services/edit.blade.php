@@ -37,15 +37,16 @@
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('categorie_id','Categorie*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="select" class="form-control" name="categorie_id" value="{{$service->categorie_id}}" >
+                   <!-- <input type="select" class="form-control" name="categorie_id" value="{{$service->categorie_id}}" >-->
+                   {!! Form::select('categorie_id',$categories,$service->categorie_id, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
             </br>
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" name="user_id" value="{{$service->user_id}}" >
-                   
+                   <!-- <input type="text" class="form-control" name="user_id" value="{{$service->user_id}}" >-->
+                    {!! Form::select('users[]', $users, $service->user_id, ['class' => 'form-control','multiple'=>'multiple']) !!}
                 </div>
             </div>
             </br>

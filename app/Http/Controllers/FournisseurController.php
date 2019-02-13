@@ -14,7 +14,7 @@ class FournisseurController extends Controller
     public function index()
     {
         $fournisseurs = Fournisseurs::get();
-        return view('Fournisseurs.index',compact('fournisseurs'));
+        return view('fournisseurs.index',compact('fournisseurs'));
     }
 
     /**

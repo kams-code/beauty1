@@ -1,7 +1,4 @@
-<style>
-   label{
-       text-align:left;
-   }
+
 </style>
 <div class="modal-content">
     <div class="modal-header">
@@ -48,8 +45,8 @@
             <div class="col-md-12" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe') !!}</label>
                 <div class="col-sm-6">
-                {{-- {!! Form::select('users[]', $users, null, ['class' => 'form-control','multiple'=>'multiple']) !!} --}}
-               <select class="select2 form-control" multiple="multiple" data-placeholder="Choose a Country...">
+                 {!! Form::select('users[]', $users, null, ['class' => 'form-control','multiple'=>'multiple']) !!} 
+              <!-- <select class="select2 form-control" multiple="multiple" data-placeholder="Choose a Country...">
                 <option value="test 1">&nbsp;test 1</option>
                 <option value="test 1">&nbsp;test 1</option>
                 <option value="test 1">&nbsp;test 1</option>
@@ -59,7 +56,7 @@
                                               <option value="test 1">&nbsp;test 1</option>
                                               
                       @endforeach
-                </select>
+                </select>-->
                 </div>
             </div>
           

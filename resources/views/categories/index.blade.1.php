@@ -165,6 +165,7 @@
  
     <script src="{{asset('js/jquery.min.js')}}"></script>
        
+       
 	    <!-- Examples -->
 	    <script src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
 	    <script src="{{asset('plugins/jquery-datatables-editable/jquery.dataTables.js')}}"></script> 

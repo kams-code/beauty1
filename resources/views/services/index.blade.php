@@ -2,6 +2,13 @@
 @include('partials.topbar')
 @include('partials.sidebar')
 
+                                    @section('content')
+                  <style type="text/css">
+                      .form-horizontal .control-label{
+                        text-align: left;
+                      }
+                  </style>
+                  
 <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
@@ -24,24 +31,21 @@
                             <div class="col-sm-12">
                                 <div class="portfolioFilter">
                                     <a href="#" data-filter="*" class="current">tous les services</a>
-                                    <a href="#" data-filter=".webdesign">Web Design</a>
-                                    <a href="#" data-filter=".graphicdesign">Graphic Design</a>
-                                    <a href="#" data-filter=".illustrator">Illustrator</a>
-                                    <a href="#" data-filter=".photography">Photography</a>
+                                    @foreach($categories as $categorie)
+                                            <a href="#" data-filter=".{{$categorie->id}}">{{$categorie->nom}}</a>
+                                            @endforeach
                                 </div>
+                                @can('add_services')
+                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="services/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+
                             </div>
                         </div>
 
                         <div class="port">
                             <div class="portfolioContainer row">
-                            <div class="m-b-30 pull-right">
-
-                                @can('add_services')
-                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="services/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-
-                            </div> 
+             
                                 @foreach($services as $service)
-                                <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
+                                <div class="col-sm-6 col-lg-3 col-md-4 {{$service->categorie_id}}">
                                     <div class="gal-detail thumb">
                                         <a href="assets/images/gallery/1.jpg" class="image-popup" title="Screenshot-1">
                                         <a style="position: absolute;right: 20px" data-toggle="modal" data-target="#con-close-modal" data-lien="organisations/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary pull-right">{{$service->montant}}</i></a>

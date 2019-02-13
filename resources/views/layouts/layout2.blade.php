@@ -23,9 +23,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
   <meta name="csrf-token" content="<?php echo csrf_token(); ?>">
 
-  <link href="{{asset('plugins/fullcalendar/dist/fullcalendar.css')}}" rel="stylesheet">
-  <link href="{{asset('plugins/select2/dist/css/select2.css')}}" rel="stylesheet" type="text/css">
-
   <link href="{{asset('plugins/sweetalert/dist/sweetalert.css')}}" rel="stylesheet" type="text/css">
 
 <link rel="stylesheet" href="{{asset('plugins/magnific-popup/dist/magnific-popup.css')}}">
@@ -131,31 +128,9 @@
     <!-- /Right-bar -->
 
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/detect.js"></script>
-<script src="js/fastclick.js"></script>
-<script src="js/jquery.slimscroll.js"></script>
-<script src="js/jquery.blockUI.js"></script>
-<script src="js/waves.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/jquery.nicescroll.js"></script>
-<script src="js/jquery.scrollTo.min.js"></script>
 
-<script src="js/jquery.app.js"></script>
-<script src="{{asset('js/jquery.min.js')}}"></script>
-        <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js')}}"></script>
-        <script src="{{asset('js/bootstrap.min.js')}}"></script>
-        <script src="{{asset('js/detect.js')}}"></script>
-        <script src="{{asset('js/fastclick.js')}}"></script>
-        <script src="{{asset('js/jquery.slimscroll.js')}}"></script>
-        <script src="{{asset('js/jquery.blockUI.js')}}"></script>
-        <script src="{{asset('js/waves.js')}}"></script>
-        <script src="{{asset('js/wow.min.js')}}"></script>
-        <script src="{{asset('js/jquery.nicescroll.js')}}"></script>
-        <script src="{{asset('js/jquery.scrollTo.min.js')}}"></script>
-        
-        <script src="{{asset('js/jquery.app.js')}}"></script>
+
+<script src="{{asset('js/jquery.app.js')}}"></script>
         <!-- pour les select -->
         
         <!-- jQuery  -->
@@ -197,8 +172,6 @@
 
         <!-- BEGIN PAGE SCRIPTS -->
         <script src="{{asset('plugins/moment/moment.js')}}"></script>
-        <script src="{{asset('plugins/fullcalendar/dist/fullcalendar.min.js')}}"></script>
-        <script src="{{asset('pages/jquery.fullcalendar.js')}}"></script>
 
         <!-- Datatables-->
         <script src="{{asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
@@ -219,32 +192,12 @@
         <!-- Datatable init js -->
         <script src="{{asset('pages/datatables.init.js')}}"></script>
 
+        <script type="text/javascript" src="{{asset('plugins/isotope/dist/isotope.pkgd.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('plugins/magnific-popup/dist/jquery.magnific-popup.min.js')}}"></script>
 
-<!-- Modal-Effect -->
-<script src="plugins/modal-effect/js/classie.js"></script>
-<script src="plugins/modal-effect/js/modalEffects.js"></script>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/detect.js"></script>
-  <script src="js/fastclick.js"></script>
-  <script src="js/jquery.slimscroll.js"></script>
-  <script src="js/jquery.blockUI.js"></script>
-  <script src="js/waves.js"></script>
-  <script src="js/wow.min.js"></script>
-  <script src="js/jquery.nicescroll.js"></script>
-  <script src="js/jquery.scrollTo.min.js"></script>
 
-  <script src="js/jquery.app.js"></script>
 
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-  <script src="plugins/select2/dist/js/select2.min.js" type="text/javascript"></script>
 
-  <!-- BEGIN PAGE SCRIPTS -->
-  <script src="plugins/moment/moment.js"></script>
-  <script src="plugins/fullcalendar/dist/fullcalendar.min.js"></script>
-
-  
   <script type="text/javascript">
     TableManageButtons.init();
     $(document).on('click','#imgpreview',function(){

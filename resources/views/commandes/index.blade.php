@@ -16,7 +16,7 @@
                     <h4 class="pull-left page-title">Instituts</h4>
                     <ol class="breadcrumb pull-right">
                         <li><a href="home">Accueil</a></li>
-                        <li class="active">Instituts</li>
+                        <li class="active">Commande</li>
                     </ol>
                 </div>
             </div>
@@ -42,9 +42,11 @@
                         <thead>
                             <tr>
                                 <th><input  id="checkAll" type="checkbox"></th>
-                                <th>User</th>
-                                <th>fournisseur</th>
                                 <th>Produit</th>
+                                <th>Quantite</th>
+                                <th>Employe</th>
+                                <th>Fournisseur</th>
+                                
                                 
                                 <th>Date de création</th>
                                 <th>Actions</th>
@@ -52,18 +54,32 @@
                         </thead>
                         <tbody id="tablebody">
 
-                            @foreach($commandes as $organisation)
+                            @foreach($commandes as $commande)
                                 @php
-                                $date=date('d-m-Y H:i:s', strtotime($organisation->created_at));
+                                $date=date('d-m-Y H:i:s', strtotime($commande->created_at));
                                 @endphp
                             <tr class="gradeC">
                                 <td>
-                                    <input  type="checkbox" class="check" onclick="verified();" value="{{ $organisation->id }}"  name="etat">
+                                    <input  type="checkbox" class="check" onclick="verified();" value="{{ $commande->id }}"  name="etat">
                                 </td>
+                                <td>@foreach($produits as $produit)
+                                 @if($commande->produit_id)
+                                  {{ $produit->nom }}
+                                  @endif
+                                 @endforeach</td> 
+                                <td> {{ $commande->quantite }}</td>
+                                <td>@foreach($users as $user)
+                                 @if($commande->user_id )
+                                 <li>{{ $user->name }}</li>
+                                @endif
+                                @endforeach</td> 
                                 
-                                <td> {{ $commande->users }}</td>
-                                <td> {{ $commande->fournisseurs}}</td>
-                                <td> {{ $commande->produits }}</td>
+                                <td>@foreach($fournisseurs as $fournisseur)
+                                 @if($commande->fournisseur_id)
+                                 {{ $fournisseur->nom}}
+                                @endif
+                                @endforeach</td> 
+                                
 
                                 <td> {{ $date}}</td>
 

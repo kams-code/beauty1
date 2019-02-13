@@ -6,20 +6,17 @@
     <div class="modal-body">
         <div class="row">
             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('commandes.store'),'files'=>true]) !!}
-            <div class="col-md-12">
-                <h4>Informations de base</h4>
-            </div>
+            
             <div class="col-md-12" style="padding: 0px">
                 <center>
-                    <img id="imgpreview" src="/images/logo_dark.png" style="width: 100px;cursor: pointer;" required>
-                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
-
+                    <img id="imgpreview" src="/images/logo_dark.png" style="width: 100px;cursor: pointer;" >
+                
                 </center>
             </div>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('user_id','User*') !!}</label>
+            <div class="col-md-12" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('nom','Titre de la commande*') !!}</label>
                 <div class="col-sm-12">
-                {!! Form::select('user_id',$users,null, ['class' => 'form-control','required']) !!}
+                {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
@@ -29,11 +26,36 @@
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('quantite','Quantite*') !!}</label>
+                <div class="col-sm-12">
+                {!! Form::number('quantite',null, ['class' => 'form-control','required']) !!}
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe*') !!}</label>
+                <div class="col-sm-12">
+                {!! Form::select('user_id',$users,null, ['class' => 'form-control','required']) !!}
+                </div>
+            </div>
+           
+            <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur*') !!}</label>
                 <div class="col-sm-12">
                 {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control','required']) !!}
 
                 </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
+                            <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('etat','Etat') !!}</label>
+                            <div class="col-sm-12">
+                                    <div class="checkbox">
+                                            <input   id="checkbox" type="checkbox" name="etat" > 
+                                            <label for="checkbox"   >
+                                                    Est il valide? 
+                                            </label>
+                                    </div> 
+                            
+                            </div>
             </div>
             
 

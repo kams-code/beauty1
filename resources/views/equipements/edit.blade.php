@@ -25,7 +25,7 @@
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur*') !!}</label>
                 <div class="col-sm-12">
-                    <input type="select" class="form-control" name="fournisseur_id" value="{{$equipement->categorie_id}}" >
+                    <input type="select" class="form-control" name="fournisseur_id" value="{{$equipement->fournisseur_id}}" >
                 </div>
             </div>
             </br>

@@ -14,7 +14,9 @@
 
         <!--
       calendar css-->
-       
+        <link href="{{asset('plugins/fullcalendar/dist/fullcalendar.css')}}" rel="stylesheet">
+        <link href="{{asset('plugins/select2/dist/css/select2.css')}}" rel="stylesheet" type="text/css">
+
         <link href="{{asset('plugins/sweetalert/dist/sweetalert.css')}}" rel="stylesheet" type="text/css">
 
  <link rel="stylesheet" href="{{asset('plugins/magnific-popup/dist/magnific-popup.css')}}">
@@ -446,22 +448,8 @@
           $(document).on('click', '#checkAll', function(){
             checkAll($('#checkAll').is(':checked'));
           });
-        </script> <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/detect.js"></script>
-        <script src="js/fastclick.js"></script>
-        <script src="js/jquery.slimscroll.js"></script>
-        <script src="js/jquery.blockUI.js"></script>
-        <script src="js/waves.js"></script>
-        <script src="js/wow.min.js"></script>
-        <script src="js/jquery.nicescroll.js"></script>
-        <script src="js/jquery.scrollTo.min.js"></script>
-
-        <script src="js/jquery.app.js"></script>
-
-        <script type="text/javascript" src="plugins/isotope/dist/isotope.pkgd.min.js"></script>
-        <script type="text/javascript" src="plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-          
+        </script> 
+       
         <script type="text/javascript">
             $(window).load(function(){
                 var $container = $('.portfolioContainer');

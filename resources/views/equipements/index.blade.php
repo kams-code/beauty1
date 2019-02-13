@@ -26,9 +26,8 @@
                                     <a href="#" data-filter="*" class="current">tous les equipements</a>
                                     <a href="#" data-filter=".webdesign">Web Design</a>
                                     @can('add_equipements')
-                                    <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-    
-                               
+                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+
                                 </div>
                             </div>
                         </div>
@@ -37,7 +36,8 @@
                             <div class="portfolioContainer row">
                             <div class="m-b-30 pull-right">
 
-                           </div> 
+                              
+                            </div> 
                                 @foreach($equipements as $equipement)
                                 <div class="col-sm-6 col-lg-3 col-md-4 webdesign illustrator">
                                     <div class="gal-detail thumb">

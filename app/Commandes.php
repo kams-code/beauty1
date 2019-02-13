@@ -6,14 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commandes extends Model
 {
-    protected $fillable = [  'organisation_id',
+    protected $fillable = [  //'organisation_id',
 
         'nom',
         'quantite',
         'fournisseur_id',
         'produit_id',
         'user_id',
-        'quantites'
+        'etat'
+       // 'quantites'
                
     ];
 

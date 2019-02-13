@@ -21,6 +21,12 @@
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
+                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('prenom','Prenom*') !!}</label>
+                <div class="col-sm-12">
+                    {!! Form::text('prenom',null, ['class' => 'form-control','required']) !!}
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('telephone','Téléphone*') !!}</label>
                 <div class="col-sm-12">
                     {!! Form::number('telephone',null, ['class' => 'form-control','required']) !!}

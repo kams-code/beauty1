@@ -22,7 +22,7 @@ class ServiceController extends Controller
         $users=User::pluck('name', 'id');
         $Users=User::pluck('name', 'id');
         $services=Services::get();
-        $categories=Categories::pluck('nom', 'id');
+        $categories=Categories::all();
         return view('services.index',compact('services','users','Users','categories'));
     }
 
@@ -34,7 +34,7 @@ class ServiceController extends Controller
     public function create(Request $request)
     {
        
-        $users=User::pluck('nom', 'id');
+        $users=User::pluck('name', 'id');
         $categories=Categories::pluck('nom', 'id');
         $services=Stocks::get();
         return view('services.create',compact('services','users','categories'));
@@ -112,8 +112,10 @@ class ServiceController extends Controller
     {
 
        // $service = Services::get()->where('id',$id);
+       $users = User::pluck('name','id');
+       $categories = Categories::pluck('nom','id');
        $service = Services::findOrFail($id);
-        return view('services.show',compact('service'));
+        return view('services.show',compact('service','users','categories'));
     }
 
     /**
@@ -125,8 +127,12 @@ class ServiceController extends Controller
     public function edit($id)
     {
         //$service = Services::get()->where('id',$id)->first();
+
         $service = Services::findOrFail($id);
-        return view('services.edit',compact('service'));
+         $users=User::pluck('name', 'id');
+        $categories=Categories::pluck('nom', 'id');
+        
+        return view('services.edit',compact('service','users','categories'));
         
     }
 
