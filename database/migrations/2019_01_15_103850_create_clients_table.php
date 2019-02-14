@@ -23,6 +23,8 @@ class CreateClientsTable extends Migration
             $table->string('adresse');
             $table->string('email');
             $table->integer('telephone');
+            $table->string('codepromo')->nullable();
+            $table->integer('id_ticket')->nullable();
             $table->string('organisation_id')->nullable();;             $table->timestamps();
             
         });

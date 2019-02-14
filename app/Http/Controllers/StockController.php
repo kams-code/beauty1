@@ -60,7 +60,7 @@ if($request->get('type')=="Ajout"){
         'produit_id'=> $request->get('produit_id'),
         'type'=> $request->get('type')
       ]);
-      $produit['quantite_final']=$stock['quantite_final'];
+      $produit['quantite']=$stock['quantite_final'];
           $produit->update();
           $stock->save();
 }
@@ -75,7 +75,7 @@ if($request->get('type')=="Retrait"){
         'produit_id'=> $request->get('produit_id'),
         'type'=> $request->get('type')
       ]);
-      $produit['quantite_final']=$stock['quantite_final'];
+      $produit['quantite']=$stock['quantite_final'];
           $produit->update();
           $stock->save();
 }

@@ -15,7 +15,9 @@ class Clients extends Model
         'image',
         'adresse',
         'email',
-        'telephone' 
+        'telephone' ,
+        'codepromo',
+        'id_ticket',
        
     ];
 

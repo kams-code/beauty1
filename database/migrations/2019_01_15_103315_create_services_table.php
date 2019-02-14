@@ -21,6 +21,9 @@ class CreateServicesTable extends Migration
             $table->string('image');
             $table->integer('montant');
             $table->boolean('is_promote');
+            $table->string('codepromo')->nullable();
+            $table->integer('id_ticket')->nullable();
+            $table->string('users_id')->nullable();
             $table->string('organisation_id')->nullable();;             $table->timestamps();
         });
         

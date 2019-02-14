@@ -19,7 +19,8 @@ class ProduitController extends Controller
     public function index()
     {
         $fournisseurs=Fournisseurs::pluck('nom', 'id');
-        $categories=Categorieproduits::get();
+        $categories=Categorieproduits::all();
+        $produits=Produits::all();
         return view ('produits.index',compact('produits','fournisseurs','categories'));
         
     }
@@ -98,7 +99,7 @@ class ProduitController extends Controller
            
             $stock= new Stocks([
                 'quantite_initial' => $request->get('quantite'),
-                'quantite_limite'=> 5,
+                'quantite_limite'=> $request->get('quantite'),
                 'type'=> "Ajout",
                 'produit_id'=>  $produits->id,
                 'quantite_final'=> $request->get('quantite')

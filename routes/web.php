@@ -33,10 +33,12 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('fournisseurs','FournisseurController');
     Route::resource('organisations','OrganisationController');
     Route::resource('stocks','StockController');
-
+    Route::get('/services/{id}  /add', 'ServiceController@add');
 });
 Route::post( '/organisations/{id}','OrganisationController@update');
 Route::get('/permissions', 'RoleController@index1')->name('permissions');
+Route::get('/servicespersonnel/{id}', 'ServiceController@index1')->name('servicespersonnel');
+
 Route::get('/produits/categorie/{id}', 'ProduitController@index1')->name('categorieproduit');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');

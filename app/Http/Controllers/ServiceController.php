@@ -20,10 +20,18 @@ class ServiceController extends Controller
     public function index()
     {
         $users=User::pluck('name', 'id');
-        $services=Services::with('categories')->get();
-        //$categories=Categories::all();
-        return view('services.index',compact('services','users','Users','categories'));
+        $services=Services::with('categorie')->get();
+        $categories=Categories::all();
+        return view('services.index',compact('services','Users','categories'));
     }
+    public function index1($id)
+    {
+        $users=User::all();
+        $categories=Categories::all();
+        $services=Stocks::get();
+        return view('services.add',compact('services','users','categories','id'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -40,6 +48,18 @@ class ServiceController extends Controller
         //return view('services.create');
     }
 
+      /**
+     * Show the form for creating a new employees resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function add($id)
+    {
+       
+       
+        //return view('services.create');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -49,8 +69,23 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
 
+        if ($request->has('my_multi_select1')) {
+           dd($request);
+
+           $users=$request->get('my_multi_select1');
+       
+           $val="";
+           foreach($users as $key=>$value)
+           {
+               $val=$val. '/' .$value;
+              
+           }
+
+        }else{
+        $string = bin2hex(openssl_random_pseudo_bytes(10));
+
         $service= new Services([
-            'code' => $request->get('code'),
+            'code' => $string,
             'nom'=> $request->get('nom'),
             'description'=> $request->get('description'),
             
@@ -98,8 +133,10 @@ class ServiceController extends Controller
        
       
        // d return redirect(route('reservations.index'));
+    }
        return redirect(route('services.index'));
     }
+    
 
     /**
      * Display the specified resource.
@@ -142,8 +179,38 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
+
+        if ($request->has('my_multi_select1')) {
+         
+ 
+            $users=$request->get('my_multi_select1');
+        
+            $val="";
+            $Users=Users::all();
+            foreach($users as $key=>$value)
+            {
+                foreach ($Users as $user) {
+                    if ($user->id==$value and mb_strpos($user['services_id'],$id) !== false) {
+                        $user['services_id']=$user['services']. '/' .$id;
+                        $user->update();
+                    }
+                    
+                }
+                $val=$val. '/' .$value;
+               
+            }
+            $service = Services::findOrFail($id);
+            $service['users_id'] =  $val;
+            $service->update();
+            
+            
+         }else{
+
+
+
         $service = Services::findOrFail($id);
     
         if($request->hasfile('imageup'))
@@ -157,7 +224,7 @@ class ServiceController extends Controller
                
                $request->merge(['image' => $filename ]);
         }
-        $service->update($request->except('is_promote'));
+        $service->update($request->except('is_promote'));}
        
        return redirect(route('services.index'));
 

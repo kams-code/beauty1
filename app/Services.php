@@ -13,7 +13,10 @@ class Services extends Model
         'image',
         'montant',
         'is_promote',
-        'categorie_id'
+        'codepromo',
+        'id_ticket',
+        'categorie_id',
+        'users_id'
     ];
      
     public function reservations(){

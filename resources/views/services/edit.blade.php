@@ -15,12 +15,7 @@
                 </center>
             </div>
             </br>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('code','Code*') !!}</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" name="code" value="{{$service->code}}" required="">
-                </div>
-            </div>
+            
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
                 <div class="col-sm-12">
