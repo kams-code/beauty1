@@ -12,8 +12,10 @@ use Auth;
 // Model Usage
 use App\Reservations;
 use App\Clients;
+use App\Horaires;
 use App\Plannings;
 use App\User;
+use App\Services;
 class AdminAPIController extends Controller
 {
 
@@ -23,28 +25,74 @@ class AdminAPIController extends Controller
 	 */
 	public function GetAllAppointments()
 	{
-		$appointments = Reservations::all();
+
+
+		$horaires = Horaires::all()->where('organisation_id',1);
 		$calendarAppointments = array();
+		$i=1;
+		foreach($horaires as $a) {
+
+		
+			$startDate = date_create($a->heureouverture);
+			$endDate = date_create($a->heurefermeture);
+			
+			$event = array(
+				'color' => 'gray',
+				'start' => $startDate->format('Y-m-d\TH:i:s'),
+				'end' => $endDate->format('Y-m-d\TH:i:s'),
+				'dow'=> [$i],
+				'rendering'=> 'background',
+				
+				
+			);
+			$i=$i+1;
+			
+			array_push($calendarAppointments, $event);
+		}
+
+		$appointments = Reservations::all();
+		
+
 		foreach($appointments as $a) {
 
 			$customer = Clients::find($a['client_id']);
-			$customer = $customer->nom.' '.$customer->prenom;
+			$customer = $customer->nom;
 
 			
 			$startDate = date_create($a->datedebut);
 			$endDate = date_create($a->datefin);
 			
 			$event = array(
-				'id' => $a['id'],
-				'title' => 'Rendez vous avec '.$customer,
+				'id'=>$a['id'],
+				'title' =>$customer,
 				'start' => $startDate->format('Y-m-d\TH:i:s'),
 				'end' => $endDate->format('Y-m-d\TH:i:s'),
+				'className'=>'bg-danger'
 			);
 			array_push($calendarAppointments, $event);
 		}
 
+
+
+
+
+
 		return response()->json($calendarAppointments);
 	}
+	public function GetAllServices()
+	{
+		$appointments = Services::all();
+		
+		return response()->json($appointments);
+	}
+	public function GetAllClients()
+	{
+		$Clients = Clients::all();
+		
+		return response()->json($Clients);
+	}
+
+
 
 	public function GetAllPlannings()
 	{

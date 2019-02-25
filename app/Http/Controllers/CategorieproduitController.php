@@ -42,7 +42,7 @@ class CategorieproduitController extends Controller
 
         $categorie =new Categorieproduits([ 
             'nom'=> $request->get('nom'),
-           'description'=> $request->get('description'),
+           'description'=> " ",
        ]);
         if($request->hasfile('image'))
         {

@@ -32,9 +32,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $result = User::latest()->paginate();
+        $users = User::latest()->paginate();
 
-        return view('user.index', compact('result'));
+        return view('user.index', compact('users'));
     }
 
     /**

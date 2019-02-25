@@ -16,6 +16,6 @@ class Equipements extends Model
     ];
 
     public function fournisseur(){
-        return $this->belongsTo('App\Fournisseurs');
+        return $this->belongsTo(Fournisseurs::class);
     }
 }

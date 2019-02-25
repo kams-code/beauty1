@@ -7,13 +7,20 @@
         <div class="row">
             {!! Form::open(['method' => 'PUT','class' => 'form-horizontal','role' => 'form','url' => route('categorieproduits.update',$categorie),'files'=>true]) !!}
             
-            <div class="col-md-12" style="padding: 0px">
-                    <center>
-                        <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
-                        <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
+
+                <div class="col-md-12" style="padding: 0px">
+    
+                        <center>
+                            @if ($categorie->image!=null)
+                            <img id="imgpreview" class="thumb-lg  img-thumbnail" src="{{asset('images/'.$categorie->image)}}" style="width: 100px;cursor: pointer;">
+                            
+                                @else
+                                <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
                    
-                    </center>
-                </div>
+                            @endif
+                            <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
+                        </center>
+                     </div>
 
 
                 <div class="col-md-6" style="padding: 0px">
@@ -22,23 +29,7 @@
                             <input type="text" class="form-control" name="nom" value="{{$categorie->nom}}" required="">
                         </div>
                     </div>
-                  
-               
-
-
-
-
-
-
-
-                    <div class="col-md-12" style="padding: 0px">
-                            <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
-                            <div class="col-sm-12">
-                                <textarea class="form-control" name="description" required></textarea>
-                            </div>
-                        </div>
-
-
+                
 
             <div class="m-b-0">
                 <div class="col-sm-offset-3 col-sm-9">

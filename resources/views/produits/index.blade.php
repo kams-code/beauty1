@@ -17,11 +17,11 @@
                                 <!-- Page-Title -->
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <h4 class="pull-left page-title">Gallery</h4>
+                                        <h4 class="pull-left page-title">Produits</h4>
                                         <ol class="breadcrumb pull-right">
-                                            <li><a href="#">Moltran</a></li>
-                                            <li><a href="#">Components</a></li>
-                                            <li class="active">Gallery</li>
+                                            <li><a href="#">QuickBeauty</a></li>
+                                            <li><a href="#">Accueil</a></li>
+                                            <li class="active">Produits</li>
                                         </ol>
                                     </div>
                                 </div>
@@ -35,7 +35,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="portfolioFilter">
-                                            <a href="#" data-filter="*" class="current">All</a>
+                                            <a href="#" data-filter="*" class="current">Tout</a>
                                             @foreach($categories as $categorie)
                                             <a href="#" data-filter=".{{$categorie->id}}">{{$categorie->nom}}</a>
                                             @endforeach
@@ -54,13 +54,15 @@
                                                 <a href="{{asset('images/'.$produit->image)}}" class="image-popup" title="Screenshot-1">
                                                     <img src="{{asset('images/'.$produit->image)}}" class="thumb-img" alt="work-thumbnail">
                                                 </a>
-                                                <h4> {{$produit->nom}}</h4>
+                                                <h5 style="text-align: -webkit-center;" > {{$produit->nom}}</h5>
+                                                <h5 style="text-align: -webkit-center;" > {{$produit->prix}} FCFA</h5>
+                                                    <div style="align: center;">
                                                 <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="produits/{{$produit->id}}" data-id="{{$produit->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_produits','delete_produits')
 
                  
                                                 <a data-toggle="modal" data-target="#con-close-modal" data-lien="produits/{{$produit->id}}/edit" data-id="{{$produit->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                                 <a data-toggle="modal" data-target="#deletemodal" data-id="{{$produit->id}}" data-lien="produits/{{$produit->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
-                            
+                                            </div>
                                             </div>
                                         </div>
                                         @endforeach

@@ -33,10 +33,15 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('fournisseurs','FournisseurController');
     Route::resource('organisations','OrganisationController');
     Route::resource('stocks','StockController');
-
+    Route::get('/services/{id}  /add', 'ServiceController@add');
 });
 Route::post( '/organisations/{id}','OrganisationController@update');
 Route::get('/permissions', 'RoleController@index1')->name('permissions');
+Route::get('/servicespersonnel/{id}', 'ServiceController@index1')->name('servicespersonnel');
+Route::get('/reservation/service/personnel/{id}', 'ReservationController@index1')->name('reservationservicepersonnel');
+Route::get('/paramettres', 'OrganisationController@index1')->name('paramettres');
+Route::get('/reservation/reporter/{id}', 'ReservationController@index2')->name('reservationreporter');
+
 Route::get('/produits/categorie/{id}', 'ProduitController@index1')->name('categorieproduit');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -85,7 +90,7 @@ Route::resource('roles','RoleController');
 
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
-
+Route::resource('horaires','HoraireController');
 
 //---les routes de stocks----
 Route::resource('stocks','StockController');
@@ -94,6 +99,8 @@ Route::group(['prefix' => 'api'], function()
 {
 	// Customer API Routes
 	Route::get('get-available-days', 'APIController@GetAvailableDays');
+    Route::get('get-all-services', 'AdminAPIController@GetAllServices');
+    Route::get('get-all-clients', 'AdminAPIController@GetAllClients');
 
 	// Admin API Routes
     Route::get('get-all-appointments', 'AdminAPIController@GetAllAppointments');

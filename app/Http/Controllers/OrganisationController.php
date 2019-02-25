@@ -4,6 +4,7 @@ namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Organisations;
+use App\Horaires;
 use Image;
 use App\User;
 use App\Role;
@@ -20,7 +21,15 @@ class OrganisationController extends Controller
         $organisations = Organisations::get();
         return view('organisations.index',compact('organisations'));
     }
-
+    public function index1( )
+    { 
+        $user1=Auth::user();
+       $id=$user1->organisation_id;
+    $organisations = Organisations::get();
+    $organisation = Organisations::findOrFail(1);
+       // return redirect(route('organisations.edit',$id));
+       return view('organisations.paramettre',compact('organisation'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -129,9 +138,192 @@ $user->syncRoles($roles);
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        $organisation = Organisations::findOrFail($id);
-    
+    {    $organisation = Organisations::findOrFail($id);
+        if ($request->has('Lundi')) {
+        
+            if ($request->has('heureouvertureLundi')) {
+                $horairelundi=new Horaires([ 
+                    'jour'=> $request->get('Lundi'),
+                'etat'=> 1,
+                'heureouverture'=> $request->get('heureouvertureLundi'),
+                'heurefermeture'=> $request->get('heurefermetureLundi'),
+                'organisation_id'=> $id
+            
+                
+               ]);
+               
+            }else{
+                $horairelundi=new Horaires([ 
+                    'jour'=> $request->get('Lundi'),
+                'etat'=> 1
+            
+                
+               ]);
+            }
+            $horairelundi->save();
+            
+            
+            if ($request->has('heureouvertureMardi')) {
+                $horaireMardi=new Horaires([ 
+                    'jour'=> $request->get('Mardi'),
+                'etat'=> 1,
+                'heureouverture'=> $request->get('heureouvertureMardi'),
+                'heurefermeture'=> $request->get('heurefermetureMardi'),
+                'organisation_id'=> $id
+            
+                
+               ]);
+               
+            }else{
+                $horaireMardi=new Horaires([ 
+                    'jour'=> $request->get('Mardi'),
+                'etat'=> 1
+            
+                
+               ]);
+            }
+            $horaireMardi->save();
+            
+            
+            if ($request->has('heureouvertureMercredi')) {
+                $horaireMercredi=new Horaires([ 
+                    'jour'=> $request->get('Mercredi'),
+                'etat'=> 1,
+                'heureouverture'=> $request->get('heureouvertureMercredi'),
+                'heurefermeture'=> $request->get('heurefermetureMercredi'),
+                'organisation_id'=> $id
+            
+                
+               ]);
+               
+            }else{
+                $horaireMercredi=new Horaires([ 
+                    'jour'=> $request->get('Mercredi'),
+                'etat'=> 1
+            
+                
+               ]);
+            }
+            $horaireMercredi->save();
+            
+            if ($request->has('heureouvertureJeudi')) {
+                $horaireJeudi=new Horaires([ 
+                    'jour'=> $request->get('Jeudi'),
+                'etat'=> 1,
+                'heureouverture'=> $request->get('heureouvertureJeudi'),
+                'heurefermeture'=> $request->get('heurefermetureJeudi'),
+                'organisation_id'=> $id
+            
+                
+               ]);
+               
+            }else{
+                $horaireJeudi=new Horaires([ 
+                    'jour'=> $request->get('Jeudi'),
+                'etat'=> 1
+            
+                
+               ]);
+            }
+            $horaireJeudi->save();
+            
+            if ($request->has('heureouvertureVendredi')) {
+                $horaireVendredi=new Horaires([ 
+                    'jour'=> $request->get('Vendredi'),
+                'etat'=> 1,
+                'heureouverture'=> $request->get('heureouvertureVendredi'),
+                'heurefermeture'=> $request->get('heurefermetureVendredi'),
+                'organisation_id'=> $id
+            
+                
+               ]);
+               
+            }else{
+                $horaireVendredi=new Horaires([ 
+                    'jour'=> $request->get('Vendredi'),
+                'etat'=> 1
+            
+                
+               ]);
+            }
+            $horaireVendredi->save();
+            
+            if ($request->has('heureouvertureSamedi')) {
+                $horaireSamedi=new Horaires([ 
+                    'jour'=> $request->get('Samedi'),
+                'etat'=> 1,
+                'heureouverture'=> $request->get('heureouvertureSamedi'),
+                'heurefermeture'=> $request->get('heurefermetureSamedi'),
+                'organisation_id'=> $id
+            
+                
+               ]);
+               
+            }else{
+                $horaireSamedi=new Horaires([ 
+                    'jour'=> $request->get('Samedi'),
+                'etat'=> 1
+            
+                
+               ]);
+            }
+            $horaireSamedi->save();
+            
+            if ($request->has('heureouvertureDimanche')) {
+                $horaireDimanche=new Horaires([ 
+                    'jour'=> $request->get('Dimanche'),
+                'etat'=> 1,
+                'heureouverture'=> $request->get('heureouvertureDimanche'),
+                'heurefermeture'=> $request->get('heurefermetureDimanche'),
+                'organisation_id'=> $id
+            
+                
+               ]);
+               
+            }else{
+                $horaireDimanche=new Horaires([ 
+                    'jour'=> $request->get('Dimanche'),
+                'etat'=> 1
+            
+                
+               ]);
+            }
+            $horaireDimanche->save();
+            
+            
+            
+        }
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+   
         if($request->hasfile('imageup'))
         {
         
@@ -143,10 +335,13 @@ $user->syncRoles($roles);
                
                $request->merge(['image' => $filename ]);
         }
-        $organisation->update($request->except('online'));
+        $organisation['tempstransition']=$request->get('tempstransition');
+
+       $organisation->update($request->except('online'));
        // return redirect(route('organisations.edit',$id));
        return redirect(route('organisations.index'));
     }
+  
 
     /**
      * Remove the specified resource from storage.

@@ -1,15 +1,12 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modifier un institut</h4>
+        <h4 class="modal-title">Modifier un client</h4>
     </div>
     <div class="modal-body">
         <div class="row">
-            {!! Form::open(['class' => 'form-horizontal','role' => 'form'
-            ,'method' => 'post','url' => route('clients.update',$client),'files'=>true]) !!}
-            <div class="col-md-12">
-                <h4>Informations de base</h4>
-            </div>
+            {!! Form::open(['method'=>'PUT','class' => 'form-horizontal','role' => 'form','url' => route('clients.update',$client),'files'=>true]) !!}
+           
             <div class="col-md-12" style="padding: 0px">
                 <center>
                     <img id="imgpreview" src="{{asset('images/'.$client->image)}}" style="width: 100px;cursor: pointer;" required>

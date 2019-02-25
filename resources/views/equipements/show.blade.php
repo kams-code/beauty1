@@ -25,7 +25,7 @@
                         </label>
                         <br>
                         <label>
-                            <strong>Fournisseur:</strong> {{$equipement->fournisseur_id}}
+                            <strong>Fournisseur:</strong> {{$equipement->Fournisseur->nom}}
                         </label>
 
 

@@ -18,10 +18,10 @@ class EquipementController extends Controller
     public function index()
     {
         //$equipements = Equipements::with('fournisseur')->get();
-        $Fournisseurs = Fournisseurs::all();
-        $equipements = Equipements::get();
-        $fournisseurs = Fournisseurs::pluck('nom','id');
-        return view('equipements.index',compact('equipements','fournisseurs','Fournisseurs'));
+       // $Fournisseurs = Fournisseurs::all();
+        $equipements = Equipements::with('Fournisseur')->get();
+       
+        return view('equipements.index',compact('equipements'));
     }
 
     /**
@@ -92,7 +92,8 @@ class EquipementController extends Controller
     public function edit($id)
     {
         $equipement = Equipements::findOrFail($id);
-        return view('equipements.edit',compact('equipement'));
+        $fournisseurs = Fournisseurs::pluck('nom','id');
+        return view('equipements.edit',compact('equipement','fournisseurs'));
         //$fournisseurs = Fournisseurs::pluck('nom','id')->all();
         //return view('equipements.edit',compact('equipement','fournisseurs'));
     }

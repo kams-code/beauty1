@@ -7,9 +7,7 @@
         <div class="row">
             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('categorieproduits.store'),'files'=>true]) !!}
 
-                <div class="col-md-12">
-                    <h4>Informations de base</h4>
-                </div>
+              
                 <div class="col-md-12">
                     
                     <style>

@@ -17,10 +17,10 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Instituts</h4>
+                                <h4 class="pull-left page-title">Stocks</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="home">Accueil</a></li>
-                                    <li class="active">Instituts</li>
+                                    <li class="active">Stocks</li>
                                 </ol>
                             </div>
                         </div>
@@ -30,11 +30,8 @@
                         <div class="m-b-30 pull-right">
                               
                             @can('add_stocks')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="stocks/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-                            @can('add_stocks')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="stocksremove"><i class="fa fa-minus"></i>&nbsp;Retirer </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="stocks/create"><i class="fa fa-pencil"></i>&nbsp;Modifier </button> @endcan
                           
-                           
                             @can('delete_stocks')
                             <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
 
@@ -80,7 +77,6 @@
                                     <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="stocks/{{$stock->id}}" data-id="{{$stock->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_stocks','delete_stocks')
 
 
-                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="stocks/{{$stock->id}}/edit" data-id="{{$stock->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                     <a data-toggle="modal" data-target="#deletemodal" data-id="{{$stock->id}}" data-lien="stocks/{{$stock->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                 </td>
                             </tr>

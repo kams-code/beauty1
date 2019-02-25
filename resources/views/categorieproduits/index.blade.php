@@ -9,60 +9,93 @@
                       }
                   </style>
                   
-                  <div class="content-page">
-                        <!-- Start content -->
-                        <div class="content">
-                            <div class="container">
-        
-                                <!-- Page-Title -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4 class="pull-left page-title">Catégories de produit</h4>
-                                       
-                                    </div>
-                                </div>
-                                @can('add_organisations')
-                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="categorieproduits/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-                                <!-- SECTION FILTER
-                                ================================================== -->  
-                            
-        
-                                <div class="port">
-                                    <div class="portfolioContainer row">
-                                        
-                                            @foreach($categories as $categorieproduit)
-                                         
-                                        <div class="col-sm-6 col-lg-3 col-md-4  {{$categorieproduit->categorie_id}}  illustrator">
-                                            <div class="gal-detail thumb">
-                                                <a href="{{asset('images/'.$categorieproduit->image)}}" class="image-popup" title="Screenshot-1">
-                                                    <img src="{{asset('images/'.$categorieproduit->image)}}" class="thumb-img" alt="work-thumbnail">
-                                                </a>
-                                                <h4> {{$categorieproduit->nom}}</h4>
-                                                <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="categorieproduits/{{$categorieproduit->id}}" data-id="{{$categorieproduit->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_produits','delete_produits')
+  <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
 
-                 
-                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="categorieproduits/{{$categorieproduit->id}}/edit" data-id="{{$categorieproduit->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                                <a data-toggle="modal" data-target="#deletemodal" data-id="{{$categorieproduit->id}}" data-lien="categorieproduits/{{$categorieproduit->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
-                                                <a href="{{route("categorieproduit",$categorieproduit->id)}}"class="on-default seedetails btn btn-primary pull-right" ><i class="fa  fa-location-arrow"></i></a> 
+                        <!-- Page-Title -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="pull-left page-title">Catégories de produits</h4>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="home">Accueil</a></li>
+                                    <li class="active">Catégories de produits</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="m-b-30 pull-right">
 
-                                            </div>
-                                        </div>
-                                        @endforeach
-        
-                                        
-                                        
-        
-                                    </div>
-                                </div> <!-- End row -->
-        
-                            </div> <!-- container -->
-                                       
-                        </div> <!-- content -->
-        
-                        <footer class="footer text-right">
-                            2016 © Moltran.
-                        </footer>
-        
+                            @can('add_categories')
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="categorieproduits/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+                            @can('delete_categories')
+                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
+
+                        </div>
                     </div>
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @can('view_categories')
+                            <table class="table table-bordered  table-striped" id="datatable-buttons">
+
+                                <thead>
+                                    <tr>
+                                        <th><input  id="checkAll" type="checkbox"></th>
+                                        <th>Image</th>
+                                        <th>Nom</th>
+                                        
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tablebody">
+
+                                    @foreach($categories as $categorie)
+                                        @php
+                                        $date=date('d-m-Y H:i:s', strtotime($categorie->created_at));
+                                        @endphp
+                                    <tr class="gradeC">
+                                        <td>
+                                            <input  type="checkbox" class="check" onclick="verified();" value="{{ $categorie->id }}"  name="etat">
+                                        </td>
+                                        <td>
+                                            <img style="width: 70px;height: 70px" src="{{asset('images/'.$categorie->image)}}" alt="user-img" >
+                                        </td>
+                                        <td> {{ $categorie->nom }}</td>
+                                        
+
+                                        <td class="actions">
+                                            
+                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="categorieproduits/{{$categorie->id}}" data-id="{{$categorie->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_categories','delete_categories')
+
+
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="categorieproduits/{{$categorie->id}}/edit" data-id="{{$categorie->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$categorie->id}}" data-lien="categorieproduits/{{$categorie->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>@endcan
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- end: page -->
+
+            </div>
+            <!-- end Panel -->
+
+        </div>
+        <!-- container -->
+
+    </div>
+    <!-- content -->
+
+    <footer class="footer text-right">
+        2019 © QuickBeauty.
+    </footer>
+
+</div>
 
 @endsection @include('partials.sidebarright')

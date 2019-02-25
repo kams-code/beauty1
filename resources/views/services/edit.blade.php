@@ -15,12 +15,7 @@
                 </center>
             </div>
             </br>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('code','Code*') !!}</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" name="code" value="{{$service->code}}" required="">
-                </div>
-            </div>
+            
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
                 <div class="col-sm-12">
@@ -42,19 +37,17 @@
                 </div>
             </div>
             </br>
-            <div class="col-md-6" style="padding: 0px">
+            <div class="col-md-6" style="padding: 0px;display: none;">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe*') !!}</label>
                 <div class="col-sm-12">
                    <!-- <input type="text" class="form-control" name="user_id" value="{{$service->user_id}}" >-->
                     {!! Form::select('users[]', $users, $service->user_id, ['class' => 'form-control','multiple'=>'multiple']) !!}
                 </div>
             </div>
-            </br>
-           
             <div class="col-md-12" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
                 <div class="col-sm-12">
-                    <textarea class="form-control" name="description" required>{{$service->description}}</textarea>
+                    <textarea class="form-control" rows="10" name="description" required>{{$service->description}}</textarea>
                 </div>
             </div>
            

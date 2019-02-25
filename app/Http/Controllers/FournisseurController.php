@@ -39,7 +39,7 @@ class FournisseurController extends Controller
         $string = bin2hex(openssl_random_pseudo_bytes(10));
         $fournisseur= new Fournisseurs([
             'nom'=> $request->get('nom'),
-        'prenom'=> $request->get('prenom'),
+        'prenom'=> " ",
         'code'=> $request->get,
         'adresse'=> $request->get('adresse'),
         'email'=> $request->get('email'),

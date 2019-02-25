@@ -29,6 +29,7 @@ class JoinTableFournisseurswithproduits extends Migration
             $table->integer('service_id')->unsigned()->index()->nullable();
           
         });
+       
         Schema::table('tickets', function (Blueprint $table) {
             $table->integer('service_id')->unsigned()->index()->nullable();
           

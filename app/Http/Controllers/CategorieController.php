@@ -42,7 +42,7 @@ class CategorieController extends Controller
 
         $categorie =new Categories([ 
             'nom'=> $request->get('nom'),
-           'description'=> $request->get('description'),
+           'description'=> 'null',
        ]);
         if($request->hasfile('imageup'))
         {
@@ -83,8 +83,8 @@ class CategorieController extends Controller
      */
     public function edit($id)
     {
-        $produit = Categories::findOrFail($id);
-        return view('categories.edit',compact('produit'));
+        $categorie = Categories::find($id);
+        return view('categories.edit',compact('categorie'));
     }
 
     /**
@@ -123,7 +123,12 @@ class CategorieController extends Controller
     public function destroy($id)
     {
         
-        if( categorie::findOrFail($id)->delete() ) {
+        if( Categories::findOrFail($id)->delete() ) {
+            $services=Services::find()->where('categorie_id',$id);
+            foreach($services as $service)
+            {
+                Services::findOrFail($service->id)->delete();
+            }
             flash()->success('categorie supprime');
         } else {
             flash()->success('categorie en vu');

@@ -24,10 +24,11 @@ class CreateOrganisationsTable extends Migration
             $table->string('description');
             $table->string('adresse');
             $table->integer('telephone');
+            $table->time('tempstransition')->nullable();
              $table->timestamps();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('organisation_id')->nullable();
+            $table->integer('organisation_id')->default('0');;
           
         });
     }

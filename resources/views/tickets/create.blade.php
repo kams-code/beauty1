@@ -1,106 +1,126 @@
-@extends('layouts.mainlayout')
-@include('partials.topbar')
-@include('partials.sidebar')
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title">Ajouter un Promotion</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+     
+{!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('tickets.store'),'files'=>true]) !!}
+       
 
-                                 @section('content')
-<div class="content-page">
-                <!-- Start content -->
-                <div class="content">
-                    <div class="container">
+<script>
+        $(".js-example-basic-multiple").select2();
+     </script>
 
-                        <!-- Page-Title -->
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <h4 class="pull-left page-title">General elements</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Forms</a></li>
-                                    <li class="active">General elements</li>
-                                </ol>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                             <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    <div class="panel-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
-                                                <div class="col-sm-9">
-                                                  <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputPassword4" class="col-sm-3 control-label">Re Password</label>
-                                                <div class="col-sm-9">
-                                                  <input type="password" class="form-control" id="inputPassword4" placeholder="Retype Password">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                    <div class="checkbox checkbox-primary">
-                                                        <input id="checkbox2" type="checkbox">
-                                                        <label for="checkbox2">
-                                                            Check me out !
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group m-b-0">
-                                                <div class="col-sm-offset-3 col-sm-9">
-                                                  <button type="submit" class="btn btn-info waves-effect waves-light">Sign in</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                            <div class="col-md-6">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading"><h3 class="panel-title">Horizontal form</h3></div>
-                                    
-                <div class="panel-body">
-                    {!! Form::open(['url' => route('tickets.store')]) !!}
-                          <div class="form-group">
-                             {!! Form::label('titre','Titre') !!}
-                             {!! Form::text('titre',null, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('type','Type') !!}
-                             {!! Form::text('type',null, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <div class="form-group">
-                             {!! Form::label('etat','Etat') !!}
-                             {!! Form::checkbox('etat',null, ['class' => 'form-control','required']) !!}
-                          </div>
-                          <button class="btn btn-primary">envoyer</button>
-                    {!! Form::close() !!}
-                </div> <!-- panel-body -->
-                                </div> <!-- panel -->
-                            </div> <!-- col -->
-
-                        </div> <!-- End row -->
-
-
-                    </div> <!-- container -->
-                               
-                </div> <!-- content -->
-
-                <footer class="footer text-right">
-                    2019 © QuickBeauty.
-                </footer>
-
+<div class="col-md-6" style="padding: 0px">
+    <label for="inputEmail3" class="col-sm-3 control-label">
+        {!! Form::label('titre','Titre') !!}
+     </label>                                                <div class="col-sm-12">
+        {!! Form::text('titre',null, ['class' => 'form-control','required']) !!}
+    </div>
+</div>
+<div class="col-md-6" style="padding: 0px">
+        <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('type',"Type") !!}</label>
+        <div class="col-sm-12">
+            <select name="type" class="form-control">
+              <option value="Pourcentage">Pourcentage</option>
+                <option value="Montant">Montant</option>
+              </select>
+         </div>
+    </div>
+    <div class="col-md-6" style="padding: 0px">
+        <label for="inputPassword3" class="col-sm-3 control-label">
+            {!! Form::label('valeur','Valeur') !!}</label>                                                <div class="col-sm-12">
+                {!! Form::text('valeur',null, ['class' => 'form-control','required']) !!}
             </div>
+    </div>
 
-@endsection
-@include('partials.sidebarright')
+    <div class="col-md-6" style="padding: 0px">
+
+            <label class="col-sm-3 control-label">Période</label>
+            <div class="col-sm-12">
+                <input type='text' name="periode" class="form-control" id="m_daterangepicker_1" readonly placeholder="Select time" type="text" />
+            </div>
+        </div>
+            
+<div class="col-md-12">
+        <div class="col-md-6" style="padding: 0px">
+                <div class="col-sm-12">
+                        <div class="checkbox">
+                                <input checked  id="more_info" type="checkbox" name="service" > 
+                                <label for="checkbox"   >
+                                    Services
+                            </label>                      
+                            </div>
+                
+</div>
+            </div>
+            
+        <div class="col-md-6" style="padding: 0px">
+            <div class="col-sm-12">
+                    <div class="checkbox">
+                            <input checked  id="more_info1" type="checkbox" name="client" > 
+                            <label for="checkbox"   >
+                                Clients
+                        </label>
+                                                                </div>
+            
+</div>
+        </div>
+    </div>
+    <div class="col-md-6">
+            <div class="col-md-12" style="padding: 0px" id="conditional_part">
+                    <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Services') !!}</label>
+                    <div class="col-sm-12">
+                        {!! Form::select('services[]', $services, null, ['class' => 'js-example-basic-multiple form-control','multiple'=>'multiple']) !!}
+                    </div>
+                </div>
+            </div>
+               <script>$('#more_info').change(function() {
+                        if(this.checked != true){
+                              $("#conditional_part").hide();
+                         }
+                      else{
+                            $("#conditional_part").show();
+                      }
+                    });</script>
+                     <div class="col-md-6" >
+                       <div class="col-md-12" style="padding: 0px" id="conditional_part1">
+                        <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Clients') !!}</label>
+                        <div class="col-sm-12">
+                            {!! Form::select('clients[]', $clients, null, ['class' => 'js-example-basic-multiple form-control','multiple'=>'multiple']) !!}
+                        </div>
+                    </div>
+                </div>
+                   <script>$('#more_info1').change(function() {
+                            if(this.checked != true){
+                                  $("#conditional_part1").hide();
+                             }
+                          else{
+                                $("#conditional_part1").show();
+                          }
+                        });</script>
+
+
+
+
+
+
+
+<div class="m-b-0">
+    <div class="col-sm-offset-3 col-sm-9">
+
+    </div>
+</div>
+<div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
+    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
+    <button class="btn btn-primary">Enregistrer</button>
+</div>
+{!! Form::close() !!}
+
+        </div>
+
+    </div>
+
+</div>

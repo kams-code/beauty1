@@ -21,11 +21,7 @@
                         <img style="width: 100%;height: 115px" src="{{asset('images/'.$service->image)}}">
                     </div>
                     <div class="col-md-9">
-                        <label>
-                            <strong>Code:</strong> {{$service["code"]}}
-                        </label>
-                        <br>
-                        
+                       
                         <label>
                             <strong>Nom:</strong> {{$service->nom}}
                         </label>

@@ -11,8 +11,10 @@ class Tickets extends Model
     'type',
     'valeur',
     'etat',
-    'service_id',
+    'datedebut',
+    'datefin',
+    'services_id',
+    'clients_id',
            
 ];
-protected $casts = [ 'etat' => 'boolean' ];
 }

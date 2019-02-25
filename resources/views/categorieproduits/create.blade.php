@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Ajouter un categorieproduit</h4>
+        <h4 class="modal-title">Ajouter une categorie de produits</h4>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -15,18 +15,11 @@
                     </center>
                 </div>
                 <div class="col-md-6" style="padding: 0px">
-                    <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom', ['class' => 'pull-left']) !!}</label>
+                    <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*', ['class' => 'pull-left']) !!}</label>
                     <div class="col-sm-12">
                       {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                      </div>
                 </div>
-                <div class="col-md-12" style="padding: 0px">
-                        <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
-                        <div class="col-sm-12">
-                            <textarea class="form-control" name="description" required></textarea>
-                        </div>
-                    </div>
-               
 
             <div class="m-b-0">
                 <div class="col-sm-offset-3 col-sm-9">

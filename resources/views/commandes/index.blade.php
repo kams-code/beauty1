@@ -1,43 +1,44 @@
-@extends('layouts.mainlayout') @include('partials.topbar') @include('partials.sidebar') @section('content')
-<style type="text/css">
-    .form-horizontal .control-label {
-        text-align: left;
-    }
-</style>
+@extends('layouts.mainlayout')
+@include('partials.topbar')
+@include('partials.sidebar')
 
-<div class="content-page">
-    <!-- Start content -->
-    <div class="content">
-        <div class="container">
+                                 @section('content')
+                  <style type="text/css">
+                      .form-horizontal .control-label{
+                        text-align: left;
+                      }
+                  </style>
+                  
+  <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
 
-            <!-- Page-Title -->
-            <div class="row">
-                <div class="col-sm-12">
-                    <h4 class="pull-left page-title">Instituts</h4>
-                    <ol class="breadcrumb pull-right">
-                        <li><a href="home">Accueil</a></li>
-                        <li class="active">Commande</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="panel">
-
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="m-b-30 pull-right">
-
-                                @can('add_commandes')
-                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
-                                @can('delete_commandes')
-                                <button type="button"  style="display: none;"  data-toggle="modal" data-target="#deletemodal" id="boutdellAll" class="btn btn-danger"><i class="fa fa-trash-o"></i> Supprimer</button>
-                                @endcan
+                        <!-- Page-Title -->
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="pull-left page-title">Liste des commandes</h4>
+                                <ol class="breadcrumb pull-right">
+                                    <li><a href="home">Accueil</a></li>
+                                    <li class="active">Commandes</li>
+                                </ol>
                             </div>
                         </div>
+                        <div class="m-b-30 pull-right">
+
+                            @can('add_commandes')
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un institut </button> @endcan
+                            @can('delete_commandes')
+                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
+
+                        </div>
                     </div>
-                    @can('view_commandes')
-                    <table class="table table-bordered  table-striped" id="datatable-buttons">
+                    <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @can('view_commandes')
+                                        
+                     <table class="table table-bordered  table-striped" id="datatable-buttons">
 
                         <thead>
                             <tr>
@@ -96,6 +97,11 @@
 
                         </tbody>
                     </table>@endcan
+                    
+                    
+                     </div>
+                    </div>
+                </div>
                 </div>
                 <!-- end: page -->
 

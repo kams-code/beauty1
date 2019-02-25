@@ -7,25 +7,14 @@
         <div class="row">
             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('fournisseurs.store'),'files'=>true]) !!}
             
-            <div class="col-md-12" style="padding: 0px">
-                <center>
-                    <img id="imgpreview" src="/images/logo_dark.png" style="width: 100px;cursor: pointer;">
-                   <!-- <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>-->
-
-                </center>
-            </div>
+           
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>
                 <div class="col-sm-12">
                     {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('prenom','Prenom*') !!}</label>
-                <div class="col-sm-12">
-                    {!! Form::text('prenom',null, ['class' => 'form-control','required']) !!}
-                </div>
-            </div>
+            
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('telephone','Téléphone*') !!}</label>
                 <div class="col-sm-12">

@@ -7,6 +7,7 @@ use App\Reservations;
 use App\Clients;
 use App\Services;
 use App\Factures;
+use App\User;
 use DB;
 use Date;
 use Calendar;
@@ -61,6 +62,22 @@ $reservation_list=[];
        return view('reservations.index',compact('calendar_details','reservations','Services','Clients','clients','services','codedistinct'));
     }
 
+    public function index1($id)
+    {
+        $reservation=Reservations::where('id',$id)->first();
+        $reservations=Reservations::all()->where('code',$reservation['code']);
+      
+        $users = User::pluck('nom','id');
+        $services = Services::all();
+
+      
+        
+        return view('reservations.attribuer',compact('users','reservations','services'));
+    }
+
+  
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -83,18 +100,16 @@ $reservation_list=[];
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $services_ids=$request->get('services');
+    {  
+        $services_ids=$request->get('selectservices');
         $montant=0;
-        $time=new date($request->get('heure'));
-        $debut=$request->get('datedebut');
-        $debut.=" ";
-        $debut.=$time->format('h:i:s');
+        $time=new date($request->get('email'));
+       
+        $debut=$time;
         
        
-        $fin=$request->get('datedebut');
-        $fin.= " ";
-        $fin.=date( "H:i:s", strtotime($time)+(60*30*count($services_ids)) )  ;
+        $fin=new date( strtotime($time)+(60*30*count($services_ids)) )  ;
+    
         $string = bin2hex(openssl_random_pseudo_bytes(10));
         foreach($services_ids as $key=>$value)
         {
@@ -105,7 +120,7 @@ $reservation_list=[];
              'datedebut'=> $debut,
              'datefin'=>$fin,
         
-            'client_id'=>$request->get('client_id'),
+            'client_id'=>$request->get('selectclients'),
             'service_id'=>$value
         ]);  
        
@@ -117,7 +132,7 @@ $reservation_list=[];
       
         $reservation ->save();
         }
-        $client = Clients::get()->where('id',$request->get('client_id'))->first();
+        $client = Clients::get()->where('id',$request->get('selectclients'))->first();
         $facturetion =new Factures([ 
             'code'=>$string,
            'nom'=> $client->nom,
@@ -141,12 +156,8 @@ $reservation_list=[];
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        $services=Services::all();
-       
-        $reservation = Reservations::get()->where('id',$id)->first();
-        $client=Clients::get()->where('id',$reservation->client_id)->first();
-        $reservations=Reservations::get()->where('code',$reservation->code);
+    {dd($id);
+        
         return view('reservations.show',compact('reservations','services','client'));
     }
 
@@ -175,7 +186,7 @@ $reservation_list=[];
     public function update(Request $request, $id)
     {
       
-        
+        dd($request);
         $reservation = Reservations::findOrFail($id);
         $values = Reservations::get()->where('code',$reservation->code );
         $services_ids=$request->get('services');

@@ -11,6 +11,7 @@ class Stocks extends Model
         'quantite_initial',
         'quantite_final',
         'quantite_limite',
+        'type',
         'produit_id',
                
     ];

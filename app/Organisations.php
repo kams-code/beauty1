@@ -17,7 +17,8 @@ class Organisations extends Model
         'adresse',
         'image',
         'telephone',
-        'online'
+        'online',
+        'tempstransition'
        
     ];
 }

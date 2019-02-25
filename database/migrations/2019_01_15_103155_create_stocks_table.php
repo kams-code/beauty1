@@ -17,6 +17,7 @@ class CreateStocksTable extends Migration
             $table->increments('id');
             $table->integer('quantite_initial');
             $table->integer('quantite_final');
+            $table->string('type');
             $table->integer('quantite_limite');
             $table->string('organisation_id')->nullable();;             $table->timestamps();
         });

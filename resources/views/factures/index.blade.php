@@ -17,10 +17,10 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">factures</h4>
+                                <h4 class="pull-left page-title">Factures</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="home">Accueil</a></li>
-                                    <li class="active">factures</li>
+                                    <li class="active">Factures</li>
                                 </ol>
                             </div>
                         </div>
