@@ -32,6 +32,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('plannings','PlanningController');
     Route::resource('fournisseurs','FournisseurController');
     Route::resource('organisations','OrganisationController');
+    Route::resource('personnelReservations','PersonnelReservationController');
+
     Route::resource('stocks','StockController');
     Route::get('/services/{id}  /add', 'ServiceController@add');
 });

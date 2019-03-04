@@ -48,9 +48,9 @@ class TicketController extends Controller
         $first = explode(" - ",  $request->get('periode'));
         foreach ($first as $key => $value) {
            if($key==0){
-               $debut=$value;
+               $debut=DateTime::createFromFormat('d/m/Y', $value);
            }if($key==1){
-               $fin=$value;
+               $fin=DateTime::createFromFormat('d/m/Y', $value);
            }
         }
       
@@ -106,7 +106,6 @@ class TicketController extends Controller
             $tick['etat']="Expirer";
 
          }
-        
         
   $tick->save();
 

@@ -29,6 +29,7 @@ class AdminAPIController extends Controller
 
 		$horaires = Horaires::all()->where('organisation_id',1);
 		$calendarAppointments = array();
+		$Appointments = array();
 		$i=1;
 		foreach($horaires as $a) {
 
@@ -51,9 +52,20 @@ class AdminAPIController extends Controller
 		}
 
 		$appointments = Reservations::all();
+
+		$code = Reservations::select('code')->distinct()->get();
+		foreach($appointments as $a) {
+		foreach($code as $key=> $c){
+		if($a['code']==$c['code']){
+			array_push($Appointments, $a);
+			unset( $code[$key]);
+		}
+	}
+}
 		
 
-		foreach($appointments as $a) {
+
+		foreach($Appointments as $a) {
 
 			$customer = Clients::find($a['client_id']);
 			$customer = $customer->nom;

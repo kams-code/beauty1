@@ -11,7 +11,7 @@ class PersonnelReservations extends Model
         'reservation_id',
         'service_id',
         'user_id',
-        'user_id',
+        'horaire',
                
     ];
 }
