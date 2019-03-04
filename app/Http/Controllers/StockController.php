@@ -88,58 +88,7 @@ if($request->get('type')=="Retrait"){
 
 
 
- /**
 
-       if($request->get('sorti_produit_id')!=null) 
-       {
-$produit_sortie=$request->get('sorti_produit_id');
-$quantite_sortie=$request->get('sorti_quantite');
-$stocksortie=Stocks::where('produit_id', $produit_sortie)->first();
-$produit=Produits::where('id', $request->get('sorti_produit_id'))->first();
-
-$qteinit=$stocksortie->quantite_final;
-$stocksortie->quantite_final=$qteinit-$quantite_sortie;
-$produit['quantite_final']=$stocksortie->quantite_final;
-$produit->update();
-$stocksortie->update(@json_decode(json_encode($stocksortie), true));
-
-
-       }else{
-        $produit=Produits::where('id', $request->get('produit_id'))->first();
-        $stock= new Stocks([
-            'quantite_initial' => $request->get('quantite_initial'),
-            'quantite_limite'=> $produit['quantite_limite'],
-            'produit_id'=> $request->get('produit_id')
-          ]);
-          $stockfind=Stocks::where('produit_id', $stock->produit_id)->first();
-       
-          if (Stocks::where('produit_id', $stock->produit_id)->exists()) {
-            $stockfind=Stocks::where('produit_id', $stock->produit_id)->first();
-       
-            $stock= new Stocks([
-                'quantite_initial' => $request->get('quantite_initial')+$stockfind->quantite_initial,
-                'quantite_limite'=> $produit['quantite_limite'],
-                'produit_id'=> $request->get('produit_id')
-              ]);
-              $stock['quantite_final'] =$stock->quantite_final+$stockfind->quantite_final;
-
-
-
-          $stocks = Stocks::findOrFail($stock->produit_id);
-          $produit['quantite_final']=$stock['quantite_final'];
-          $produit->update();
-          $stocks->update(@json_decode(json_encode($stock), true));
-          
-
-        }else
-        {
-            $stock['quantite_final'] =$stock->quantite_initial;
-            $user=Auth::user();
-       
-            $stock['organisation_id']=$user->organisation_id;
-          $stock->save();
-        }
-    }*/
         return redirect(route('stocks.index'));
    
     }

@@ -21,8 +21,10 @@
                                                              </div>
                                                         @include('user._form')
                                                             <!-- Submit Form Button -->
-                                                            {!! Form::submit('Save Changes', ['class' => 'btn btn-primary']) !!}
-                                                        {!! Form::close() !!}
+                                                            <center>
+                                                            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                                        </center>
+                                                            {!! Form::close() !!}
             </div>
     
         </div>

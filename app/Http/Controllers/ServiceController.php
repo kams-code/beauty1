@@ -70,7 +70,7 @@ class ServiceController extends Controller
     {
 
         if ($request->has('my_multi_select1')) {
-           dd($request);
+         
 
            $users=$request->get('my_multi_select1');
        
@@ -149,7 +149,7 @@ class ServiceController extends Controller
 
        // $service = Services::get()->where('id',$id);
        $users = User::pluck('name','id');
-       $categories = Categories::pluck('nom','id');
+       $categories = Categories::all();
        $service = Services::findOrFail($id);
         return view('services.show',compact('service','users','categories'));
     }
@@ -189,18 +189,13 @@ class ServiceController extends Controller
             $users=$request->get('my_multi_select1');
         
             $val="";
-            $Users=User::all();
+            $Users=Users::all();
             foreach($users as $key=>$value)
             {
                 foreach ($Users as $user) {
-                    if ($user->id==$value) {
-                        if ( mb_strpos($user['services_id'],$id) == false) {
-                            
-                            $user['services_id']=$user['services_id']. '/' .$id;
-                        
-                       
-                            $user->update();
-                        }
+                    if ($user->id==$value and mb_strpos($user['services_id'],$id) !== false) {
+                        $user['services_id']=$user['services']. '/' .$id;
+                        $user->update();
                     }
                     
                 }

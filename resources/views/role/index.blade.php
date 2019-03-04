@@ -17,10 +17,10 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Roles</h4>
+                                <h4 class="pull-left page-title">Rôles</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="home">Accueil</a></li>
-                                    <li class="active">Roles</li>
+                                    <li class="active">Rôles</li>
                                 </ol>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                                                 
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h4 class="modal-title" id="roleModalLabel">Role</h4>
+                                                                    <h4 class="modal-title" id="roleModalLabel">Ajouter un rôle</h4>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
@@ -51,7 +51,7 @@
                                                                         @if ($errors->has('name')) <p class="help-block">{{ $errors->first('name') }}</p> @endif
                                                                     </div>
                                                                 </div>
-                                                                <div class="modal-footer">
+                                                                <div class="modal-footer" style="border: 0px">
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                                                 
                                                                     <!-- Submit Form Button -->

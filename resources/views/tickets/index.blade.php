@@ -38,17 +38,7 @@
                     <div class="row">
                         <div class="col-md-12">
                                 <br>
-                                <strong>Single Select</strong>
-                                <select class="js-example-basic-single form-control">
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
-                                </select>
-                                <br><br>
-                                <strong>Multi Select</strong>
-                                <select class="js-example-basic-multiple form-control" multiple>
-                                    <option value="AL">Alabama</option>
-                                    <option value="WY">Wyoming</option>
-                                </select><script>$(document).ready(function() {
+                              <script>$(document).ready(function() {
                                         $(".js-example-basic-single").select2();
                                         $(".js-example-basic-multiple").select2();
                                       });</script>

@@ -6,7 +6,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Ajouter un equipement</h4>
+        <h4 class="modal-title">Ajouter un équipement</h4>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -14,8 +14,8 @@
             
             <div class="col-md-12" style="padding: 0px">
                 <center>
-                    <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;" required>
-                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
+                    <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;" >
+                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" >
 
                 </center>
             </div>
@@ -30,16 +30,22 @@
            
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur') !!}</label>
-                <div class="col-sm-12">
-                {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control']) !!}
-                </div>
+                  <div class="col-sm-12">
+                    <select name="fournisseur_id" class="form-control">
+                            <option></option>
+                        @foreach ($fournisseurs as $fournisseur)
+                    <option value="{{$fournisseur['id']}}">{{$fournisseur['nom']}}</option>
+                        @endforeach
+                     
+                      </select>
+                 </div>
             </div>
             
            
             <div class="col-md-12" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
                 <div class="col-sm-12">
-                    <textarea class="form-control" name="description" required></textarea>
+                    <textarea rows="4" class="form-control" name="description" ></textarea>
                 </div>
             </div>
          

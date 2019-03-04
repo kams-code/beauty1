@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @can('view_plannings')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
+                                @can('view_plannings')                                                                  <table>
                                    
     
                                    <thead>

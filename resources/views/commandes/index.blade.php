@@ -27,9 +27,9 @@
                         <div class="m-b-30 pull-right">
 
                             @can('add_commandes')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un institut </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/create"><i class="fa fa-plus"></i>&nbsp;Ajouter une commande </button> @endcan
                             @can('delete_commandes')
-                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect btn-danger" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
 
                         </div>
                     </div>

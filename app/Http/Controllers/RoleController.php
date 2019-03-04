@@ -6,6 +6,7 @@ use App\Authorizable;
 use App\Permission;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class RoleController extends Controller
 {
     use Authorizable;
@@ -28,11 +29,11 @@ class RoleController extends Controller
     public function index1()
     {
         $user_role=Auth::user()->roles->first()->name;
-if( $user_role=="Admin"){
-        $roles = Role::all();
-    }else{
-        $roles = Role::all()->except(1);
-    }
+        if( $user_role=="Admin"){
+            $roles = Role::all();
+        }else{
+            $roles = Role::all()->except(1);
+        }
         $permissions = Permission::all();
 
         return view('role.permission', compact('roles', 'permissions'));
@@ -125,6 +126,31 @@ if( $user_role=="Admin"){
         
 
         return redirect()->route('roles.index');
+    }
+
+    public function addrolepermission(Request $request)
+    {
+        $id = $request->input('id');
+        $action = $request->input('action');
+        $role = Role::findOrFail($id);
+        $permissions = $request->input('permissions');
+        $data=array($permissions,$id);
+        if($role = Role::findOrFail($id)) {
+            if($action == "add"){
+                $insertQuery = 'INSERT into role_has_permissions (permission_id,role_id) VALUES(?,?)';
+                DB::insert($insertQuery, $data);
+            }
+            else{
+                $insertQuery = 'DELETE FROM role_has_permissions WHERE permission_id=? AND role_id=?';
+                DB::insert($insertQuery, $data);
+            }
+
+
+            
+        } else {
+            flash()->error( 'Role with id '. $id .' note found.');
+        }
+        //return redirect()->route('roles.index');
     }
 
        /**

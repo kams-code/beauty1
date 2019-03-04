@@ -24,6 +24,8 @@ class CreateOrganisationsTable extends Migration
             $table->string('description');
             $table->string('adresse');
             $table->integer('telephone');
+            $table->time('heureouverture')->nullable();;
+            $table->time('heurefermeture')->nullable();
             $table->time('tempstransition')->nullable();
              $table->timestamps();
         });

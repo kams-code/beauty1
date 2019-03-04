@@ -45,13 +45,7 @@
                     {!! Form::text('ville',null, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
-            <div class="col-md-12" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
-                <div class="col-sm-12">
-                    <textarea class="form-control" name="description" required></textarea>
-                </div>
-            </div>
-           
+          
 
             <div class="m-b-0">
                 <div class="col-sm-offset-3 col-sm-9">

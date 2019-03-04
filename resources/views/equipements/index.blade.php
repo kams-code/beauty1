@@ -27,9 +27,9 @@
                         <div class="m-b-30 pull-right">
 
                             @can('add_equipements')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un equipement </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un équipement </button> @endcan
                             @can('delete_equipements')
-                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect btn-danger" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash-o"></i>&nbsp;Supprimer </button> @endcan
 
                         </div>
                     </div>
@@ -61,24 +61,37 @@
                                             <input  type="checkbox" class="check" onclick="verified();" value="{{ $equipement->id }}"  name="etat">
                                         </td>
                                         <td>
+                                            @if ($equipement->image!=null)
                                             <img style="width: 70px;height: 70px" src="{{asset('images/'.$equipement->image)}}" alt="user-img" >
+ 
+                                            @else
+                                            <img style="width: 70px;height: 70px" src="{{asset('images/default.JPG')}}" alt="user-img" >
+  
+                                            @endif
                                         </td>
                                         <td> {{ $equipement->nom }}</td>
+                                        <td>
+                                       @foreach ($fournisseurs as $fournisseur)
+                                           @if ($fournisseur['id']==$equipement->fournisseur_id)
+                                            <a class="on-default seedetails" style="cursor: pointer" data-toggle="modal" data-lien="fournisseurs/{{$equipement->fournisseur_id}}" data-id="{{$equipement->id}}" data-target="#con-close-modal">{{$fournisseur->nom}}</a>
                                         
-                                       
-                                        <td> <a class="on-default seedetails" data-toggle="modal" data-lien="fournisseurs/{{$equipement->fournisseur_id}}" data-id="{{$equipement->id}}" data-target="#con-close-modal">{{$equipement->Fournisseur->nom}}</a></td>
-                                         
+                                           @endif
+                                       @endforeach
+
+                                       @if ($equipement->fournisseur_id==0)
+                                           Pas de fournisseur
+                                       @endif
+                                    </td>
                                         
                                         <td> {{ $equipement->description}}</td>
                                        
 
                                         <td class="actions">
                                             
-                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="equipements/{{$equipement->id}}" data-id="{{$equipement->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_equipements','delete_equipements')
-
+                                          
 
                                             <a data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/{{$equipement->id}}/edit" data-id="{{$equipement->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$equipement->id}}" data-lien="equipements/{{$equipement->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
+                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$equipement->id}}" data-lien="equipements/{{$equipement->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a> 
                                         </td>
                                     </tr>
                                     @endforeach

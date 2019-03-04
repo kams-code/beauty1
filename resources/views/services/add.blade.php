@@ -7,9 +7,9 @@
     </div>
     <div class="modal-body">
         <div class="row">
-            {!! Form::open(['method'=>'PUT','class' => 'form-horizontal','role' => 'form','url' => route('services.update',$id),'files'=>true]) !!}
-            <div class="col-md-12">
-                <select multiple="multiple" class="multi-select col-md-6" id="my_multi_select1" name="my_multi_select1[]">
+            {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('services.store'),'files'=>true]) !!}
+            <div class="col-md-9">
+                <select multiple="multiple" class="js-example-basic-multiple form-control" id="my_multi_select1" name="my_multi_select1[]">
                     @foreach ($users as $user )
                    @if ( mb_strpos($user['services_id'],$id) !== false)
                  

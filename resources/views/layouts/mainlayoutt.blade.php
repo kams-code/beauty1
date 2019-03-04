@@ -54,10 +54,14 @@
         <![endif]-->
 
          <!--venobox lightbox-->
+<<<<<<< HEAD
+        
+=======
          <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
                                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                                 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
                                
+>>>>>>> ee05e805ebec3b0e42e5ce18847a185f4b17c22d
 
          <!--<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
          <link href="css/core.css" rel="stylesheet" type="text/css">

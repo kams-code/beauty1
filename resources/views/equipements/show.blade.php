@@ -16,7 +16,13 @@
                         }
                     </style>
                     <div class="col-md-3">
-                        <img style="width: 100%;height: 110px" src="{{asset('images/'.$equipement->image)}}">
+                                             @if ($equipement->image!=null)
+    <img style="width: 100%;height: 110px" src="{{asset('images/'.$equipement->image)}}"> 
+                                            @else
+                                                <img style="width: 100%;height: 110px" src="{{asset('images/default.JPG')}}">
+                                           
+                                            @endif
+                    
                     </div>
                     <div class="col-md-9">
                         

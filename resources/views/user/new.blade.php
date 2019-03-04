@@ -2,7 +2,9 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h4 class="modal-title">Ajouter un utilisateur</h4>
-        </div>
+        </div><script>
+            $(".js-example-basic-multiple").select2();
+         </script>
         <div class="modal-body">
             <div class="row">
                     {!! Form::open(['route' => ['users.store'],'files'=>true ]) !!}
@@ -15,7 +17,7 @@
                     @include('user._form')
                         <!-- Submit Form Button -->
                 <center>
-                        {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Ajouter', ['class' => 'btn btn-primary']) !!}
                     </center>
                         {!! Form::close() !!}
             </div>

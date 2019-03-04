@@ -52,11 +52,13 @@ class CategorieController extends Controller
                $location=public_path('images/'.$filename);
                Image::make($image)->resize(800,400)->save($location); 
               $request->merge(['image' => $filename]);
-               $categorie->image=$filename;
+               
         }
+        $categorie->image="default";
         $user=Auth::user();
        
         $categorie['organisation_id']=$user->organisation_id;
+      
         $categorie->save();
         //return redirect(route('Categories.edit',$categorie));
         return redirect(route('categories.index'));

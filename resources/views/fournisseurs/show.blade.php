@@ -20,34 +20,40 @@
                 <div class="col-md-12">
 
                     <div class="col-md-6" style="padding: 4px">
-                        <strong>Nom:</strong>{{$fournisseur["nom"]}}
+                        <strong style="padding: 4px">Nom :</strong>{{$fournisseur["nom"]}}
                     </div>
 
                     <div class="col-md-6" style="padding: 4px">
-                        <strong>Telephone:</strong>{{$fournisseur["telephone"]}}
+                        <strong style="padding: 4px">Téléphone :</strong>{{$fournisseur["telephone"]}}
                     </div>
+                    </br>
+                    </br>
                 </div>
                 </br>
                 <div class="col-md-12">
 
                     <div class="col-md-6" style="padding: 4px">
-                        <strong>Email:</strong>{{$fournisseur["email"]}}
+                        <strong style="padding: 4px">Email :</strong>{{$fournisseur["email"]}}
                     </div>
 
                     <div class="col-md-6" style="padding: 4px">
-                        <strong>Adresse:</strong>{{$fournisseur["adresse"]}}
+                        <strong style="padding: 4px">Adresse :</strong>{{$fournisseur["adresse"]}}
                     </div>
+                    </br>
+                    </br>
                 </div>
                 </br>
                 <div class="col-md-12">
 
                     <div class="col-md-6" style="padding: 4px">
-                        <strong>Pays:</strong>{{$fournisseur["pays"]}}
+                        <strong style="padding: 4px">Pays :</strong>{{$fournisseur["pays"]}}
                     </div>
 
                     <div class="col-md-6" style="padding: 4px">
-                        <strong>Ville:</strong>{{$fournisseur["ville"]}}
+                        <strong style="padding: 4px">Ville :</strong>{{$fournisseur["ville"]}}
                     </div>
+                    </br>
+                    </br>
                 </div>
                 
                

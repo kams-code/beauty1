@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->string('nom');
-            $table->string('description');
+            $table->text('description');
             $table->string('image');
             $table->integer('montant');
             $table->boolean('is_promote');

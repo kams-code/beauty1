@@ -29,7 +29,7 @@
                             @can('add_fournisseurs')
                             <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="fournisseurs/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un fournisseur </button> @endcan
                             @can('delete_fournisseurs')
-                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect btn-danger" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash-o"></i>&nbsp;Supprimer </button> @endcan
 
                         </div>
                     </div>
@@ -44,8 +44,12 @@
                                 <th><input  id="checkAll" type="checkbox"></th>
                                 
                                 <th>Nom</th>
+                                <th>Téléphone</th>
+                                <th>Email</th>
+                                <th>Adresse</th>
                                 <th>Pays</th>
                                 <th>Ville</th>
+                                
                                 <th>Date de création</th>
                                 <th>Actions</th>
                             </tr>
@@ -62,14 +66,18 @@
                                 </td>
                                
                                 <td> {{ $fournisseur->nom }}</td>
+                                <td> {{ $fournisseur->telephone }}</td>
+                                <td> {{ $fournisseur->email }}</td>
+                                <td> {{ $fournisseur->adresse }}</td>
                                 <td> {{ $fournisseur->pays }}</td>
                                 <td> {{ $fournisseur->ville }}</td>
+                                
 
                                 <td> {{ $date}}</td>
 
                                 <td class="actions">
                                     
-                                    <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="fournisseurs/{{$fournisseur->id}}" data-id="{{$fournisseur->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_fournisseurs','delete_fournisseurs')
+                                    @can('edit_fournisseurs','delete_fournisseurs')
 
 
                                     <a data-toggle="modal" data-target="#con-close-modal" data-lien="fournisseurs/{{$fournisseur->id}}/edit" data-id="{{$fournisseur->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>

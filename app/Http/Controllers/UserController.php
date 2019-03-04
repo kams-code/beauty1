@@ -37,6 +37,13 @@ class UserController extends Controller
         return view('user.index', compact('users'));
     }
 
+    public function index1()
+    {
+        $users = User::latest()->paginate();
+
+        return view('user.index', compact('users'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +53,8 @@ class UserController extends Controller
     {
         $roles = Role::pluck('name', 'id');
         $services = Services::pluck('nom', 'id');
-        return view('user.new', compact('roles','services'));
+        $organisations=Organisations::pluck('nom', 'id');
+        return view('user.new', compact('roles','services','organisations'));
     }
 
     /**
@@ -77,12 +85,15 @@ class UserController extends Controller
         $user1=Auth::user();
         // hash password
         $request->merge(['password' => bcrypt($request->get('password'))]);
+        if ($user1->organisation_id !=0) {
+           
         $request->merge(['organisation_id' =>$user1->organisation_id ]);
+        }
         
        
         // Create the user
         if ( $user = User::create($request->except('roles', 'permissions')) ) {
-
+        
             $this->syncPermissions($request, $user);
 
             flash('User has been created.');
@@ -125,7 +136,9 @@ class UserController extends Controller
         $roles =        DB::table('roles')->pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
         $services = Services::pluck('nom', 'id');
-        return view('user.edit', compact('user', 'roles', 'permissions','services'));
+        $organisations=Organisations::pluck('nom', 'id');
+
+        return view('user.edit', compact('user', 'roles', 'permissions','services','organisations'));
     }
 
     /**
@@ -159,7 +172,10 @@ class UserController extends Controller
      
         $user1=Auth::user();
        
-       
+        if ($user1->organisation_id !=0) {
+           
+            $request->merge(['organisation_id' =>$user1->organisation_id ]);
+            }
     
 
 
@@ -219,7 +235,7 @@ class UserController extends Controller
 
         // Get the roles
         $roles = Role::find($roles);
-        dd($roles);
+      
         // check for current role changes
         if( ! $user->hasAllRoles( $roles ) ) {
             // reset all direct permissions for user
