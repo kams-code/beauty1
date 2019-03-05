@@ -71,7 +71,7 @@
                                             <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="tickets/{{$ticket->id}}" data-id="{{$ticket->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_tickets','delete_tickets')
 
 
-                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="tickets/{{$ticket->id}}/edit" data-id="{{$ticket->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="tickets/{{$ticket->id}}/edit" data-id="{{$ticket->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                             <a data-toggle="modal" data-target="#deletemodal" data-id="{{$ticket->id}}" data-lien="tickets/{{$ticket->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                         </td>
                                     </tr>

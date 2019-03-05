@@ -268,7 +268,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
-                                          <button class="btn btn-primary">Modifier</button>
+                                          <button class="btn btn-primary">Ajouter</button>
                                         </div>
                                         {!! Form::close() !!}
                                     </div><!-- panel-body -->

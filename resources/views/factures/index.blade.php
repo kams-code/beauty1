@@ -68,7 +68,7 @@
  @can('edit_factures','delete_factures')
 
 
-                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="factures/{{$facture->id}}/edit" data-id="{{$facture->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="factures/{{$facture->id}}/edit" data-id="{{$facture->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                     <a data-toggle="modal" data-target="#deletemodal" data-id="{{$facture->id}}" data-lien="factures/{{$facture->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                 </td>
                             </tr>

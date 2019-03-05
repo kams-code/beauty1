@@ -66,7 +66,7 @@
                                                 <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="produits/{{$produit->id}}" data-id="{{$produit->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_produits','delete_produits')
 
                  
-                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="produits/{{$produit->id}}/edit" data-id="{{$produit->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="produits/{{$produit->id}}/edit" data-id="{{$produit->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                                 <a data-toggle="modal" data-target="#deletemodal" data-id="{{$produit->id}}" data-lien="produits/{{$produit->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                             
                                             </div>
@@ -82,7 +82,7 @@
                                                 <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="produits/{{$produit->id}}" data-id="{{$produit->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_produits','delete_produits')
 
                  
-                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="produits/{{$produit->id}}/edit" data-id="{{$produit->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="produits/{{$produit->id}}/edit" data-id="{{$produit->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                                 <a data-toggle="modal" data-target="#deletemodal" data-id="{{$produit->id}}" data-lien="produits/{{$produit->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                             
                                             </div>

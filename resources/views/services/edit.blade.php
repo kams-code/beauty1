@@ -9,7 +9,7 @@
             
             <div class="col-md-12" style="padding: 0px">
                 <center>
-                    <img id="imgpreview" src="{{asset('images/'.$service->image)}}" style="width: 130px; height:120px; cursor: pointer;" required>
+                    <img id="imgpreview" src="{{asset('images/'.$service->image)}}" style="width: 130px; height:120px; cursor: pointer;" >
                     <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
 
                 </center>
@@ -29,12 +29,7 @@
                 </div>
             </div>
             </br>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('montant','Montant*') !!}</label>
-                <div class="col-sm-12">
-                    <input type="number" class="form-control" name="montant" value="{{$service->montant}}" required="">
-                </div>
-            </div>
+
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('categorie_id','Categorie*') !!}</label>
                 <div class="col-sm-12">
@@ -42,6 +37,13 @@
                    {!! Form::select('categorie_id',$categories,$service->categorie_id, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('montant','Montant*') !!}</label>
+                <div class="col-sm-12">
+                    <input type="number" class="form-control" name="montant" value="{{$service->montant}}" required="">
+                </div>
+            </div>
+           
             </br>
             <div class="col-md-6" style="padding: 0px;display: none;">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe*') !!}</label>

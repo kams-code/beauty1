@@ -3,6 +3,7 @@
 <script>
     $(".js-example-basic-multiple").select2();
  </script>
+ <input type="hidden" name="isemploye" value="{{$ismploy}}">
 <div class="form-group @if ($errors->has('name')) has-error @endif">
     {!! Form::label('name', 'Identifiant*') !!}
     {!! Form::text('name', null, ['class' => 'form-control','required', 'placeholder' => 'Identifiant']) !!}
@@ -23,13 +24,6 @@
 <?php
     if ($ismploy == 1) {
         ?>
-            <div class="form-group">
-               {!! Form::label('service_id','Service') !!}
-               
-                    {!! Form::select('service_id',$services,null, ['class' => 'form-control','required']) !!}
-
-
-            </div>
             <div class="form-group">
                {!! Form::label('service_id','Service') !!}
                

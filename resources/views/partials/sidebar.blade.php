@@ -22,7 +22,7 @@
                                  <li class="has_sub">
                                         <a href="#" class="waves-effect"><i class="md md-perm-identity"></i> <span> Personnel </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                                         <ul class="list-unstyled">
-                                            <li>                                    <a href="{{ route('employe') }}" class="waves-effect"><i class="md md-palette"></i> <span> Employe </span> <span class="pull-right"></span></a>
+                                            <li>                                    <a href="{{ route('employe') }}" class="waves-effect"><i class="md md-palette"></i> <span> Employé</span> <span class="pull-right"></span></a>
                                             </li>
                                             <li>                                <a href="{{ route('plannings.index') }}" class="waves-effect"><i class="md md-access-time"></i> <span> Plannings </span> <span class="pull-right"></span></a>
                                             </li>
@@ -95,6 +95,10 @@
                                                <li >
                                                             <a href="{{ route('users.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Utilisateurs </span> <span class="pull-right"></span></a>
                                                          </li>
+
+                                                         <li >
+                                                               <a href="{{ route('paramettres') }}" class="waves-effect"><i class="md md-settings"></i> <span> Horaires </span> <span class="pull-right"></span></a>
+                                                            </li>
                                                    
                                                     <li >
                                                             <a href="{{ route('roles.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Rôles </span> <span class="pull-right"></span></a>

@@ -90,7 +90,7 @@
                                             
                                           
 
-                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/{{$equipement->id}}/edit" data-id="{{$equipement->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="equipements/{{$equipement->id}}/edit" data-id="{{$equipement->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                             <a data-toggle="modal" data-target="#deletemodal" data-id="{{$equipement->id}}" data-lien="equipements/{{$equipement->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a> 
                                         </td>
                                     </tr>

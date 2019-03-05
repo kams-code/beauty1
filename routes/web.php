@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,9 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-
 Auth::routes();
 Route::get('create-chart/{type}','ChartController@makeChart');
 Route::get('/home', 'HomeController@index')->name('home');
@@ -33,7 +29,6 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('fournisseurs','FournisseurController');
     Route::resource('organisations','OrganisationController');
     Route::resource('personnelReservations','PersonnelReservationController');
-
     Route::resource('stocks','StockController');
     Route::get('/services/{id}  /add', 'ServiceController@add');
 });
@@ -41,10 +36,10 @@ Route::post( '/organisations/{id}','OrganisationController@update');
 Route::get('/permissions', 'RoleController@index1')->name('permissions');
 Route::get('/rolespermissions', 'RoleController@addrolepermission')->name('rolespermissions');
 Route::get('/servicespersonnel/{id}', 'ServiceController@index1')->name('servicespersonnel');
+Route::post('/services/add', 'ServiceController@add')->name('services/add');
 Route::get('/reservation/service/personnel/{id}', 'ReservationController@index1')->name('reservationservicepersonnel');
 Route::get('/paramettres', 'OrganisationController@index1')->name('paramettres');
 Route::get('/reservation/reporter/{id}', 'ReservationController@index2')->name('reservationreporter');
-
 Route::get('/produits/categorie/{id}', 'ProduitController@index1')->name('categorieproduit');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -68,7 +63,6 @@ Route::resource('factures','FactureController');
 Route::resource('usertickets','UserticketController');
 // ------ les routes de tickets ------
 Route::resource('tickets','TicketController');
-
 // ----- les routes de reservations -------
 Route::resource('reservations','ReservationController');
 Route::resource('formules','FormuleController');
@@ -77,19 +71,14 @@ Route::resource('produits','ProduitController');
  
 // ----- les routes de equipements -----
 Route::resource('equipements','EquipementController');
-
 // ---- les routes de services ------
 Route::resource('services','ServiceController');
-
 // ------ les routes de personnels ----
 Route::resource('personnels','PersonnelController');
-
 // ---- les routes de horaires ------
 Route::resource('plannings','PlanningController');
-
 // ----- les routes de fournisseurs ----
 Route::resource('fournisseurs','FournisseurController');
-
 // ------ les routes de roles ------
 Route::resource('roles','RoleController');
 Route::resource('ventes','VenteController');
@@ -98,7 +87,6 @@ Route::resource('organisations','OrganisationController');
 Route::resource('horaires','HoraireController');
 Route::resource('paiements','PaiementController');
 Route::resource('taxes','TaxesController');
-
 //---les routes de stocks----
 Route::resource('stocks','StockController');
 Route::resource('abonnments','AbonnmentController');
@@ -108,7 +96,6 @@ Route::group(['prefix' => 'api'], function()
 	Route::get('get-available-days', 'APIController@GetAvailableDays');
     Route::get('get-all-services', 'AdminAPIController@GetAllServices');
     Route::get('get-all-clients', 'AdminAPIController@GetAllClients');
-
 	// Admin API Routes
     Route::get('get-all-appointments', 'AdminAPIController@GetAllAppointments');
     Route::get('get-all-plannings', 'AdminAPIController@GetAllPlannings');

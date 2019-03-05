@@ -24,11 +24,12 @@ class OrganisationController extends Controller
     public function index1( )
     { 
         $user1=Auth::user();
-       $id=$user1->organisation_id;
-    $organisations = Organisations::get();
+    //   $id=$user1->organisation_id;
+    $id=1;
+    $Horaires = Horaires::get()->where('organisation_id',$id);
     $organisation = Organisations::findOrFail(1);
        // return redirect(route('organisations.edit',$id));
-       return view('organisations.paramettre',compact('organisation'));
+       return view('organisations.paramettre',compact('organisation','Horaires'));
     }
     /**
      * Show the form for creating a new resource.
@@ -138,10 +139,24 @@ $user->syncRoles($roles);
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
     {    $organisation = Organisations::findOrFail($id);
+        $idor=1;
+
+    
         if ($request->has('Lundi')) {
+            $heures=Horaires::get()->where('organisation_id', $idor);
+       
+            if (  $heures!=null) {
+             foreach ($heures as $heure ) {
+            
+           Horaires::find($heure['id'])->delete() ;
+             }
+            }
         
             if ($request->has('heureouvertureLundi')) {
+               
+
                 $horairelundi=new Horaires([ 
                     'jour'=> $request->get('Lundi'),
                 'etat'=> 1,
@@ -151,6 +166,7 @@ $user->syncRoles($roles);
             
                 
                ]);
+               $horairelundi->save();
                
             }else{
                 $horairelundi=new Horaires([ 
@@ -160,7 +176,8 @@ $user->syncRoles($roles);
                 
                ]);
             }
-            $horairelundi->save();
+           
+           
             
             
             if ($request->has('heureouvertureMardi')) {
@@ -173,7 +190,7 @@ $user->syncRoles($roles);
             
                 
                ]);
-               
+               $horaireMardi->save();
             }else{
                 $horaireMardi=new Horaires([ 
                     'jour'=> $request->get('Mardi'),
@@ -182,7 +199,7 @@ $user->syncRoles($roles);
                 
                ]);
             }
-            $horaireMardi->save();
+         
             
             
             if ($request->has('heureouvertureMercredi')) {
@@ -195,6 +212,7 @@ $user->syncRoles($roles);
             
                 
                ]);
+               $horaireMercredi->save();
                
             }else{
                 $horaireMercredi=new Horaires([ 
@@ -204,7 +222,7 @@ $user->syncRoles($roles);
                 
                ]);
             }
-            $horaireMercredi->save();
+          
             
             if ($request->has('heureouvertureJeudi')) {
                 $horaireJeudi=new Horaires([ 
@@ -216,6 +234,7 @@ $user->syncRoles($roles);
             
                 
                ]);
+               $horaireJeudi->save();
                
             }else{
                 $horaireJeudi=new Horaires([ 
@@ -225,7 +244,7 @@ $user->syncRoles($roles);
                 
                ]);
             }
-            $horaireJeudi->save();
+          
             
             if ($request->has('heureouvertureVendredi')) {
                 $horaireVendredi=new Horaires([ 
@@ -237,7 +256,7 @@ $user->syncRoles($roles);
             
                 
                ]);
-               
+               $horaireVendredi->save();
             }else{
                 $horaireVendredi=new Horaires([ 
                     'jour'=> $request->get('Vendredi'),
@@ -246,7 +265,7 @@ $user->syncRoles($roles);
                 
                ]);
             }
-            $horaireVendredi->save();
+        
             
             if ($request->has('heureouvertureSamedi')) {
                 $horaireSamedi=new Horaires([ 
@@ -258,6 +277,7 @@ $user->syncRoles($roles);
             
                 
                ]);
+               $horaireSamedi->save();
                
             }else{
                 $horaireSamedi=new Horaires([ 
@@ -267,7 +287,7 @@ $user->syncRoles($roles);
                 
                ]);
             }
-            $horaireSamedi->save();
+           
             
             if ($request->has('heureouvertureDimanche')) {
                 $horaireDimanche=new Horaires([ 
@@ -279,7 +299,7 @@ $user->syncRoles($roles);
             
                 
                ]);
-               
+               $horaireDimanche->save();
             }else{
                 $horaireDimanche=new Horaires([ 
                     'jour'=> $request->get('Dimanche'),
@@ -288,7 +308,7 @@ $user->syncRoles($roles);
                 
                ]);
             }
-            $horaireDimanche->save();
+      
             
             
             

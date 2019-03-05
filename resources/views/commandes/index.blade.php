@@ -97,7 +97,7 @@
                                     <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="commandes/{{$commande->id}}" data-id="{{$commande->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_commandes','delete_commandes')
 
 
-                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/{{$commande->id}}/edit" data-id="{{$commande->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/{{$commande->id}}/edit" data-id="{{$commande->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                     <a data-toggle="modal" data-target="#deletemodal" data-id="{{$commande->id}}" data-lien="commandes/{{$commande->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                 </td>
                             </tr>

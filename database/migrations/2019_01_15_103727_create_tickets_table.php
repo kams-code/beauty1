@@ -23,6 +23,7 @@ class CreateTicketsTable extends Migration
             $table->string('etat')->nullable();
             $table->string('services_id')->nullable();
             $table->string('clients_id')->nullable();
+            $table->string('formules_id')->nullable();
             $table->string('organisation_id')->nullable();           $table->timestamps();
         });
         

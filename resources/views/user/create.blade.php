@@ -5,7 +5,9 @@
     </div>
     <div class="modal-body">
         <div class="row">
+            
                 {!! Form::open(['route' => ['users.store'],'files'=>true ]) !!}
+                
                 <div class="col-md-12" style="padding: 0px">
                         <center>
                             <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
