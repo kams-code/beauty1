@@ -285,10 +285,17 @@
           });
           $(document).on('click','.btnadd',function(){
                 var lien = $(this).attr('data-lien');
+                var mploy ="";
+                if ($(this).attr('data-ismploy') !== undefined) {
+                    mploy = $(this).attr('data-ismploy');
+                }
+                else{
+                    mploy ="";
+                }
                 $.ajax({
                   type: "GET",
                   url: lien,
-                  data: {},
+                  data: {mploy:mploy},
                   dataType:'text',
                   success: function(data){
                     $('#con-close-modal .modal-dialog').html(data);
@@ -303,11 +310,18 @@
               // data-lien est le lien sur le bouton sur la vue index au niveau du boutton
                 var lien = $(this).attr('data-lien');
                 var id = $(this).attr('data-id');
+                var mploy ="";
+                if ($(this).attr('data-ismploy') !== undefined) {
+                    mploy = $(this).attr('data-ismploy');
+                }
+                else{
+                    mploy ="";
+                }
                 $.ajax({
                     //type de retour de la page
                   type: "GET",
                   url: lien,
-                  data: {},
+                  data: {mploy:mploy},
                   // type de retour de la function
                   dataType:'text',
                   success: function(data){

@@ -96,10 +96,10 @@
                                                                 <a href="{{ route('permissions') }}" class="waves-effect"><i class="md md-settings"></i> <span> Privilèges </span> <span class="pull-right"></span></a>
                                                              </li>
                                                 <li >
-                                                        <a href="{{ route('roles.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Taxes </span> <span class="pull-right"></span></a>
+                                                        <a href="{{ route('taxes.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Taxes </span> <span class="pull-right"></span></a>
                                                      </li>
                                                 <li >
-                                                        <a href="{{ route('roles.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Paiement </span> <span class="pull-right"></span></a>
+                                                        <a href="{{ route('paiements.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Paiement </span> <span class="pull-right"></span></a>
                                                      </li>
                                         </ul>
                                     </li>

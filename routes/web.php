@@ -93,6 +93,8 @@ Route::resource('roles','RoleController');
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
 Route::resource('horaires','HoraireController');
+Route::resource('paiements','PaiementController');
+Route::resource('taxes','TaxesController');
 
 //---les routes de stocks----
 Route::resource('stocks','StockController');

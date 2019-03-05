@@ -100,6 +100,14 @@ class Permission extends \Spatie\Permission\Models\Permission
             'add_type_abonnements',
             'edit_type_abonnements',
             'delete_type_abonnements',
+
+            'add_taxes',
+            'edit_taxes',
+            'delete_taxes',
+
+            'add_paiements',
+            'edit_paiements',
+            'delete_paiements',
             
 
         ];
