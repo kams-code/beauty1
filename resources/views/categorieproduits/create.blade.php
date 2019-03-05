@@ -7,13 +7,7 @@
         <div class="row">
             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('categorieproduits.store'),'files'=>true]) !!}
            
-            <div class="col-md-12" style="padding: 0px">
-                    <center>
-                        <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
-                        <input id="inputimage" type="file" name="image" accept="images/*" style="display: none;">
-                   
-                    </center>
-                </div>
+         
                 <div class="col-md-6" style="padding: 0px">
                     <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*', ['class' => 'pull-left']) !!}</label>
                     <div class="col-sm-12">

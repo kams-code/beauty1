@@ -18,11 +18,11 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Plannings</h4>
-                                <ol class="breadcrumb pull-right">
-                                    <li><a href="#">QuickBeauty</a></li>
-                                    <li><a href="#">Tables</a></li>
-                                    <li class="active">Editer plannings</li>
+                                <h4 class="pull-left page-title">Privilèges</h4>
+                                <ol class="breadcrumb pull-right" >
+                                    <li><a href="home">Accueil</a></li>
+                                    <li>Paramètres</li>
+                                    <li class="active">Privilège</li>
                                 </ol>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @can('view_plannings')                                                                  <table id="datatable-buttons" class="table table-bordered  table-striped" id="datatable-editable">
+                                @can('view_plannings')                                                                  <table class="table table-bordered  table-striped" >
                                    
     
                                    <thead>
@@ -59,16 +59,41 @@
       
                   <tr class="gradeC">
                                         
-                                           <td> {{ $perm->name}}</td>
+                                           <td> 
+                                                <?php $first = explode("_",  $perm->name);
+                                                foreach ($first as $key => $value) {
+               if($key==0){
+                   $action=$value;
+                   if ($action=="view") {
+                    $action="Voir ";
+                   }
+                   if ($action=="add") {
+                    $action="Ajouter";
+                   }
+                   if ($action=="edit") {
+                    $action="Editer";
+                   }
+                   if ($action=="delete") {
+                    $action="Suprimer";
+                   }
+               }if($key==1){
+                   $entity=$value;
+                   if ($entity=="users") {
+                    $entity="employés";
+                   }
+               }
+            }
+                                                ?>
+                                                                                 {{$action}}/{{$entity}}</td>
                                            @foreach ($roles as $role )
                                           
 
                                            <td>  @if ($role->hasPermissionTo($perm->name))
-                                           <input  checked id="checkbox" type="checkbox" name="permissions[]" value="{{ $perm->name }}"> 
+                                           <input  data-action="remove" checked type="checkbox"   data-id="{{ $perm->id }}" data-idrole="{{ $role->id }}" class="adddire"> 
                             
                                 
                             @else
-                            <input  id="checkbox" type="checkbox" name="permissions[{{ $role->id }}][]" value="{{ $perm->name }}"> 
+                            <input  type="checkbox"  data-id="{{ $perm->id }}" data-idrole="{{ $role->id }}" class="adddire" data-action="add"> 
                             
                            
                                            @endif
@@ -81,12 +106,7 @@
                                         
                                        </tr> 
    @endforeach
-   @can('edit_roles')
-   {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-@endcan
-
-
-{!! Form::close() !!}
+   
                                    </tbody>
                               </table>@endcan
                             </div>
@@ -103,6 +123,14 @@
                 </footer>
 
             </div>
+            <!--
+              @can('edit_roles')
+   {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+@endcan
+
+
+{!! Form::close() !!}
+-->
  
     <script src="{{asset('js/jquery.min.js')}}"></script>
    

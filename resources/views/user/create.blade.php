@@ -15,7 +15,7 @@
                 @include('user._form')
                     <!-- Submit Form Button -->
             <center>
-                    {!! Form::submit('Create', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::submit('Ajouter', ['class' => 'btn btn-primary']) !!}
                 </center>
                     {!! Form::close() !!}
         </div>

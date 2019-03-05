@@ -52,8 +52,9 @@ class CategorieproduitController extends Controller
                $location=public_path('images/'.$filename);
                Image::make($image)->resize(800,400)->save($location); 
               
-               $categorie->image=$filename;
+              
         }
+        $categorie->image=" ";
         $user=Auth::user();
        
         ///////////$categorie['organisation_id']=$user->organisation_id;

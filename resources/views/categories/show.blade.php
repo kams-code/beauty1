@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
     
-                                <h2>nom de la categorie: </h2>
+                                <h2>nom de la catégorie: </h2>
                                   <{{ $categorie->nom }} }}</p>
 
 

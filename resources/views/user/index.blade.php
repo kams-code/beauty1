@@ -59,10 +59,15 @@
                                         @endphp
                                     <tr class="gradeC">
                                         <td>
+                                        
                                             <input  type="checkbox" class="check" onclick="verified();" value="{{ $user->id }}"  name="etat">
                                         </td>
                                         <td>
-                                            <img style="width: 70px;height: 70px" src="{{asset('images/'.$user->image)}}" alt="user-img" >
+                                            @if ($user->image!=null)
+    <img style="width: 70px;height: 70px" src="{{asset('images/'.$user->image)}}" alt="user-img" >
+                                            @else
+                                             <img style="width: 70px;height: 70px" src="{{asset('images/profile.jpg')}}" alt="user-img" >
+                                            @endif 
                                         </td>
                                         <td> {{ $user->nom }}</td>
                                         <td> {{ $user->name }}</td>

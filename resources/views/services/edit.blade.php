@@ -41,7 +41,7 @@
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe*') !!}</label>
                 <div class="col-sm-12">
                    <!-- <input type="text" class="form-control" name="user_id" value="{{$service->user_id}}" >-->
-                    {!! Form::select('users[]', $users, $service->user_id, ['class' => 'form-control','multiple'=>'multiple']) !!}
+                    {!! Form::select('users[]', $users, $service->user_id, ['class' => 'js-example-basic-multiple form-control','multiple'=>'multiple']) !!}
                 </div>
             </div>
             <div class="col-md-12" style="padding: 0px">

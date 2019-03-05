@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modifier un equipement</h4>
+        <h4 class="modal-title">Modifier un équipement</h4>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -9,7 +9,16 @@
             
             <div class="col-md-12" style="padding: 0px">
                 <center>
-                    <img id="imgpreview" src="{{asset('images/'.$equipement->image)}}" style="width: 130px; height:120px; cursor: pointer;" required>
+                     @if ($equipement->image!=null)
+   <img id="imgpreview" src="{{asset('images/'.$equipement->image)}}" style="width: 130px; height:120px; cursor: pointer;" required>
+                     
+                                            @else
+                                            <img id="imgpreview" src="{{asset('images/default.JPG')}}" style="width: 130px; height:120px; cursor: pointer;" required>
+                    
+                                              
+                                            @endif
+                    
+                    
                     <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
 
                 </center>
@@ -23,18 +32,24 @@
                 </div>
             </div>
             <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur*') !!}</label>
-                <div class="col-sm-12">
-                {!! Form::select('fournisseur_id',$fournisseurs,$equipement->fournisseur_id, ['class' => 'form-control']) !!}
+                    <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur') !!}</label>
+                      <div class="col-sm-12">
+                        <select name="fournisseur_id" class="form-control">
+                                <option></option>
+                            @foreach ($fournisseurs as $fournisseur)
+                        <option value="{{$fournisseur['id']}}">{{$fournisseur['nom']}}</option>
+                            @endforeach
+                         
+                          </select>
+                     </div>
                 </div>
-            </div>
             </br>
           
            
             <div class="col-md-12" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('description','Description*') !!}</label>
                 <div class="col-sm-12">
-                    <textarea class="form-control" name="description" required>{{$equipement->description}}</textarea>
+                    <textarea rows="4" class="form-control" name="description" required>{{$equipement->description}}</textarea>
                 </div>
             </div>
            

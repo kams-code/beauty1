@@ -6,19 +6,13 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modifier une categorie</h4>
+        <h4 class="modal-title">Modifier une catégorie</h4>
     </div>
     <div class="modal-body">
         <div class="row">
             {!! Form::open(['method' => 'PUT', 'class' => 'form-horizontal','role' => 'form','url' => route('categories.update',$categorie),'files'=>true]) !!}
             
-            <div class="col-md-12" style="padding: 0px">
-                <center>
-                    <img id="imgpreview" src="/images/{{$categorie->image}}" style="width: 110px;height:110px; cursor: pointer;" required>
-                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" >
 
-                </center>
-            </div>
            
             <div class="col-md-12" style="padding: 0px">
                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*') !!}</label>

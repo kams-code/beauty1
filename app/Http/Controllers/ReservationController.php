@@ -7,7 +7,6 @@ use App\Reservations;
 use App\Clients;
 use App\Services;
 use App\Factures;
-use App\User;
 use DB;
 use Date;
 use Calendar;
@@ -132,7 +131,7 @@ $reservation_list=[];
       
         $reservation ->save();
         }
-        $client = Clients::get()->where('id',$request->get('selectclients'))->first();
+        $client = Clients::get()->where('id',$request->get('client_id'))->first();
         $facturetion =new Factures([ 
             'code'=>$string,
            'nom'=> $client->nom,
@@ -156,8 +155,12 @@ $reservation_list=[];
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {dd($id);
-        
+    {
+        $services=Services::all();
+
+        $reservation = Reservations::get()->where('id',$id)->first();
+        $client=Clients::get()->where('id',$reservation->client_id)->first();
+        $reservations=Reservations::get()->where('code',$reservation->code);
         return view('reservations.show',compact('reservations','services','client'));
     }
 
@@ -186,7 +189,7 @@ $reservation_list=[];
     public function update(Request $request, $id)
     {
       
-        dd($request);
+
         $reservation = Reservations::findOrFail($id);
         $values = Reservations::get()->where('code',$reservation->code );
         $services_ids=$request->get('services');

@@ -15,9 +15,7 @@
                             margin-bottom: 10px
                         }
                     </style>
-                    <div class="col-md-3">
-                        <img style="width: 100%;height: 115px" src="{{asset('images/'.$categorie->image)}}">
-                    </div>
+                   
                     <div class="col-md-9">
                         <label>
                             <strong>Nom:</strong> {{$categorie->nom}}

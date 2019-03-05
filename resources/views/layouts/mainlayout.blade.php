@@ -100,11 +100,11 @@
                     <div class="modal-body" style="padding: 30px">
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
-                                <h4>Voulez-vraiment cet élément?</h4>
+                                <h4>Voulez-vous vraiment supprimer?</h4>
                             </div>
                             <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
-                                <button class="btn btn-danger" id="boutondelete">Supprimer</button>
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Non</button>
+                                <button class="btn btn-danger" id="boutondelete">Oui</button>
                             </div>
                         </div>
                     </div>
@@ -343,8 +343,7 @@
                 for(var i=0; i < cbs.length; i++) {
                   if(cbs[i].type == 'checkbox') {
                       if(cbs[i].checked){
-                          lien += ',organisations/'+cbs[i].value;
-                          alert(',organisations/'+cbs[i].value);
+                          lien += ','+$('.btnadd').attr('data-lien').split('/')[0]+'/'+cbs[i].value;
                       }
                   }
                 } 
@@ -364,7 +363,6 @@
                       data: { _token : $('meta[name="csrf-token"]').attr('content')},
                       dataType:'text',
                       success: function(data){
-                            location.reload();
                       },
                     });
                 }
@@ -407,6 +405,25 @@
           });
           $(document).on('click', '#checkAll', function(){
             checkAll($('#checkAll').is(':checked'));
+          });
+          $(document).on('click', '.adddire', function(){
+
+           
+            var action = $(this).attr('data-action');
+
+            $.ajax({
+              type: "get",
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              },
+              url: "rolespermissions",
+              data: {id:$(this).attr('data-idrole'),permissions:$(this).attr('data-id'),'action':action},
+              dataType: "text",
+              success: function(data){
+                
+              }
+            });
+
           });
         </script> 
        

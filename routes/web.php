@@ -39,6 +39,7 @@ Route::group( ['middleware' => ['auth']], function() {
 });
 Route::post( '/organisations/{id}','OrganisationController@update');
 Route::get('/permissions', 'RoleController@index1')->name('permissions');
+Route::get('/rolespermissions', 'RoleController@addrolepermission')->name('rolespermissions');
 Route::get('/servicespersonnel/{id}', 'ServiceController@index1')->name('servicespersonnel');
 Route::get('/reservation/service/personnel/{id}', 'ReservationController@index1')->name('reservationservicepersonnel');
 Route::get('/paramettres', 'OrganisationController@index1')->name('paramettres');
@@ -47,6 +48,7 @@ Route::get('/reservation/reporter/{id}', 'ReservationController@index2')->name('
 Route::get('/produits/categorie/{id}', 'ProduitController@index1')->name('categorieproduit');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/employe', 'UserController@index1')->name('employe');
 Route::get('/stocksremove', 'StockController@remove')->name('stocksremove');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 Route::get('/main', 'MainController@index')->name('main');
@@ -89,7 +91,7 @@ Route::resource('fournisseurs','FournisseurController');
 
 // ------ les routes de roles ------
 Route::resource('roles','RoleController');
-
+Route::resource('ventes','VenteController');
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
 Route::resource('horaires','HoraireController');
