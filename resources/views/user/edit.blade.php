@@ -22,7 +22,7 @@
                                                         @include('user._form')
                                                             <!-- Submit Form Button -->
                                                             <center>
-                                                            {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                                            {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
                                                         </center>
                                                             {!! Form::close() !!}
             </div>

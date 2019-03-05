@@ -23,6 +23,12 @@
                     {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
+            <div class="col-md-6" style="padding: 0px">
+                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('code','Code*') !!}</label>
+                <div class="col-sm-12">
+                    {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
+                </div>
+            </div>
        
            
             <div class="col-md-6" style="padding: 0px">
@@ -71,7 +77,7 @@
             </div>
             <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
-                <button class="btn btn-primary">Enregistrer</button>
+                <button class="btn btn-primary">Modifier</button>
             </div>
             {!! Form::close() !!}
         </div>

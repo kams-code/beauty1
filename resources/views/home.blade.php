@@ -22,7 +22,7 @@
                         <!--  -->
                                                 <!-- Start Widget -->
                                                 <div class="row">
-                                                    <div class="col-sm-6 col-lg-3">
+                                                    <div class="col-sm-6 col-lg-4">
                                                         <div class="mini-stat clearfix bx-shadow bg-info">
                                                             <span class="mini-stat-icon"><i class="ion-social-usd"></i></span>
                                                             <div class="mini-stat-info text-right">
@@ -40,7 +40,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6 col-lg-3">
+                                                    <div class="col-sm-6 col-lg-4">
                                                         <div class="mini-stat clearfix bg-purple bx-shadow">
                                                             <span class="mini-stat-icon"><i class="ion-ios7-cart"></i></span>
                                                             <div class="mini-stat-info text-right">
@@ -59,7 +59,7 @@
                                                     </div>
                                                     
                                                    
-                                                    <div class="col-sm-6 col-lg-3">
+                                                    <div class="col-sm-6 col-lg-4">
                                                         <div class="mini-stat clearfix bg-primary bx-shadow">
                                                             <span class="mini-stat-icon"><i class="ion-android-contacts"></i></span>
                                                             <div class="mini-stat-info text-right">
@@ -73,8 +73,8 @@
                         
                         
                                                 <div class="row">
-                                                    <div class="col-lg-8">
-                                                        <div class="portlet"><!-- /portlet heading -->
+                                                    <div class="col-lg-12">
+                                                        <div class="portlet" style="width: 100%"><!-- /portlet heading -->
                                                             {!! $chart->render() !!}
                                                         </div> <!-- /Portlet -->
                                                     </div> <!-- end col -->
@@ -82,7 +82,7 @@
                                                    
                                                 </div> <!-- End row -->
                                                 <div class="row">
-                                                    <div class="col-lg-8">
+                                                    <div class="col-lg-12">
                                                         <div class="portlet"><!-- /portlet heading -->
                                                             {!! $chart1->render() !!}
                                                         </div> <!-- /Portlet -->
@@ -93,7 +93,7 @@
 
 
                                                 <div class="row">
-                                                    <div class="col-lg-8">
+                                                    <div class="col-lg-12">
                                                         <div class="portlet"><!-- /portlet heading -->
                                                             <div class="port">
                                                                 <div class="portfolioContainer row">

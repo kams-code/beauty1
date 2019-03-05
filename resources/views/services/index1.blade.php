@@ -88,7 +88,7 @@
                                                 </div>
                                                 <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px"> 
                                                             <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
-                                                           <button class="btn btn-primary">Enregistrer</button>
+                                                           <button class="btn btn-primary">Modifier</button>
                                                         </div> 
                                            {!! Form::close() !!}
                                                             </div> 
@@ -274,7 +274,7 @@
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                                     
                                                         <!-- Submit Form Button -->
-                                                        {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                                        {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
                                                     </div>
                                                     {!! Form::close() !!}
                                                 </div>

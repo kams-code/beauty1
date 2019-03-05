@@ -29,7 +29,7 @@
                             @can('add_organisations')
                             <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="abonnements/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
                             @can('delete_organisations')
-                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect  btn-danger" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
 
                         </div>
                     </div>

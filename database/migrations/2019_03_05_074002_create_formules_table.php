@@ -15,6 +15,7 @@ class CreateFormulesTable extends Migration
     {
         Schema::create('formules', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('prix')->nullable();
             $table->string('services_id')->nullable();
             $table->string('organisation_id')->nullable();
             $table->timestamps();

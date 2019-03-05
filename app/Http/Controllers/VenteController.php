@@ -7,7 +7,7 @@ use App\Vente;
 use App\Services;
 use App\Clients;
 use DateTime;
-class TicketController extends Controller
+class VenteController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -119,7 +119,7 @@ class TicketController extends Controller
     { $string = bin2hex(openssl_random_pseudo_bytes(10));
        $client=Clients::get()->where('id',$value)->first();
        $client['codepromo']=$string ;
-       $client['id_ticket']=$tick->id;
+       $client['id_Vente']=$tick->id;
   $client->update();
     }
 }if($request->get('service')=="on"){
@@ -127,7 +127,7 @@ class TicketController extends Controller
     { $string = bin2hex(openssl_random_pseudo_bytes(10));
        $service=Services::get()->where('id',$value)->first();
        $service['codepromo']=$string ;
-       $service['id_ticket']=$tick->id;
+       $service['id_Vente']=$tick->id;
   $service->update();
     }
     }
@@ -147,10 +147,10 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        $ticket=Vente::findOrFail($id);
-        $services=Services::get()-> where('id_ticket',$id);
-        $clients=Clients::get()-> where('id_ticket',$id);
-        return view('Vente.show',compact('ticket','services','clients'));
+        $Vente=Vente::findOrFail($id);
+        $services=Services::get()-> where('id_Vente',$id);
+        $clients=Clients::get()-> where('id_Vente',$id);
+        return view('Vente.show',compact('Vente','services','clients'));
     }
  /**
      * Show the form for editing the specified resource.
@@ -164,10 +164,10 @@ class TicketController extends Controller
         $services=Services::pluck('nom','id');
         $clients=Clients::pluck('nom','id');
         $Vente=Vente::get();
-        $ticket=Vente::findOrFail($id);
+        $Vente=Vente::findOrFail($id);
       
    
-        return view('Vente.edit', compact('Vente','services','clients','Vente','ticket'));
+        return view('Vente.edit', compact('Vente','services','clients','Vente','Vente'));
     }
 
     /**
@@ -248,7 +248,7 @@ class TicketController extends Controller
         foreach($clientins as $key=>$value)
         {  $clientin=Clients::get()->where('id',$value)->first();
            $clientin['codepromo']=null ;
-           $clientin['id_ticket']=null;
+           $clientin['id_Vente']=null;
       $clientin->update();
         }
     }
@@ -257,7 +257,7 @@ class TicketController extends Controller
         { $string = bin2hex(openssl_random_pseudo_bytes(10));
            $servicein=Services::get()->where('id',$value)->first();
            $servicein['codepromo']=null ;
-           $servicein['id_ticket']=null;
+           $servicein['id_Vente']=null;
       $servicein->update();
         }
         }
@@ -271,7 +271,7 @@ class TicketController extends Controller
         { $string = bin2hex(openssl_random_pseudo_bytes(10));
            $client=Clients::get()->where('id',$value)->first();
            $client['codepromo']=$string ;
-           $client['id_ticket']=$tick->id;
+           $client['id_Vente']=$tick->id;
       $client->update();
         }
     } 
@@ -280,7 +280,7 @@ class TicketController extends Controller
         { $string = bin2hex(openssl_random_pseudo_bytes(10));
            $service=Services::get()->where('id',$value)->first();
            $service['codepromo']=$string ;
-           $service['id_ticket']=$tick->id;
+           $service['id_Vente']=$tick->id;
       $service->update();
         }
         }

@@ -71,6 +71,7 @@ Route::resource('tickets','TicketController');
 
 // ----- les routes de reservations -------
 Route::resource('reservations','ReservationController');
+Route::resource('formules','FormuleController');
 //---- les routes de produits ------
 Route::resource('produits','ProduitController');
  
