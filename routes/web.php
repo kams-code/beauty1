@@ -32,6 +32,8 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('plannings','PlanningController');
     Route::resource('fournisseurs','FournisseurController');
     Route::resource('organisations','OrganisationController');
+    Route::resource('personnelReservations','PersonnelReservationController');
+
     Route::resource('stocks','StockController');
     Route::get('/services/{id}  /add', 'ServiceController@add');
 });
@@ -89,7 +91,7 @@ Route::resource('fournisseurs','FournisseurController');
 
 // ------ les routes de roles ------
 Route::resource('roles','RoleController');
-
+Route::resource('ventes','VenteController');
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
 Route::resource('horaires','HoraireController');

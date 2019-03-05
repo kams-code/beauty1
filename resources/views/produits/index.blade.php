@@ -27,7 +27,7 @@
                                 </div>
 
                                 @can('add_organisations')
-                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="produits/create"><i class="fa fa-plus"></i>&nbsp;Ajouter </button> @endcan
+                                <button type="button" class="btn btn-primary waves-effect waves-light btnadd pull-right"  data-toggle="modal" data-target="#con-close-modal" data-lien="produits/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un produit </button> @endcan
                               
         
                                 <!-- SECTION FILTER

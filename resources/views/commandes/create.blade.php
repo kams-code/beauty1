@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Ajouter une commande</h4>
+        <h4 class="modal-title">Ajouter un approvisionnement </h4>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -31,12 +31,7 @@
                 {!! Form::number('quantite',null, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('user_id','Employe*') !!}</label>
-                <div class="col-sm-12">
-                {!! Form::select('user_id',$users,null, ['class' => 'form-control','required']) !!}
-                </div>
-            </div>
+           
            
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur*') !!}</label>
@@ -51,12 +46,25 @@
                                     <div class="checkbox">
                                             <input   id="checkbox" type="checkbox" name="etat" > 
                                             <label for="checkbox"   >
-                                                    Est il valide? 
+                                                    Est il livrer? 
                                             </label>
                                     </div> 
                             
                             </div>
             </div>
+
+            <div class="col-md-6" style="padding: 0px">
+                    <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('etat','Envoyer un mail?') !!}</label>
+                    <div class="col-sm-12">
+                            <div class="checkbox">
+                                    <input   id="checkbox" type="checkbox" name="mail" > 
+                                    <label for="checkbox"   >
+                                            
+                                    </label>
+                            </div> 
+                    
+                    </div>
+    </div>
             
 
             <div class="m-b-0">

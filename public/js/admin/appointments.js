@@ -2,7 +2,6 @@ $(document).ready(function() {
   var url = document.getElementById('url');
   url = url.textContent;
   var cDate = new Date();
-  
 
   // Calendar initialization
   $('#calendar').fullCalendar({

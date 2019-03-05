@@ -22,7 +22,7 @@
         this.$calendarObj = null
     };
 
-    var dateString;
+
     /* on drop */
     CalendarApp.prototype.onDrop = function (eventObj, date) { 
         var $this = this;
@@ -46,119 +46,66 @@
     /* on click on event */
     CalendarApp.prototype.onEventClick =  function (calEvent, jsEvent, view) {
         var $this = this;
-            var form = $("<form accept-charset='UTF-8' action='/reservations/"+ calEvent.id+"'   >");
-            form.append("<input  name='_method' type='hidden' value='put'>");
-
-form.append("<label>Reportet la réservation du client:"+ calEvent.title+ " à la date:</label>");                                                                                       
-            form.append("<div class='input-group'><input class='form-control' name='date' type=date value='" + calEvent.start + "' /></div>");
-          
-            form.append("<div>");
-            form.append("            <a data-toggle='modal' data-target='#con-close-modal' data-lien='reservation/service/personnel/"+calEvent.id+"' data-id='"+calEvent.id+"' class='btn-delete btnedit btn btn-primary'><i class='fa fa-user'></i></a>")
-            form.append("</div><div>");
-            form.append('<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button><button type="button" class="btn btn-success save-event waves-effect waves-light">Enregistrer</button>')
-            form.append("</div>");
-            form.append("</form>");    
+            var form = $("<form></form>");
+            form.append("<label>Change event name</label>");
+            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-btn'><button type='submit' class='btn btn-success waves-effect waves-light'><i class='fa fa-check'></i> Save</button></span></div>");
             $this.$modal.modal({
                 backdrop: 'static'
             });
             $this.$modal.find('.delete-event').show().end().find('.save-event').hide().end().find('.modal-body').empty().prepend(form).end().find('.delete-event').unbind('click').click(function () {
-                form.submit();
+                $this.$calendarObj.fullCalendar('removeEvents', function (ev) {
+                    return (ev._id == calEvent._id);
+                });
+                $this.$modal.modal('hide');
             });
-          
-
-            $("#event-modal .modal-footer").remove();
-
-                 
-         ////////////////////////////////////////////////////////////////////////////////////////////////////
-                
-            $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
-                form.submit();
+            $this.$modal.find('form').on('submit', function () {
+                calEvent.title = form.find("input[type=text]").val();
+                $this.$calendarObj.fullCalendar('updateEvent', calEvent);
+                $this.$modal.modal('hide');
+                return false;
             });
-/////////////////////////////////////////////////////////
-            
-            $("#event-modal .modal-footer").remove();
-          ////////////////////////////////////////////////////////////////////////////////////////////////////
-            $this.$calendarObj.fullCalendar('unselect');
     },
     /* on select */
-   
-    CalendarApp.prototype.onSelect = function (start, end,date){
+    CalendarApp.prototype.onSelect = function (start, end, allDay) {
         var $this = this;
             $this.$modal.modal({
                 backdrop: 'static'
             });
-           var auxArr = [];
-           var auxArrclient = [];
-           var m = date;
-         
-           
-           var form = $("<form action='/reservations' method='post'>@csrf");
-           
-           form.append("<div class='row'></div>");
-                   form.find(".row")
-                   .append("<div class='col-md-12'><div class='form-group'>                                <input type='datetime' style='height: 46px' class='form-control' name='email'  value="+dateString+" required autofocus>                  </div></div>")         
-                   
-                   .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Services</label><select class='js-example-basic-multiple form-control' multiple='' id='selectservices' class='form-control' name='selectservices[]'></select></div></div><script>$('.js-example-basic-multiple').select2();</script>")         
-                   .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Clients</label><select class='form-control' id='selectclients' name='selectclients'></select></div></div>")         
-                   ;
-            $.getJSON("http://localhost:8000/api/get-all-services", function(json){
-                //do some thing with json  or assign global variable to incoming json. 
-                
-                 for (var i = 0; i < json.length; i++) {
-                     
-                  
-                    auxArr[i] = "<option value='" +  json[i].id + "'>" +  json[i].nom + "</option>";
-                   }
-                   console.log(auxArr);
-                   
-
-                if(auxArr!=null){
-                 
-                   form.find(".row")
-                   .find("select[name='selectservices[]']")
-                   .append(auxArr.join(''))
-                  ;
-                     
-
-                    }
-
-                });
-
-                $.getJSON("http://localhost:8000/api/get-all-clients", function(json){
-                    //do some thing with json  or assign global variable to incoming json. 
-                    
-                     for (var i = 0; i < json.length; i++) {
-                         
-                      
-                        auxArr[i] = "<option value='" +  json[i].id + "'>" +  json[i].nom + "</option>";
-                       }
-                       console.log(auxArr);
-                       
-    
-                    if(auxArr!=null){
-                     
-                       form.find(".row")
-                       .find("select[name='selectclients']")
-                       .append(auxArr.join(''))
-                      ;
-                         
-    
-                        }
-    
-                    });
-                    form.append('<button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button><button type="button" class="btn btn-success save-event waves-effect waves-light">Create event</button>')
-                    form.append("</form>");
-
-            
-         ////////////////////////////////////////////////////////////////////////////////////////////////////
-                
+            var form = $("<form></form>");
+            form.append("<div class='row'></div>");
+            form.find(".row")
+                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' placeholder='Insert Event Name' type='text' name='title'/></div></div>")
+                .append("<div class='col-md-6'><div class='form-group'><label class='control-label'>Category</label><select class='form-control' name='category'></select></div></div>")
+                .find("select[name='category']")
+                .append("<option value='bg-danger'>Danger</option>")
+                .append("<option value='bg-success'>Success</option>")
+                .append("<option value='bg-purple'>Purple</option>")
+                .append("<option value='bg-primary'>Primary</option>")
+                .append("<option value='bg-warning'>Warning</option></div></div>");
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();
             });
-/////////////////////////////////////////////////////////
-            
-            $("#event-modal .modal-footer").remove();
-          ////////////////////////////////////////////////////////////////////////////////////////////////////
+            $this.$modal.find('form').on('submit', function () {
+                var title = form.find("input[name='title']").val();
+                var beginning = form.find("input[name='beginning']").val();
+                var ending = form.find("input[name='ending']").val();
+                var categoryClass = form.find("select[name='category'] option:checked").val();
+                if (title !== null && title.length != 0) {
+                    $this.$calendarObj.fullCalendar('renderEvent', {
+                        title: title,
+                        start:start,
+                        end: end,
+                        allDay: false,
+                        className: categoryClass
+                    }, true);  
+                    $this.$modal.modal('hide');
+                }
+                else{
+                    alert('You have to give a title to your event');
+                }
+                return false;
+                
+            });
             $this.$calendarObj.fullCalendar('unselect');
     },
     CalendarApp.prototype.enableDrag = function() {
@@ -190,65 +137,49 @@ form.append("<label>Reportet la réservation du client:"+ calEvent.title+ " à l
         var form = '';
         var today = new Date($.now());
 
-        var defaultEvents;
 
-            var globalJsonVar;
-            var $this = this;
-            $.getJSON("http://localhost:8000/api/get-all-appointments", function(json){
-                       //do some thing with json  or assign global variable to incoming json. 
-                       console.log( json);
-                        for (var i = 0; i < json.length; i++) {
-                            console.log(json[i].startDate); 
-                            console.log( json[i].endDate );
-                            json[i].start = new Date(json[i].start);
-                            json[i].end = new Date(json[i].end);
-                            console.log(json[i].startDate); 
-                            console.log( json[i].endDate );
-                          }
-                          defaultEvents=json;
+        
 
-                         
-        if(defaultEvents!=null){
-            console.log(defaultEvents);
-            $this.$calendarObj = $this.$calendar.fullCalendar({
-                slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
-                  
-                defaultView: 'month',  
-                handleWindowResize: true,   
-                height: $(window).height() - 200,   
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-              
-                events:defaultEvents,
-                editable: true,
-                droppable: true, // this allows things to be dropped onto the calendar !!!
-                eventLimit: true, // allow "more" link when too many events
-                selectable: true,
-                dayClick: function(date, jsEvent, view) {
-
-                    dateString= date.format();
-            console.log(dateString);
+        var defaultEvents =  [{
+                title: 'Hey!',
+                start: new Date($.now() + 158000000),
+                className: 'bg-purple'
+            }, {
+                title: 'See John Deo',
+                start: today,
+                end: today,
+                className: 'bg-danger'
+            }, {
+                title: 'Buy a Moltran',
+                start: new Date($.now() + 338000000),
+                className: 'bg-primary'
+            }];
             
-            
-                },
-                drop: function(date) { $this.onDrop($(this), date); },
-                select: function (start, end,date) { $this.onSelect(start, end,date); },
-                eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); },
-    
-            });
-    
 
+        var $this = this;
+        $this.$calendarObj = $this.$calendar.fullCalendar({
+            slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
+            minTime: '08:00:00',
+            maxTime: '19:00:00',  
+            defaultView: 'month',  
+            handleWindowResize: true,   
+            height: $(window).height() - 200,   
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+          
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar !!!
+            eventLimit: true, // allow "more" link when too many events
+            selectable: true,
+            drop: function(date) { $this.onDrop($(this), date); },
+            select: function (start, end, allDay) { $this.onSelect(start, end, allDay); },
+            eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); },
 
-        }
-                      
-                  });
-                  
-                 
-       
-     
+        });
+
         //on new event
         this.$saveCategoryBtn.on('click', function(){
             var categoryName = $this.$categoryForm.find("input[name='category-name']").val();

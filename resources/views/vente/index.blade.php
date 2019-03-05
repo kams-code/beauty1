@@ -1,4 +1,5 @@
-@extends('layouts.mainlayout')
+
+@extends('layouts.mainlayoutt')
 @include('partials.topbar')
 @include('partials.sidebar')
 
@@ -17,18 +18,18 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Catégories de produits</h4>
+                                <h4 class="pull-left page-title">Promotions</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="home">Accueil</a></li>
-                                    <li class="active">Catégories de produits</li>
+                                    <li class="active">Promotions</li>
                                 </ol>
                             </div>
                         </div>
                         <div class="m-b-30 pull-right">
 
-                            @can('add_categories')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="categorieproduits/create"><i class="fa fa-plus"></i>&nbsp;Ajouter une catégorie </button> @endcan
-                            @can('delete_categories')
+                            @can('add_ventes')
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="ventes/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un Promotion </button> @endcan
+                            @can('delete_ventes')
                             <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
 
                         </div>
@@ -36,39 +37,49 @@
                     <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            @can('view_categories')
+                                <br>
+                              <script>$(document).ready(function() {
+                                        $(".js-example-basic-single").select2();
+                                        $(".js-example-basic-multiple").select2();
+                                      });</script>
+                                
+                            @can('view_ventes')
                             <table class="table table-bordered  table-striped" id="datatable-buttons">
 
                                 <thead>
                                     <tr>
                                         <th><input  id="checkAll" type="checkbox"></th>
-                                       
-                                        <th>Nom</th>
-                                        
+                                        <th>Titre</th>
+                                                                            <th>Type</th>
+                                                                            <th>Etat</th>
+                                        <th>Date de début</th>
+                                        <th>Date de fin</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tablebody">
 
-                                    @foreach($categories as $categorie)
-                                        @php
-                                        $date=date('d-m-Y H:i:s', strtotime($categorie->created_at));
-                                        @endphp
+                                    @foreach($ventes as $vente)
+                                     
                                     <tr class="gradeC">
                                         <td>
-                                            <input  type="checkbox" class="check" onclick="verified();" value="{{ $categorie->id }}"  name="etat">
+                                            <input  type="checkbox" class="check" onclick="verified();" value="{{ $vente->id }}"  name="etat">
                                         </td>
-                                        
-                                        <td> {{ $categorie->nom }}</td>
-                                        
+                                      
+                                        <td> {{ $vente->titre }}</td>
+                                        <td> {{ $vente->type }}</td>
+                                        <td> {{ $vente['etat']}}</td>
+                                        <td> {{ $vente->datedebut }}</td>
+
+                                        <td> {{ $vente->datefin }}</td>
 
                                         <td class="actions">
                                             
-                                             @can('edit_categories','delete_categories')
+                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="ventes/{{$vente->id}}" data-id="{{$vente->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_ventes','delete_ventes')
 
 
-                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="categorieproduits/{{$categorie->id}}/edit" data-id="{{$categorie->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$categorie->id}}" data-lien="categorieproduits/{{$categorie->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="ventes/{{$vente->id}}/edit" data-id="{{$vente->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$vente->id}}" data-lien="ventes/{{$vente->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                         </td>
                                     </tr>
                                     @endforeach

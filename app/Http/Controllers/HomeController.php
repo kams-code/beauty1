@@ -45,7 +45,7 @@ class HomeController extends Controller
       Charts::new('line','higcharts')->setTitle(Reservations)->     
       setLablels(array_merge($serv->toArray()))->setElementvalue(array_merge($servdate->toArray()))
       ->setElementLabel("Services creer")->setResponsive(false) ;  
-           return view('home','count','clients','charts');
+           return view('home','count','clients','charts','Commandes');
     }
 
 

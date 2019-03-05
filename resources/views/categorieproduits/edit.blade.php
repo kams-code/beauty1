@@ -8,19 +8,7 @@
             {!! Form::open(['method' => 'PUT','class' => 'form-horizontal','role' => 'form','url' => route('categorieproduits.update',$categorie),'files'=>true]) !!}
             
 
-                <div class="col-md-12" style="padding: 0px">
-    
-                        <center>
-                            @if ($categorie->image!=null)
-                            <img id="imgpreview" class="thumb-lg  img-thumbnail" src="{{asset('images/'.$categorie->image)}}" style="width: 100px;cursor: pointer;">
-                            
-                                @else
-                                <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
-                   
-                            @endif
-                            <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
-                        </center>
-                     </div>
+              
 
 
                 <div class="col-md-6" style="padding: 0px">

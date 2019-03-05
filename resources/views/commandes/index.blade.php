@@ -17,17 +17,17 @@
                         <!-- Page-Title -->
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 class="pull-left page-title">Liste des commandes</h4>
+                                <h4 class="pull-left page-title">Liste des approvisionnements</h4>
                                 <ol class="breadcrumb pull-right">
                                     <li><a href="home">Accueil</a></li>
-                                    <li class="active">Commandes</li>
+                                    <li class="active">Approvisionnements </li>
                                 </ol>
                             </div>
                         </div>
                         <div class="m-b-30 pull-right">
 
                             @can('add_commandes')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/create"><i class="fa fa-plus"></i>&nbsp;Ajouter une commande </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="commandes/create"><i class="fa fa-plus"></i>&nbsp;Ajouter un approvisionnement </button> @endcan
                             @can('delete_commandes')
                             <button type="button" class="btn btn-primary waves-effect btn-danger" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
 
@@ -43,19 +43,24 @@
                         <thead>
                             <tr>
                                 <th><input  id="checkAll" type="checkbox"></th>
+                                <th></th>
+                                <th>Titre</th>
                                 <th>Produit</th>
                                 <th>Quantite</th>
-                                <th>Employe</th>
+                                <th>Employé</th>
                                 <th>Fournisseur</th>
                                 
-                                
+                                <th>Livrer?</th>
                                 <th>Date de création</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody id="tablebody">
-
+                                @php
+                                $i=1;
+                                @endphp
                             @foreach($commandes as $commande)
+                            
                                 @php
                                 $date=date('d-m-Y H:i:s', strtotime($commande->created_at));
                                 @endphp
@@ -63,6 +68,8 @@
                                 <td>
                                     <input  type="checkbox" class="check" onclick="verified();" value="{{ $commande->id }}"  name="etat">
                                 </td>
+                                <td> {{ $i }}</td>
+                                <td> {{ $commande->nom }}</td>
                                 <td>@foreach($produits as $produit)
                                  @if($commande->produit_id)
                                   {{ $produit->nom }}
@@ -70,7 +77,7 @@
                                  @endforeach</td> 
                                 <td> {{ $commande->quantite }}</td>
                                 <td>@foreach($users as $user)
-                                 @if($commande->user_id )
+                                 @if($commande->user_id ==$user['id'])
                                  <li>{{ $user->name }}</li>
                                 @endif
                                 @endforeach</td> 
@@ -80,7 +87,8 @@
                                  {{ $fournisseur->nom}}
                                 @endif
                                 @endforeach</td> 
-                                
+                                <td> {{ $commande["etat"] == 1 ? 'OUI' : 'NON'}}</td>
+                                    
 
                                 <td> {{ $date}}</td>
 
@@ -93,6 +101,9 @@
                                     <a data-toggle="modal" data-target="#deletemodal" data-id="{{$commande->id}}" data-lien="commandes/{{$commande->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                 </td>
                             </tr>
+                            @php
+                                $i=$i+1;
+                                @endphp
                             @endforeach
 
                         </tbody>

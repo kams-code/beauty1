@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Détail sur la commande</h4>
+        <h4 class="modal-title">Détail sur la approvisionnement </h4>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -37,7 +37,7 @@
                         </label>
                         <br>
                         <label>
-                            <strong>Commande valide?:</strong> {{$commande["etat"] == 1 ? 'OUI' : 'NON'}}
+                            <strong>Est elle livrer?:</strong> {{$commande["etat"] == 1 ? 'OUI' : 'NON'}}
                     
                         </label>
                         
@@ -46,8 +46,17 @@
                 
                
                 <div class="col-md-12">
-                <strong>Date de creation</strong> {{$commande->created_at}}
+                <strong>Date de creation :</strong> {{$commande->created_at}}
                 </div>
+                <div class="col-md-12">
+                        <br>
+                        <label>  <strong>Ajouter par :</strong> @foreach($users as $user)
+                        @if($commande->user_id ==$user['id'])
+                       {{ $user->name }}
+                       @endif
+                       @endforeach
+                    </label>
+                        </div>
                 
 
             <div class="m-b-0">

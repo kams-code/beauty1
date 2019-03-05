@@ -3,7 +3,7 @@
 namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-use App\Tickets;
+use App\Vente;
 use App\Services;
 use App\Clients;
 use DateTime;
@@ -15,12 +15,12 @@ class TicketController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        $tickets=Tickets::pluck('titre','id');
+    {        $Vente=Vente::pluck('titre','id');
         $services=Services::pluck('nom','id');
         $clients=Clients::pluck('nom','id');
-        $Tickets=Tickets::get();
+        $Vente=Vente::get();
      
-        return view('tickets.index',compact('Tickets','services','clients','tickets'));
+        return view('Vente.index',compact('Vente','services','clients','Vente'));
     }
 
     /**
@@ -32,8 +32,8 @@ class TicketController extends Controller
     {
         $services=Services::pluck('nom','id');
         $clients=Clients::pluck('nom','id');
-        $Tickets=Tickets::get();
-        return view('tickets.create',compact('Tickets','services','clients','tickets'));
+        $vente=Vente::get();
+        return view('Vente.create',compact('vente','services','clients'));
     }
 
     /**
@@ -63,7 +63,7 @@ class TicketController extends Controller
             $val=$val. '/' .$value;
            
         }
-        $tick= new Tickets([
+        $tick= new Vente([
             'titre' => $request->get('titre'),
             'type'=> $request->get('type'),
             'datedebut'=> $debut,
@@ -84,7 +84,7 @@ class TicketController extends Controller
         }
 
 
-        $tick= new Tickets([
+        $tick= new Vente([
             'titre' => $request->get('titre'),
             'type'=> $request->get('type'),
             'datedebut'=> $debut,
@@ -135,7 +135,7 @@ class TicketController extends Controller
 
 
  
-        return redirect(route('tickets.index'));
+        return redirect(route('Vente.index'));
    
     }
 
@@ -147,10 +147,10 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        $ticket=Tickets::findOrFail($id);
+        $ticket=Vente::findOrFail($id);
         $services=Services::get()-> where('id_ticket',$id);
         $clients=Clients::get()-> where('id_ticket',$id);
-        return view('tickets.show',compact('ticket','services','clients'));
+        return view('Vente.show',compact('ticket','services','clients'));
     }
  /**
      * Show the form for editing the specified resource.
@@ -163,11 +163,11 @@ class TicketController extends Controller
 
         $services=Services::pluck('nom','id');
         $clients=Clients::pluck('nom','id');
-        $Tickets=Tickets::get();
-        $ticket=Tickets::findOrFail($id);
+        $Vente=Vente::get();
+        $ticket=Vente::findOrFail($id);
       
    
-        return view('tickets.edit', compact('Tickets','services','clients','tickets','ticket'));
+        return view('Vente.edit', compact('Vente','services','clients','Vente','ticket'));
     }
 
     /**
@@ -198,7 +198,7 @@ class TicketController extends Controller
                 $val=$val. '/' .$value;
                
             }
-            $tick= new Tickets([
+            $tick= new Vente([
                 'titre' => $request->get('titre'),
                 'type'=> $request->get('type'),
                 'datedebut'=> $debut,
@@ -219,7 +219,7 @@ class TicketController extends Controller
             }
     
     
-            $tick= new Tickets([
+            $tick= new Vente([
                 'titre' => $request->get('titre'),
                 'type'=> $request->get('type'),
                 'datedebut'=> $debut,
@@ -289,7 +289,7 @@ class TicketController extends Controller
     
     
      
-            return redirect(route('tickets.index'));
+            return redirect(route('Vente.index'));
     } 
 
     /**
@@ -300,7 +300,7 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
-        if( Tickets::findOrFail($id)->delete() ) {
+        if( Vente::findOrFail($id)->delete() ) {
             flash()->success('User has been deleted');
         } else {
             flash()->success('User not deleted');

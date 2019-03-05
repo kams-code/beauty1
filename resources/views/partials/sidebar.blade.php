@@ -77,7 +77,7 @@
                                             <a href="{{ route('stocks.index') }}" class="waves-effect"><i class="md md-account-balance-wallet"></i> <span> Stocks </span> <span class="pull-right"></span></a>
                                          </li>  
                              <li >
-                                    <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Commandes </span> <span class="pull-right"></span></a>
+                                    <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Approvisionnements </span> <span class="pull-right"></span></a>
                                  </li> 
                                  <li >
                                     <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Abonnement </span> <span class="pull-right"></span></a>

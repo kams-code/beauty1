@@ -59,7 +59,32 @@
       
                   <tr class="gradeC">
                                         
-                                           <td> {{ $perm->name}}</td>
+                                           <td> 
+                                                <?php $first = explode("_",  $perm->name);
+                                                foreach ($first as $key => $value) {
+               if($key==0){
+                   $action=$value;
+                   if ($action=="view") {
+                    $action="Voir ";
+                   }
+                   if ($action=="add") {
+                    $action="Ajouter";
+                   }
+                   if ($action=="edit") {
+                    $action="Editer";
+                   }
+                   if ($action=="delete") {
+                    $action="Suprimer";
+                   }
+               }if($key==1){
+                   $entity=$value;
+                   if ($entity=="users") {
+                    $entity="employés";
+                   }
+               }
+            }
+                                                ?>
+                                                                                 {{$action}}/{{$entity}}</td>
                                            @foreach ($roles as $role )
                                           
 

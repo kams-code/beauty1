@@ -136,7 +136,7 @@
                                                                              
                                                                           </tr></thead>
                                                                           <tbody>
-                                                                                <?php $rabet=0; ?>
+                                                                            <?php $rabet=0; ?>
                                                                              
                                                                             @foreach ($tickets as $ticket )
                                                                             @foreach ($usertickets as $usertick )
