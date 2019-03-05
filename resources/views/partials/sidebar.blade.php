@@ -64,6 +64,12 @@
                                                  <li >
                                                         <a href="{{ route('categorieproduits.index') }}" class="waves-effect"><i class="md md-settings"></i> <span> Catégories</span> <span class="pull-right"></span></a>
                                                      </li>
+                                                     <li >
+                                                      <a href="{{ route('stocks.index') }}" class="waves-effect"><i class="md md-account-balance-wallet"></i> <span> Stocks </span> <span class="pull-right"></span></a>
+                                                   </li>  
+                                       <li >
+                                              <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Approvisionnements </span> <span class="pull-right"></span></a>
+                                           </li> 
                                     </ul>
                              
                              </li>
@@ -73,12 +79,7 @@
                                  <li >
                                         <a href="{{ route('fournisseurs.index') }}" class="waves-effect"><i class="md md-group"></i> <span> Fournisseurs </span> <span class="pull-right"></span></a>
                                      </li>  
-                                     <li >
-                                            <a href="{{ route('stocks.index') }}" class="waves-effect"><i class="md md-account-balance-wallet"></i> <span> Stocks </span> <span class="pull-right"></span></a>
-                                         </li>  
-                             <li >
-                                    <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Approvisionnements </span> <span class="pull-right"></span></a>
-                                 </li> 
+                   
                                  <li >
                                     <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Abonnement </span> <span class="pull-right"></span></a>
                                  </li> 

@@ -7,7 +7,7 @@ use App\Vente;
 use App\Services;
 use App\Clients;
 use DateTime;
-class TicketController extends Controller
+class VenteController extends Controller
 {
      /**
      * Display a listing of the resource.
