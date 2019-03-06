@@ -18,6 +18,7 @@ class CreateOrganisationsTable extends Migration
             $table->string('nom');
             $table->string('email');
             $table->string('identifiant');
+            $table->string('password');
             $table->string('pays');
             $table->string('ville');
             $table->string('image');

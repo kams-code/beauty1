@@ -74,7 +74,7 @@
                     $action="Editer";
                    }
                    if ($action=="delete") {
-                    $action="Suprimer";
+                    $action="supprimer";
                    }
                }if($key==1){
                    $entity=$value;

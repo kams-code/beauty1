@@ -321,7 +321,7 @@
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                                     
                                                         <!-- Submit Form Button -->
-                                                        {!! Form::submit('Enregistrer', ['class' => 'btn btn-primary']) !!}
+                                                        {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
                                                     </div>
                                                     {!! Form::close() !!}
                                                 </div>

@@ -33,15 +33,17 @@ class UserController extends Controller
     public function index()
     {
         $users = User::latest()->paginate();
+         $ismploy = "0";
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users','ismploy'));
     }
 
     public function index1()
     {
-        $users = User::latest()->paginate();
+        $users = User::all()->where('isemploye=1');
+        $ismploy = "1";
 
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users','ismploy'));
     }
 
     /**
@@ -49,12 +51,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $roles = Role::pluck('name', 'id');
         $services = Services::pluck('nom', 'id');
         $organisations=Organisations::pluck('nom', 'id');
-        return view('user.new', compact('roles','services','organisations'));
+
+        $ismploy = $request->input('mploy');
+        return view('user.new', compact('roles','services','organisations','ismploy'));
     }
 
     /**
@@ -130,15 +134,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id,Request $request)
     {
         $user = User::find($id);
         $roles =        DB::table('roles')->pluck('name', 'id');
         $permissions = Permission::all('name', 'id');
         $services = Services::pluck('nom', 'id');
         $organisations=Organisations::pluck('nom', 'id');
+        $ismploy = $request->input('mploy');
 
-        return view('user.edit', compact('user', 'roles', 'permissions','services','organisations'));
+        return view('user.edit', compact('user', 'roles', 'permissions','services','organisations','ismploy'));
     }
 
     /**

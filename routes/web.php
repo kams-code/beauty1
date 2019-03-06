@@ -71,6 +71,7 @@ Route::resource('tickets','TicketController');
 
 // ----- les routes de reservations -------
 Route::resource('reservations','ReservationController');
+Route::resource('formules','FormuleController');
 //---- les routes de produits ------
 Route::resource('produits','ProduitController');
  
@@ -95,6 +96,8 @@ Route::resource('ventes','VenteController');
 // ---- les routes de organisations -----
 Route::resource('organisations','OrganisationController');
 Route::resource('horaires','HoraireController');
+Route::resource('paiements','PaiementController');
+Route::resource('taxes','TaxesController');
 
 //---les routes de stocks----
 Route::resource('stocks','StockController');

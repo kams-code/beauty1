@@ -20,14 +20,26 @@
     {!! Form::email('email', null, ['class' => 'form-control','required', 'placeholder' => 'Email']) !!}
     @if ($errors->has('email')) <p class="help-block">{{ $errors->first('email') }}</p> @endif
 </div>
+<?php
+    if ($ismploy == 1) {
+        ?>
+            <div class="form-group">
+               {!! Form::label('service_id','Service') !!}
+               
+                    {!! Form::select('service_id',$services,null, ['class' => 'form-control','required']) !!}
 
-<div class="form-group">
-   {!! Form::label('service_id','Service') !!}
-   
-        {!! Form::select('service_id',$services,null, ['class' => 'form-control','required']) !!}
+
+            </div>
+            <div class="form-group">
+               {!! Form::label('service_id','Service') !!}
+               
+                    {!! Form::select('service_id',$services,null, ['class' => 'form-control','required']) !!}
 
 
-</div>
+            </div>
+        <?php
+    }
+?>
 
 @if (auth()->user()->organisation_id==0)
 <div class="form-group">

@@ -53,7 +53,7 @@
                             </div>
             </div>
 
-            <div class="col-md-6" style="padding: 0px">
+            <div class="col-md-12" style="padding: 0px">
                     <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('etat','Envoyer un mail?') !!}</label>
                     <div class="col-sm-12">
                             <div class="checkbox">
@@ -74,7 +74,7 @@
             </div>
             <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
-                <button class="btn btn-primary">Enregistrer</button>
+                <button class="btn btn-primary">Modifier</button>
             </div>
             {!! Form::close() !!}
         </div>

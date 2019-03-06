@@ -27,9 +27,9 @@
                         <div class="m-b-30 pull-right">
 
                             @can('add_users')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="users/create"><i class="fa fa-plus"></i>&nbsp;Ajouter</button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal"  data-ismploy="<?=$ismploy?>" data-lien="users/create"><i class="fa fa-plus"></i>&nbsp;Ajouter</button> @endcan
                             @can('delete_users')
-                            <button type="button" class="btn btn-primary waves-effect waves-light" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-plus"></i>&nbsp;Suprimer </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect  btn-danger" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash-o"></i>&nbsp;supprimer </button> @endcan
 
                         </div>
                     </div>
@@ -76,12 +76,18 @@
                                         <td> {{ $date}}</td>
 
                                         <td class="actions">
-                                            
-                                                <a href="{{route("users.show",$user)}}" class="on-default seedetails btn btn-primary"  data-target="#con-close-modal"><i class="fa fa-eye"></i></a> 
+                                                <?php
+                                                    if ($ismploy == 1) {
+                                                        ?>
+                                                            <a href="{{route("users.show",$user)}}" class="on-default seedetails btn btn-primary"  data-target="#con-close-modal"><i class="fa fa-eye"></i></a> 
+                                                        <?php
+                                                    }
+                                                ?>
+                                                
                                                 @can('edit_users','delete_users')
 
 
-                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="users/{{$user->id}}/edit" data-id="{{$user->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="users/{{$user->id}}/edit"  data-ismploy="{{$user->isemploye}}"  data-id="{{$user->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                             <a data-toggle="modal" data-target="#deletemodal" data-id="{{$user->id}}" data-lien="users/{{$user->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                         </td>
                                     </tr>

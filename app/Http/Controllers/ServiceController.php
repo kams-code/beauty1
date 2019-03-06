@@ -85,7 +85,7 @@ class ServiceController extends Controller
         $string = bin2hex(openssl_random_pseudo_bytes(10));
 
         $service= new Services([
-            'code' => $string,
+            'code' =>$request->get('code') ,
             'nom'=> $request->get('nom'),
             'description'=> $request->get('description'),
             
