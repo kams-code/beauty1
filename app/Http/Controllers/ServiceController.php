@@ -9,6 +9,7 @@ use App\ServiceUser;
 use Illuminate\Http\Request;
 use App\Categories;
 use Image;
+use DB;
 
 class ServiceController extends Controller
 {
@@ -19,17 +20,19 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $users=User::pluck('name', 'id');
+        $users=User::where('isemploye','=','1')->get();
+        $usersvi=Services_users::all();
         $services=Services::with('categorie')->get();
         $categories=Categories::all();
-        return view('services.index',compact('services','Users','categories'));
+        return view('services.index',compact('services','users','usersvi','categories'));
     }
     public function index1($id)
     {
-        $users=User::all();
+        $users=User::where('isemploye','=','1')->get();
+        $usersvi=Services_users::where('services_id','=',$id)->get();
         $categories=Categories::all();
         $services=Stocks::get();
-        return view('services.add',compact('services','users','categories','id'));
+        return view('services.add',compact('services','users','usersvi','categories','id'));
     }
 
 
@@ -53,11 +56,25 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function add($id)
+    public function add(Request $request)
     {
+        $users=$request->get('my_multi_select1');
+        $id= $request->get('id');
        
-       
-        //return view('services.create');
+       $val="";
+
+       $data=array($id);
+        $insertQuery = 'DELETE FROM services_users WHERE services_id = ?';
+        DB::insert($insertQuery, $data);
+
+       foreach($users as $key=>$value)
+       {
+            $data=array($value,$id);
+            $insertQuery = 'INSERT into services_users (user_id,services_id) VALUES(?,?)';
+            DB::insert($insertQuery, $data);
+       }
+
+       return redirect(route('services.index'));
     }
 
     /**
@@ -102,7 +119,9 @@ class ServiceController extends Controller
                  Image::make($image)->resize(800,400)->save($location); 
                 $request->merge(['image' => $filename]);
                  $service->image=$filename;
-          }
+          }else{
+            $service->image="";
+        }
          
             
 
@@ -223,6 +242,8 @@ class ServiceController extends Controller
                $organisation['image'] = $filename;
                
                $request->merge(['image' => $filename ]);
+        }else{
+            $service->image="";
         }
         $service->update($request->except('is_promote'));}
        

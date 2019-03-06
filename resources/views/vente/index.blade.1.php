@@ -71,7 +71,7 @@
                                             <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="ventes/{{$vente->id}}" data-id="{{$vente->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_ventes','delete_ventes')
 
 
-                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="ventes/{{$vente->id}}/edit" data-id="{{$vente->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="ventes/{{$vente->id}}/edit" data-id="{{$vente->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                             <a data-toggle="modal" data-target="#deletemodal" data-id="{{$vente->id}}" data-lien="ventes/{{$vente->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                         </td>
                                     </tr>

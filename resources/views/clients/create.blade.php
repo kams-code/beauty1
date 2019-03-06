@@ -6,13 +6,11 @@
     <div class="modal-body">
         <div class="row">
             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('clients.store'),'files'=>true]) !!}
-            <div class="col-md-12">
-                <h4>Informations </h4>
-            </div>
+           
             <div class="col-md-12" style="padding: 0px">
                 <center>
-                    <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;" required>
-                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" required>
+                    <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;" >
+                    <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;" >
 
                 </center>
             </div>
@@ -46,12 +44,7 @@
                     {!! Form::text('adresse',null, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('pays','Pays*') !!}</label>
-                <div class="col-sm-12">
-                    {!! Form::text('pays',null, ['class' => 'form-control','required']) !!}
-                </div>
-            </div>
+          
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('ville','Ville*') !!}</label>
                 <div class="col-sm-12">
@@ -66,7 +59,7 @@
             </div>
             <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
-                <button class="btn btn-primary">Modifier</button>
+                <button class="btn btn-primary">Ajouter</button>
             </div>
             {!! Form::close() !!}
         </div>

@@ -55,7 +55,7 @@
                                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
                                                 
                                                                     <!-- Submit Form Button -->
-                                                                    {!! Form::submit('Modifier', ['class' => 'btn btn-primary']) !!}
+                                                                    {!! Form::submit('Ajouter', ['class' => 'btn btn-primary']) !!}
                                                                 </div>
                                                                 {!! Form::close() !!}
                                                             </div>
@@ -107,7 +107,7 @@
                                                                      @can('edit_roles','delete_roles')
 
 
-                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="roles/{{$role->id}}/edit" data-id="{{$role->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                    <a data-toggle="modal" data-target="#con-close-modal" data-lien="roles/{{$role->id}}/edit" data-id="{{$role->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                     <a data-toggle="modal" data-target="#deletemodal" data-id="{{$role->id}}" data-lien="roles/{{$role->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                 
                                                              </td>

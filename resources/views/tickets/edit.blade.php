@@ -101,7 +101,40 @@
                                             $("#conditional_part1").show();
                                       }
                                     });</script>
-
+    
+    <div class="col-md-12">
+        <div class="col-md-6" style="padding: 0px">
+                <div class="col-sm-12">
+                        <div class="checkbox">
+                                <input checked  id="more_info3" type="checkbox" name="formule" > 
+                                <label for="checkbox"   >
+                                    Formules
+                            </label>                      
+                            </div>
+                
+    </div>
+            </div>
+    
+            <div class="col-md-6" >
+                <div class="col-md-12" style="padding: 0px" id="conditional_part1">
+                 <label for="inputPassword3" class="col-sm-3 control-label">{!! Form::label('service_id','Formules') !!}</label>
+                 <div class="col-sm-12">
+                     {!! Form::select('formules[]', $formules, null, ['class' => 'js-example-basic-multiple form-control','multiple'=>'multiple']) !!}
+                 </div>
+             </div>
+         </div>
+            <script>$('#more_info3').change(function() {
+                     if(this.checked != true){
+                           $("#conditional_part3").hide();
+                      }
+                   else{
+                         $("#conditional_part3").show();
+                   }
+                 });</script>
+        
+    </div>
+    
+    
 
 
 

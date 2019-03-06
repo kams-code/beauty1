@@ -19,7 +19,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">Services</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="home">Acceuil</a></li>
+                                    <li><a href="home">Accueil</a></li>
                                     <li class="active">Services</li>
                                 </ol>
                             </div>
@@ -45,9 +45,12 @@
                                         <tr>
                                             <th><input  id="checkAll" type="checkbox"></th>
                                             <th>Image</th>
-                                            <th>Catégorie</th>
                                             <th>Nom</th>
-                                            <th>Date de création</th>
+                                            <th>Code</th>
+                                            <th>Catégorie</th>
+                                            <th>Montant</th>
+                                            <th>Affecter à</th>
+                                            <th>Description</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -62,25 +65,57 @@
                                                 <input  type="checkbox" class="check" onclick="verified();" value="{{ $service->id }}"  name="etat">
                                             </td>
                                             <td>
-                                                <img style="width: 70px;height: 70px" src="{{asset('images/'.$service->image)}}" alt="user-img" >
+
+                                                    @if ($service->image!=null)
+                                                    <img style="width: 70px;height: 70px" src="{{asset('images/'.$service->image)}}" alt="user-img" > 
+                                                        @else
+                                                        <img style="width: 70px;height: 70px" src="{{asset('images/'."1551778501.png")}}" alt="user-img" >
+                                                    @endif
+                                                
                                             </td>
+                                            <td> {{ $service->nom }}</td>
+                                            <td> {{ $service->code }}</td>
                                             <td> 
                                             @foreach($categories as $categorie)
                                             @if($service->categorie_id==$categorie->id)
                                             {{ $categorie->nom}}
                                             @endif
                                             @endforeach</td>
-                                            <td> {{ $service->nom }}</td>
-                                            <td> {{ $date }}</td>
+                                            <td> {{ $service->montant }}</td>
+                                            <td><?php
+                                                        $list= "";
+                                                    ?>
+                                                @foreach ($users as $user )
+                                                    
+                                                    @foreach ($usersvi as $uservi )
+
+                                                        <?php
+
+                                                            if ($uservi->services_id == $service->id) {
+                                                                if ($uservi->user_id == $user->id) {
+                                                                    $list .=",".$user->nom;
+                                                                }
+                                                            }
+                                                            
+                                                            
+                                                        ?>
+                                                    @endforeach
+                                            
+                                                @endforeach
+                                                <?php
+                                                    echo substr($list, 1);
+                                                ?>
+                                            </td>
+                                           
+                                            <td> {{ $service->description }}</td>
 
                                             <td class="actions">
                                                 
-                                                <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="services/{{$service->id}}" data-id="{{$service->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_organisations','delete_organisations')
+                                              @can('edit_organisations','delete_organisations')
 
-                                                
-                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="services/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                                <a data-toggle="modal" data-target="#deletemodal" data-id="{{$service->id}}" data-lien="services/{{$service->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>
-                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="servicespersonnel/{{$service->id}}" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-user"></i></a>
+                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="services/{{$service->id}}/edit" data-id="{{$service->id}}" class="btn-success btnedit btn btn-primary"   title="Editer"><i class="fa fa-pencil"></i></a>
+                                                <a data-toggle="modal" data-target="#deletemodal" data-id="{{$service->id}}" data-lien="services/{{$service->id}}" class="btn-delete btndelete btn btn-danger"  title="Supprimer"><i class="fa fa-trash-o"></i></a>
+                                                <a data-toggle="modal" data-target="#con-close-modal" data-lien="servicespersonnel/{{$service->id}}" data-id="{{$service->id}}" class="btn-delete btnedit btn btn-primary" title="Affecter"><i class="fa fa-user"></i></a>
 
                                                 @endcan
                                             </td>

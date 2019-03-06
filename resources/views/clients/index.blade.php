@@ -44,10 +44,11 @@
                                         <th><input  id="checkAll" type="checkbox"></th>
                                         <th>Image</th>
                                         <th>Nom</th>
-                                       
+                                        <th>Prenom</th>
                                         <th>Téléphone</th>
                                         <th>Email</th>
-                                        <th>Pays</th>
+                                        <th>Ville</th>
+                                        <th>Adresse</th>
                                         
                                         
                                         
@@ -68,20 +69,21 @@
                                             <img style="width: 70px;height: 70px" src="{{asset('images/'.$client->image)}}" alt="user-img" >
                                         </td>
                                         <td> {{ $client->nom }}</td>
-                                       
+                                        <td> {{ $client->prenom }}</td>
                                         <td> {{ $client->telephone}}</td>
                                         <td> {{ $client->email }}</td>
-                                        <td> {{ $client->pays }}</td>
+                                        <td> {{ $client->ville }}</td>
+                                        <td> {{ $client->adresse }}</td>
                                        
 
                                        
 
                                         <td class="actions">
                                             
-                                            <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="clients/{{$client->id}}" data-id="{{$client->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_clients','delete_clients')
+                                         @can('edit_clients','delete_clients')
 
 
-                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="clients/{{$client->id}}/edit" data-id="{{$client->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="clients/{{$client->id}}/edit" data-id="{{$client->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                             <a data-toggle="modal" data-target="#deletemodal" data-id="{{$client->id}}" data-lien="clients/{{$client->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                         </td>
                                     </tr>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Tickets;
 use App\Services;
 use App\Clients;
+use App\Formule;
 use DateTime;
 class TicketController extends Controller
 {
@@ -34,8 +35,13 @@ class TicketController extends Controller
         $services=Services::pluck('nom','id');
         $clients=Clients::pluck('nom','id');
         $Tickets=Tickets::get();
+<<<<<<< HEAD
         $formules=Formules::pluck('nom','id');
         return view('tickets.create',compact('Tickets','services','clients','tickets'));
+=======
+        $formules=Formule::pluck('nom','id');
+        return view('tickets.create',compact('formules','Tickets','services','clients','tickets'));
+>>>>>>> 406d9ae819cf09552bbf295321b263cfe32edb01
     }
 
     /**
@@ -46,7 +52,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-       
+       dd($request);
         $first = explode(" - ",  $request->get('periode'));
         foreach ($first as $key => $value) {
            if($key==0){
@@ -55,7 +61,26 @@ class TicketController extends Controller
                $fin=DateTime::createFromFormat('d/m/Y', $value);
            }
         }
-      
+        if($request->get('formule')=="on"){
+            $formules=$request->get('formules');
+           
+            $val="";
+            foreach($formules as $key=>$value)
+            {
+                $val=$val. '/' .$value;
+               
+            }
+            $tick= new Tickets([
+                'titre' => $request->get('titre'),
+                'type'=> $request->get('type'),
+                'datedebut'=> $debut,
+                'datefin'=>$fin,
+                'valeur'=> $request->get('valeur'),
+                'formules_id'=>$val
+              ]);
+    
+        
+        }
         if($request->get('client')=="on"){
         $clients=$request->get('clients');
        
@@ -133,6 +158,15 @@ class TicketController extends Controller
   $service->update();
     }
     }
+    if($request->get('formule')=="on"){
+        foreach($formules as $key=>$value)
+        { $string = bin2hex(openssl_random_pseudo_bytes(10));
+           $formule=Formule::get()->where('id',$value)->first();
+           $formule['codepromo']=$string ;
+           $formule['id_ticket']=$tick->id;
+      $formule->update();
+        }
+        }
 
 
 

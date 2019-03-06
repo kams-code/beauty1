@@ -1,7 +1,7 @@
 <div class="modal-content">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title">Modifier un institut</h4>
+        <h4 class="modal-title">Ajouter un institut</h4>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -81,7 +81,7 @@
             </div>
             <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px">
                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button>
-                <button class="btn btn-primary">Modifier</button>
+                <button class="btn btn-primary">Ajouter</button>
             </div>
             {!! Form::close() !!}
         </div>

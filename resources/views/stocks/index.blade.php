@@ -30,7 +30,7 @@
                         <div class="m-b-30 pull-right">
                               
                             @can('add_stocks')
-                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="stocks/create"><i class="fa fa-pencil"></i>&nbsp;Modifier </button> @endcan
+                            <button type="button" class="btn btn-primary waves-effect waves-light btnadd"  data-toggle="modal" data-target="#con-close-modal" data-lien="stocks/create"><i class="fa fa-pencil"></i>&nbsp;Ajouter </button> @endcan
                           
                             @can('delete_stocks')
                             <button type="button" class="btn btn-primary waves-effect  btn-danger" id="boutdellAll" style="display: none;" data-toggle="modal" data-target="#deletemodal"><i class="fa fa-trash-o"></i>&nbsp;supprimer </button> @endcan

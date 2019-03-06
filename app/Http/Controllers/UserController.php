@@ -32,7 +32,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::latest()->paginate();
+        $users = User::where('isemploye','=','0')->get();
          $ismploy = "0";
 
         return view('user.index', compact('users','ismploy'));
@@ -40,7 +40,7 @@ class UserController extends Controller
 
     public function index1()
     {
-        $users = User::all()->where('isemploye=1');
+        $users = User::where('isemploye','=','1')->get();
         $ismploy = "1";
 
         return view('user.index', compact('users','ismploy'));
@@ -91,9 +91,9 @@ class UserController extends Controller
         $request->merge(['password' => bcrypt($request->get('password'))]);
         if ($user1->organisation_id !=0) {
            
-        $request->merge(['organisation_id' =>$user1->organisation_id ]);
+            $request->merge(['organisation_id' =>$user1->organisation_id ]);
         }
-        
+        $request->merge(['isemploye' => $request->get('isemploye')]);
        
         // Create the user
         if ( $user = User::create($request->except('roles', 'permissions')) ) {
@@ -106,7 +106,7 @@ class UserController extends Controller
             flash()->error('Unable to create user.');
         }
 
-        return redirect()->route('users.index');
+        //return redirect()->route('users.index');
     }
 
     /**

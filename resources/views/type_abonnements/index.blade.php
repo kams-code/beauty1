@@ -20,7 +20,7 @@
                             <div class="col-sm-12">
                                 <h4 class="pull-left page-title">type_abonnements</h4>
                                 <ol class="breadcrumb pull-right">
-                                    <li><a href="home">Acceuil</a></li>
+                                    <li><a href="home">Accueil</a></li>
                                     <li class="active">Editer types d'abonnements</li>
                                 </ol>
                             </div>
@@ -80,7 +80,7 @@
                                                             </div>
                                                             <div class="col-md-12" style="border:0px;text-align: right;margin-top: 20px"> 
                                                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Fermer</button> 
-                                                                <button class="btn btn-primary">Modifier</button>
+                                                                <button class="btn btn-primary">Ajouter</button>
                                                             </div> 
                                        {!! Form::close() !!}
                                                         </div> 

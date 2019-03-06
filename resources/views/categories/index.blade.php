@@ -67,7 +67,7 @@
                                              @can('edit_categories','delete_categories')
 
 
-                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="categories/{{$categorie->id}}/edit" data-id="{{$categorie->id}}" class="btn-delete btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="categories/{{$categorie->id}}/edit" data-id="{{$categorie->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
                                             <a data-toggle="modal" data-target="#deletemodal" data-id="{{$categorie->id}}" data-lien="categories/{{$categorie->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @endcan
                                         </td>
                                     </tr>

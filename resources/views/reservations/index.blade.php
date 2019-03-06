@@ -1,8 +1,7 @@
 @extends('layouts.mainlayout')
 @include('partials.topbar')
 @include('partials.sidebar')
-
-                                    @section('content')
+@section('content')
                    
             <div class="content-page">
                 <!-- Start content -->
