@@ -75,7 +75,11 @@
                                                    </li>  
                                        <li >
                                               <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Approvisionnements </span> <span class="pull-right"></span></a>
+<<<<<<< HEAD
+                                           </li> 
+=======
                                            </li>
+>>>>>>> 0b667b786da37f65368c36e3e9f36f37ae9ef336
                                     </ul>
                              
                              </li>
@@ -85,7 +89,11 @@
                                  <li >
                                         <a href="{{ route('fournisseurs.index') }}" class="waves-effect"><i class="md md-group"></i> <span> Fournisseurs </span> <span class="pull-right"></span></a>
                                      </li>  
+<<<<<<< HEAD
+                   
+=======
                      
+>>>>>>> 0b667b786da37f65368c36e3e9f36f37ae9ef336
                                  <li >
                                     <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Abonnement </span> <span class="pull-right"></span></a>
                                  </li> 

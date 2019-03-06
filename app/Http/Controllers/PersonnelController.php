@@ -3,6 +3,23 @@
 namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
+use App\Personnel;
+use App\Commandes;
+use App\Reservations;
+use App\Produits;
+use App\Services;
+use App\User;
+use App\Roles;use App\Permission;
+use App\Http\Requests;
+use Charts;
+use Image;
+use  App\Factures;
+use  App\Jours;
+use  App\Plannings;
+use  App\Organisations;
+
+
+use DB;
 
 class PersonnelController extends Controller
 {
@@ -13,7 +30,8 @@ class PersonnelController extends Controller
      */
     public function index()
     {
-        //
+        $personnels = Personnel::get();
+        return view('personnel.index',compact('personnels'));
     }
 
     /**
@@ -23,7 +41,7 @@ class PersonnelController extends Controller
      */
     public function create()
     {
-        //
+        return view('Personnel.create');
     }
 
     /**
@@ -34,7 +52,44 @@ class PersonnelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $extension = Input::file('cv')->getClientOriginalExtension();
+        $filename = rand(11111111, 99999999). '.' . $extension;
+        Input::file('cv')->move(
+          base_path().'/public/files/uploads/', $filename
+        );
+        if(\Auth::user()->level == 2) {
+            $approved = $request['approved'];
+        } else {
+            $approved = 3;
+        }
+        dd($filename);
+        $fullPath = '/public/files/uploads/' . $filename;
+        $upload = new Uploads(array(
+            'name' => $request['name'],
+            'format' => $extension,
+            'path' => $fullPath,
+            'approved' => $approved,
+        ));
+        $upload->save();
+        $uploads = Uploads::orderBy('approved')->get();
+
+
+
+
+
+
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getPersonnelOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+              $request->merge(['image' => $filename]);
+               
+        }
+        $personnel = Personnel::create($request->all());
+        return redirect(route('personnel.index'));
     }
 
     /**
@@ -45,7 +100,11 @@ class PersonnelController extends Controller
      */
     public function show($id)
     {
-        //
+        $personnel = Personnel::get()->where('id',$id)->first();
+
+        $reservations = Reservations::get()->where('Personnel_id','=',$id);
+        $services = Services::all();
+        return view('Personnel.show',compact('personnel','services','reservations'));
     }
 
     /**
@@ -56,7 +115,8 @@ class PersonnelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $Personnel = Personnel::findOrFail($id);
+        return view('Personnel.edit',compact('Personnel'));
     }
 
     /**
@@ -68,7 +128,9 @@ class PersonnelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Personnel = Personnel::findOrFail($id);
+        $Personnel->update($request->all());
+        return redirect(route('personnel.index'));
     }
 
     /**
@@ -79,10 +141,10 @@ class PersonnelController extends Controller
      */
     public function destroy($id)
     {
-        if( Personnels::findOrFail($id)->delete() ) {
-            flash()->success('User has been deleted');
+        if( Personnel::findOrFail($id)->delete() ) {
+            flash()->success('equipement supprime');
         } else {
-            flash()->success('User not deleted');
+            flash()->success('equipement en vu');
         }
 
         return redirect()->back();
