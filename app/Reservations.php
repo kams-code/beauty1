@@ -8,12 +8,12 @@ class Reservations extends Model
 
 
 {
-    protected $fillable = [  'organisation_id',
+    protected $fillable = [ 
        'code',
-       'datedebut',
-       'datefin',
-       'client_id',
-       'service_id'
+       'datereserver',
+       'heurereserver',
+       'avances',
+       'etat'
     ];
 
     public function client(){
@@ -22,6 +22,17 @@ class Reservations extends Model
 
     public function service(){
         return $this->belongsTo('App\Services');
+    }
+
+    public function formule(){
+        return $this->belongsTo('App\Formule');
+    }
+    public function taxe(){
+        return $this->belongsTo('App\Taxes');
+    }
+
+    public function paiement(){
+        return $this->belongsTo('App\Paiement');
     }
    
 }

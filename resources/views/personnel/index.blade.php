@@ -66,7 +66,19 @@
                                             <input  type="checkbox" class="check" onclick="verified();" value="{{ $personnel->id }}"  name="etat">
                                         </td>
                                         <td>
-                                            <img style="width: 70px;height: 70px" src="{{asset('images/'.$personnel->image)}}" alt="user-img" >
+                                            <?php
+                                                if (strlen($personnel->image) == 0) {
+                                                    ?>
+                                                        <img style="width: 70px;height: 70px" src="{{asset('images/profile.jpg')}}" alt="user-img" >
+                                                    <?php
+                                                }
+                                                else{
+                                                    ?>
+                                                        <img style="width: 70px;height: 70px" src="{{asset('images/'.$personnel->image)}}" alt="user-img" >
+                                                    <?php
+                                                }
+                                            ?>
+                                            
                                         </td>
                                         <td> {{ $personnel->nom }}</td>
                                         <td> {{ $personnel->prenom }}</td>
@@ -83,7 +95,9 @@
                                     
 
                                             <a data-toggle="modal" data-target="#con-close-modal" data-lien="personnels/{{$personnel->id}}/edit" data-id="{{$personnel->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-pencil"></i></a>
-                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$personnel->id}}" data-lien="personnels/{{$personnel->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  @end
+                                            <a data-toggle="modal" data-target="#deletemodal" data-id="{{$personnel->id}}" data-lien="personnels/{{$personnel->id}}" class="btn-delete btndelete btn btn-danger"><i class="fa fa-trash-o"></i></a>  
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="utilisateurpersonnel/{{$personnel->id}}" data-id="{{$personnel->id}}" class="btn-delete btnedit btn btn-primary" title="Affecter"><i class="fa fa-user"></i></a>
+                                            <a data-toggle="modal" data-target="#con-close-modal" data-lien="plannings/{{$personnel->id}}/edit" data-id="{{$personnel->id}}" class="btn-success btnedit btn btn-primary"><i class="fa fa-clock-o"></i></a>
                                         </td>
                                     </tr>
                                     @endforeach

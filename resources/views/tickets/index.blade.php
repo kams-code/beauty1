@@ -51,7 +51,7 @@
                                         <th><input  id="checkAll" type="checkbox"></th>
                                         <th>Titre</th>
                                                                             <th>Type</th>
-                                                                            <th>Etat</th>
+                                                                            
                                         <th>Date de début</th>
                                         <th>Date de fin</th>
                                         <th>Actions</th>
@@ -68,7 +68,7 @@
                                       
                                         <td> {{ $ticket->titre }}</td>
                                         <td> {{ $ticket->type }}</td>
-                                        <td> {{ $ticket['etat']}}</td>
+                                       
                                         <td> {{ $ticket->datedebut }}</td>
 
                                         <td> {{ $ticket->datefin }}</td>

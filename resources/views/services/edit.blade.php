@@ -25,7 +25,7 @@
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('code','Code*') !!}</label>
                 <div class="col-sm-12">
-                    {!! Form::text('code',null, ['class' => 'form-control','required']) !!}
+                    {!! Form::text('code',$service->code, ['class' => 'form-control','required']) !!}
                 </div>
             </div>
             </br>

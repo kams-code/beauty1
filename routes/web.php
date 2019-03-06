@@ -36,6 +36,8 @@ Route::post( '/organisations/{id}','OrganisationController@update');
 Route::get('/permissions', 'RoleController@index1')->name('permissions');
 Route::get('/rolespermissions', 'RoleController@addrolepermission')->name('rolespermissions');
 Route::get('/servicespersonnel/{id}', 'ServiceController@index1')->name('servicespersonnel');
+Route::get('/utilisateurpersonnel/{id}', 'PersonnelController@index1')->name('utilisateurpersonnel');
+
 Route::post('/services/add', 'ServiceController@add')->name('services/add');
 Route::get('/reservation/service/personnel/{id}', 'ReservationController@index1')->name('reservationservicepersonnel');
 Route::get('/paramettres', 'OrganisationController@index1')->name('paramettres');

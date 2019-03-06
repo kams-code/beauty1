@@ -9,9 +9,14 @@
            
             <div class="col-md-12" style="padding: 0px">
                 <center>
-                    <img id="imgpreview" src="{{asset('images/'.$client->image)}}" style="width: 100px;cursor: pointer;" required>
+                    @if ($client->image!=null)
+                    <img id="imgpreview" class="thumb-lg img-circle img-thumbnail" src="{{asset('images/'.$client->image)}}" style="width: 100px;cursor: pointer;">
+                    
+                        @else
+                        <img id="imgpreview" src="/images/camera_icon.png" style="width: 100px;cursor: pointer;">
+           
+                    @endif
                     <input id="inputimage" type="file" name="imageup" accept="images/*" style="display: none;">
-
                 </center>
             </div>
             <div class="col-md-6" style="padding: 0px">
@@ -46,12 +51,7 @@
                     <input type="text" class="form-control" name="adresse" value="{{$client->adresse}}" required="">
                 </div>
             </div>
-            <div class="col-md-6" style="padding: 0px">
-                <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('pays','Pays*') !!}</label>
-                <div class="col-sm-12">
-                    <input type="text" class="form-control" name="pays" value="{{$client->pays}}" required="">
-                </div>
-            </div>
+
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('ville','Ville*') !!}</label>
                 <div class="col-sm-12">

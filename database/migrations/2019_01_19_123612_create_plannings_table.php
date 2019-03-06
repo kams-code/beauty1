@@ -15,12 +15,13 @@ class CreatePlanningsTable extends Migration
     {
         Schema::create('plannings', function (Blueprint $table) {
             $table->increments('id');
-            $table->time('heureDeb');
-            $table->time('heureFin');
-            $table->date('dateDeb');
-            $table->date('dateFin');
-            $table->string('jours')->nullable();
-            $table->string('organisation_id')->nullable();             $table->timestamps();
+            
+            $table->string('jour');
+            $table->boolean('etat');
+            $table->time('heureouverture');
+            $table->time('heurefermeture');
+            $table->string('user_id');
+            $table->timestamps();
         });
 
         

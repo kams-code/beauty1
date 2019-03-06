@@ -52,13 +52,14 @@ class OrganisationController extends Controller
        
         $produits =new Organisations([ 
             'nom'=> $request->get('nom'),
-        'pays'=> $request->get('nom'),
-        'ville'=> $request->get('nom'),
-        'description'=> $request->get('nom'),
-        'adresse'=> $request->get('nom'),
+        'pays'=> $request->get('pays'),
+        'ville'=> $request->get('ville'),
+        'description'=> $request->get('description'),
+        'adresse'=> $request->get('adresse'),
         'telephone'=> $request->get('telephone'),
         'email'=> $request->get('email'),
-        'identifiant'=> $request->get('name')
+        'identifiant'=> $request->get('name'),
+        'password'=>  $request->merge(['password' => bcrypt($request->get('password'))])
 
         
        ]);

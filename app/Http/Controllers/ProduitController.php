@@ -80,6 +80,9 @@ class ProduitController extends Controller
          
           $produits->image=$filename;
    }
+   else{
+      $produits->image="";
+   }
    $user=Auth::user();
       
        $produits['organisation_id']=$user->organisation_id;
@@ -87,12 +90,22 @@ class ProduitController extends Controller
        if ($request->get('vendable') =="on"){
         $produits['vendable']=1;
         $produits['prix']=$request->get('prix');
-      }if ($request->get('stockable') =="on"){
-        $produits['stockable']=1;
-        
-      }
+        }
+        else{
+          $produits['vendable']=0;
+          $produits['prix']=0;
+        }
+        if ($request->get('stockable') =="on"){
+          $produits['stockable']=1;
+          $produits['quantite']=$request->get('quantite');
+        }
+        else{
+          $produits['stockable']=0;
+          $produits['quantite']= 0;
+        }
+        $produits['fournisseur_id']=$request->get('fournisseur_id');
       $produits['categori_id']=$request->get('categorie_id');
-      $produits['quantite']=$request->get('quantite');
+      
       $produits['quantite_limite']=5;
         $produits->save();
         if ($request->get('stockable') =="on"){
@@ -120,8 +133,8 @@ class ProduitController extends Controller
     public function show(Request $request,$id)
     {
         $produit = Produits::find($id);
-        
-        return view('produits.show',compact('produit'));
+        $fournisseurs = $produit->fournisseur()->get();
+        return view('produits.show',compact('produit','fournisseurs'));
     }
 
     /**

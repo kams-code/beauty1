@@ -24,9 +24,9 @@ class CreatePersonnelsTable extends Migration
             $table->string('email');
             $table->string('cv');
             $table->integer('telephone');
-            $table->integer('services_id');
-            $table->integer('user_id');
-            $table->string('planning_id');
+            $table->integer('services_id')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->string('planning_id')->nullable();
             $table->string('organisation_id')->nullable();;  
             $table->timestamps();
         });
