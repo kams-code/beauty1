@@ -35,13 +35,8 @@ class TicketController extends Controller
         $services=Services::pluck('nom','id');
         $clients=Clients::pluck('nom','id');
         $Tickets=Tickets::get();
-<<<<<<< HEAD
-        $formules=Formules::pluck('nom','id');
-        return view('tickets.create',compact('Tickets','services','clients','tickets'));
-=======
         $formules=Formule::pluck('nom','id');
         return view('tickets.create',compact('formules','Tickets','services','clients','tickets'));
->>>>>>> 406d9ae819cf09552bbf295321b263cfe32edb01
     }
 
     /**

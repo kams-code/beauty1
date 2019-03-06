@@ -55,6 +55,7 @@ Route::resource('categories','CategorieController');
 Route::resource('categorieproduits','CategorieproduitController');
 // ------ les routes de clients ---------
 Route::resource('clients','ClientController');
+Route::resource('personnels','PersonnelController');
 Route::resource('commandes','CommandeController');
 Route::resource('type_abonnements','Type_abonnementController');
 Route::resource('abonnements','AbonnementController');
