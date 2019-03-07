@@ -24,7 +24,7 @@
                 <div class="col-md-6" style="padding: 0px">
                     <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('fournisseur_id','Fournisseur*', ['class' => 'pull-left']) !!}</label>
                     <div class="col-sm-12">
-                        {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control','required']) !!}
+                        {!! Form::select('fournisseur_id',$fournisseurs,null, ['class' => 'form-control']) !!}
                      </div>
                 </div>
                 <div class="col-md-6" style="padding: 0px">

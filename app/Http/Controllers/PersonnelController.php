@@ -67,18 +67,6 @@ class PersonnelController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-        dd($request);
-        $extension = $request->file('cv')->getClientOriginalExtension();
-        $filename = rand(11111111, 99999999). '.' . $extension;
-        Request::file('cv')->move(
-          base_path().'/public/files/uploads/', $filename
-        );
-        if(\Auth::user()->level == 2) {
-            $approved = $request['approved'];
-        } else {
-            $approved = 3;
-=======
         if ($request->hasfile('cvup')) {
             $extension = $request->file('cvup')->getClientOriginalExtension();
             $filenamepdf = rand(11111111, 99999999). '.' . $extension;
@@ -90,7 +78,6 @@ class PersonnelController extends Controller
         }
         else{
             $request->merge(['cv' => '']);
->>>>>>> 26a9eb48f0c1ffacdfa2d005a21aefd917d7660a
         }
 
         if($request->hasfile('imageup'))

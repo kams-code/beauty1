@@ -4,10 +4,10 @@ namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Vente;
-use App\Services;
-use App\Clients;
-use DateTime;
-class VenteController extends Controller
+use App\Produits;
+
+
+class venteController extends Controller
 {
      /**
      * Display a listing of the resource.
@@ -15,12 +15,12 @@ class VenteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        $Vente=Vente::pluck('titre','id');
-        $services=Services::pluck('nom','id');
-        $clients=Clients::pluck('nom','id');
+    { $produits=Produits::pluck('nom', 'id');
+        $Produits=Produits::get();
         $Vente=Vente::get();
-     
-        return view('Vente.index',compact('Vente','services','clients','Vente'));
+        return view('vente.index',compact('Vente','produits','Produits'));
+
+        
     }
 
     /**
@@ -29,12 +29,17 @@ class VenteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        $services=Services::pluck('nom','id');
-        $clients=Clients::pluck('nom','id');
-        $vente=Vente::get();
-        return view('Vente.create',compact('vente','services','clients'));
+    {$produits=Produits::pluck('nom', 'id');
+        $Produits=Produits::get();
+        $Vente=Vente::get();
+        return view('vente.create',compact('Vente','produits','Produits'));
     }
+    public function remove()
+    {$produits=Produits::pluck('nom', 'id');
+        $Produits=Produits::get();
+        $Vente=Vente::get();
+        return view('vente.remove',compact('Vente','produits','Produits'));
+ }
 
     /**
      * Store a newly created resource in storage.
@@ -44,98 +49,44 @@ class VenteController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $first = explode(" - ",  $request->get('periode'));
-        foreach ($first as $key => $value) {
-           if($key==0){
-               $debut=DateTime::createFromFormat('d/m/Y', $value);
-           }if($key==1){
-               $fin=DateTime::createFromFormat('d/m/Y', $value);
-           }
-        }
-      
-        if($request->get('client')=="on"){
-        $clients=$request->get('clients');
-       
         $val="";
-        foreach($clients as $key=>$value)
+        foreach($produits as $key=>$value)
         {
             $val=$val. '/' .$value;
            
         }
-        $tick= new Vente([
-            'titre' => $request->get('titre'),
-            'type'=> $request->get('type'),
-            'datedebut'=> $debut,
-            'datefin'=>$fin,
-            'valeur'=> $request->get('valeur'),
-            'clients_id'=>$val
-          ]);
-
-    
-    }if($request->get('service')=="on"){
-            $services=$request->get('services');
-       
-        $val="";
-        foreach($services as $key=>$value)
-        {
-            $val=$val. '/' .$value;
+        $vente= new Vente([
            
-        }
-
-
-        $tick= new Vente([
-            'titre' => $request->get('titre'),
-            'type'=> $request->get('type'),
-            'datedebut'=> $debut,
-            'datefin'=> $fin,
-            'valeur'=> $request->get('valeur'),
-            'services_id'=>$val
+            'client_id'=> $request->get('valeur'),
+            'produits_id_qte'=>$val
           ]);
-        }
-        if(new DateTime() > new DateTime($request->get('datedebut'))){
-            $tick['etat']="Inactif";
-        
-        }elseif(new DateTime() < new DateTime($request->get('datedebut')))
-         {
-            $tick['etat']="En cour";
-
-         }
-         elseif(new DateTime() > new DateTime( $request->get('datefin')))
-         {
-            $tick['etat']="Expirer";
-
-         }
-        
-  $tick->save();
 
 
 
 
 
+        $produit=Produits::where('id', $request->get('produit_id'))->first();
+        $stock= new Stocks([
+            'quantite_initial' => $produit['quantite'],
+            //'quantite_limite'=> $produit['quantite_limite'],
+            'quantite_limite'=> $request->get('quantite'),
+            'quantite_final'=>$produit['quantite']- $request->get('quantite'),
+            'produit_id'=> $request->get('produit_id'),
+            'type'=> $request->get('type')
+          ]);
+          $produit['quantite']=$stock['quantite_final'];
+              $produit->update();
+              $stock->save();
 
-  if($request->get('client')=="on"){
-    foreach($clients as $key=>$value)
-    { $string = bin2hex(openssl_random_pseudo_bytes(10));
-       $client=Clients::get()->where('id',$value)->first();
-       $client['codepromo']=$string ;
-       $client['id_Vente']=$tick->id;
-  $client->update();
+        return redirect(route('vente.index'));
+   
     }
-}if($request->get('service')=="on"){
-    foreach($services as $key=>$value)
-    { $string = bin2hex(openssl_random_pseudo_bytes(10));
-       $service=Services::get()->where('id',$value)->first();
-       $service['codepromo']=$string ;
-       $service['id_Vente']=$tick->id;
-  $service->update();
-    }
-    }
-
-
-
- 
-        return redirect(route('Vente.index'));
+    public function sortir(Request $request)
+    {
+        $produit_id = $request->get('produit_id');
+       $quantite= $request->get('quantite');
+       dd($produit_id);
+        return redirect(route('vente.index'));
    
     }
 
@@ -147,12 +98,13 @@ class VenteController extends Controller
      */
     public function show($id)
     {
-        $Vente=Vente::findOrFail($id);
-        $services=Services::get()-> where('id_Vente',$id);
-        $clients=Clients::get()-> where('id_Vente',$id);
-        return view('Vente.show',compact('Vente','services','clients'));
+        $vente = Vente::get()->where('id',$id)->first();
+        $produit=Produits::get()->where('id',$vente->produit_id)->first();
+        
+        return view('vente.show',compact('vente','produit'));
     }
- /**
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -160,14 +112,10 @@ class VenteController extends Controller
      */
     public function edit($id)
     {
-
-        $services=Services::pluck('nom','id');
-        $clients=Clients::pluck('nom','id');
-        $Vente=Vente::get();
-        $Vente=Vente::findOrFail($id);
+        $produits=Produits::pluck('nom', 'id');
       
-   
-        return view('Vente.edit', compact('Vente','services','clients','Vente','Vente'));
+        $vente=Vente::findOrFail($id);
+        return view ('vente.edit',compact('vente','produits'));
     }
 
     /**
@@ -179,117 +127,15 @@ class VenteController extends Controller
      */
     public function update(Request $request, $id)
     {
-         
-        $first = explode(" - ",  $request->get('periode'));
-        foreach ($first as $key => $value) {
-           if($key==0){
-               $debut=$value;
-           }if($key==1){
-               $fin=$value;
-           }
-        }
-      
-        if($request->get('client')=="on"){
-            $clients=$request->get('clients');
-           
-            $val="";
-            foreach($clients as $key=>$value)
-            {
-                $val=$val. '/' .$value;
-               
-            }
-            $tick= new Vente([
-                'titre' => $request->get('titre'),
-                'type'=> $request->get('type'),
-                'datedebut'=> $debut,
-            'datefin'=> $fin,
-                'valeur'=> $request->get('valeur'),
-                'clients_id'=>$val
-              ]);
-    
-        
-        }if($request->get('service')=="on"){
-                $services=$request->get('services');
-           
-            $val="";
-            foreach($clients as $key=>$value)
-            {
-                $val=$val. '/' .$value;
-               
-            }
-    
-    
-            $tick= new Vente([
-                'titre' => $request->get('titre'),
-                'type'=> $request->get('type'),
-                'datedebut'=> $debut,
-            'datefin'=> $fin,
-                'valeur'=> $request->get('valeur'),
-                'services_id'=>$val
-              ]);
-            }
-            if(new DateTime() > new DateTime($request->get('datedebut'))){
-                $tick['etat']="Inactif";
-            
-            }elseif(new DateTime() < new DateTime($request->get('datedebut')))
-             {
-                $tick['etat']="En cour";
-    
-             }
-             elseif(new DateTime() > new DateTime( $request->get('datefin')))
-             {
-                $tick['etat']="Expirer";
-    
-             }
-            
-            
-      $tick->update();
-      if($request->get('client')!="on"){
-        foreach($clientins as $key=>$value)
-        {  $clientin=Clients::get()->where('id',$value)->first();
-           $clientin['codepromo']=null ;
-           $clientin['id_Vente']=null;
-      $clientin->update();
-        }
-    }
-    if($request->get('service')!="on"){
-        foreach($serviceins as $key=>$value)
-        { $string = bin2hex(openssl_random_pseudo_bytes(10));
-           $servicein=Services::get()->where('id',$value)->first();
-           $servicein['codepromo']=null ;
-           $servicein['id_Vente']=null;
-      $servicein->update();
-        }
-        }
-    
-    
-    
-    
-    
-      if($request->get('client')=="on"){
-        foreach($clients as $key=>$value)
-        { $string = bin2hex(openssl_random_pseudo_bytes(10));
-           $client=Clients::get()->where('id',$value)->first();
-           $client['codepromo']=$string ;
-           $client['id_Vente']=$tick->id;
-      $client->update();
-        }
+        $vente = Vente::findOrFail($id);
+        $vente->update($request->all());
+        return redirect(route('vente.edit',$id));
     } 
-    if($request->get('service')=="on"){
-        foreach($services as $key=>$value)
-        { $string = bin2hex(openssl_random_pseudo_bytes(10));
-           $service=Services::get()->where('id',$value)->first();
-           $service['codepromo']=$string ;
-           $service['id_Vente']=$tick->id;
-      $service->update();
-        }
-        }
-    
-    
-    
-    
-     
-            return redirect(route('Vente.index'));
+    public function update1(Request $request, $id)
+    {
+        $vente = Vente::findOrFail($id);
+        $vente->update($request->all());
+        return $vente;
     } 
 
     /**
@@ -306,6 +152,6 @@ class VenteController extends Controller
             flash()->success('User not deleted');
         }
 
-        return redirect()->back();  //
+        return redirect()->back();
     }
 }

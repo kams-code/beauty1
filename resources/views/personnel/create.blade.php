@@ -52,21 +52,12 @@
                 </div>
             </div>
 
-<<<<<<< HEAD
-            <div class="col-md-12" style="padding: 0px">
-                <center>
-                    <img id="imgpreview" src="/images/pdf_icon.png" style="width: 100px;cursor: pointer;" >
-                    <input type="file" name="cv" style="display: none;" >
-
-                </center>
-=======
             <div class="col-md-6" style="padding: 0px">
                 <label for="inputPassword3" class="col-sm-12 control-label">{!! Form::label('ville','Services') !!}</label>
                 <div class="col-sm-12">
                    
                     {!! Form::select('services_id[]',$services,null, ['class' => 'js-example-basic-multiple form-control', 'multiple']) !!}
                 </div>
->>>>>>> 26a9eb48f0c1ffacdfa2d005a21aefd917d7660a
             </div>
             <script>
                 $(".js-example-basic-multiple").select2();
