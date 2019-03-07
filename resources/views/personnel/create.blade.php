@@ -55,7 +55,7 @@
             <div class="col-md-12" style="padding: 0px">
                 <center>
                     <img id="imgpreview" src="/images/pdf_icon.png" style="width: 100px;cursor: pointer;" >
-                    <input id="inputcv" type="file" name="cv" accept="images/*" style="display: none;" >
+                    <input type="file" name="cv" style="display: none;" >
 
                 </center>
             </div>

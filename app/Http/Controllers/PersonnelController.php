@@ -52,9 +52,10 @@ class PersonnelController extends Controller
      */
     public function store(Request $request)
     {
-        $extension = Input::file('cv')->getClientOriginalExtension();
+        dd($request);
+        $extension = $request->file('cv')->getClientOriginalExtension();
         $filename = rand(11111111, 99999999). '.' . $extension;
-        Input::file('cv')->move(
+        Request::file('cv')->move(
           base_path().'/public/files/uploads/', $filename
         );
         if(\Auth::user()->level == 2) {
