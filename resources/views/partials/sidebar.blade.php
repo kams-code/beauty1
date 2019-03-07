@@ -22,7 +22,7 @@
                                  <li class="has_sub">
                                         <a href="#" class="waves-effect"><i class="md md-perm-identity"></i> <span> Personnel </span> <span class="pull-right"><i class="md md-add"></i></span></a>
                                         <ul class="list-unstyled">
-                                            <li>                                    <a href="{{ route('employe') }}" class="waves-effect"><i class="md md-palette"></i> <span> Employé</span> <span class="pull-right"></span></a>
+                                            <li>                                    <a href="{{ route('personnels.index') }}" class="waves-effect"><i class="md md-palette"></i> <span> Employé</span> <span class="pull-right"></span></a>
                                             </li>
                                             <li>                                <a href="{{ route('plannings.index') }}" class="waves-effect"><i class="md md-access-time"></i> <span> Plannings </span> <span class="pull-right"></span></a>
                                             </li>
@@ -75,11 +75,7 @@
                                                    </li>  
                                        <li >
                                               <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Approvisionnements </span> <span class="pull-right"></span></a>
-<<<<<<< HEAD
-                                           </li> 
-=======
                                            </li>
->>>>>>> 0b667b786da37f65368c36e3e9f36f37ae9ef336
                                     </ul>
                              
                              </li>
@@ -89,11 +85,7 @@
                                  <li >
                                         <a href="{{ route('fournisseurs.index') }}" class="waves-effect"><i class="md md-group"></i> <span> Fournisseurs </span> <span class="pull-right"></span></a>
                                      </li>  
-<<<<<<< HEAD
-                   
-=======
                      
->>>>>>> 0b667b786da37f65368c36e3e9f36f37ae9ef336
                                  <li >
                                     <a href="{{ route('commandes.index') }}" class="waves-effect"><i class="md md-content-paste"></i> <span> Abonnement </span> <span class="pull-right"></span></a>
                                  </li> 

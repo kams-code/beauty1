@@ -16,6 +16,7 @@ class Personnel extends Model
     'adresse',
     'email',
     'telephone' ,
+    'cv',
    
 ];
 }

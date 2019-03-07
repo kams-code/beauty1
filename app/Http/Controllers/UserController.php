@@ -3,6 +3,7 @@
 namespace App\Http\Controllers; use Illuminate\Support\Facades\Auth;
 
 use App\User;
+use App\Personnel;
 use App\Role;
 use App\Permission;
 use App\Services;
@@ -69,6 +70,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+       if($request->has('idpersonnel')){
+           $personnel=Personnel::findOrFail($request->idpersonnel);
+           $request->merge(['email' => $personnel['email']]);
+           $request->merge(['nom' => $personnel['nom']]);
+          
+           $request->merge(['image' => $personnel['image']]);
+           $request->merge(['isemploye' =>1]);
+           $user1=Auth::user();
+           if ($user1->organisation_id !=0) {
+            $request->merge(['password' => bcrypt($request->get('password'))]);
+       
+            $request->merge(['organisation_id' =>$user1->organisation_id ]);
+        }
+
+       }else{
         $this->validate($request, [
             'name' => 'bail|required|min:2',
             'email' => 'required|email|unique:users',
@@ -94,10 +110,17 @@ class UserController extends Controller
             $request->merge(['organisation_id' =>$user1->organisation_id ]);
         }
         $request->merge(['isemploye' => $request->get('isemploye')]);
-       
+    }
         // Create the user
         if ( $user = User::create($request->except('roles', 'permissions')) ) {
         
+
+            if($request->has('idpersonnel')){
+                $personnel['user_id']=$user['id'];
+                $personnel->update();
+            }     
+
+
             $this->syncPermissions($request, $user);
 
             flash('User has been created.');

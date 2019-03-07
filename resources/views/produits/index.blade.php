@@ -19,7 +19,7 @@
                                     <div class="col-sm-12">
                                         <h4 class="pull-left page-title">Produits</h4>
                                         <ol class="breadcrumb pull-right">
-                                            <li><a href="#">QuickBeauty</a></li>
+                                            
                                             <li><a href="#">Accueil</a></li>
                                             <li class="active">Produits</li>
                                         </ol>
@@ -51,11 +51,33 @@
                                          
                                         <div class="col-sm-6 col-lg-3 col-md-4  {{$produit->categori_id}}  illustrator">
                                             <div class="gal-detail thumb">
-                                                <a href="{{asset('images/'.$produit->image)}}" class="image-popup" title="Screenshot-1">
-                                                    <img src="{{asset('images/'.$produit->image)}}" class="thumb-img" alt="work-thumbnail">
-                                                </a>
+                                                <?php
+                                                    if(strlen($produit->image) == 0){
+                                                        ?>
+                                                            <a href="{{asset('images/default.png')}}" class="image-popup" title="Screenshot-1">
+                                                                <img style="height: 200px" src="{{asset('images/default.png')}}" class="thumb-img" alt="work-thumbnail">
+                                                            </a>
+                                                        <?php
+                                                    }
+                                                    else{
+                                                        ?>
+                                                            <a href="{{asset('images/'.$produit->image)}}" class="image-popup" title="Screenshot-1">
+                                                                <img style="height: 200px" src="{{asset('images/'.$produit->image)}}" class="thumb-img" alt="work-thumbnail">
+                                                            </a>
+                                                        <?php
+                                                    }
+                                                ?>
+                                                
                                                 <h5 style="text-align: -webkit-center;" > {{$produit->nom}}</h5>
-                                                <h5 style="text-align: -webkit-center;" > {{$produit->prix}} FCFA</h5>
+                                                <h5 style="text-align: -webkit-center;height: 15px" >
+                                                <?php
+                                                    if($produit->vendable == 1){
+                                                        ?>
+                                                             {{$produit->prix}} FCFA
+                                                        <?php
+                                                    }
+                                                ?>
+                                                </h5>
                                                     <div style="align: center;">
                                                 <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="produits/{{$produit->id}}" data-id="{{$produit->id}}" data-target="#con-close-modal"><i class="fa fa-eye"></i></a> @can('edit_produits','delete_produits')
 

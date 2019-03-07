@@ -66,7 +66,11 @@
                                             <input  type="checkbox" class="check" onclick="verified();" value="{{ $client->id }}"  name="etat">
                                         </td>
                                         <td>
+                                            @if ($client->image!=null)
                                             <img style="width: 70px;height: 70px" src="{{asset('images/'.$client->image)}}" alt="user-img" >
+                                                                                    @else
+                                                                                     <img style="width: 70px;height: 70px" src="{{asset('images/profile.jpg')}}" alt="user-img" >
+                                                                                    @endif 
                                         </td>
                                         <td> {{ $client->nom }}</td>
                                         <td> {{ $client->prenom }}</td>
@@ -79,6 +83,7 @@
                                        
 
                                         <td class="actions">
+                                                <a class="on-default seedetails btn btn-primary" data-toggle="modal" data-lien="clients/{{$client->id}}" data-id="{{$client->id}}" data-target="#con-close-modal"><i class="fa fa-history"></i></a> 
                                             
                                          @can('edit_clients','delete_clients')
 

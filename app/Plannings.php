@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Plannings extends Model
 {
    protected $fillable = [  'organisation_id',
-      'heureDeb',
-      'heureFin',
-      'dateDeb',
-      'dateFin',
-      'jour_id',
-      'jours',
+
+   'jour',
+   'etat',
+   'heureouverture',
+   'heurefermeture',
+   
+  
+
       'user_id'
    ];
 

@@ -7,7 +7,9 @@ use App\Personnel;
 use App\Commandes;
 use App\Reservations;
 use App\Produits;
+use App\Role;
 use App\Services;
+use App\Services_users;
 use App\User;
 use App\Roles;use App\Permission;
 use App\Http\Requests;
@@ -34,6 +36,18 @@ class PersonnelController extends Controller
         return view('personnel.index',compact('personnels'));
     }
 
+
+    public function index1($id)
+    {
+        $roles = Role::pluck('name', 'id');
+        $services = Services::pluck('nom', 'id');
+        $organisations=Organisations::pluck('nom', 'id');
+
+        $personnel = Personnel::get()->where('id',$id)->first();
+        return view('personnel.utilisateur',compact('personnel','roles','services','organisations','id'));
+        }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -41,7 +55,8 @@ class PersonnelController extends Controller
      */
     public function create()
     {
-        return view('Personnel.create');
+        $services = Services::pluck('nom', 'id');
+        return view('personnel.create', compact('services'));
     }
 
     /**
@@ -52,6 +67,7 @@ class PersonnelController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         dd($request);
         $extension = $request->file('cv')->getClientOriginalExtension();
         $filename = rand(11111111, 99999999). '.' . $extension;
@@ -62,35 +78,51 @@ class PersonnelController extends Controller
             $approved = $request['approved'];
         } else {
             $approved = 3;
+=======
+        if ($request->hasfile('cvup')) {
+            $extension = $request->file('cvup')->getClientOriginalExtension();
+            $filenamepdf = rand(11111111, 99999999). '.' . $extension;
+            $request->file('cvup')->move(
+              base_path().'/public/files/uploads/', $filenamepdf
+            );
+            
+            $request->merge(['cv' => $filenamepdf]);
         }
-        dd($filename);
-        $fullPath = '/public/files/uploads/' . $filename;
-        $upload = new Uploads(array(
-            'name' => $request['name'],
-            'format' => $extension,
-            'path' => $fullPath,
-            'approved' => $approved,
-        ));
-        $upload->save();
-        $uploads = Uploads::orderBy('approved')->get();
-
-
-
-
-
+        else{
+            $request->merge(['cv' => '']);
+>>>>>>> 26a9eb48f0c1ffacdfa2d005a21aefd917d7660a
+        }
 
         if($request->hasfile('imageup'))
         {
-     
-               $image=$request->file('imageup');
-               $filename=time().'.'.$image->getPersonnelOriginalExtension();
-               $location=public_path('images/'.$filename);
-               Image::make($image)->resize(800,400)->save($location); 
-              $request->merge(['image' => $filename]);
-               
+           $image=$request->file('imageup');
+           $filename=time().'.'.$image->getClientOriginalExtension();
+           $location=public_path('images/'.$filename);
+           Image::make($image)->resize(800,400)->save($location); 
+            $request->merge(['image' => $filename]);
         }
+        else{
+            $request->merge(['imageup' => '']);
+        }
+
         $personnel = Personnel::create($request->all());
-        return redirect(route('personnel.index'));
+        $services=$request->get('services_id');
+        if (count((array)$services) != 0) {
+            $id= $request->get('id');
+
+           $data=array($personnel['id']);
+            $insertQuery = 'DELETE FROM services_users WHERE services_id = ?';
+            DB::insert($insertQuery, $data);
+
+           foreach($services as $key=>$value)
+           {
+                $data=array($personnel['id'],$value);
+                $insertQuery = 'INSERT into services_users (user_id,services_id) VALUES(?,?)';
+                DB::insert($insertQuery, $data);
+           }
+        }
+       
+        return redirect(route('personnels.index'));
     }
 
     /**
@@ -105,7 +137,7 @@ class PersonnelController extends Controller
 
         $reservations = Reservations::get()->where('Personnel_id','=',$id);
         $services = Services::all();
-        return view('Personnel.show',compact('personnel','services','reservations'));
+        return view('personnel.show',compact('personnel','services','reservations'));
     }
 
     /**
@@ -116,8 +148,10 @@ class PersonnelController extends Controller
      */
     public function edit($id)
     {
-        $Personnel = Personnel::findOrFail($id);
-        return view('Personnel.edit',compact('Personnel'));
+        $personnel = Personnel::findOrFail($id);
+        $services = Services_users::all();
+        $Services = Services::all();
+        return view('personnel.edit',compact('personnel','services','Services'));
     }
 
     /**
@@ -130,8 +164,30 @@ class PersonnelController extends Controller
     public function update(Request $request, $id)
     {
         $Personnel = Personnel::findOrFail($id);
+        
+        $extension = $request->file('cvup')->getClientOriginalExtension();
+        $filenamepdf = rand(11111111, 99999999). '.' . $extension;
+        $request->file('cvup')->move(
+          base_path().'/public/files/uploads/', $filenamepdf
+        );
+        
+        $request->merge(['cv' => $filenamepdf]);
+
+ 
+
+
+        if($request->hasfile('imageup'))
+        {
+     
+               $image=$request->file('imageup');
+               $filename=time().'.'.$image->getClientOriginalExtension();
+               $location=public_path('images/'.$filename);
+               Image::make($image)->resize(800,400)->save($location); 
+              $request->merge(['image' => $filename]);
+               
+        }
         $Personnel->update($request->all());
-        return redirect(route('personnel.index'));
+        return redirect(route('personnels.index'));
     }
 
     /**

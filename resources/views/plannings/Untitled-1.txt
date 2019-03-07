@@ -1,0 +1,17 @@
+@foreach ($plannings as $planning)
+                        @if ($planning['jour']=="Dimanche")
+                        <div class="col-sm-3">
+                        <input type="time" class="form-control" name="heureouvertureDimanche" value="{{$plannig['heureouverture']}}" id="yourTextDimanche" disabled />
+                            </div>
+                            <div class="col-sm-3">
+                                       <input type="time" class="form-control" name="heurefermetureDimanche" value="{{$plannig['heurefermeture']}}" id="yourTextDimanche1" disabled />
+                                </div>
+                        @else
+                        <div class="col-sm-3">
+                                <input type="time" class="form-control" name="heureouvertureDimanche" id="yourTextDimanche" disabled />
+                            </div>
+                            <div class="col-sm-3">
+                                       <input type="time" class="form-control" name="heurefermetureDimanche" id="yourTextDimanche1" disabled />
+                                </div>
+                        @endif                  
+                      @endforeach

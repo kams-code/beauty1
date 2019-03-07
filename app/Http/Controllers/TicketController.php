@@ -20,7 +20,7 @@ class TicketController extends Controller
         $services=Services::pluck('nom','id');
         $clients=Clients::pluck('nom','id');
         $Tickets=Tickets::get();
-        $formules=Formules::pluck('nom','id');
+        $formules=Formule::pluck('nom','id');
      
         return view('tickets.index',compact('Tickets','services','clients','tickets'));
     }
@@ -47,7 +47,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-       dd($request);
+       //dd($request);
         $first = explode(" - ",  $request->get('periode'));
         foreach ($first as $key => $value) {
            if($key==0){

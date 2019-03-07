@@ -10,4 +10,7 @@ class Paiement extends Model
         'intitule',
         'image'
     ];
+    public function reservations(){
+        return $this->hasMany('App\Reservations');
+    }
 }

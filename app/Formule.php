@@ -11,6 +11,8 @@ class Formule extends Model
     'prix',
     'services_id',
     
-   
-];
+   ];
+   public function reservations(){
+        return $this->hasMany('App\Reservations');
+    }
 }

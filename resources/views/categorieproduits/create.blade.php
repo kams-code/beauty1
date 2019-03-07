@@ -8,7 +8,7 @@
             {!! Form::open(['class' => 'form-horizontal','role' => 'form','url' => route('categorieproduits.store'),'files'=>true]) !!}
            
          
-                <div class="col-md-6" style="padding: 0px">
+                <div class="col-md-12" style="padding: 0px">
                     <label for="inputEmail3" class="col-sm-12 control-label">{!! Form::label('nom','Nom*', ['class' => 'pull-left']) !!}</label>
                     <div class="col-sm-12">
                       {!! Form::text('nom',null, ['class' => 'form-control','required']) !!}

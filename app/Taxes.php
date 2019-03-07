@@ -11,4 +11,7 @@ class Taxes extends Model
         'typevaleur',
         'valeur'
     ];
+    public function reservations(){
+        return $this->hasMany('App\Reservations');
+    }
 }
